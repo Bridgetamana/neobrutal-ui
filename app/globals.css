@@ -70,3 +70,9 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
 }
+
+@layer utilities {
+  .focus-brutal {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+}
