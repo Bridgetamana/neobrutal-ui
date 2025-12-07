@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const publicSans = Public_Sans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-public-sans",
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
   title: "Neobrutal UI",
-  description:
-    "A bold and unapologetic neobrutalistic React component library built with Next.js, TypeScript, and Tailwind CSS.",
+  description: "A neobrutalistic React component library built with Next.js and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -24,12 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${publicSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
