@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { ArrowRightIcon, CopyIcon, GithubLogoIcon, LightningIcon, PaintBrushIcon } from "@phosphor-icons/react"
@@ -12,8 +13,8 @@ export default function Home() {
       <header className="border-b-2 border-border bg-bg sticky top-0 z-50">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 bg-main border-2 border-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"></div>
-            <span className="text-xl font-black">NeoBrutal UI</span>
+            <Image src="/neobrutalui-logo.svg" alt="NeoBrutal UI Logo" width={32} height={32} />
+            <span className="text-xl font-black uppercase">NeoBrutal UI</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 font-medium">
             <Link href="/docs" className="hover:underline decoration-2 underline-offset-4">Documentation</Link>
