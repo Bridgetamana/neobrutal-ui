@@ -1,23 +1,23 @@
 "use client"
 
 import Link from "next/link"
-import { CubeIcon } from "@phosphor-icons/react"
+import Image from "next/image"
 
 export function SiteFooter() {
     return (
-        <footer className="bg-bw py-12">
-            <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-2">
-                    <CubeIcon weight="fill" className="h-8 w-8" />
-                    <span className="text-xl font-black uppercase">NeoBrutal UI</span>
+        <footer className="bg-white border-t-4 border-black py-12 mt-20">
+            <div className="container mx-auto px-4 md:px-0 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="flex items-center gap-1">
+                    <Image src="/neobrutalui-logo.svg" alt="NeoBrutal UI Logo" width={24} height={24} />
+                    <span className="text-lg md:text-xl font-bold italic">NeoBrutal UI</span>
                 </div>
-                <div className="flex gap-6 font-bold">
-                    <Link href="/docs" className="hover:underline">Docs</Link>
-                    <Link href="https://github.com/bridgetamana/neobrutal-ui" className="hover:underline">GitHub</Link>
-                    <Link href="https://twitter.com/bridgetamana" className="hover:underline">Twitter</Link>
+                <div className="flex gap-4 font-medium">
+                    <Link href="/docs" className="hover:text-black/80 focus-brutal">Docs</Link>
+                    <Link href="https://github.com/bridgetamana/neobrutal-ui" className="hover:text-black/80 focus-brutal">GitHub</Link>
+                    <Link href="https://x.com/bridget_amana" target="_blank" className="hover:text-black/80 focus-brutal">Twitter</Link>
                 </div>
                 <p className="text-sm font-medium">
-                    © {new Date().getFullYear()} Bridget. All rights reserved.
+                    © {new Date().getFullYear()} Bridget Amana. All rights reserved.
                 </p>
             </div>
         </footer>

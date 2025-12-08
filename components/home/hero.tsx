@@ -2,20 +2,13 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { ArrowRightIcon, GithubLogoIcon } from "@phosphor-icons/react"
 
 export function HeroSection() {
     return (
         <section className="relative border-b-4 border-border bg-pastel-yellow py-24 md:py-32 overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-10 right-10 h-20 w-20 rounded-full border-4 border-border bg-pastel-pink shadow-brutal hidden md:block animate-bounce" />
-            <div className="absolute bottom-10 left-10 h-16 w-16 rotate-12 border-4 border-border bg-pastel-blue shadow-brutal hidden md:block" />
 
             <div className="container mx-auto px-4 md:px-8 text-center relative z-10">
-                <Badge className="mb-6 bg-bw text-lg py-2 px-4 border-2 border-border shadow-brutal rotate-2 hover:rotate-0 transition-transform">
-                    ✨ The coolest UI library in town
-                </Badge>
                 <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9]">
                     MAKE YOUR UI <br />
                     <span className="text-main drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">SCREAM</span> FUN.

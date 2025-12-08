@@ -16,7 +16,7 @@ export function SiteHeader() {
                     <Image src="/neobrutalui-logo.svg" alt="NeoBrutal UI Logo" width={24} height={24} />
                     <span className="text-lg md:text-xl font-bold italic">NeoBrutal UI</span>
                 </div>
-                <nav className="hidden lg:flex items-center gap-6 font-semibold">
+                <nav className="hidden lg:flex items-center gap-6 font-medium">
                     <Link href="/docs" className="hover:text-black/80  focus-brutal">Docs</Link>
                     <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80  focus-brutal">Github</Link>
                 </nav>
@@ -37,7 +37,7 @@ export function SiteHeader() {
             </div>
             {isMenuOpen && (
                 <div className="lg:hidden bg-bw border-t-2 border-black">
-                    <nav className="flex flex-col items-center gap-4 py-6 font-semibold text-lg">
+                    <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
                         <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
                         <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
                         <Link href="/docs/components" onClick={() => setIsMenuOpen(false)}>
