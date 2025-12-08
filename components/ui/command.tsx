@@ -60,7 +60,7 @@ const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
             ref={ref}
             className={cn(
                 "cursor-pointer px-4 py-2 text-sm font-bold transition-colors",
-                isSelected ? "bg-main text-black" : "hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                isSelected ? "bg-main text-black" : "hover:bg-neutral-100"
             )}
             {...props}
         />

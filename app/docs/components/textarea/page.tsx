@@ -31,7 +31,7 @@ export default function TextareaPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Textarea</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A multi-line text input field with bold styling. Perfect for longer form content.
                 </p>
             </div>
@@ -47,7 +47,7 @@ export default function TextareaPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Resizable:</strong> Users can resize by default (use resize-none to prevent)</li>
                     <li><strong>Min-height:</strong> Default 80px minimum for usable space</li>
                     <li><strong>Scrolling:</strong> Inherits overflow behavior for long content</li>
@@ -71,7 +71,7 @@ export default function TextareaPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customization</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                <p className="text-neutral-600 mb-4">
                     Adjust sizing using Tailwind utilities:
                 </p>
                 <CodeBlock code={`// Custom height
@@ -86,7 +86,7 @@ export default function TextareaPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Labels:</strong> Always pair with &lt;Label&gt; component</li>
                     <li><strong>Focus states:</strong> Clear visual indicator for keyboard users</li>
                     <li><strong>Character count:</strong> Consider adding with aria-live region</li>
@@ -96,7 +96,7 @@ export default function TextareaPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/textarea.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/textarea.tsx</code>:</p>
                 <CodeBlock code={textareaCode} />
             </div>
 

@@ -94,7 +94,7 @@ export default function SelectPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Select</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A dropdown select component with full accessibility. Perfect for choosing from a list of options.
                 </p>
             </div>
@@ -120,7 +120,7 @@ export default function SelectPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Dropdown portal:</strong> Renders above all content</li>
                     <li><strong>Keyboard navigation:</strong> Arrow keys to move, Enter to select</li>
                     <li><strong>Search/type:</strong> Type to jump to matching options</li>
@@ -131,7 +131,7 @@ export default function SelectPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Components</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Select:</strong> Root component (Radix SelectPrimitive.Root)</li>
                     <li><strong>SelectTrigger:</strong> Button that opens the dropdown</li>
                     <li><strong>SelectValue:</strong> Shows selected value or placeholder</li>
@@ -143,7 +143,7 @@ export default function SelectPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Full ARIA support:</strong> Built on Radix UI select primitive</li>
                     <li><strong>Keyboard navigation:</strong> Tab, Arrow keys, Enter/Space</li>
                     <li><strong>Screen readers:</strong> Announces selected option and availability</li>
@@ -153,9 +153,9 @@ export default function SelectPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Install Radix UI dependencies:</p>
+                <p className="text-neutral-600 mb-2">Install Radix UI dependencies:</p>
                 <CodeBlock code="npm install @radix-ui/react-select @phosphor-icons/react" language="bash" />
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/select.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/select.tsx</code>:</p>
                 <CodeBlock code={selectCode} />
             </div>
 

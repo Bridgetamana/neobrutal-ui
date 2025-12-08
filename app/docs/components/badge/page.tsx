@@ -41,7 +41,7 @@ export default function BadgePage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Badge</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A compact label component for displaying status, tags, or labels with minimal visual footprint.
                 </p>
             </div>
@@ -56,23 +56,23 @@ export default function BadgePage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Variants</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                <p className="text-neutral-600 mb-4">
                     Choose from 3 variants to match your design needs.
                 </p>
                 <div className="space-y-4">
                     <div>
                         <h3 className="font-bold mb-2">Default</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Accent color background for primary status.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Accent color background for primary status.</p>
                         <Badge variant="default">Active</Badge>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Neutral</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">White background for neutral/secondary status.</p>
+                        <p className="text-sm text-neutral-600 mb-2">White background for neutral/secondary status.</p>
                         <Badge variant="neutral">Pending</Badge>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Outline</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Border only, minimal style for subtle status.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Border only, minimal style for subtle status.</p>
                         <Badge variant="outline">Inactive</Badge>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ export default function BadgePage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Use Cases</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Status indicators:</strong> Active, Pending, Inactive, Error states</li>
                     <li><strong>Tags:</strong> Categorization and filtering labels</li>
                     <li><strong>Pills:</strong> Language tags, technology stacks</li>
@@ -90,7 +90,7 @@ export default function BadgePage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Styling</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Border:</strong> 2px solid black for definition</li>
                     <li><strong>Size:</strong> Compact px-2.5 py-0.5 for inline use</li>
                     <li><strong>Typography:</strong> Bold text (font-bold) at xs size</li>
@@ -100,7 +100,7 @@ export default function BadgePage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/badge.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/badge.tsx</code>:</p>
                 <CodeBlock code={badgeCode} />
             </div>
 

@@ -41,7 +41,7 @@ export default function SliderPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Slider</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A range input component for selecting values along a continuous range.
                 </p>
             </div>
@@ -57,7 +57,7 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Thick track:</strong> 4px height with 2px border</li>
                     <li><strong>Square thumb:</strong> Actually rounded square for brutalist look</li>
                     <li><strong>Touch support:</strong> Works on mobile with touch</li>
@@ -98,7 +98,7 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Keyboard support:</strong> Arrow keys to adjust value</li>
                     <li><strong>Focus ring:</strong> Clear 2px black ring when focused</li>
                     <li><strong>Label:</strong> Use with label element for context</li>
@@ -108,9 +108,9 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Install Radix UI dependency:</p>
+                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-slider" language="bash" />
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/slider.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/slider.tsx</code>:</p>
                 <CodeBlock code={sliderCode} />
             </div>
 

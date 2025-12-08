@@ -52,7 +52,7 @@ export default function RadioGroupPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Radio Group</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A set of radio buttons where only one option can be selected at a time. Perfect for mutually exclusive choices.
                 </p>
             </div>
@@ -76,7 +76,7 @@ export default function RadioGroupPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Mutual exclusion:</strong> Only one option selected at a time</li>
                     <li><strong>Circular shape:</strong> Classic radio button look</li>
                     <li><strong>Radix UI:</strong> Built on accessible primitives</li>
@@ -105,7 +105,7 @@ export default function RadioGroupPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>WAI-ARIA compliant:</strong> Full Radix UI accessibility support</li>
                     <li><strong>Keyboard navigation:</strong> Arrow keys move between options, Space/Enter to select</li>
                     <li><strong>Labels:</strong> Always pair items with &lt;Label&gt; using htmlFor</li>
@@ -116,9 +116,9 @@ export default function RadioGroupPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Install Radix UI dependency:</p>
+                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-radio-group @phosphor-icons/react" language="bash" />
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/radio-group.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/radio-group.tsx</code>:</p>
                 <CodeBlock code={radioGroupCode} />
             </div>
 

@@ -9,14 +9,14 @@ export default function InstallationPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Installation</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     Get started with NeoBrutal UI in minutes. Copy the components you need directly into your project.
                 </p>
             </div>
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Prerequisites</h2>
-                <p className="text-neutral-600 dark:text-neutral-400">
+                <p className="text-neutral-600">
                     NeoBrutal UI is designed for Next.js 16+ projects using React 19 and Tailwind CSS v4.
                 </p>
                 <div className="space-y-2">
@@ -39,7 +39,7 @@ export default function InstallationPage() {
                 <div className="space-y-6">
                     <div className="space-y-2">
                         <h3 className="text-lg font-bold">1. Install Dependencies</h3>
-                        <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-neutral-600 mb-2">
                             Install Radix UI primitives and utilities that components depend on:
                         </p>
                         <CodeBlock code={`npm install \\
@@ -61,8 +61,8 @@ export default function InstallationPage() {
 
                     <div className="space-y-2">
                         <h3 className="text-lg font-bold">2. Copy Components</h3>
-                        <p className="text-neutral-600 dark:text-neutral-400 mb-2">
-                            Copy component files from the <code className="bg-neutral-200 dark:bg-neutral-800 px-1 py-0.5 rounded">components/ui/</code> folder into your project:
+                        <p className="text-neutral-600 mb-2">
+                            Copy component files from the <code className="bg-neutral-200 px-1 py-0.5 rounded">components/ui/</code> folder into your project:
                         </p>
                         <CodeBlock code={`# Your project structure
 your-project/
@@ -77,15 +77,15 @@ your-project/
 ├── lib/
 │   └── utils.ts        # Uses cn() from class-variance-authority
 └── tailwind.config.ts`} language="bash" />
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+                        <p className="text-sm text-neutral-600 mt-2">
                             You only need to copy the components you actually use. It&quot;s a copy-paste library, not an npm package!
                         </p>
                     </div>
 
                     <div className="space-y-2">
                         <h3 className="text-lg font-bold">3. Set Up Utils</h3>
-                        <p className="text-neutral-600 dark:text-neutral-400 mb-2">
-                            Create a utility file for the <code className="bg-neutral-200 dark:bg-neutral-800 px-1 py-0.5 rounded">cn()</code> function:
+                        <p className="text-neutral-600 mb-2">
+                            Create a utility file for the <code className="bg-neutral-200 px-1 py-0.5 rounded">cn()</code> function:
                         </p>
                         <CodeBlock code={`// lib/utils.ts
 import { clsx, type ClassValue } from "clsx"
@@ -98,7 +98,7 @@ export function cn(...inputs: ClassValue[]) {
 
                     <div className="space-y-2">
                         <h3 className="text-lg font-bold">4. Add Toaster (Optional)</h3>
-                        <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-neutral-600 mb-2">
                             If using Toast notifications, add the Toaster component to your root layout:
                         </p>
                         <CodeBlock code={`// app/layout.tsx
@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
 
                     <div className="space-y-2">
                         <h3 className="text-lg font-bold">5. Add TooltipProvider (Optional)</h3>
-                        <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-neutral-600 mb-2">
                             If using Tooltips, wrap your app with TooltipProvider:
                         </p>
                         <CodeBlock code={`// app/layout.tsx
@@ -141,7 +141,7 @@ export default function RootLayout({ children }) {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Verify Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                <p className="text-neutral-600 mb-2">
                     Test that everything is working:
                 </p>
                 <CodeBlock code={`// app/page.tsx
@@ -154,14 +154,14 @@ export default function Home() {
     </div>
   )
 }`} />
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+                <p className="text-sm text-neutral-600 mt-2">
                     If the button renders with a bold border and shadow, you&quot;re all set!
                 </p>
             </div>
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Component Checklist</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                <p className="text-neutral-600 mb-4">
                     Copy only the components you need. Here&quot;s the full list:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -207,7 +207,7 @@ export default function Home() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customization</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">
+                <p className="text-neutral-600 mb-2">
                     Since you own the code, you can customize any component. Learn more in the <Link href="/docs/theming" className="font-bold underline hover:no-underline">Theming guide</Link>.
                 </p>
             </div>
@@ -217,19 +217,19 @@ export default function Home() {
                 <div className="space-y-4">
                     <div>
                         <h3 className="font-bold mb-1">Module not found errors?</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        <p className="text-sm text-neutral-600">
                             Make sure all dependencies are installed and your import paths are correct. Check that `lib/utils.ts` exists.
                         </p>
                     </div>
                     <div>
                         <h3 className="font-bold mb-1">Styles not applying?</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        <p className="text-sm text-neutral-600">
                             Ensure Tailwind CSS v4 is installed and configured. Components use Tailwind utilities, not CSS modules.
                         </p>
                     </div>
                     <div>
                         <h3 className="font-bold mb-1">Missing Radix UI dependency?</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        <p className="text-sm text-neutral-600">
                             Each component lists its Radix UI dependency in the docs. Install the specific package before using the component.
                         </p>
                     </div>
@@ -242,13 +242,13 @@ export default function Home() {
                     <Link href="/docs/components" className="flex-1">
                         <div className="p-4 border-2 border-border rounded-base hover:bg-main hover:text-black transition-colors">
                             <h3 className="font-bold">Browse Components</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">View all available components</p>
+                            <p className="text-sm text-neutral-600">View all available components</p>
                         </div>
                     </Link>
                     <Link href="/docs/theming" className="flex-1">
                         <div className="p-4 border-2 border-border rounded-base hover:bg-main hover:text-black transition-colors">
                             <h3 className="font-bold">Learn Theming</h3>
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">Customize colors and styles</p>
+                            <p className="text-sm text-neutral-600">Customize colors and styles</p>
                         </div>
                     </Link>
                 </div>

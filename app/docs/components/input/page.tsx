@@ -34,7 +34,7 @@ export default function InputPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Input</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A text input field with bold borders and accessible focus states. Perfect for forms.
                 </p>
             </div>
@@ -50,7 +50,7 @@ export default function InputPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Input Types</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                <p className="text-neutral-600 mb-4">
                     The Input component supports all standard HTML input types.
                 </p>
                 <div className="space-y-4">
@@ -93,7 +93,7 @@ export default function InputPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Focus states:</strong> Thick 2px ring with high contrast</li>
                     <li><strong>Labels:</strong> Always pair with &lt;Label&gt; component or aria-label</li>
                     <li><strong>Placeholder:</strong> Placeholder alone is not accessible - use labels</li>
@@ -104,7 +104,7 @@ export default function InputPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/input.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/input.tsx</code>:</p>
                 <CodeBlock code={inputCode} />
             </div>
 

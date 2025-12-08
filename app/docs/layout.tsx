@@ -63,7 +63,7 @@ export default function DocsLayout({
                 <div className="h-[calc(100vh-4rem)] overflow-y-auto py-6 px-4">
                     {sidebarItems.map((group, i) => (
                         <div key={i} className="mb-8">
-                            <h4 className="mb-2 px-2 text-sm font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                            <h4 className="mb-2 px-2 text-sm font-bold uppercase tracking-wider text-neutral-500">
                                 {group.title}
                             </h4>
                             <div className="grid grid-cols-1 gap-1">
@@ -74,8 +74,8 @@ export default function DocsLayout({
                                         className={cn(
                                             "block rounded-base px-2 py-1.5 text-sm font-medium transition-colors hover:bg-main hover:text-black",
                                             pathname === item.href
-                                                ? "bg-main text-black border-2 border-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
-                                                : "text-neutral-700 dark:text-neutral-300"
+                                                ? "bg-main text-black border-2 border-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                                                : "text-neutral-700"
                                         )}
                                     >
                                         {item.title}

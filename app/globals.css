@@ -19,7 +19,7 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --main: #88aaee;
   --overlay: rgba(0, 0, 0, 0.8);
   --bg: #f4f4f5;
@@ -51,22 +51,6 @@
   --card-foreground: var(--text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --main: #88aaee;
-    --bg: #09090b;
-    --bw: #18181b;
-    --blank: #000000;
-    --text: #f8fafc;
-    --mtext: #f8fafc;
-    --border: #e2e8f0;
-    --ring: #e2e8f0;
-    --ring-offset: #09090b;
-    --overlay: rgba(0, 0, 0, 0.8);
-    --muted: #27272a;
-    --muted-foreground: #a1a1aa;
-  }
-}
 
 body {
   background-color: var(--bg);

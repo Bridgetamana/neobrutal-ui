@@ -68,7 +68,7 @@ export default function AlertPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Alert</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A message container for important information. Perfect for notifications, warnings, and status messages.
                 </p>
             </div>
@@ -112,7 +112,7 @@ export default function AlertPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Icon Usage</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                <p className="text-neutral-600 mb-4">
                     Use Phosphor Icons for visual clarity. The component automatically positions the icon.
                 </p>
                 <div className="space-y-4">
@@ -131,7 +131,7 @@ export default function AlertPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>ARIA role:</strong> Automatic role=&quot;alert&quot; for screen readers</li>
                     <li><strong>Title + Description:</strong> Semantic structure for clarity</li>
                     <li><strong>High contrast:</strong> Bold text and clear colors</li>
@@ -141,7 +141,7 @@ export default function AlertPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/alert.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/alert.tsx</code>:</p>
                 <CodeBlock code={alertCode} />
             </div>
 

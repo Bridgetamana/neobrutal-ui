@@ -67,7 +67,7 @@ export default function AccordionPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Accordion</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A vertically stacked set of interactive headings that each reveal a section of content.
                 </p>
             </div>
@@ -101,7 +101,7 @@ export default function AccordionPage() {
                     <p>1. Install the Radix UI primitive:</p>
                     <CodeBlock code="npm install @radix-ui/react-accordion" language="bash" />
 
-                    <p>2. Copy the source code into <code className="bg-neutral-200 dark:bg-neutral-800 px-1 py-0.5 rounded">components/ui/accordion.tsx</code>:</p>
+                    <p>2. Copy the source code into <code className="bg-neutral-200 px-1 py-0.5 rounded">components/ui/accordion.tsx</code>:</p>
                     <CodeBlock code={accordionCode} />
                 </div>
             </div>

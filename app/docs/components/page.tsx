@@ -23,7 +23,7 @@ export default function ComponentsPage() {
         <div className="space-y-12">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Components</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A collection of all available components in the library.
                 </p>
             </div>

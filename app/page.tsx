@@ -32,14 +32,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-20 md:py-32 border-b-2 border-border bg-bw">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border-2 border-border bg-main text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full border-2 border-border bg-main text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             v1.0.0 is now available!
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6">
             Make your UI <br className="hidden md:block" />
-            <span className="bg-main px-2 border-2 border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] text-black">Pop.</span>
+            <span className="bg-main px-2 border-2 border-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-black">Pop.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10">
+          <p className="text-xl md:text-2xl text-neutral-600 max-w-2xl mx-auto mb-10">
             A collection of copy-paste components for React, Next.js, and Tailwind CSS.
             Styled with a bold, neobrutalist aesthetic.
           </p>
@@ -99,7 +99,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
               <h2 className="text-4xl font-black mb-4">Component Showcase</h2>
-              <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-xl">
+              <p className="text-xl text-neutral-600 max-w-xl">
                 Beautifully brutal components ready for your next project.
               </p>
             </div>
@@ -145,11 +145,11 @@ export default function Home() {
             <div className="h-6 w-6 bg-main border-2 border-border"></div>
             <span className="font-bold">NeoBrutal UI</span>
           </div>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="text-sm text-neutral-600">
             Built by Bridget. Open Source. MIT License.
           </p>
           <div className="flex gap-4">
-            <Link href="#" className="text-neutral-600 hover:text-black dark:hover:text-white">
+            <Link href="#" className="text-neutral-600 hover:text-black">
               <GithubLogoIcon weight="fill" className="h-6 w-6" />
             </Link>
           </div>

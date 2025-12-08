@@ -88,7 +88,7 @@ export default function CardPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Card</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A container component with bold borders and shadow. Perfect for grouping related content.
                 </p>
             </div>
@@ -107,10 +107,10 @@ export default function CardPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Composition</h2>
-                <p className="text-neutral-600 dark:text-neutral-400">
+                <p className="text-neutral-600">
                     The Card component is designed to work with sub-components for semantic structure.
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Card:</strong> Root container with border and shadow</li>
                     <li><strong>CardHeader:</strong> Top section, typically for title and description</li>
                     <li><strong>CardTitle:</strong> Main heading (h3 semantically)</li>
@@ -134,7 +134,7 @@ export default function CardPage() {
                                 <p className="text-sm">Card content goes here with your settings form or content.</p>
                             </CardContent>
                             <CardFooter className="justify-between">
-                                <button className="text-sm text-neutral-600 dark:text-neutral-400 hover:underline">Cancel</button>
+                                <button className="text-sm text-neutral-600 hover:underline">Cancel</button>
                                 <button className="text-sm font-bold">Save</button>
                             </CardFooter>
                         </Card>
@@ -144,7 +144,7 @@ export default function CardPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Styling</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Border:</strong> 2px solid black border for Neobrutalist look</li>
                     <li><strong>Shadow:</strong> Hard 4px offset shadow (no blur)</li>
                     <li><strong>Radius:</strong> Subtle border radius for modern feel</li>
@@ -154,7 +154,7 @@ export default function CardPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/card.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/card.tsx</code>:</p>
                 <CodeBlock code={cardCode} />
             </div>
 

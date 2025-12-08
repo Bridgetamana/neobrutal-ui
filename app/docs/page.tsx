@@ -7,12 +7,12 @@ export default function DocsPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black md:text-5xl">Introduction</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     NeoBrutal UI is a collection of re-usable components built with Radix UI and Tailwind CSS.
                 </p>
             </div>
 
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <div className="prose prose-neutral max-w-none">
                 <p>
                     This is <strong>NOT</strong> a component library. It&apos;s a collection of re-usable components that you can copy and paste into your apps.
                 </p>

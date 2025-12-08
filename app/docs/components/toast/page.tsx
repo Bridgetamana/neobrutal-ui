@@ -54,7 +54,7 @@ export default function ToastPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Toast</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     Sonner is a headless toast component library. We&quot;ve styled it with the NeoBrutal aesthetic.
                 </p>
             </div>
@@ -100,7 +100,7 @@ export default function ToastPage() {
                 <div className="grid gap-4">
                     <div>
                         <h3 className="font-bold mb-2">Default</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-sm text-neutral-600 mb-2">
                             Basic toast notification
                         </p>
                         <Button
@@ -112,7 +112,7 @@ export default function ToastPage() {
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Success</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-sm text-neutral-600 mb-2">
                             For successful operations
                         </p>
                         <Button
@@ -124,7 +124,7 @@ export default function ToastPage() {
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Error</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-sm text-neutral-600 mb-2">
                             For error states
                         </p>
                         <Button
@@ -136,7 +136,7 @@ export default function ToastPage() {
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Loading</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
+                        <p className="text-sm text-neutral-600 mb-2">
                             For loading states
                         </p>
                         <Button
@@ -159,10 +159,10 @@ export default function ToastPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-700 dark:text-neutral-300">
+                <ul className="list-disc list-inside space-y-2 text-neutral-700">
                     <li>Toasts are announced to screen readers</li>
                     <li>Keyboard accessible close button</li>
-                    <li>Respects <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded text-sm">prefers-reduced-motion</code></li>
+                    <li>Respects <code className="bg-neutral-200 px-2 py-1 rounded text-sm">prefers-reduced-motion</code></li>
                 </ul>
             </div>
         </div>

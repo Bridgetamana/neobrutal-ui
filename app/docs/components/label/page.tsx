@@ -37,7 +37,7 @@ export default function LabelPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Label</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     An accessible form label component built on Radix UI. Essential for semantic form markup.
                 </p>
             </div>
@@ -57,8 +57,8 @@ export default function LabelPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage with Form Controls</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4">
-                    Labels should be paired with form controls using the <code className="bg-neutral-200 dark:bg-neutral-800 px-1 py-0.5">htmlFor</code> attribute.
+                <p className="text-neutral-600 mb-4">
+                    Labels should be paired with form controls using the <code className="bg-neutral-200 px-1 py-0.5">htmlFor</code> attribute.
                 </p>
                 <div className="space-y-6">
                     <div>
@@ -80,7 +80,7 @@ export default function LabelPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Built on Radix:</strong> Full accessibility support out of the box</li>
                     <li><strong>Semantic HTML:</strong> Uses native &lt;label&gt; element</li>
                     <li><strong>htmlFor attribute:</strong> Connects to form control via id</li>
@@ -91,7 +91,7 @@ export default function LabelPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Styling</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Typography:</strong> Small (text-sm) bold font for clarity</li>
                     <li><strong>Disabled state:</strong> Reduced opacity when paired control is disabled</li>
                     <li><strong>Spacing:</strong> Designed for use with form components</li>
@@ -100,9 +100,9 @@ export default function LabelPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">First, install the Radix UI dependency:</p>
+                <p className="text-neutral-600 mb-2">First, install the Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-label" language="bash" />
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/label.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/label.tsx</code>:</p>
                 <CodeBlock code={labelCode} />
             </div>
 

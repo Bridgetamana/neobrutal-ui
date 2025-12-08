@@ -39,7 +39,7 @@ export default function SwitchPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Switch</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A toggle switch component for boolean on/off states. Perfect for preferences and settings.
                 </p>
             </div>
@@ -63,7 +63,7 @@ export default function SwitchPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Smooth animation:</strong> Sliding thumb with transition</li>
                     <li><strong>Clear states:</strong> Color change indicates on/off</li>
                     <li><strong>Border design:</strong> 2px borders on both track and thumb</li>
@@ -92,7 +92,7 @@ export default function SwitchPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>WAI-ARIA:</strong> Full Radix UI accessibility compliance</li>
                     <li><strong>Keyboard support:</strong> Space/Enter to toggle, Tab to navigate</li>
                     <li><strong>Labels:</strong> Always pair with &lt;Label&gt; using htmlFor</li>
@@ -103,7 +103,7 @@ export default function SwitchPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Use Cases</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li>Dark mode toggle</li>
                     <li>Feature flags and settings</li>
                     <li>Notifications preferences</li>
@@ -113,9 +113,9 @@ export default function SwitchPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Install Radix UI dependency:</p>
+                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-switch" language="bash" />
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/switch.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/switch.tsx</code>:</p>
                 <CodeBlock code={switchCode} />
             </div>
 

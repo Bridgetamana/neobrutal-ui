@@ -61,7 +61,7 @@ export default function ButtonPage() {
         <div className="space-y-8">
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Button</h1>
-                <p className="text-xl text-neutral-600 dark:text-neutral-400">
+                <p className="text-xl text-neutral-600">
                     A versatile button component with multiple variants and sizes. Core component for triggering actions.
                 </p>
             </div>
@@ -77,38 +77,38 @@ export default function ButtonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Variants</h2>
-                <p className="text-neutral-600 dark:text-neutral-400">
+                <p className="text-neutral-600">
                     The button component supports 6 variants to suit different use cases and visual hierarchy.
                 </p>
                 <div className="space-y-4">
                     <div>
                         <h3 className="font-bold mb-2">Default</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Primary action button with shadow effect and press animation.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Primary action button with shadow effect and press animation.</p>
                         <Button variant="default">Default Button</Button>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Neutral</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Secondary action button with white background and shadow.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Secondary action button with white background and shadow.</p>
                         <Button variant="neutral">Neutral Button</Button>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Reverse</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Dark button for emphasis on light backgrounds.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Dark button for emphasis on light backgrounds.</p>
                         <Button variant="reverse">Reverse Button</Button>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Outline</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Minimal button with border only, no shadow.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Minimal button with border only, no shadow.</p>
                         <Button variant="outline">Outline Button</Button>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">Primary</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Alias for default variant, explicit naming.</p>
+                        <p className="text-sm text-neutral-600 mb-2">Alias for default variant, explicit naming.</p>
                         <Button variant="primary">Primary Button</Button>
                     </div>
                     <div>
                         <h3 className="font-bold mb-2">No Shadow</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">Button without shadow effect (for nested contexts).</p>
+                        <p className="text-sm text-neutral-600 mb-2">Button without shadow effect (for nested contexts).</p>
                         <Button variant="noShadow">No Shadow Button</Button>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ export default function ButtonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Sizes</h2>
-                <p className="text-neutral-600 dark:text-neutral-400">
+                <p className="text-neutral-600">
                     Choose from 4 sizes depending on context and hierarchy.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
@@ -129,7 +129,7 @@ export default function ButtonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600 dark:text-neutral-400">
+                <ul className="list-disc list-inside space-y-2 text-neutral-600">
                     <li><strong>Focus states:</strong> Thick 2px ring with high contrast for keyboard navigation</li>
                     <li><strong>Disabled:</strong> Proper disabled styling with pointer-events-none</li>
                     <li><strong>Labels:</strong> Use descriptive button text or aria-label prop</li>
@@ -139,7 +139,7 @@ export default function ButtonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-2">Copy the component code into <code className="bg-neutral-200 dark:bg-neutral-800 px-2 py-1 rounded">components/ui/button.tsx</code>:</p>
+                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/button.tsx</code>:</p>
                 <CodeBlock code={buttonCode} />
             </div>
 
