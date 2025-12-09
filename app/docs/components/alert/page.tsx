@@ -5,63 +5,49 @@ import { WarningIcon, CheckCircleIcon, InfoIcon, XCircleIcon } from "@phosphor-i
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const alertCode = `import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+const alertCode = `import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+import { InfoIcon, XCircleIcon } from "@phosphor-icons/react"
 
-const alertVariants = cva(
-    "relative w-full rounded-base border-2 border-border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-text",
-    {
-        variants: {
-            variant: {
-                default: "bg-bg text-text",
-                destructive: "bg-red-400 text-black",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-        },
-    }
-)
+export function AlertDemo() {
+  return (
+    <div className="w-full max-w-md space-y-4">
+      <Alert>
+        <InfoIcon className="h-5 w-5" weight="fill" />
+        <AlertTitle>Info</AlertTitle>
+        <AlertDescription>This is an informational alert message.</AlertDescription>
+      </Alert>
+      <Alert variant="destructive">
+        <XCircleIcon className="h-5 w-5" weight="fill" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+      </Alert>
+    </div>
+  )
+}`
 
-const Alert = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
-    <div
-        ref={ref}
-        role="alert"
-        className={cn(alertVariants({ variant }), className)}
-        {...props}
-    />
-))
-Alert.displayName = "Alert"
+const alertHtmlCode = `<!-- Info Alert -->
+<div role="alert" class="relative w-full rounded-[5px] border-2 border-black bg-[#88aaee] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+  <!-- Phosphor Info icon (or use your own SVG) -->
+  <svg class="absolute left-4 top-4 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
+  </svg>
+  <div class="pl-7">
+    <h5 class="mb-1 font-bold">Info</h5>
+    <div class="text-sm">This is an informational alert message.</div>
+  </div>
+</div>
 
-const AlertTitle = React.forwardRef<
-    HTMLParagraphElement,
-    React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-    <h5
-        ref={ref}
-        className={cn("mb-1 font-bold leading-none tracking-tight", className)}
-        {...props}
-    />
-))
-AlertTitle.displayName = "AlertTitle"
-
-const AlertDescription = React.forwardRef<
-    HTMLParagraphElement,
-    React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-    <div
-        ref={ref}
-        className={cn("text-sm [&_p]:leading-relaxed", className)}
-        {...props}
-    />
-))
-AlertDescription.displayName = "AlertDescription"
-
-export { Alert, AlertTitle, AlertDescription }`
+<!-- Error Alert -->
+<div role="alert" class="relative w-full rounded-[5px] border-2 border-black bg-[#ee8888] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+  <!-- Phosphor XCircle icon -->
+  <svg class="absolute left-4 top-4 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm37.66-101.66a8,8,0,0,1-11.32,11.32L128,99.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,88,90.34,61.66a8,8,0,0,1,11.32-11.32L128,76.69l26.34-26.35a8,8,0,0,1,11.32,11.32L139.31,88Z"></path>
+  </svg>
+  <div class="pl-7">
+    <h5 class="mb-1 font-bold">Error</h5>
+    <div class="text-sm">Something went wrong. Please try again.</div>
+  </div>
+</div>`
 
 export default function AlertPage() {
     return (
@@ -73,7 +59,7 @@ export default function AlertPage() {
                 </p>
             </div>
 
-            <ComponentPreview code={alertCode}>
+            <ComponentPreview code={alertCode} htmlCode={alertHtmlCode}>
                 <div className="w-full max-w-md space-y-4">
                     <Alert>
                         <InfoIcon className="h-5 w-5" weight="fill" />

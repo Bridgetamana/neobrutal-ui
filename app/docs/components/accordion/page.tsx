@@ -4,63 +4,82 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const accordionCode = `"use client"
+const accordionCode = `import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
-import * as React from "react"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { CaretDown } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
+export function AccordionDemo() {
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that matches the other components' aesthetic.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you prefer.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}`
 
-const Accordion = AccordionPrimitive.Root
+const accordionHtmlCode = `<!-- 
+  Interactive Accordion using native <details>/<summary> elements.
+  No JavaScript required - works out of the box!
+-->
+<div class="w-full max-w-md">
+  <!-- Accordion Item 1 -->
+  <details class="group mb-4 border-2 border-black bg-white open:bg-[#88aaee]/30 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <summary class="flex cursor-pointer items-center justify-between p-4 font-bold hover:underline list-none [&::-webkit-details-marker]:hidden">
+      Is it accessible?
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="shrink-0 transition-transform duration-200 group-open:rotate-180">
+        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+      </svg>
+    </summary>
+    <div class="p-4 pt-0 border-t-2 border-black text-sm">
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </div>
+  </details>
 
-const AccordionItem = React.forwardRef<
-    React.ComponentRef<typeof AccordionPrimitive.Item>,
-    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-    <AccordionPrimitive.Item
-        ref={ref}
-        className={cn("border-b-2 border-border", className)}
-        {...props}
-    />
-))
-AccordionItem.displayName = "AccordionItem"
+  <!-- Accordion Item 2 -->
+  <details class="group mb-4 border-2 border-black bg-white open:bg-[#88aaee]/30 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <summary class="flex cursor-pointer items-center justify-between p-4 font-bold hover:underline list-none [&::-webkit-details-marker]:hidden">
+      Is it styled?
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="shrink-0 transition-transform duration-200 group-open:rotate-180">
+        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+      </svg>
+    </summary>
+    <div class="p-4 pt-0 border-t-2 border-black text-sm">
+      Yes. It comes with default styles that matches the other components' aesthetic.
+    </div>
+  </details>
 
-const AccordionTrigger = React.forwardRef<
-    React.ComponentRef<typeof AccordionPrimitive.Trigger>,
-    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-    <AccordionPrimitive.Header className="flex">
-        <AccordionPrimitive.Trigger
-            ref={ref}
-            className={cn(
-                "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
-                className
-            )}
-            {...props}
-        >
-            {children}
-            <CaretDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
-        </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-))
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
-
-const AccordionContent = React.forwardRef<
-    React.ComponentRef<typeof AccordionPrimitive.Content>,
-    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-    <AccordionPrimitive.Content
-        ref={ref}
-        className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-        {...props}
-    >
-        <div className={cn("pb-4 pt-0", className)}>{children}</div>
-    </AccordionPrimitive.Content>
-))
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
-
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
-`
+  <!-- Accordion Item 3 -->
+  <details class="group mb-4 border-2 border-black bg-white open:bg-[#88aaee]/30 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <summary class="flex cursor-pointer items-center justify-between p-4 font-bold hover:underline list-none [&::-webkit-details-marker]:hidden">
+      Is it animated?
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="shrink-0 transition-transform duration-200 group-open:rotate-180">
+        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+      </svg>
+    </summary>
+    <div class="p-4 pt-0 border-t-2 border-black text-sm">
+      Yes. It's animated by default, but you can disable it if you prefer.
+    </div>
+  </details>
+</div>`
 
 export default function AccordionPage() {
     return (
@@ -72,7 +91,7 @@ export default function AccordionPage() {
                 </p>
             </div>
 
-            <ComponentPreview code={accordionCode}>
+            <ComponentPreview code={accordionCode} htmlCode={accordionHtmlCode}>
                 <Accordion type="single" collapsible className="w-full max-w-[400px]">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>Is it accessible?</AccordionTrigger>

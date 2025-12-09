@@ -4,37 +4,32 @@ import { Badge } from "@/components/ui/badge"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const badgeCode = `import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+const badgeCode = `import { Badge } from "@/components/ui/badge"
 
-const badgeVariants = cva(
-    "inline-flex items-center rounded-base border-2 border-black px-2.5 py-0.5 text-xs font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2",
-    {
-        variants: {
-            variant: {
-                default: "bg-main text-black",
-                neutral: "bg-bw text-black",
-                outline: "text-black",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-        },
-    }
-)
+export function BadgeDemo() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Badge variant="default">Default</Badge>
+      <Badge variant="neutral">Neutral</Badge>
+      <Badge variant="outline">Outline</Badge>
+    </div>
+  )
+}`
 
-export interface BadgeProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> { }
+const badgeHtmlCode = `<!-- Default Badge -->
+<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-[#88aaee] px-2.5 py-0.5 text-xs font-bold text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+  Default
+</span>
 
-function Badge({ className, variant, ...props }: BadgeProps) {
-    return (
-        <div className={cn(badgeVariants({ variant }), className)} {...props} />
-    )
-}
+<!-- Neutral Badge -->
+<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-white px-2.5 py-0.5 text-xs font-bold text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+  Neutral
+</span>
 
-export { Badge, badgeVariants }`
+<!-- Outline Badge -->
+<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-transparent px-2.5 py-0.5 text-xs font-bold text-black">
+  Outline
+</span>`
 
 export default function BadgePage() {
     return (
@@ -46,7 +41,7 @@ export default function BadgePage() {
                 </p>
             </div>
 
-            <ComponentPreview code={badgeCode}>
+            <ComponentPreview code={badgeCode} htmlCode={badgeHtmlCode}>
                 <div className="flex flex-wrap gap-3">
                     <Badge variant="default">Default</Badge>
                     <Badge variant="neutral">Neutral</Badge>

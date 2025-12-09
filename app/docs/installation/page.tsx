@@ -10,85 +10,71 @@ export default function InstallationPage() {
             <div className="space-y-4">
                 <h1 className="text-4xl font-black">Installation</h1>
                 <p className="text-xl text-neutral-600">
-                    Get started with NeoBrutal UI in minutes. Copy the components you need directly into your project.
+                    Choose your installation method: full React components or pure HTML/Tailwind.
                 </p>
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Card className="border-2 border-black">
+                    <CardHeader>
+                        <CardTitle className="text-lg">React Components</CardTitle>
+                    </CardHeader>
+                    <CardContent className="text-sm space-y-2">
+                        <p>Full-featured components with:</p>
+                        <ul className="list-disc list-inside space-y-1">
+                            <li>Radix UI for accessibility</li>
+                            <li>TypeScript support</li>
+                            <li>Variants and props</li>
+                        </ul>
+                    </CardContent>
+                </Card>
+                <Card className="border-2 border-black">
+                    <CardHeader>
+                        <CardTitle className="text-lg">HTML / Tailwind</CardTitle>
+                    </CardHeader>
+                    <CardContent className="text-sm space-y-2">
+                        <p>Zero-dependency HTML with:</p>
+                        <ul className="list-disc list-inside space-y-1">
+                            <li>Pure Tailwind classes</li>
+                            <li>No JavaScript required*</li>
+                            <li>Copy and paste ready</li>
+                        </ul>
+                        <p className="text-xs text-neutral-500">*Some components use native HTML features like details/summary</p>
+                    </CardContent>
+                </Card>
+            </div>
+
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Prerequisites</h2>
+                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Option 1: React Components</h2>
                 <p className="text-neutral-600">
-                    NeoBrutal UI is designed for Next.js 16+ projects using React 19 and Tailwind CSS v4.
+                    For Next.js / React projects with full functionality.
                 </p>
-                <div className="space-y-2">
-                    <Card>
-                        <CardContent className="pt-6">
-                            <ul className="list-disc list-inside space-y-1 text-sm">
-                                <li><strong>Next.js 16.0+</strong> with App Router</li>
-                                <li><strong>React 19.0+</strong></li>
-                                <li><strong>Tailwind CSS v4</strong></li>
-                                <li><strong>TypeScript</strong> (recommended)</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Setup Steps</h2>
 
                 <div className="space-y-6">
                     <div className="space-y-2">
-                        <h3 className="text-lg font-bold">1. Install Dependencies</h3>
-                        <p className="text-neutral-600 mb-2">
-                            Install Radix UI primitives and utilities that components depend on:
-                        </p>
-                        <CodeBlock code={`npm install \\
-  @radix-ui/react-accordion \\
-  @radix-ui/react-checkbox \\
-  @radix-ui/react-dialog \\
-  @radix-ui/react-label \\
-  @radix-ui/react-radio-group \\
-  @radix-ui/react-select \\
-  @radix-ui/react-slider \\
-  @radix-ui/react-switch \\
-  @radix-ui/react-tooltip \\
-  @phosphor-icons/react \\
-  class-variance-authority \\
-  clsx \\
-  tailwind-merge \\
-  sonner`} language="bash" />
+                        <h3 className="text-lg font-bold">1. Prerequisites</h3>
+                        <Card>
+                            <CardContent className="pt-6">
+                                <ul className="list-disc list-inside space-y-1 text-sm">
+                                    <li><strong>Next.js 16+</strong> with App Router (or React 19+)</li>
+                                    <li><strong>Tailwind CSS v4</strong></li>
+                                    <li><strong>TypeScript</strong> (recommended)</li>
+                                </ul>
+                            </CardContent>
+                        </Card>
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-lg font-bold">2. Copy Components</h3>
-                        <p className="text-neutral-600 mb-2">
-                            Copy component files from the <code className="bg-neutral-200 px-1 py-0.5 rounded">components/ui/</code> folder into your project:
-                        </p>
-                        <CodeBlock code={`# Your project structure
-your-project/
-├── app/
-│   └── layout.tsx
-├── components/
-│   └── ui/              # ← Copy all components here
-│       ├── button.tsx
-│       ├── card.tsx
-│       ├── input.tsx
-│       └── ...
-├── lib/
-│   └── utils.ts        # Uses cn() from class-variance-authority
-└── tailwind.config.ts`} language="bash" />
-                        <p className="text-sm text-neutral-600 mt-2">
-                            You only need to copy the components you actually use. It&quot;s a copy-paste library, not an npm package!
-                        </p>
+                        <h3 className="text-lg font-bold">2. Install Core Dependencies</h3>
+                        <CodeBlock code={`npm install class-variance-authority clsx tailwind-merge @phosphor-icons/react`} language="bash" />
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-lg font-bold">3. Set Up Utils</h3>
-                        <p className="text-neutral-600 mb-2">
-                            Create a utility file for the <code className="bg-neutral-200 px-1 py-0.5 rounded">cn()</code> function:
+                        <h3 className="text-lg font-bold">3. Add the cn() Utility</h3>
+                        <p className="text-neutral-600 text-sm mb-2">
+                            Create <code className="bg-neutral-200 px-1 py-0.5 rounded">lib/utils.ts</code>:
                         </p>
-                        <CodeBlock code={`// lib/utils.ts
-import { clsx, type ClassValue } from "clsx"
+                        <CodeBlock code={`import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -97,156 +83,115 @@ export function cn(...inputs: ClassValue[]) {
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-lg font-bold">4. Add Toaster (Optional)</h3>
-                        <p className="text-neutral-600 mb-2">
-                            If using Toast notifications, add the Toaster component to your root layout:
+                        <h3 className="text-lg font-bold">4. Copy Components</h3>
+                        <p className="text-neutral-600 text-sm mb-2">
+                            Browse the components, copy the source code into <code className="bg-neutral-200 px-1 py-0.5 rounded">components/ui/</code>.
                         </p>
-                        <CodeBlock code={`// app/layout.tsx
-import { Toaster } from "@/components/ui/sonner"
+                        <p className="text-neutral-600 text-sm">
+                            Some components require additional Radix UI packages. Check each component&apos;s docs for specific dependencies.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        {children}
-        <Toaster />
-      </body>
-    </html>
-  )
-}`} />
+            <div className="space-y-4">
+                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Option 2: HTML / Tailwind Only</h2>
+                <p className="text-neutral-600">
+                    For quick prototypes, non-React projects, or when you want zero dependencies.
+                </p>
+
+                <div className="space-y-6">
+                    <div className="space-y-2">
+                        <h3 className="text-lg font-bold">1. Prerequisites</h3>
+                        <Card>
+                            <CardContent className="pt-6">
+                                <ul className="list-disc list-inside space-y-1 text-sm">
+                                    <li><strong>Tailwind CSS v4</strong> installed and configured</li>
+                                    <li>That&apos;s it!</li>
+                                </ul>
+                            </CardContent>
+                        </Card>
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-lg font-bold">5. Add TooltipProvider (Optional)</h3>
-                        <p className="text-neutral-600 mb-2">
-                            If using Tooltips, wrap your app with TooltipProvider:
+                        <h3 className="text-lg font-bold">2. Copy HTML Code</h3>
+                        <p className="text-neutral-600 text-sm mb-2">
+                            On each component page, click the <strong>Code</strong> tab, then select <strong>HTML</strong> to see the pure Tailwind version.
                         </p>
-                        <CodeBlock code={`// app/layout.tsx
-import { TooltipProvider } from "@/components/ui/tooltip"
+                        <p className="text-neutral-600 text-sm">
+                            Copy and paste directly into your HTML files. Colors are hardcoded (e.g., <code className="bg-neutral-200 px-1 py-0.5 rounded">#88aaee</code> for the primary color).
+                        </p>
+                    </div>
 
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
-      </body>
-    </html>
-  )
-}`} />
+                    <div className="space-y-2">
+                        <h3 className="text-lg font-bold">3. Icons</h3>
+                        <p className="text-neutral-600 text-sm mb-2">
+                            HTML snippets include inline SVGs from <a href="https://phosphoricons.com" target="_blank" className="font-bold underline hover:no-underline">Phosphor Icons</a>. You can:
+                        </p>
+                        <ul className="list-disc list-inside space-y-1 text-sm text-neutral-600">
+                            <li>Use the inline SVGs as-is</li>
+                            <li>Replace with your own icon library</li>
+                            <li>Install Phosphor: <code className="bg-neutral-200 px-1 py-0.5 rounded">npm install @phosphor-icons/react</code></li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Verify Installation</h2>
-                <p className="text-neutral-600 mb-2">
-                    Test that everything is working:
+                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Color Reference</h2>
+                <p className="text-neutral-600 text-sm mb-4">
+                    These are the hardcoded color values used in HTML snippets:
                 </p>
-                <CodeBlock code={`// app/page.tsx
-import { Button } from "@/components/ui/button"
-
-export default function Home() {
-  return (
-    <div className="p-8">
-      <Button>Click me!</Button>
-    </div>
-  )
-}`} />
-                <p className="text-sm text-neutral-600 mt-2">
-                    If the button renders with a bold border and shadow, you&quot;re all set!
-                </p>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Component Checklist</h2>
-                <p className="text-neutral-600 mb-4">
-                    Copy only the components you need. Here&quot;s the full list:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Core Primitives</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-1 text-sm">
-                            <p>✓ Button</p>
-                            <p>✓ Card</p>
-                            <p>✓ Badge</p>
-                            <p>✓ Input</p>
-                            <p>✓ Textarea</p>
-                            <p>✓ Label</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Form Elements</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-1 text-sm">
-                            <p>✓ Checkbox</p>
-                            <p>✓ Radio Group</p>
-                            <p>✓ Switch</p>
-                            <p>✓ Select</p>
-                            <p>✓ Slider</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Feedback & Overlays</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-1 text-sm">
-                            <p>✓ Alert</p>
-                            <p>✓ Dialog</p>
-                            <p>✓ Toast</p>
-                            <p>✓ Tooltip</p>
-                            <p>✓ Accordion</p>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customization</h2>
-                <p className="text-neutral-600 mb-2">
-                    Since you own the code, you can customize any component. Learn more in the <Link href="/docs/theming" className="font-bold underline hover:no-underline">Theming guide</Link>.
-                </p>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Troubleshooting</h2>
-                <div className="space-y-4">
-                    <div>
-                        <h3 className="font-bold mb-1">Module not found errors?</h3>
-                        <p className="text-sm text-neutral-600">
-                            Make sure all dependencies are installed and your import paths are correct. Check that `lib/utils.ts` exists.
-                        </p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded border-2 border-black bg-[#88aaee]"></div>
+                        <div>
+                            <p className="font-bold text-sm">Primary</p>
+                            <p className="text-xs text-neutral-500">#88aaee</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="font-bold mb-1">Styles not applying?</h3>
-                        <p className="text-sm text-neutral-600">
-                            Ensure Tailwind CSS v4 is installed and configured. Components use Tailwind utilities, not CSS modules.
-                        </p>
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded border-2 border-black bg-[#dfe5f2]"></div>
+                        <div>
+                            <p className="font-bold text-sm">Background</p>
+                            <p className="text-xs text-neutral-500">#dfe5f2</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="font-bold mb-1">Missing Radix UI dependency?</h3>
-                        <p className="text-sm text-neutral-600">
-                            Each component lists its Radix UI dependency in the docs. Install the specific package before using the component.
-                        </p>
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded border-2 border-black bg-[#97ee88]"></div>
+                        <div>
+                            <p className="font-bold text-sm">Success</p>
+                            <p className="text-xs text-neutral-500">#97ee88</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded border-2 border-black bg-[#ee8888]"></div>
+                        <div>
+                            <p className="font-bold text-sm">Error</p>
+                            <p className="text-xs text-neutral-500">#ee8888</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded border-2 border-black bg-[#eeeb88]"></div>
+                        <div>
+                            <p className="font-bold text-sm">Warning</p>
+                            <p className="text-xs text-neutral-500">#eeeb88</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Next Steps</h2>
+                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Next Steps</h2>
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Link href="/docs/components" className="flex-1">
-                        <div className="p-4 border-2 border-border rounded-base hover:bg-main hover:text-black transition-colors">
-                            <h3 className="font-bold">Browse Components</h3>
-                            <p className="text-sm text-neutral-600">View all available components</p>
+                    <Link href="/docs/components/button" className="flex-1">
+                        <div className="p-4 border-2 border-black rounded-base hover:bg-main transition-colors">
+                            <h3 className="font-bold">Start with Button</h3>
+                            <p className="text-sm text-neutral-600">The most common component</p>
                         </div>
                     </Link>
                     <Link href="/docs/theming" className="flex-1">
-                        <div className="p-4 border-2 border-border rounded-base hover:bg-main hover:text-black transition-colors">
+                        <div className="p-4 border-2 border-black rounded-base hover:bg-main transition-colors">
                             <h3 className="font-bold">Learn Theming</h3>
                             <p className="text-sm text-neutral-600">Customize colors and styles</p>
                         </div>

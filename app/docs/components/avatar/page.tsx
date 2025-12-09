@@ -4,77 +4,62 @@ import { Avatar, AvatarGroup, AvatarImage, AvatarFallback } from "@/components/u
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const avatarCode = `import * as React from "react"
-import { cn } from "@/lib/utils"
+const avatarCode = `import { Avatar, AvatarImage, AvatarFallback, AvatarGroup } from "@/components/ui/avatar"
 
-export type AvatarProps = React.HTMLAttributes<HTMLDivElement> & {
-    src?: string
-    alt?: string
-    fallback?: string
-}
+export function AvatarDemo() {
+  return (
+    <div className="flex gap-4 items-center">
+      {/* Avatar with Image */}
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
 
-const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-    ({ className, src, alt, fallback, children, ...props }, ref) => {
-        const [imageError, setImageError] = React.useState(false)
+      {/* Avatar with Fallback */}
+      <Avatar>
+        <AvatarFallback>JD</AvatarFallback>
+      </Avatar>
 
-        return (
-            <div
-                ref={ref}
-                className={cn(
-                    "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-base border-2 border-border bg-main text-sm font-bold text-black",
-                    className
-                )}
-                {...props}
-            >
-                {src && !imageError ? (
-                    <img
-                        src={src}
-                        alt={alt || "Avatar"}
-                        onError={() => setImageError(true)}
-                        className="h-full w-full object-cover"
-                    />
-                ) : (
-                    <span>{fallback || children}</span>
-                )}
-            </div>
-        )
-    }
-)
-Avatar.displayName = "Avatar"
+      {/* Avatar Group */}
+      <AvatarGroup max={3}>
+        <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
+        <Avatar><AvatarFallback>B</AvatarFallback></Avatar>
+        <Avatar><AvatarFallback>C</AvatarFallback></Avatar>
+        <Avatar><AvatarFallback>D</AvatarFallback></Avatar>
+        <Avatar><AvatarFallback>E</AvatarFallback></Avatar>
+      </AvatarGroup>
+    </div>
+  )
+}`
 
-export type AvatarGroupProps = React.HTMLAttributes<HTMLDivElement> & {
-    max?: number
-}
+const avatarHtmlCode = `<!-- Avatar with Image -->
+<div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
+  <img src="https://github.com/shadcn.png" alt="@shadcn" class="aspect-square h-full w-full object-cover" />
+</div>
 
-const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
-    ({ className, max = 3, children, ...props }, ref) => {
-        const childArray = React.Children.toArray(children)
-        const visible = childArray.slice(0, max)
-        const overflow = childArray.length - max
+<!-- Avatar with Fallback (Initials) -->
+<div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
+  <div class="flex h-full w-full items-center justify-center rounded-full bg-[#88aaee] text-sm font-bold text-black">
+    JD
+  </div>
+</div>
 
-        return (
-            <div
-                ref={ref}
-                className={cn("flex items-center -space-x-2", className)}
-                {...props}
-            >
-                {visible.map((child, index) => (
-                    <div key={index} className="relative">
-                        {child}
-                    </div>
-                ))}
-                {overflow > 0 && (
-                    <div className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-base border-2 border-border bg-neutral-300 text-sm font-bold">
-                        +{overflow}
-                    </div>
-                )}
-            </div>
-        )
-    }
-)
-AvatarGroup.displayName = "AvatarGroup"
-
-export { Avatar, AvatarGroup }`
+<!-- Avatar Group (showing 3 + overflow) -->
+<div class="flex items-center -space-x-4">
+  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
+    <div class="flex h-full w-full items-center justify-center rounded-full bg-[#88aaee] text-sm font-bold text-black">A</div>
+  </div>
+  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
+    <div class="flex h-full w-full items-center justify-center rounded-full bg-[#88aaee] text-sm font-bold text-black">B</div>
+  </div>
+  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
+    <div class="flex h-full w-full items-center justify-center rounded-full bg-[#88aaee] text-sm font-bold text-black">C</div>
+  </div>
+  <!-- Overflow indicator -->
+  <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-black bg-neutral-200 text-sm font-bold">
+    +2
+  </div>
+</div>`
 
 export default function AvatarPage() {
     return (
@@ -86,7 +71,7 @@ export default function AvatarPage() {
                 </p>
             </div>
 
-            <ComponentPreview code={avatarCode}>
+            <ComponentPreview code={avatarCode} htmlCode={avatarHtmlCode}>
                 <div className="flex gap-4 items-center">
                     <Avatar>
                         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
