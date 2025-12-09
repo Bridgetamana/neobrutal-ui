@@ -10,7 +10,7 @@ export function SiteHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-bw">
+        <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-white">
             <div className="container mx-auto flex h-14 lg:h-16 items-center justify-between px-4 lg:px-0">
                 <div className="flex items-center gap-1">
                     <Image src="/neobrutalui-logo.svg" alt="NeoBrutal UI Logo" width={24} height={24} />

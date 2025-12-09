@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export function SiteFooter() {
     return (
-        <footer className="bg-white border-t-4 border-black py-12 mt-20">
+        <footer className="bg-white border-t-4 border-black py-10 mt-20">
             <div className="container mx-auto px-4 md:px-0 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center gap-1">
                     <Image src="/neobrutalui-logo.svg" alt="NeoBrutal UI Logo" width={24} height={24} />

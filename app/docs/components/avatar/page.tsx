@@ -1,6 +1,6 @@
 "use client"
 
-import { Avatar, AvatarGroup } from "@/components/ui/avatar"
+import { Avatar, AvatarGroup, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
@@ -88,14 +88,29 @@ export default function AvatarPage() {
 
             <ComponentPreview code={avatarCode}>
                 <div className="flex gap-4 items-center">
-                    <Avatar src="https://github.com/shadcn.png" alt="@shadcn" fallback="CN" />
-                    <Avatar fallback="JD" />
+                    <Avatar>
+                        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <Avatar>
+                        <AvatarFallback>JD</AvatarFallback>
+                    </Avatar>
                     <AvatarGroup max={3}>
-                        <Avatar fallback="A" />
-                        <Avatar fallback="B" />
-                        <Avatar fallback="C" />
-                        <Avatar fallback="D" />
-                        <Avatar fallback="E" />
+                        <Avatar>
+                            <AvatarFallback>A</AvatarFallback>
+                        </Avatar>
+                        <Avatar>
+                            <AvatarFallback>B</AvatarFallback>
+                        </Avatar>
+                        <Avatar>
+                            <AvatarFallback>C</AvatarFallback>
+                        </Avatar>
+                        <Avatar>
+                            <AvatarFallback>D</AvatarFallback>
+                        </Avatar>
+                        <Avatar>
+                            <AvatarFallback>E</AvatarFallback>
+                        </Avatar>
                     </AvatarGroup>
                 </div>
             </ComponentPreview>
