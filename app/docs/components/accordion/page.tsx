@@ -33,7 +33,7 @@ const AccordionTrigger = React.forwardRef<
         <AccordionPrimitive.Trigger
             ref={ref}
             className={cn(
-                "flex flex-1 items-center justify-between py-4 font-bold transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+                "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
                 className
             )}
             {...props}
@@ -64,10 +64,10 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
 
 export default function AccordionPage() {
     return (
-        <div className="space-y-8">
-            <div className="space-y-4">
-                <h1 className="text-4xl font-black">Accordion</h1>
-                <p className="text-xl text-neutral-600">
+        <div className="space-y-6">
+            <div className="space-y-2">
+                <h1 className="text-3xl font-medium">Accordion</h1>
+                <p className="text-black/90">
                     A vertically stacked set of interactive headings that each reveal a section of content.
                 </p>
             </div>
@@ -96,7 +96,7 @@ export default function AccordionPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Installation</h2>
+                <h2 className="text-2xl font-medium border-b-2 border-black pb-2">Installation</h2>
                 <div className="space-y-4">
                     <p>1. Install the Radix UI primitive:</p>
                     <CodeBlock code="npm install @radix-ui/react-accordion" language="bash" />
@@ -107,7 +107,7 @@ export default function AccordionPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Usage</h2>
+                <h2 className="text-2xl font-medium border-b-2 border-black pb-2">Usage</h2>
                 <CodeBlock code={`import {
   Accordion,
   AccordionContent,
@@ -130,11 +130,11 @@ export function AccordionDemo() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-black pb-2">Examples</h2>
+                <h2 className="text-2xl font-medium border-b-2 border-black pb-2">Examples</h2>
 
-                <div className="space-y-4">
-                    <h3 className="text-xl font-bold">Multiple Items Open</h3>
-                    <p className="text-neutral-600">Allow multiple items to be open at the same time.</p>
+                <div className="space-y-2">
+                    <h3 className="text-lg font-medium">Multiple Items Open</h3>
+                    <p className="text-black/90">Allow multiple items to be open at the same time.</p>
                     <ComponentPreview code={`<Accordion type="multiple" className="w-full max-w-[400px]">
   <AccordionItem value="item-1">
     <AccordionTrigger>Item 1</AccordionTrigger>
