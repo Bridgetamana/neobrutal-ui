@@ -45,7 +45,7 @@ export type TabsTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
     }
 
 const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
-    ({ className, variant, size, isActive, ...props }, ref) => (
+    ({ className, size, isActive, ...props }, ref) => (
         <button
             ref={ref}
             role="tab"

@@ -10,7 +10,7 @@ export function ButtonDemo() {
   return <Button>Button</Button>
 }`
 
-const htmlCode = `<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#88aaee] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+const htmlCode = `<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#88aaee] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
   Button
 </button>`
 
