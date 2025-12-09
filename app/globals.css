@@ -1,78 +1,47 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-public-sans);
-  --color-main: var(--main);
-  --color-overlay: var(--overlay);
+  --color-white: var(--white);
+  --color-black: var(--black);
+  --color-background: var(--bg);
+  --color-foreground: var(--black);
+  --color-primary: var(--main);
+  --color-primary-foreground: var(--black);
+  --color-accent: var(--main);
+  --color-accent-foreground: var(--black);
+  --color-border: var(--black);
+  --color-ring: var(--black);
+  --color-ring-offset: var(--white);
+  --color-text: var(--black);
   --color-bg: var(--bg);
-  --color-bw: var(--bw);
-  --color-blank: var(--blank);
-  --color-text: var(--text);
-  --color-mtext: var(--mtext);
-  --color-border: var(--border);
-  --color-ring: var(--ring);
-  --color-ring-offset: var(--ring-offset);
-  --color-secondaryBlack: #212121;
-  --shadow-brutal: 4px 4px 0px 0px var(--border);
-  --color-pastel-purple: var(--pastel-purple);
-  --color-pastel-blue: var(--pastel-blue);
+  --color-bw: var(--white);
+  --color-main: var(--main);
   --color-pastel-green: var(--pastel-green);
   --color-pastel-yellow: var(--pastel-yellow);
   --color-pastel-orange: var(--pastel-orange);
   --color-pastel-red: var(--pastel-red);
   --color-pastel-pink: var(--pastel-pink);
+  --shadow-brutal: 4px 4px 0px 0px var(--black);
+  --radius-base: var(--radius);
 }
 
 :root {
-  color-scheme: light;
-  --main: #b6ace4;
-  --secondary: #fed170;
-  --soft-pink: #ffc1c6;
-  --soft-green: #abcf82;
-  --tomato: #ff552e;
-  --cyan: #22d2ed;
-  --overlay: rgba(0, 0, 0, 0.8);
+  --white: #ffffff;
+  --black: #000000;
+  --main: #88aaee;
   --bg: #dfe5f2;
-  --bw: #ffffff;
-  --blank: #ffffff;
-  --text: #0a0a0a;
-  --mtext: #0a0a0a;
-  --border: #000000;
-  --ring: #000000;
-  --ring-offset: #ffffff;
-  --pastel-purple: #a388ee;
-  --pastel-blue: #88aaee;
+  --radius: 5px;
   --pastel-green: #97ee88;
   --pastel-yellow: #eeeb88;
   --pastel-orange: #eeaa88;
   --pastel-red: #ee8888;
   --pastel-pink: #ee88d6;
-
-  --radius: 5px;
-  --background: var(--bg);
-  --foreground: var(--text);
-  --primary: var(--main);
-  --primary-foreground: var(--text);
-  --secondary: var(--bw);
-  --secondary-foreground: var(--text);
-  --muted: #f4f4f5;
-  --muted-foreground: #78716c;
-  --accent: var(--main);
-  --accent-foreground: var(--text);
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --input: var(--bw);
-  --popover: var(--bw);
-  --popover-foreground: var(--text);
-  --card: var(--bw);
-  --card-foreground: var(--text);
 }
 
 body {
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--black);
   font-family: var(--font-sans);
 }
 
@@ -96,8 +65,4 @@ body {
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
-}
-
-.animate-marquee-reverse {
-  animation: marquee 30s linear infinite reverse;
 }
