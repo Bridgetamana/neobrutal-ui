@@ -29,12 +29,15 @@ const htmlCode = `<div class="relative flex h-10 w-10 shrink-0 overflow-hidden r
 export default function AvatarPage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-1">
-                <h1 className="text-3xl font-bold">Avatar</h1>
-                <p className="text-lg text-black/90">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Avatar</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     An image element with a fallback for representing the user.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Avatar>
@@ -46,7 +49,7 @@ export default function AvatarPage() {
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
                 <CodeBlock code="npx neobrutal-ui add avatar" language="bash" />
-                <p className="text-sm text-black/90">Or install the dependency and copy the code:</p>
+                <p className="text-base text-black">Or install the dependency and copy the code:</p>
                 <CodeBlock code="npm install @radix-ui/react-avatar" language="bash" />
             </div>
 
@@ -77,7 +80,7 @@ export default function AvatarPage() {
 
                 <div className="space-y-4">
                     <h3 className="font-bold">Fallback</h3>
-                    <p className="text-sm text-black/90">Displays initials when no image is available.</p>
+                    <p className="text-base text-black">Displays initials when no image is available.</p>
                     <ComponentPreview code={`<Avatar>
   <AvatarFallback>JD</AvatarFallback>
 </Avatar>`}>
@@ -89,7 +92,7 @@ export default function AvatarPage() {
 
                 <div className="space-y-4">
                     <h3 className="font-bold">Group</h3>
-                    <p className="text-sm text-black/90">Display multiple avatars with an overflow indicator.</p>
+                    <p className="text-base text-black">Display multiple avatars with an overflow indicator.</p>
                     <ComponentPreview code={`<AvatarGroup max={3}>
   <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
   <Avatar><AvatarFallback>B</AvatarFallback></Avatar>

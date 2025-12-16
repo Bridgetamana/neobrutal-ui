@@ -56,20 +56,20 @@ const SidebarContent = ({ pathname, onLinkClick }: SidebarContentProps) => (
     <div className="h-full overflow-y-auto p-4 bg-white">
         {sidebarItems.map((group, i) => (
             <div key={i} className="mb-6">
-                <h4 className="mb-2 px-2 text-sm font-medium">
+                <h4 className="mb-3 px-2 text-base font-bold text-black uppercase tracking-wide">
                     {group.title}
                 </h4>
-                <div className="ml-4 grid grid-cols-1 gap-1">
+                <div className="grid grid-cols-1 gap-1">
                     {group.items.map((item) => (
                         <Link
                             key={item.href}
                             href={item.href}
                             onClick={onLinkClick}
                             className={cn(
-                                "block rounded-base px-2 py-1.5 text-sm font-medium",
+                                "block rounded-base px-3 py-2 text-base font-medium transition-all",
                                 pathname === item.href
-                                    ? "bg-main border border-black"
-                                    : "hover:bg-main"
+                                    ? "bg-main border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                                    : "text-black hover:bg-main hover:translate-x-1"
                             )}
                         >
                             {item.title}

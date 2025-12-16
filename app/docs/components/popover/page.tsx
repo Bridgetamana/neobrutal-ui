@@ -37,12 +37,15 @@ export { Popover, PopoverTrigger, PopoverContent }`
 export default function PopoverPage() {
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-4xl font-black">Popover</h1>
-                <p className="mt-2 text-lg text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Popover</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Displays rich content in a portal, triggered by a button.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={popoverCode}>
                 <Popover>
@@ -53,7 +56,7 @@ export default function PopoverPage() {
                         <div className="grid gap-4">
                             <div className="space-y-2">
                                 <h4 className="font-bold leading-none">Dimensions</h4>
-                                <p className="text-sm text-neutral-600">
+                                <p className="text-sm text-black">
                                     Set the dimensions for the layer.
                                 </p>
                             </div>

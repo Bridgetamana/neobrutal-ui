@@ -39,12 +39,15 @@ export { Slider }`
 export default function SliderPage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-4">
-                <h1 className="text-4xl font-black">Slider</h1>
-                <p className="text-xl text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Slider</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     A range input component for selecting values along a continuous range.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={sliderCode}>
                 <div className="w-full max-w-sm space-y-4">
@@ -57,7 +60,7 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Thick track:</strong> 4px height with 2px border</li>
                     <li><strong>Square thumb:</strong> Actually rounded square for brutalist look</li>
                     <li><strong>Touch support:</strong> Works on mobile with touch</li>
@@ -98,7 +101,7 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Keyboard support:</strong> Arrow keys to adjust value</li>
                     <li><strong>Focus ring:</strong> Clear 2px black ring when focused</li>
                     <li><strong>Label:</strong> Use with label element for context</li>
@@ -108,9 +111,9 @@ export default function SliderPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
+                <p className="text-black mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-slider" language="bash" />
-                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/slider.tsx</code>:</p>
+                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/slider.tsx</code>:</p>
                 <CodeBlock code={sliderCode} />
             </div>
 

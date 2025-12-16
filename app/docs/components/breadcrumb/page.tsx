@@ -73,12 +73,15 @@ export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator }`
 export default function BreadcrumbPage() {
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-4xl font-black">Breadcrumb</h1>
-                <p className="mt-2 text-lg text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Breadcrumb</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Display navigation breadcrumbs to show users where they are in the page hierarchy.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={breadcrumbCode}>
                 <Breadcrumb>

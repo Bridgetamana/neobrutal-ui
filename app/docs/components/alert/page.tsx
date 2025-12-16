@@ -33,12 +33,15 @@ const htmlCode = `<div role="alert" class="relative w-full rounded-[5px] border-
 export default function AlertPage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-1">
-                <h1 className="text-3xl font-bold">Alert</h1>
-                <p className="text-lg text-black/90">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Alert</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Displays a message to attract user attention.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Alert className="max-w-md">

@@ -36,12 +36,15 @@ export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }`
 export default function TooltipPage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-4">
-                <h1 className="text-4xl font-black">Tooltip</h1>
-                <p className="text-xl text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Tooltip</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     A small, floating label that appears on hover. Perfect for contextual information and help text.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={tooltipCode}>
                 <TooltipProvider>
@@ -64,7 +67,7 @@ export default function TooltipPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Smart positioning:</strong> Automatically adjusts side (top/bottom/left/right)</li>
                     <li><strong>Hover trigger:</strong> Appears on hover, disappears on blur</li>
                     <li><strong>Animated:</strong> Smooth fade-in and zoom animation</li>
@@ -74,7 +77,7 @@ export default function TooltipPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Positioning</h2>
-                <p className="text-neutral-600 mb-4">
+                <p className="text-black mb-4">
                     Tooltips can appear on different sides of the trigger. They auto-flip to stay visible.
                 </p>
                 <TooltipProvider>
@@ -109,7 +112,7 @@ export default function TooltipPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Setup</h2>
-                <p className="text-neutral-600 mb-2">
+                <p className="text-black mb-2">
                     Tooltips require a <code className="bg-neutral-200 px-1 py-0.5 rounded">TooltipProvider</code> wrapper at your app root:
                 </p>
                 <CodeBlock code={`// app/layout.tsx
@@ -130,7 +133,7 @@ export default function RootLayout({ children }) {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>No forced tooltips:</strong> Not the only way to get information</li>
                     <li><strong>Keyboard support:</strong> Hover/focus triggers tooltip</li>
                     <li><strong>Short content:</strong> Keep text concise (1-2 lines ideal)</li>
@@ -141,9 +144,9 @@ export default function RootLayout({ children }) {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
+                <p className="text-black mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-tooltip" language="bash" />
-                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/tooltip.tsx</code>:</p>
+                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/tooltip.tsx</code>:</p>
                 <CodeBlock code={tooltipCode} />
             </div>
 

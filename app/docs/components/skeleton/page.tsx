@@ -23,12 +23,15 @@ export { Skeleton }`
 export default function SkeletonPage() {
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-4xl font-black">Skeleton</h1>
-                <p className="mt-2 text-lg text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Skeleton</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Use to show a placeholder while content is loading.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={skeletonCode}>
                 <div className="flex items-center space-x-4">

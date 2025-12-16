@@ -90,12 +90,15 @@ export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 export default function DialogPage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-4">
-                <h1 className="text-4xl font-black">Dialog</h1>
-                <p className="text-xl text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Dialog</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     A centered modal dialog component for important interactions. Built on Radix UI with accessibility.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={dialogCode}>
                 <Dialog>
@@ -114,7 +117,7 @@ export default function DialogPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Centered positioning:</strong> Dialog appears centered on screen</li>
                     <li><strong>Backdrop overlay:</strong> Dark overlay behind dialog with opacity</li>
                     <li><strong>Close button:</strong> X button in top-right corner</li>
@@ -126,7 +129,7 @@ export default function DialogPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Components</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Dialog:</strong> Root component that manages state</li>
                     <li><strong>DialogTrigger:</strong> Button or element that opens the dialog</li>
                     <li><strong>DialogContent:</strong> Container for dialog content (includes overlay)</li>
@@ -138,7 +141,7 @@ export default function DialogPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
+                <ul className="list-disc list-inside space-y-2 text-black">
                     <li><strong>Focus trap:</strong> Focus cannot escape the dialog</li>
                     <li><strong>Keyboard support:</strong> ESC key closes, Tab cycles through elements</li>
                     <li><strong>ARIA attributes:</strong> Proper role and aria-labelledby setup</li>
@@ -149,9 +152,9 @@ export default function DialogPage() {
 
             <div className="space-y-4">
                 <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-neutral-600 mb-2">Install Radix UI dependency:</p>
+                <p className="text-black mb-2">Install Radix UI dependency:</p>
                 <CodeBlock code="npm install @radix-ui/react-dialog @phosphor-icons/react" language="bash" />
-                <p className="text-neutral-600 mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/dialog.tsx</code>:</p>
+                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/dialog.tsx</code>:</p>
                 <CodeBlock code={dialogCode} />
             </div>
 

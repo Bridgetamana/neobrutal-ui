@@ -17,12 +17,15 @@ const htmlCode = `<span class="inline-flex items-center rounded-[5px] border-2 b
 export default function BadgePage() {
     return (
         <div className="space-y-8">
-            <div className="space-y-1">
-                <h1 className="text-3xl font-bols">Badge</h1>
-                <p className="text-lg text-black/90">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Badge</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Displays a small label for status or categorization.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Badge>Badge</Badge>

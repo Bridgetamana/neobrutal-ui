@@ -47,12 +47,15 @@ export { Pagination, PaginationItem }`
 export default function PaginationPage() {
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-4xl font-black">Pagination</h1>
-                <p className="mt-2 text-lg text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Pagination</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Provide navigation for large datasets. Use numbered pages with previous/next controls.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={paginationCode}>
                 <Pagination>

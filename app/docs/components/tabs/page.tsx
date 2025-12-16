@@ -87,12 +87,15 @@ export { Tabs, TabsTrigger, TabsContent, tabsVariants }`
 export default function TabsPage() {
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-4xl font-black">Tabs</h1>
-                <p className="mt-2 text-lg text-neutral-600">
+            <header>
+                <h1 className="text-3xl font-black md:text-4xl text-black">Tabs</h1>
+            </header>
+
+            <section className="space-y-4">
+                <p className="text-base text-black">
                     Organize related content into separate views. Use folder-style or segmented control style to switch between tabs.
                 </p>
-            </div>
+            </section>
 
             <ComponentPreview code={tabsCode}>
                 <Tabs>

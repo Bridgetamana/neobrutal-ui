@@ -38,9 +38,8 @@ export function HeroSection() {
                     Neobrutalist <br />
                     Components
                 </h1>
-                <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 text-black/90">
-                    Accessible UI components with bold styling.
-                    Copy and paste into your apps. Open source.
+                <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 text-black">
+                    A collection of Neobrutalist components built with Radix UI and Tailwind CSS.
                 </p>
                 <Link href="/docs/installation">
                     <Button className="h-14 px-8 text-lg font-bold shadow-brutal hover:bg-main">
