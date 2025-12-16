@@ -29,11 +29,11 @@
 :root {
   --white: #ffffff;
   --black: #000000;
-  --main: #B6ACE4;
+  --main: #b6ace4;
   --bg: #f0eefc;
   --radius: 5px;
   --pastel-green: #97ee88;
-  --pastel-yellow: #FED170;
+  --pastel-yellow: #fed170;
   --pastel-orange: #eeaa88;
   --pastel-red: #ee8888;
   --pastel-pink: #ee88d6;
@@ -42,7 +42,7 @@
 body {
   background-color: var(--bg);
   color: var(--black);
-  font-family: var(--font-sans);
+  font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {

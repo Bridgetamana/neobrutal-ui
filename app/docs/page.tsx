@@ -98,16 +98,16 @@ export default function DocsPage() {
                 </p>
                 <ul className="space-y-2 text-base text-black">
                     <li>
-                        <Link href="https://www.radix-ui.com" target="_blank" className="font-bold underline underline-offset-4 hover:text-main">Radix UI</Link>
+                        <Link href="https://www.radix-ui.com" target="_blank" className="font-bold underline underline-offset-4">Radix UI</Link>
                     </li>
                     <li>
-                        <Link href="https://tailwindcss.com" target="_blank" className="font-bold underline underline-offset-4 hover:text-main">Tailwind CSS</Link>
+                        <Link href="https://tailwindcss.com" target="_blank" className="font-bold underline underline-offset-4">Tailwind CSS</Link>
                     </li>
                     <li>
-                        <Link href="https://ui.shadcn.com" target="_blank" className="font-bold underline underline-offset-4 hover:text-main">shadcn/ui</Link>
+                        <Link href="https://ui.shadcn.com" target="_blank" className="font-bold underline underline-offset-4">shadcn/ui</Link>
                     </li>
                     <li>
-                        <Link href="https://phosphoricons.com" target="_blank" className="font-bold underline underline-offset-4 hover:text-main">Phosphor Icons</Link>
+                        <Link href="https://phosphoricons.com" target="_blank" className="font-bold underline underline-offset-4">Phosphor Icons</Link>
                     </li>
                 </ul>
             </section>
@@ -117,19 +117,19 @@ export default function DocsPage() {
                 <ul className="space-y-3 text-base">
                     <li className="flex items-center gap-3">
                         <GithubLogoIcon className="h-5 w-5 text-black" weight="bold" />
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="font-bold text-black underline underline-offset-4 hover:text-main">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="font-bold text-black underline underline-offset-4">
                             Star the repository on GitHub
                         </Link>
                     </li>
                     <li className="flex items-center gap-3">
                         <ChatCircleIcon className="h-5 w-5 text-black" weight="bold" />
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui/issues" target="_blank" className="font-bold text-black underline underline-offset-4 hover:text-main">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui/issues" target="_blank" className="font-bold text-black underline underline-offset-4">
                             Report bugs or request features
                         </Link>
                     </li>
                     <li className="flex items-center gap-3">
                         <HeartIcon className="h-5 w-5 text-black" weight="bold" />
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui/blob/main/CONTRIBUTING.md" target="_blank" className="font-bold text-black underline underline-offset-4 hover:text-main">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui/blob/main/CONTRIBUTING.md" target="_blank" className="font-bold text-black underline underline-offset-4">
                             Contribute to the project
                         </Link>
                     </li>
