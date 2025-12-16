@@ -1,260 +1,170 @@
 "use client"
 
 import { CodeBlock } from "@/components/docs/code-block"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 
 export default function ThemingPage() {
     return (
-        <div className="space-y-8">
-            <div className="space-y-4">
+        <div className="space-y-12">
+            <header className="space-y-4">
                 <h1 className="text-4xl font-black">Theming</h1>
-                <p className="text-xl text-neutral-600">
-                    Customize NeoBrutal UI to match your brand. All styling is CSS-based and fully customizable.
+                <p className="text-xl text-neutral-700 max-w-2xl">
+                    Customize colors, shadows, and spacing using CSS variables.
                 </p>
-            </div>
+            </header>
 
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">How Theming Works</h2>
-                <p className="text-neutral-600">
-                    NeoBrutal UI uses CSS custom properties (variables) defined in <code className="bg-neutral-200 px-1 py-0.5 rounded">app/globals.css</code>.
-                    Since you own the code, customization is straightforward—just edit the variables!
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Overview</h2>
+                <p className="text-neutral-700 leading-relaxed">
+                    All visual properties are controlled through CSS custom properties defined in your <code className="px-1.5 py-0.5 bg-neutral-200 rounded text-sm font-mono">globals.css</code> file. Change a variable once and every component updates automatically.
                 </p>
-            </div>
+            </section>
 
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">CSS Variables</h2>
-                <p className="text-neutral-600 mb-4">
-                    Here are the key CSS variables you can customize:
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Color Variables</h2>
+                <p className="text-neutral-700">
+                    The default theme uses a soft purple accent with a light background.
                 </p>
+
+                <div className="grid gap-3">
+                    <div className="flex items-center gap-4 p-4 border-2 border-black rounded-base bg-bw">
+                        <div className="w-10 h-10 rounded-base border-2 border-black bg-main"></div>
+                        <div className="flex-1">
+                            <code className="font-mono text-sm font-bold">--main</code>
+                            <p className="text-sm text-neutral-600">Primary accent color</p>
+                        </div>
+                        <code className="text-sm text-neutral-500 font-mono">#B6ACE4</code>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 border-2 border-black rounded-base bg-bw">
+                        <div className="w-10 h-10 rounded-base border-2 border-black bg-bg"></div>
+                        <div className="flex-1">
+                            <code className="font-mono text-sm font-bold">--bg</code>
+                            <p className="text-sm text-neutral-600">Page background</p>
+                        </div>
+                        <code className="text-sm text-neutral-500 font-mono">#f0eefc</code>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 border-2 border-black rounded-base bg-bw">
+                        <div className="w-10 h-10 rounded-base border-2 border-black bg-white"></div>
+                        <div className="flex-1">
+                            <code className="font-mono text-sm font-bold">--white</code>
+                            <p className="text-sm text-neutral-600">Component backgrounds</p>
+                        </div>
+                        <code className="text-sm text-neutral-500 font-mono">#ffffff</code>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 border-2 border-black rounded-base bg-bw">
+                        <div className="w-10 h-10 rounded-base border-2 border-black bg-black"></div>
+                        <div className="flex-1">
+                            <code className="font-mono text-sm font-bold">--black</code>
+                            <p className="text-sm text-neutral-600">Text and borders</p>
+                        </div>
+                        <code className="text-sm text-neutral-500 font-mono">#000000</code>
+                    </div>
+                </div>
+            </section>
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Changing Colors</h2>
+                <p className="text-neutral-700">
+                    Edit the <code className="px-1.5 py-0.5 bg-neutral-200 rounded text-sm font-mono">:root</code> block in your CSS file.
+                </p>
+                <CodeBlock code={`:root {
+  --white: #ffffff;
+  --black: #000000;
+  --main: #B6ACE4;
+  --bg: #f0eefc;
+  --radius: 5px;
+}`} language="css" />
+            </section>
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Shadows</h2>
+                <p className="text-neutral-700">
+                    The signature Neobrutalist shadow is a hard offset with no blur.
+                </p>
+                <CodeBlock code={`--shadow-brutal: 4px 4px 0px 0px var(--black);`} language="css" />
+                <p className="text-sm text-neutral-600">
+                    Adjust the first two values to change the offset distance. The third value (blur) should remain 0 to maintain the hard edge.
+                </p>
+            </section>
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Border Radius</h2>
+                <p className="text-neutral-700">
+                    All components use the <code className="px-1.5 py-0.5 bg-neutral-200 rounded text-sm font-mono">--radius</code> variable for consistent corners.
+                </p>
+                <CodeBlock code={`--radius: 5px;`} language="css" />
+                <p className="text-sm text-neutral-600">
+                    Set to 0 for sharp corners or increase for softer edges.
+                </p>
+            </section>
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Example Themes</h2>
 
                 <div className="space-y-4">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Color Variables</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                            <div className="grid grid-cols-1 gap-3 text-sm">
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--main</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Primary accent color (default: #88aaee)</p>
-                                </div>
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--bg</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Background color (default: #f4f4f5)</p>
-                                </div>
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--bw</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Card/component background (default: #ffffff)</p>
-                                </div>
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--text</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Text color (default: #09090b)</p>
-                                </div>
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--border</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Border color (default: #000000)</p>
-                                </div>
-                                <div className="p-3 bg-neutral-100 rounded-base border-2 border-border">
-                                    <code className="font-mono">--overlay</code>
-                                    <p className="text-xs text-neutral-600 mt-1">Modal backdrop (default: rgba(0,0,0,0.8))</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customize Colors</h2>
-                <p className="text-neutral-600 mb-2">
-                    Edit <code className="bg-neutral-200 px-1 py-0.5 rounded">app/globals.css</code>:
-                </p>
-                <CodeBlock code={`/* app/globals.css */
-:root {
-  --main: #88aaee;      /* Change to your brand color */
-  --bg: #f4f4f5;        /* Page background */
-  --bw: #ffffff;        /* Component background */
-  --text: #09090b;      /* Text color */
-  --border: #000000;    /* Border color */
-  --overlay: rgba(0,0,0,0.8);
-}`} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customize Shadows</h2>
-                <p className="text-neutral-600 mb-2">
-                    The brutal shadow is defined as:
-                </p>
-                <CodeBlock code={`/* Default brutal shadow */
---shadow-brutal: 4px 4px 0px 0px var(--border);
-
-/* Customize the offset and blur */
-/* First two values: horizontal and vertical offset */
-/* Third value: blur radius (0 for hard shadow) */
-/* Fourth value: spread radius */`} />
-                <p className="text-neutral-600 mt-2">
-                    To change the shadow effect, modify the <code className="bg-neutral-200 px-1 py-0.5 rounded">--shadow-brutal</code> variable or update the Tailwind utility classes in components.
-                </p>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Customize Border Radius</h2>
-                <p className="text-neutral-600 mb-2">
-                    Components use <code className="bg-neutral-200 px-1 py-0.5 rounded">rounded-base</code> for consistency. Adjust in your Tailwind config:
-                </p>
-                <CodeBlock code={`/* tailwind.config.ts */
-import type { Config } from "tailwindcss"
-
-const config: Config = {
-  theme: {
-    extend: {
-      borderRadius: {
-        base: "5px", /* Change to 8px, 12px, or 0px for strict brutalism */
-      },
-    },
-  },
-}
-
-export default config`} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Brand Color Example</h2>
-                <p className="text-neutral-600 mb-2">
-                    Here&quot;s how to change the primary accent to pink:
-                </p>
-                <CodeBlock code={`/* app/globals.css */
-:root {
-  --main: #ec4899; /* Pink instead of blue */
-  --bg: #fdf2f8;   /* Light pink background */
-  /* ... other variables ... */
-}`} />
-                <p className="text-sm text-neutral-600 mt-2">
-                    Now all buttons, badges, and active states will use pink instead. The rest of the design stays consistent!
-                </p>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Component-Specific Customization</h2>
-                <p className="text-neutral-600 mb-4">
-                    Since you own the code, you can customize individual components:
-                </p>
-                <CodeBlock code={`// components/ui/button.tsx
-// Want thinner borders? Change border-2 to border
-// Want rounded buttons? Change rounded-base to rounded-full
-// Want different hover effect? Modify hover:translate-x-[2px]
-
-const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold border-2 border-border",
-    {
-      variants: {
-        variant: {
-          default: "bg-main text-black shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none",
-          // ↑ Customize this press effect
-        },
-      },
-    }
-)`} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Color Palette Ideas</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Modern Blue (Default)</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="flex gap-2">
-                                <div className="w-12 h-12 bg-blue-400 border-2 border-black rounded-base"></div>
-                                <div>
-                                    <p className="text-xs font-bold">#88aaee</p>
-                                    <p className="text-xs text-neutral-600">Primary</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Hot Pink</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="flex gap-2">
-                                <div className="w-12 h-12 bg-pink-400 border-2 border-black rounded-base"></div>
-                                <div>
-                                    <p className="text-xs font-bold">#ec4899</p>
-                                    <p className="text-xs text-neutral-600">Primary</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Bright Yellow</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="flex gap-2">
-                                <div className="w-12 h-12 bg-yellow-300 border-2 border-black rounded-base"></div>
-                                <div>
-                                    <p className="text-xs font-bold">#fde047</p>
-                                    <p className="text-xs text-neutral-600">Primary</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="text-lg">Neon Green</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-2">
-                            <div className="flex gap-2">
-                                <div className="w-12 h-12 bg-green-400 border-2 border-black rounded-base"></div>
-                                <div>
-                                    <p className="text-xs font-bold">#4ade80</p>
-                                    <p className="text-xs text-neutral-600">Primary</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Best Practices</h2>
-                <ul className="list-disc list-inside space-y-2 text-neutral-600">
-                    <li><strong>High contrast:</strong> Keep text and borders dark for accessibility</li>
-                    <li><strong>Saturated colors:</strong> Neobrutalism uses bold, high-saturation colors</li>
-                    <li><strong>Consistent shadows:</strong> Hard shadows (no blur) maintain the aesthetic</li>
-                    <li><strong>Bold borders:</strong> Use 2px or 4px borders, never thin lines</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Examples</h2>
-                <div className="space-y-4">
-                    <div>
-                        <h3 className="font-bold mb-2">Minimalist Theme (Black & White)</h3>
+                    <div className="p-5 border-2 border-black rounded-base bg-bw">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-6 h-6 rounded-base border-2 border-black bg-black"></div>
+                            <h3 className="font-bold">Monochrome</h3>
+                        </div>
                         <CodeBlock code={`:root {
   --main: #000000;
   --bg: #ffffff;
-  --bw: #ffffff;
-  --text: #000000;
-  --border: #000000;
-}`} />
+}`} language="css" />
                     </div>
-                    <div>
-                        <h3 className="font-bold mb-2">Vibrant Theme (Purple & Orange)</h3>
+
+                    <div className="p-5 border-2 border-black rounded-base bg-bw">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-6 h-6 rounded-base border-2 border-black bg-pink-500"></div>
+                            <h3 className="font-bold">Hot Pink</h3>
+                        </div>
                         <CodeBlock code={`:root {
-  --main: #a855f7;  /* Purple */
-  --bg: #fff7ed;
-  --bw: #ffffff;
-  --text: #000000;
-  --border: #000000;
-}`} />
+  --main: #ec4899;
+  --bg: #fdf2f8;
+}`} language="css" />
+                    </div>
+
+                    <div className="p-5 border-2 border-black rounded-base bg-bw">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-6 h-6 rounded-base border-2 border-black bg-yellow-300"></div>
+                            <h3 className="font-bold">Sunshine</h3>
+                        </div>
+                        <CodeBlock code={`:root {
+  --main: #fde047;
+  --bg: #fefce8;
+}`} language="css" />
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Design Principles</h2>
+                <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="p-4 border-2 border-black rounded-base bg-bw">
+                        <h3 className="font-bold mb-1">High Contrast</h3>
+                        <p className="text-sm text-neutral-600">
+                            Keep borders and text dark against light backgrounds for readability.
+                        </p>
+                    </div>
+                    <div className="p-4 border-2 border-black rounded-base bg-bw">
+                        <h3 className="font-bold mb-1">Bold Colors</h3>
+                        <p className="text-sm text-neutral-600">
+                            Use saturated, vibrant colors. Muted tones weaken the aesthetic.
+                        </p>
+                    </div>
+                    <div className="p-4 border-2 border-black rounded-base bg-bw">
+                        <h3 className="font-bold mb-1">Hard Shadows</h3>
+                        <p className="text-sm text-neutral-600">
+                            No blur. The offset shadow is a defining characteristic.
+                        </p>
+                    </div>
+                    <div className="p-4 border-2 border-black rounded-base bg-bw">
+                        <h3 className="font-bold mb-1">Thick Borders</h3>
+                        <p className="text-sm text-neutral-600">
+                            Use 2px minimum. Thin lines break the brutalist look.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

@@ -51,12 +51,12 @@ export default function AlertPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Installation</h2>
+                <h2 className="text-xl font-bold">Installation</h2>
                 <CodeBlock code="npx neobrutal-ui add alert" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Usage</h2>
+                <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"`} />
                 <CodeBlock code={`<Alert>
   <AlertTitle>Title</AlertTitle>
@@ -65,7 +65,7 @@ export default function AlertPage() {
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Examples</h2>
+                <h2 className="text-xl font-bold">Examples</h2>
 
                 <div className="space-y-4">
                     <h3 className="font-bold">Default</h3>

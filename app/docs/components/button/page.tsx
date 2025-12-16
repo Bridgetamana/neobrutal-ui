@@ -29,18 +29,18 @@ export default function ButtonPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Installation</h2>
+                <h2 className="text-xl font-bold">Installation</h2>
                 <CodeBlock code="npx neobrutal-ui add button" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Usage</h2>
+                <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Button } from "@/components/ui/button"`} />
                 <CodeBlock code={`<Button variant="outline">Button</Button>`} />
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold border-b-2 border-black pb-2">Examples</h2>
+                <h2 className="text-xl font-bold">Examples</h2>
 
                 <div className="space-y-4">
                     <h3 className="font-bold">Default</h3>

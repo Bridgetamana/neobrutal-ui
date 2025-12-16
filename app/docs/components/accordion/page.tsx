@@ -84,14 +84,14 @@ export default function AccordionPage() {
       </ComponentPreview>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold border-b-2 border-black pb-2">Installation</h2>
+        <h2 className="text-xl font-bold">Installation</h2>
         <CodeBlock code="npx neobrutal-ui add accordion" language="bash" />
         <p className="text-sm text-black/90">Or install the dependency and copy the code:</p>
         <CodeBlock code="npm install @radix-ui/react-accordion" language="bash" />
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold border-b-2 border-black pb-2">Usage</h2>
+        <h2 className="text-xl font-bold">Usage</h2>
         <CodeBlock code={`import {
   Accordion,
   AccordionContent,
@@ -109,7 +109,7 @@ export default function AccordionPage() {
       </div>
 
       <div className="space-y-6">
-        <h2 className="text-xl font-bold border-b-2 border-black pb-2">Examples</h2>
+        <h2 className="text-xl font-bold">Examples</h2>
 
         <div className="space-y-4">
           <h3 className="font-bold">Multiple</h3>
