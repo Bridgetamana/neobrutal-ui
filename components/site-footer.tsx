@@ -1,5 +1,7 @@
 "use client"
 
+// Test comment for lint-staged
+
 import Link from "next/link"
 import Image from "next/image"
 
