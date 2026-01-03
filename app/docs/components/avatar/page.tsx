@@ -3,6 +3,7 @@
 import { Avatar, AvatarGroup, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
@@ -25,6 +26,15 @@ const htmlCode = `<div class="relative flex h-10 w-10 shrink-0 overflow-hidden r
     CN
   </div>
 </div>`
+
+const avatarGroupProps = [
+    {
+        name: "max",
+        type: "number",
+        defaultValue: "3",
+        description: "The maximum number of avatars to display before showing an overflow indicator.",
+    },
+]
 
 export default function AvatarPage() {
     return (
@@ -107,6 +117,12 @@ export default function AvatarPage() {
                         </AvatarGroup>
                     </ComponentPreview>
                 </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="text-lg font-bold">AvatarGroup</h3>
+                <PropsTable data={avatarGroupProps} />
             </div>
         </div>
     )

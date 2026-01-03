@@ -1,44 +1,45 @@
 "use client"
 
+import * as React from "react"
 import { Slider } from "@/components/ui/slider"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const sliderCode = `"use client"
+const usageCode = `<Slider defaultValue={[50]} max={100} step={1} />`
 
-import * as React from "react"
-import { Slider as BaseSlider } from "@base-ui/react/slider"
-import { cn } from "@/lib/utils"
-
-type SliderProps = React.ComponentPropsWithoutRef<typeof BaseSlider.Root>
-
-const Slider = React.forwardRef<
-    React.ComponentRef<typeof BaseSlider.Root>,
-    SliderProps
->(({ className, ...props }, ref) => (
-    <BaseSlider.Root
-        ref={ref}
-        className={cn(
-            "relative flex w-full touch-none select-none items-center",
-            className
-        )}
-        {...props}
-    >
-        <BaseSlider.Control className="flex w-full touch-none items-center py-3 select-none">
-            <BaseSlider.Track
-                className="relative h-4 w-full grow overflow-hidden rounded-full border-2 border-border bg-white"
-            >
-                <BaseSlider.Indicator className="absolute h-full bg-main" />
-                <BaseSlider.Thumb
-                    className="block h-6 w-6 rounded-full border-2 border-border bg-white ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-                />
-            </BaseSlider.Track>
-        </BaseSlider.Control>
-    </BaseSlider.Root>
-))
-Slider.displayName = "Slider"
-
-export { Slider }`
+const sliderProps = [
+    {
+        name: "defaultValue",
+        type: "number[]",
+        description: "The default value of the slider when uncontrolled.",
+    },
+    {
+        name: "value",
+        type: "number[]",
+        description: "The controlled value of the slider.",
+    },
+    {
+        name: "onValueChange",
+        type: "(value: number[]) => void",
+        description: "Event handler called when the value changes.",
+    },
+    {
+        name: "min",
+        type: "number",
+        description: "The minimum value of the slider.",
+    },
+    {
+        name: "max",
+        type: "number",
+        description: "The maximum value of the slider.",
+    },
+    {
+        name: "step",
+        type: "number",
+        description: "The step value of the slider.",
+    },
+]
 
 export default function SliderPage() {
     return (
@@ -49,98 +50,28 @@ export default function SliderPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A range input component for selecting values along a continuous range.
+                    An input where the user selects a value from within a given range.
                 </p>
             </section>
 
-            <ComponentPreview code={sliderCode}>
-                <div className="w-full max-w-sm space-y-4">
-                    <div>
-                        <label className="text-sm font-bold">Volume</label>
-                        <Slider defaultValue={[50]} min={0} max={100} step={1} />
-                    </div>
-                </div>
+            <ComponentPreview code={usageCode}>
+                <Slider defaultValue={[50]} max={100} step={1} className="w-[60%]" />
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Thick track:</strong> 4px height with 2px border</li>
-                    <li><strong>Square thumb:</strong> Actually rounded square for brutalist look</li>
-                    <li><strong>Touch support:</strong> Works on mobile with touch</li>
-                    <li><strong>Range fill:</strong> Accent color shows selected range</li>
-                    <li><strong>Base UI:</strong> Built on accessible slider primitive</li>
-                </ul>
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal-ui add slider" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Examples</h2>
-                <div className="space-y-6">
-                    <div>
-                        <label className="text-sm font-bold block mb-2">Default (0-100)</label>
-                        <Slider defaultValue={[30]} min={0} max={100} />
-                    </div>
-                    <div>
-                        <label className="text-sm font-bold block mb-2">Price Range (0-1000)</label>
-                        <Slider defaultValue={[250]} min={0} max={1000} step={50} />
-                    </div>
-                    <div>
-                        <label className="text-sm font-bold block mb-2">With Step (0-10, step 1)</label>
-                        <Slider defaultValue={[5]} min={0} max={10} step={1} />
-                    </div>
-                </div>
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import { Slider } from "@/components/ui/slider"`} />
+                <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Props</h2>
-                <CodeBlock code={`// Common props
-<Slider
-  defaultValue={[50]}        // Initial value
-  min={0}                    // Minimum value
-  max={100}                  // Maximum value
-  step={1}                   // Increment step
-  disabled={false}           // Disable slider
-/>`} language="tsx" />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Keyboard support:</strong> Arrow keys to adjust value</li>
-                    <li><strong>Focus ring:</strong> Clear 2px black ring when focused</li>
-                    <li><strong>Label:</strong> Use with label element for context</li>
-                    <li><strong>ARIA attributes:</strong> aria-label, aria-valuemin, aria-valuemax automatically set</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-black mb-2">Install dependency:</p>
-                <CodeBlock code="npm install @base-ui/react" language="bash" />
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/slider.tsx</code>:</p>
-                <CodeBlock code={sliderCode} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage</h2>
-                <CodeBlock code={`import { Slider } from "@/components/ui/slider"
-
-export function SliderDemo() {
-  const [value, setValue] = React.useState([50])
-  
-  return (
-    <div className="space-y-4">
-      <label className="text-sm font-bold">Value: {value[0]}</label>
-      <Slider
-        value={value}
-        onValueChange={setValue}
-        min={0}
-        max={100}
-        step={1}
-      />
-    </div>
-  )
-}`} />
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={sliderProps} />
             </div>
         </div>
     )

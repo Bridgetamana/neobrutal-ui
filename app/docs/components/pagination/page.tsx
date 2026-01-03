@@ -1,48 +1,26 @@
 "use client"
 
+import * as React from "react"
 import { Pagination, PaginationItem } from "@/components/ui/pagination"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const paginationCode = `import * as React from "react"
-import { cn } from "@/lib/utils"
+const usageCode = `<Pagination>
+  <PaginationItem>Prev</PaginationItem>
+  <PaginationItem>1</PaginationItem>
+  <PaginationItem isActive>2</PaginationItem>
+  <PaginationItem>3</PaginationItem>
+  <PaginationItem>Next</PaginationItem>
+</Pagination>`
 
-export type PaginationProps = React.HTMLAttributes<HTMLDivElement>
-
-const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
-    ({ className, ...props }, ref) => (
-        <nav
-            ref={ref}
-            aria-label="Pagination"
-            className={cn("flex items-center justify-center gap-1", className)}
-            {...props}
-        />
-    )
-)
-Pagination.displayName = "Pagination"
-
-export type PaginationItemProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    isActive?: boolean
-}
-
-const PaginationItem = React.forwardRef<HTMLButtonElement, PaginationItemProps>(
-    ({ className, isActive, ...props }, ref) => (
-        <button
-            ref={ref}
-            className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-base border-2 border-border text-sm font-bold transition-all",
-                isActive
-                    ? "bg-main text-black shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
-                    : "bg-bw text-text hover:bg-neutral-100"
-            )}
-            aria-current={isActive ? "page" : undefined}
-            {...props}
-        />
-    )
-)
-PaginationItem.displayName = "PaginationItem"
-
-export { Pagination, PaginationItem }`
+const paginationProps = [
+    {
+        name: "isActive",
+        type: "boolean",
+        description: "Whether the pagination item is the current page.",
+    },
+]
 
 export default function PaginationPage() {
     return (
@@ -53,11 +31,11 @@ export default function PaginationPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    Provide navigation for large datasets. Use numbered pages with previous/next controls.
+                    Pagination with bold borders and clear active states.
                 </p>
             </section>
 
-            <ComponentPreview code={paginationCode}>
+            <ComponentPreview code={usageCode}>
                 <Pagination>
                     <PaginationItem>Prev</PaginationItem>
                     <PaginationItem>1</PaginationItem>
@@ -68,18 +46,20 @@ export default function PaginationPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Installation</h2>
-                <CodeBlock code={`No dependencies required.`} language="bash" />
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal-ui add pagination" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Accessibility</h2>
-                <ul className="space-y-2 list-disc list-inside font-bold">
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">aria-current=&quot;page&quot;</code> for active item</li>
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">role=&quot;button&quot;</code> for items</li>
-                    <li>Semantic HTML structure with list markup</li>
-                    <li>Clear focus states for keyboard navigation</li>
-                </ul>
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import { Pagination, PaginationItem } from "@/components/ui/pagination"`} />
+                <CodeBlock code={usageCode} />
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="font-bold">PaginationItem</h3>
+                <PropsTable data={paginationProps} />
             </div>
         </div>
     )

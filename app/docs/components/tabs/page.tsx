@@ -1,90 +1,32 @@
 "use client"
 
-import { Tabs, TabsTrigger } from "@/components/ui/tabs"
+import * as React from "react"
+import { Tabs, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const tabsCode = `import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+const usageCode = `const [activeTab, setActiveTab] = React.useState("account")
 
-const tabsVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-border",
-    {
-        variants: {
-            variant: {
-                default: "bg-bw text-text border-border hover:bg-main hover:text-black",
-                active: "bg-main text-black border-black shadow-brutal",
-            },
-            size: {
-                default: "h-10 px-4 py-2",
-                sm: "h-9 px-3",
-                lg: "h-11 px-8",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-            size: "default",
-        },
-    }
-)
-
-export type TabsProps = React.HTMLAttributes<HTMLDivElement>
-
-const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-    ({ className, ...props }, ref) => (
-        <div
-            ref={ref}
-            role="tablist"
-            className={cn("inline-flex gap-1 rounded-base border-2 border-border bg-bw p-1", className)}
-            {...props}
-        />
-    )
-)
-Tabs.displayName = "Tabs"
-
-export type TabsTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-    VariantProps<typeof tabsVariants> & {
-        isActive?: boolean
-    }
-
-const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
-    ({ className, variant, size, isActive, ...props }, ref) => (
-        <button
-            ref={ref}
-            role="tab"
-            className={cn(
-                tabsVariants({
-                    variant: isActive ? "active" : "default",
-                    size,
-                    className,
-                })
-            )}
-            {...props}
-        />
-    )
-)
-TabsTrigger.displayName = "TabsTrigger"
-
-export type TabsContentProps = React.HTMLAttributes<HTMLDivElement> & {
-    isActive?: boolean
-}
-
-const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-    ({ className, isActive, ...props }, ref) => (
-        <div
-            ref={ref}
-            role="tabpanel"
-            className={cn("hidden", isActive && "block", className)}
-            {...props}
-        />
-    )
-)
-TabsContent.displayName = "TabsContent"
-
-export { Tabs, TabsTrigger, TabsContent, tabsVariants }`
+<div className="w-[400px]">
+  <Tabs>
+    <TabsTrigger isActive={activeTab === "account"} onClick={() => setActiveTab("account")}>
+      Account
+    </TabsTrigger>
+    <TabsTrigger isActive={activeTab === "password"} onClick={() => setActiveTab("password")}>
+      Password
+    </TabsTrigger>
+  </Tabs>
+  <TabsContent isActive={activeTab === "account"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+    Make changes to your account here.
+  </TabsContent>
+  <TabsContent isActive={activeTab === "password"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+    Change your password here.
+  </TabsContent>
+</div>`
 
 export default function TabsPage() {
+    const [activeTab, setActiveTab] = React.useState("account")
+
     return (
         <div className="space-y-8">
             <header>
@@ -93,33 +35,38 @@ export default function TabsPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    Organize related content into separate views. Use folder-style or segmented control style to switch between tabs.
+                    A set of layered sections of content—known as tab panels—that are displayed one at a time.
                 </p>
             </section>
 
-            <ComponentPreview code={tabsCode}>
-                <Tabs>
-                    <TabsTrigger isActive>Overview</TabsTrigger>
-                    <TabsTrigger>Settings</TabsTrigger>
-                    <TabsTrigger>Advanced</TabsTrigger>
-                </Tabs>
+            <ComponentPreview code={usageCode}>
+                <div className="w-[400px]">
+                    <Tabs>
+                        <TabsTrigger isActive={activeTab === "account"} onClick={() => setActiveTab("account")}>
+                            Account
+                        </TabsTrigger>
+                        <TabsTrigger isActive={activeTab === "password"} onClick={() => setActiveTab("password")}>
+                            Password
+                        </TabsTrigger>
+                    </Tabs>
+                    <TabsContent isActive={activeTab === "account"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+                        Make changes to your account here.
+                    </TabsContent>
+                    <TabsContent isActive={activeTab === "password"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+                        Change your password here.
+                    </TabsContent>
+                </div>
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Installation</h2>
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/tabs.tsx</code>:</p>
-                <CodeBlock code={tabsCode} />
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal-ui add tabs" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Accessibility</h2>
-                <ul className="space-y-2 list-disc list-inside font-bold">
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">role=&quot;tablist&quot;</code> for container</li>
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">role=&quot;tab&quot;</code> for triggers</li>
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">role=&quot;tabpanel&quot;</code> for content</li>
-                    <li>Supports keyboard navigation (Arrow keys)</li>
-                    <li>Properly associates triggers with content</li>
-                </ul>
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import { Tabs, TabsContent, TabsTrigger } from "@/components/ui/tabs"`} />
+                <CodeBlock code={usageCode} />
             </div>
         </div>
     )

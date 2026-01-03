@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Button } from "@/components/ui/button"
 
@@ -13,6 +14,27 @@ export function ButtonDemo() {
 const htmlCode = `<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#88aaee] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
   Button
 </button>`
+
+const buttonProps = [
+    {
+        name: "variant",
+        type: '"default" | "noShadow" | "neutral" | "primary" | "reverse" | "outline"',
+        defaultValue: '"default"',
+        description: "The visual style of the button.",
+    },
+    {
+        name: "size",
+        type: '"default" | "sm" | "lg" | "icon"',
+        defaultValue: '"default"',
+        description: "The size of the button.",
+    },
+    {
+        name: "asChild",
+        type: "boolean",
+        defaultValue: "false",
+        description: "Whether to render the button as a child component using Slot.",
+    },
+]
 
 export default function ButtonPage() {
     return (
@@ -111,6 +133,11 @@ export default function ButtonPage() {
   <Link href="/login">Login</Link>
 </Button>`} />
                 </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={buttonProps} />
             </div>
         </div>
     )

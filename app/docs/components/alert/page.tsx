@@ -4,6 +4,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { InfoIcon, XCircleIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { InfoIcon } from "@phosphor-icons/react"
@@ -29,6 +30,15 @@ const htmlCode = `<div role="alert" class="relative w-full rounded-[5px] border-
     <div class="text-sm">You can add components to your app using the CLI.</div>
   </div>
 </div>`
+
+const alertProps = [
+    {
+        name: "variant",
+        type: '"default" | "neutral" | "destructive" | "success" | "warning"',
+        defaultValue: '"default"',
+        description: "The visual style of the alert.",
+    },
+]
 
 export default function AlertPage() {
     return (
@@ -129,6 +139,11 @@ export default function AlertPage() {
                         </Alert>
                     </ComponentPreview>
                 </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={alertProps} />
             </div>
         </div>
     )
