@@ -7,6 +7,11 @@ import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
 import { getConfig, writeConfig, getProjectInfo, type Config } from "../utils/config.js"
+import {
+    detectPackageManager,
+    installDependencies,
+    getInstallCommand,
+} from "../utils/package-manager.js"
 
 const initOptionsSchema = z.object({
     cwd: z.string(),
@@ -87,6 +92,29 @@ export async function runInit(
     } as Config)
 
     initSpinner.succeed("Project initialized successfully.")
+
+    // Install base dependencies
+    const baseDeps = ["clsx", "tailwind-merge"]
+    const packageManager = await detectPackageManager(cwd)
+
+    logger.break()
+    logger.info("Installing base dependencies...")
+
+    const depsSpinner = spinner(
+        `Running ${getInstallCommand(packageManager, baseDeps)}`
+    ).start()
+
+    const success = await installDependencies(cwd, baseDeps, { silent: true })
+
+    if (success) {
+        depsSpinner.succeed("Base dependencies installed.")
+    } else {
+        depsSpinner.fail("Failed to install dependencies.")
+        logger.break()
+        logger.warn("Please install manually:")
+        logger.log(`  ${getInstallCommand(packageManager, baseDeps)}`)
+    }
+
     logger.break()
     logger.success(
         `${highlighter.success("Success!")} Project initialization completed.`
@@ -174,11 +202,24 @@ async function promptForConfig(projectInfo: {
     }
 }
 
+/**
+ * Strips the alias prefix from a path (e.g., "@/", "~/", "#/").
+ */
+function stripAliasPrefix(aliasPath: string): string {
+    const prefixes = ["@/", "~/", "#/", "$/"]
+    for (const prefix of prefixes) {
+        if (aliasPath.startsWith(prefix)) {
+            return aliasPath.slice(prefix.length)
+        }
+    }
+    return aliasPath
+}
+
 async function ensureDirectories(cwd: string, config: Config): Promise<void> {
     const dirs = [
-        config.aliases.components.replace("@/", ""),
-        config.aliases.ui?.replace("@/", "") || "components/ui",
-        config.aliases.lib?.replace("@/", "") || "lib",
+        stripAliasPrefix(config.aliases.components),
+        stripAliasPrefix(config.aliases.ui || "components/ui"),
+        stripAliasPrefix(config.aliases.lib || "lib"),
     ]
 
     for (const dir of dirs) {
@@ -189,7 +230,7 @@ async function ensureDirectories(cwd: string, config: Config): Promise<void> {
 async function createUtilsFile(cwd: string, config: Config): Promise<void> {
     const utilsPath = path.resolve(
         cwd,
-        config.aliases.utils.replace("@/", "") + ".ts"
+        stripAliasPrefix(config.aliases.utils) + ".ts"
     )
 
     if (await fs.pathExists(utilsPath)) {
