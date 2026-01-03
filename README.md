@@ -1,3 +1,4 @@
+> Still a work in progress
 # NeoBrutal UI
 
 A collection of Neobrutalist components built with Base UI and Tailwind CSS.
