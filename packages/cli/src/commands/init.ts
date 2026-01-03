@@ -6,7 +6,7 @@ import { z } from "zod"
 import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
-import { getConfig, writeConfig, getProjectInfo, type Config } from "../utils/config.js"
+import { getConfig, writeConfig, getProjectInfo, type Config, type ProjectInfo } from "../utils/config.js"
 import {
     detectPackageManager,
     installDependencies,
@@ -17,6 +17,7 @@ const initOptionsSchema = z.object({
     cwd: z.string(),
     yes: z.boolean(),
     force: z.boolean(),
+    skipCss: z.boolean(),
 })
 
 export const init = new Command()
@@ -29,12 +30,14 @@ export const init = new Command()
     )
     .option("-y, --yes", "skip confirmation prompt.", false)
     .option("-f, --force", "force overwrite of existing configuration.", false)
+    .option("--skip-css", "skip CSS variable injection.", false)
     .action(async (opts) => {
         try {
             const options = initOptionsSchema.parse({
                 cwd: path.resolve(opts.cwd),
                 yes: opts.yes,
                 force: opts.force,
+                skipCss: opts.skipCss,
             })
 
             await runInit(options)
@@ -46,7 +49,7 @@ export const init = new Command()
 export async function runInit(
     options: z.infer<typeof initOptionsSchema>
 ): Promise<void> {
-    const { cwd, yes, force } = options
+    const { cwd, yes, force, skipCss } = options
 
     const existingConfig = await getConfig(cwd)
 
@@ -69,7 +72,14 @@ export async function runInit(
 
     const projectInfo = await getProjectInfo(cwd)
 
-    logger.info(`Detected ${highlighter.info(projectInfo.framework)} project.`)
+    const frameworkDisplay = getFrameworkDisplayName(projectInfo.framework)
+    logger.info(`Detected ${highlighter.info(frameworkDisplay)} project.`)
+    if (projectInfo.tailwindCss) {
+        logger.info(`Tailwind CSS detected.`)
+    }
+    if (projectInfo.aliasPrefix !== "@/") {
+        logger.info(`Using alias prefix: ${highlighter.info(projectInfo.aliasPrefix)}`)
+    }
     logger.break()
 
     let config: Partial<Config>
@@ -92,6 +102,20 @@ export async function runInit(
     } as Config)
 
     initSpinner.succeed("Project initialized successfully.")
+
+    // Inject CSS variables if CSS file exists
+    if (!skipCss && (config as Config).tailwind?.css) {
+        const cssPath = path.resolve(cwd, (config as Config).tailwind.css)
+        if (await fs.pathExists(cssPath)) {
+            const cssSpinner = spinner("Injecting CSS variables...").start()
+            const injected = await injectCssVariables(cssPath)
+            if (injected) {
+                cssSpinner.succeed("Neobrutalism CSS variables added.")
+            } else {
+                cssSpinner.succeed("CSS variables already present.")
+            }
+        }
+    }
 
     // Install base dependencies
     const baseDeps = ["clsx", "tailwind-merge"]
@@ -125,65 +149,71 @@ export async function runInit(
     logger.break()
 }
 
-function getDefaultConfig(projectInfo: {
-    framework: string
-    srcDir: boolean
-    typescript: boolean
-}): Partial<Config> {
+function getFrameworkDisplayName(framework: string): string {
+    const displayNames: Record<string, string> = {
+        "next-app": "Next.js (App Router)",
+        "next-pages": "Next.js (Pages Router)",
+        vite: "Vite",
+        remix: "Remix",
+        astro: "Astro",
+        unknown: "Unknown",
+    }
+    return displayNames[framework] || framework
+}
+
+function getDefaultConfig(projectInfo: ProjectInfo): Partial<Config> {
     const baseDir = projectInfo.srcDir ? "src/" : ""
+    const prefix = projectInfo.aliasPrefix
 
     return {
         style: "default",
-        rsc: projectInfo.framework === "next",
+        rsc: projectInfo.framework === "next-app",
         tsx: projectInfo.typescript,
         tailwind: {
             config: "",
-            css: `${baseDir}app/globals.css`,
+            css: projectInfo.cssPath || `${baseDir}app/globals.css`,
             baseColor: "neutral",
             cssVariables: true,
             prefix: "",
         },
         aliases: {
-            components: "@/components",
-            utils: "@/lib/utils",
-            ui: "@/components/ui",
-            lib: "@/lib",
-            hooks: "@/hooks",
+            components: `${prefix}components`,
+            utils: `${prefix}lib/utils`,
+            ui: `${prefix}components/ui`,
+            lib: `${prefix}lib`,
+            hooks: `${prefix}hooks`,
         },
     }
 }
 
-async function promptForConfig(projectInfo: {
-    framework: string
-    srcDir: boolean
-    typescript: boolean
-}): Promise<Partial<Config>> {
+async function promptForConfig(projectInfo: ProjectInfo): Promise<Partial<Config>> {
     const baseDir = projectInfo.srcDir ? "src/" : ""
+    const prefix = projectInfo.aliasPrefix
 
     const { cssPath } = await prompts({
         type: "text",
         name: "cssPath",
         message: "Where is your global CSS file?",
-        initial: `${baseDir}app/globals.css`,
+        initial: projectInfo.cssPath || `${baseDir}app/globals.css`,
     })
 
     const { componentsAlias } = await prompts({
         type: "text",
         name: "componentsAlias",
         message: "Configure the import alias for components:",
-        initial: "@/components",
+        initial: `${prefix}components`,
     })
 
     const { utilsAlias } = await prompts({
         type: "text",
         name: "utilsAlias",
         message: "Configure the import alias for utils:",
-        initial: "@/lib/utils",
+        initial: `${prefix}lib/utils`,
     })
 
     return {
         style: "default",
-        rsc: projectInfo.framework === "next",
+        rsc: projectInfo.framework === "next-app",
         tsx: projectInfo.typescript,
         tailwind: {
             config: "",
@@ -196,8 +226,8 @@ async function promptForConfig(projectInfo: {
             components: componentsAlias,
             utils: utilsAlias,
             ui: `${componentsAlias}/ui`,
-            lib: "@/lib",
-            hooks: "@/hooks",
+            lib: `${prefix}lib`,
+            hooks: `${prefix}hooks`,
         },
     }
 }
@@ -247,4 +277,58 @@ export function cn(...inputs: ClassValue[]) {
 
     await fs.ensureDir(path.dirname(utilsPath))
     await fs.writeFile(utilsPath, utilsContent, "utf-8")
+}
+
+/**
+ * Neobrutalism CSS variables for the design system.
+ */
+const NEOBRUTAL_CSS_VARIABLES = `
+/* NeoBrutal UI - Design Tokens */
+:root {
+  /* Primary accent color (purple) */
+  --main: #b6ace4;
+  /* Background color */
+  --bg: #f0eefc;
+  /* Border width for brutal elements */
+  --bw: 2px;
+  /* Border color */
+  --border: #000000;
+  /* Hard shadow for neobrutalism */
+  --shadow-brutal: 4px 4px 0 var(--border);
+  /* Base border radius */
+  --radius-base: 8px;
+}
+`
+
+/**
+ * Injects neobrutalism CSS variables into the user's global CSS file.
+ * Returns true if variables were injected, false if they already exist.
+ */
+async function injectCssVariables(cssPath: string): Promise<boolean> {
+    const content = await fs.readFile(cssPath, "utf-8")
+
+    // Check if CSS variables are already present
+    if (content.includes("--main:") && content.includes("--shadow-brutal:")) {
+        return false
+    }
+
+    // Find the best injection point
+    let newContent: string
+
+    // If there's a :root block, inject after @import statements
+    if (content.includes("@import")) {
+        const importEndIndex = content.lastIndexOf("@import")
+        const lineEnd = content.indexOf(";", importEndIndex)
+        newContent =
+            content.slice(0, lineEnd + 1) +
+            "\n" +
+            NEOBRUTAL_CSS_VARIABLES +
+            content.slice(lineEnd + 1)
+    } else {
+        // Inject at the top
+        newContent = NEOBRUTAL_CSS_VARIABLES + "\n" + content
+    }
+
+    await fs.writeFile(cssPath, newContent, "utf-8")
+    return true
 }

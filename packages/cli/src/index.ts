@@ -4,6 +4,7 @@ import { init } from "./commands/init.js"
 import { add } from "./commands/add.js"
 import { list } from "./commands/list.js"
 import { diff } from "./commands/diff.js"
+import { update } from "./commands/update.js"
 
 const require = createRequire(import.meta.url)
 const packageJson = require("../package.json") as { name: string; version: string }
@@ -26,6 +27,7 @@ async function main() {
         .addCommand(add)
         .addCommand(list)
         .addCommand(diff)
+        .addCommand(update)
 
     program.parse()
 }
