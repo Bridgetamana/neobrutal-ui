@@ -12,6 +12,12 @@ import {
     getRegistryItems,
     resolveRegistryDependencies,
 } from "../utils/registry.js"
+import {
+    detectPackageManager,
+    installDependencies,
+    getInstallCommand,
+} from "../utils/package-manager.js"
+import { transformImports } from "../utils/transform.js"
 import { runInit } from "./init.js"
 
 const addOptionsSchema = z.object({
@@ -165,9 +171,12 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
                     }
                 }
 
+                // Transform import paths to match user's configured aliases
+                const transformedContent = transformImports(file.content, config)
+
                 filesToWrite.push({
                     path: targetPath,
-                    content: file.content,
+                    content: transformedContent,
                 })
             }
         }
@@ -181,12 +190,28 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
 
         writeSpinner.succeed(`Wrote ${filesToWrite.length} file(s).`)
 
+        // Auto-install npm dependencies
         if (npmDependencies.size > 0) {
+            const depsArray = Array.from(npmDependencies)
+            const packageManager = await detectPackageManager(cwd)
+
             logger.break()
-            logger.info("Don't forget to install the following dependencies:")
-            logger.break()
-            logger.log(`  npm install ${Array.from(npmDependencies).join(" ")}`)
-            logger.break()
+            logger.info(`Installing ${depsArray.length} dependencies...`)
+
+            const installSpinner = spinner(
+                `Running ${getInstallCommand(packageManager, depsArray)}`
+            ).start()
+
+            const success = await installDependencies(cwd, depsArray, { silent: true })
+
+            if (success) {
+                installSpinner.succeed("Dependencies installed.")
+            } else {
+                installSpinner.fail("Failed to install dependencies.")
+                logger.break()
+                logger.warn("Please install manually:")
+                logger.log(`  ${getInstallCommand(packageManager, depsArray)}`)
+            }
         }
 
         logger.break()

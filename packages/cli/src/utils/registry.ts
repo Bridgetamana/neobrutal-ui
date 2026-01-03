@@ -1,6 +1,9 @@
 import { z } from "zod"
 import { REGISTRY_URL } from "./config.js"
 
+const MAX_RETRIES = 3
+const RETRY_DELAY_MS = 1000
+
 export const registryItemFileSchema = z.object({
     path: z.string(),
     content: z.string(),
@@ -35,37 +38,54 @@ export const registryIndexSchema = z.array(
 export type RegistryItem = z.infer<typeof registryItemSchema>
 export type RegistryIndex = z.infer<typeof registryIndexSchema>
 
-export async function getRegistryIndex(): Promise<RegistryIndex> {
-    const response = await fetch(`${REGISTRY_URL}/index.json`)
+/**
+ * Fetches with retry logic for resilience against transient network failures.
+ */
+async function fetchWithRetry(url: string, retries = MAX_RETRIES): Promise<Response> {
+    let lastError: Error | undefined
 
-    if (!response.ok) {
-        throw new Error(`Failed to fetch registry index: ${response.statusText}`)
+    for (let attempt = 0; attempt < retries; attempt++) {
+        try {
+            const response = await fetch(url)
+            if (response.ok) {
+                return response
+            }
+            // Don't retry on 404 - the resource doesn't exist
+            if (response.status === 404) {
+                throw new Error(`Not found: ${url}`)
+            }
+            lastError = new Error(`HTTP ${response.status}: ${response.statusText}`)
+        } catch (error) {
+            lastError = error instanceof Error ? error : new Error(String(error))
+        }
+
+        // Wait before retrying (exponential backoff)
+        if (attempt < retries - 1) {
+            await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS * (attempt + 1)))
+        }
     }
 
+    throw lastError ?? new Error(`Failed to fetch ${url}`)
+}
+
+export async function getRegistryIndex(): Promise<RegistryIndex> {
+    const response = await fetchWithRetry(`${REGISTRY_URL}/index.json`)
     const json = await response.json()
     return registryIndexSchema.parse(json)
 }
 
 export async function getRegistryItem(name: string): Promise<RegistryItem> {
-    const response = await fetch(`${REGISTRY_URL}/${name}.json`)
-
-    if (!response.ok) {
-        throw new Error(`Component "${name}" not found in registry`)
-    }
-
+    const response = await fetchWithRetry(`${REGISTRY_URL}/${name}.json`)
     const json = await response.json()
     return registryItemSchema.parse(json)
 }
 
+/**
+ * Fetches multiple registry items in parallel for better performance.
+ */
 export async function getRegistryItems(names: string[]): Promise<RegistryItem[]> {
-    const items: RegistryItem[] = []
-
-    for (const name of names) {
-        const item = await getRegistryItem(name)
-        items.push(item)
-    }
-
-    return items
+    const results = await Promise.all(names.map((name) => getRegistryItem(name)))
+    return results
 }
 
 export async function resolveRegistryDependencies(
