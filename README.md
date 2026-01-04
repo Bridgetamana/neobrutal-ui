@@ -1,5 +1,5 @@
 [![npm version](https://img.shields.io/npm/v/neobrutal?style=flat-square)](https://www.npmjs.com/package/neobrutal)
-[![License](https://img.shields.io/github/license/Bridgetamana/neobrutal-ui?style=flat-square)](https://github.com/Bridgetamana/neobrutal-ui/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/Bridgetamana/neobrutal-ui?style=flat-square)](https://github.com/Bridgetamana/neobrutal-ui/blob/main/license.md)
 [![Contributors](https://img.shields.io/github/contributors/Bridgetamana/neobrutal-ui?style=flat-square)](https://github.com/Bridgetamana/neobrutal-ui/graphs/contributors)
 
 > Still a work in progress
