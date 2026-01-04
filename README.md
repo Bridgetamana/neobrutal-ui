@@ -2,9 +2,10 @@
 [![License](https://img.shields.io/github/license/Bridgetamana/neobrutal-ui?style=flat-square)](https://github.com/Bridgetamana/neobrutal-ui/blob/main/LICENSE)
 [![Contributors](https://img.shields.io/github/contributors/Bridgetamana/neobrutal-ui?style=flat-square)](https://github.com/Bridgetamana/neobrutal-ui/graphs/contributors)
 
+> Still a work in progress
+
 # NeoBrutal UI
 
-> Still a work in progress
 
 A collection of Neobrutalist components built with Base UI and Tailwind CSS.
 
