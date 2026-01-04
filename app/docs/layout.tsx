@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { ListIcon, XIcon } from "@phosphor-icons/react"
 import Image from "next/image"
+import { ColorThemePicker } from "@/components/home/color-theme-picker"
 
 const sidebarItems = [
     {
@@ -139,6 +140,7 @@ export default function DocsLayout({
                     {children}
                 </div>
             </main>
+            <ColorThemePicker />
         </div>
     )
 }
