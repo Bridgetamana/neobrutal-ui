@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Toaster, toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -54,7 +53,7 @@ export default function ToastPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add sonner" language="bash" />
+                <CodeBlock code="npx neobrutal add sonner" language="bash" />
             </div>
 
             <div className="space-y-4">

@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -33,7 +32,7 @@ export default function TextareaPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add textarea" language="bash" />
+                <CodeBlock code="npx neobrutal add textarea" language="bash" />
             </div>
 
             <div className="space-y-4">

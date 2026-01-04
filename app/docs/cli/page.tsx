@@ -14,7 +14,7 @@ export default function CLIPage() {
                 <p className="text-base text-black">
                     Set up your project for NeoBrutal UI. Creates the configuration file, installs base dependencies, and adds the utility functions.
                 </p>
-                <CodeBlock code={`npx neobrutal-ui init`} language="bash" />
+                <CodeBlock code={`npx neobrutal init`} language="bash" />
 
                 <div className="border-2 border-black overflow-hidden">
                     <table className="w-full text-base">
@@ -43,7 +43,7 @@ export default function CLIPage() {
                 <p className="text-base text-black">
                     Add one or more components to your project. Resolves dependencies and installs required packages automatically.
                 </p>
-                <CodeBlock code={`npx neobrutal-ui add [component...]`} language="bash" />
+                <CodeBlock code={`npx neobrutal add [component...]`} language="bash" />
 
                 <div className="border-2 border-black overflow-hidden">
                     <table className="w-full text-base">
@@ -75,13 +75,13 @@ export default function CLIPage() {
                 </div>
 
                 <CodeBlock code={`# Add a single component
-npx neobrutal-ui add button
+npx neobrutal add button
 
 # Add multiple components
-npx neobrutal-ui add button card dialog
+npx neobrutal add button card dialog
 
 # Add all components
-npx neobrutal-ui add --all`} language="bash" />
+npx neobrutal add --all`} language="bash" />
             </section>
 
             <section className="space-y-4">
@@ -89,7 +89,7 @@ npx neobrutal-ui add --all`} language="bash" />
                 <p className="text-base text-black">
                     Display all components available in the registry.
                 </p>
-                <CodeBlock code={`npx neobrutal-ui list`} language="bash" />
+                <CodeBlock code={`npx neobrutal list`} language="bash" />
             </section>
 
             <section className="space-y-4">
@@ -97,13 +97,13 @@ npx neobrutal-ui add --all`} language="bash" />
                 <p className="text-base text-black">
                     Compare local components with the registry to check for updates. Useful when you want to see what has changed without overwriting your customizations.
                 </p>
-                <CodeBlock code={`npx neobrutal-ui diff [component]`} language="bash" />
+                <CodeBlock code={`npx neobrutal diff [component]`} language="bash" />
 
                 <CodeBlock code={`# Check all installed components
-npx neobrutal-ui diff
+npx neobrutal diff
 
 # Check a specific component
-npx neobrutal-ui diff button`} language="bash" />
+npx neobrutal diff button`} language="bash" />
             </section>
 
             <section className="space-y-4">

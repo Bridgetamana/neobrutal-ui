@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -34,7 +33,7 @@ export default function LabelPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add label" language="bash" />
+                <CodeBlock code="npx neobrutal add label" language="bash" />
             </div>
 
             <div className="space-y-4">

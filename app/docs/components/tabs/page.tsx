@@ -60,7 +60,7 @@ export default function TabsPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add tabs" language="bash" />
+                <CodeBlock code="npx neobrutal add tabs" language="bash" />
             </div>
 
             <div className="space-y-4">

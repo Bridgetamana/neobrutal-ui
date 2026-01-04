@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -87,7 +86,7 @@ export default function RadioGroupPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add radio-group" language="bash" />
+                <CodeBlock code="npx neobrutal add radio-group" language="bash" />
             </div>
 
             <div className="space-y-4">

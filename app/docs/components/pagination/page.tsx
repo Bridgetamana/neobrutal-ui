@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Pagination, PaginationItem } from "@/components/ui/pagination"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
@@ -47,7 +46,7 @@ export default function PaginationPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add pagination" language="bash" />
+                <CodeBlock code="npx neobrutal add pagination" language="bash" />
             </div>
 
             <div className="space-y-4">

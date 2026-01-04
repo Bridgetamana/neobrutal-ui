@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -74,7 +73,7 @@ export default function PopoverPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add popover" language="bash" />
+                <CodeBlock code="npx neobrutal add popover" language="bash" />
             </div>
 
             <div className="space-y-4">
