@@ -79,7 +79,7 @@ export default function BreadcrumbPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add breadcrumb" language="bash" />
+                <CodeBlock code="npx neobrutal add breadcrumb" language="bash" />
             </div>
 
             <div className="space-y-4">

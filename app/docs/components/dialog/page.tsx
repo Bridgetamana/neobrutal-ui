@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -77,7 +76,7 @@ export default function DialogPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add dialog" language="bash" />
+                <CodeBlock code="npx neobrutal add dialog" language="bash" />
             </div>
 
             <div className="space-y-4">

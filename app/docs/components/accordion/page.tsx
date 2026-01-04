@@ -132,7 +132,7 @@ export default function AccordionPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Installation</h2>
-        <CodeBlock code="npx neobrutal-ui add accordion" language="bash" />
+        <CodeBlock code="npx neobrutal add accordion" language="bash" />
         <p className="text-base text-black">Or install the dependency and copy the code:</p>
         <CodeBlock code="npm install @base-ui/react" language="bash" />
       </div>

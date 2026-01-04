@@ -11,13 +11,15 @@ A collection of Neobrutalist components built with Base UI and Tailwind CSS.
 
 ## Documentation
 
-Visit [neobrutal-ui.vercel.app](https://neobrutal-ui.vercel.app) for comprehensive documentation, examples, and guides.
+[neobrutalui](https://www.neobrutalui.live) for comprehensive documentation, examples, and guides.
 
 ## Quick Start
 
+Initialize your project and add components:
+
 ```bash
 npx neobrutal init
-npx neobrutal add button
+npx neobrutal add button card dialog
 ```
 
 Or copy the code directly from the docs.
@@ -55,6 +57,6 @@ We welcome contributions. Please read our [Contributing Guide](CONTRIBUTING.md) 
 
 This project is licensed under the terms of the [MIT License](license.md).
 
-## Acknowledgments
+## Credits
 
-- Built on the shoulders: React, Tailwind, and Base UI
+Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Phosphor Icons](https://phosphoricons.com).

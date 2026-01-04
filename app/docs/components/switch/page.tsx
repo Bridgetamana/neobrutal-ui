@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -57,7 +56,7 @@ export default function SwitchPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add switch" language="bash" />
+                <CodeBlock code="npx neobrutal add switch" language="bash" />
             </div>
 
             <div className="space-y-4">

@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Progress } from "@/components/ui/progress"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
@@ -40,7 +39,7 @@ export default function ProgressPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add progress" language="bash" />
+                <CodeBlock code="npx neobrutal add progress" language="bash" />
             </div>
 
             <div className="space-y-4">

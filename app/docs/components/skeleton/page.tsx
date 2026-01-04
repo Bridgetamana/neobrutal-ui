@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
@@ -39,7 +38,7 @@ export default function SkeletonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add skeleton" language="bash" />
+                <CodeBlock code="npx neobrutal add skeleton" language="bash" />
             </div>
 
             <div className="space-y-4">

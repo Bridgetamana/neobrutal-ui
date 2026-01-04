@@ -55,7 +55,7 @@ export default function ButtonPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add button" language="bash" />
+                <CodeBlock code="npx neobrutal add button" language="bash" />
             </div>
 
             <div className="space-y-4">

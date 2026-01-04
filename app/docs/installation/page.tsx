@@ -22,7 +22,7 @@ export default function QuickStartPage() {
                             <span className="flex items-center justify-center w-8 h-8 text-base font-bold border-2 border-black rounded-base bg-main">1</span>
                             <h3 className="text-lg font-bold text-black">Initialize your project</h3>
                         </div>
-                        <CodeBlock code={`npx neobrutal-ui init`} language="bash" />
+                        <CodeBlock code={`npx neobrutal init`} language="bash" />
                     </div>
 
                     <div className="space-y-3">
@@ -30,7 +30,7 @@ export default function QuickStartPage() {
                             <span className="flex items-center justify-center w-8 h-8 text-base font-bold border-2 border-black rounded-base bg-main">2</span>
                             <h3 className="text-lg font-bold text-black">Add a component</h3>
                         </div>
-                        <CodeBlock code={`npx neobrutal-ui add button`} language="bash" />
+                        <CodeBlock code={`npx neobrutal add button`} language="bash" />
                     </div>
 
                     <div className="space-y-3">

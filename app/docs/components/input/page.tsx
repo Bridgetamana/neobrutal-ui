@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -33,7 +32,7 @@ export default function InputPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add input" language="bash" />
+                <CodeBlock code="npx neobrutal add input" language="bash" />
             </div>
 
             <div className="space-y-4">
