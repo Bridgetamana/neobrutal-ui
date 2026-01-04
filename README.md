@@ -1,6 +1,8 @@
 > Still a work in progress
 # NeoBrutal UI
 
+![NeoBrutal UI Components Preview](public/neobrutal-preview.png)
+
 A collection of Neobrutalist components built with [Base UI](https://base-ui.com) and Tailwind CSS.
 
 ## Documentation
@@ -10,7 +12,6 @@ A collection of Neobrutalist components built with [Base UI](https://base-ui.com
 ## Quick Start
 
 Initialize your project and add components:
-
 ```bash
 npx neobrutal init
 npx neobrutal add button card dialog
