@@ -3,13 +3,8 @@
 import { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
-import {
-    MagnifyingGlassIcon,
-    FileIcon,
-    BookOpenIcon,
-    TerminalIcon,
-    PaletteIcon,
-} from "@phosphor-icons/react"
+import { MagnifyingGlassIcon } from "@phosphor-icons/react"
+import { Input } from "@/components/ui/input"
 
 interface SearchItem {
     name: string
@@ -220,19 +215,6 @@ const searchItems: SearchItem[] = [
     },
 ]
 
-function getCategoryIcon(category: SearchItem["category"]) {
-    switch (category) {
-        case "component":
-            return <FileIcon size={16} weight="bold" />
-        case "docs":
-            return <BookOpenIcon size={16} weight="bold" />
-        case "cli":
-            return <TerminalIcon size={16} weight="bold" />
-        default:
-            return <PaletteIcon size={16} weight="bold" />
-    }
-}
-
 export function CommandSearch() {
     const [open, setOpen] = useState(false)
     const router = useRouter()
@@ -256,16 +238,15 @@ export function CommandSearch() {
 
     return (
         <>
-            <button
-                onClick={() => setOpen(true)}
-                className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-black/60 border-2 border-border rounded-md bg-white hover:bg-main/20 transition-colors cursor-pointer focus-brutal"
-            >
-                <MagnifyingGlassIcon size={16} weight="bold" />
-                <span>Search...</span>
-                <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border-2 border-border bg-bg px-1.5 font-mono text-[10px] font-medium">
-                    <span className="text-xs">⌘</span>K
-                </kbd>
-            </button>
+            <form className="relative hidden md:block">
+                <MagnifyingGlassIcon size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60" />
+                <Input
+                    readOnly
+                    onClick={() => setOpen(true)}
+                    placeholder="Search..."
+                    className="w-36 pl-8"
+                />
+            </form>
             <Command.Dialog
                 open={open}
                 onOpenChange={setOpen}
@@ -278,7 +259,7 @@ export function CommandSearch() {
                 />
                 <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white border-4 border-border shadow-brutal rounded-lg overflow-hidden">
                     <div className="flex items-center gap-2 px-4 border-b-2 border-border">
-                        <MagnifyingGlassIcon size={20} weight="bold" className="text-black/60" />
+                        <MagnifyingGlassIcon size={16} className="text-black/60" />
                         <Command.Input
                             placeholder="Search components, docs..."
                             className="flex-1 py-4 text-base outline-none placeholder:text-black/40"
@@ -289,7 +270,7 @@ export function CommandSearch() {
                             No results found.
                         </Command.Empty>
 
-                        <Command.Group heading="Components" className="px-2 py-1.5 text-xs font-bold text-black/40 uppercase tracking-wider">
+                        <Command.Group heading="Components" className="px-2 py-1.5 text-base">
                             {searchItems
                                 .filter((item) => item.category === "component")
                                 .map((item) => (
@@ -299,18 +280,15 @@ export function CommandSearch() {
                                         onSelect={() => runCommand(() => router.push(item.href))}
                                         className="flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
                                     >
-                                        <span className="flex items-center justify-center w-6 h-6 rounded border-2 border-border bg-bg">
-                                            {getCategoryIcon(item.category)}
-                                        </span>
                                         <div className="flex-1 min-w-0">
-                                            <p className="font-semibold truncate">{item.name}</p>
-                                            <p className="text-xs text-black/60 truncate">{item.description}</p>
+                                            <p className="truncate">{item.name}</p>
+                                            <p className="text-xs text-black/70 truncate">{item.description}</p>
                                         </div>
                                     </Command.Item>
                                 ))}
                         </Command.Group>
 
-                        <Command.Group heading="Documentation" className="px-2 py-1.5 text-xs font-bold text-black/40 uppercase tracking-wider mt-2">
+                        <Command.Group heading="Documentation" className="px-2 py-1.5 text-base">
                             {searchItems
                                 .filter((item) => item.category === "docs" || item.category === "cli")
                                 .map((item) => (
@@ -320,34 +298,18 @@ export function CommandSearch() {
                                         onSelect={() => runCommand(() => router.push(item.href))}
                                         className="flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
                                     >
-                                        <span className="flex items-center justify-center w-6 h-6 rounded border-2 border-border bg-bg">
-                                            {getCategoryIcon(item.category)}
-                                        </span>
                                         <div className="flex-1 min-w-0">
-                                            <p className="font-semibold truncate">{item.name}</p>
-                                            <p className="text-xs text-black/60 truncate">{item.description}</p>
+                                            <p className="truncate">{item.name}</p>
+                                            <p className="text-xs text-black/70 truncate">{item.description}</p>
                                         </div>
                                     </Command.Item>
                                 ))}
                         </Command.Group>
                     </Command.List>
-                    <div className="flex items-center justify-between px-4 py-2 border-t-2 border-border bg-bg text-xs text-black/60">
-                        <div className="flex items-center gap-4">
-                            <span className="flex items-center gap-1">
-                                <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">↑</kbd>
-                                <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">↓</kbd>
-                                navigate
-                            </span>
-                            <span className="flex items-center gap-1">
-                                <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">↵</kbd>
-                                select
-                            </span>
-                        </div>
-                        <span className="flex items-center gap-1">
-                            <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">esc</kbd>
-                            close
-                        </span>
-                    </div>
+                    <span className="flex items-center gap-1 px-4 py-2 border-t-2 text-xs">
+                        <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">esc</kbd>
+                        close
+                    </span>
                 </div>
             </Command.Dialog>
         </>
