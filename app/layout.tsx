@@ -12,7 +12,7 @@ const publicSans = Public_Sans({
   adjustFontFallback: false,
 });
 
-export async function generateMetaData(): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const metadata: Metadata = {
     title: {
       default: "Neobrutal UI - A Neobrutalism-styled Component Library",
