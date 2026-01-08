@@ -18,10 +18,10 @@ export default function DocsPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black leading-relaxed">
-                    Neobrutal UI bridges the gap between raw Neobrutalist aesthetics and structured accessibility. Each component is built on Base UI primitives, ensuring proper keyboard navigation, focus management, and ARIA support out of the box.
+                    Neobrutal UI is a collection of neobrutalism-styled components with smooth animations built with Base UI, React and Tailwind CSS.
                 </p>
                 <p className="text-base text-black leading-relaxed">
-                    Components are distributed via CLI or direct copy-paste. There is no npm package to install. You own the code, customize it freely, and never worry about breaking changes from upstream updates.
+                    Components are distributed via CLI or direct copy-paste. You own the code, customize it freely, and never worry about breaking changes from upstream updates.
                 </p>
             </section>
 
@@ -35,7 +35,7 @@ export default function DocsPage() {
                                 No hidden abstractions or version lock-in. Every line lives in your project.
                             </p>
                         </div>
-                        <div className="p-6">
+                        <div className="p-6 bg-main">
                             <span className="text-2xl font-bold text-black">Accessible</span>
                             <p className="text-base text-black mt-2">
                                 Built on Base UI with keyboard navigation and screen reader support.
@@ -43,14 +43,14 @@ export default function DocsPage() {
                         </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black border-t-2 border-black">
-                        <div className="p-6">
+                        <div className="p-6 sm:bg-main">
                             <span className="text-2xl font-bold text-black">Two Formats</span>
                             <p className="text-base text-black mt-2">
                                 React components for applications. Plain HTML with Tailwind for prototypes.
                             </p>
                         </div>
-                        <div className="p-6">
-                            <span className="text-2xl font-bold text-black">Tailwind CSS v4</span>
+                        <div className="p-6 bg-main sm:bg-transparent">
+                            <span className="text-2xl font-bold text-black">Customizable</span>
                             <p className="text-base text-black mt-2">
                                 Styled with CSS variables for straightforward theming and customization.
                             </p>
@@ -102,37 +102,37 @@ export default function DocsPage() {
                 <p className="text-base text-black leading-relaxed">
                     Neobrutal UI is built on the work of several open source projects and design systems.
                 </p>
-                <ul className="space-y-2 text-base text-black">
+                <ul className="space-y-2 text-base list-disc list-inside text-black font-bold">
                     <li>
-                        <Link href="https://base-ui.com" target="_blank" className="font-bold underline underline-offset-4">Base UI</Link>
+                        <Link href="https://base-ui.com" target="_blank" className="underline underline-offset-4">Base UI</Link>
                     </li>
                     <li>
-                        <Link href="https://tailwindcss.com" target="_blank" className="font-bold underline underline-offset-4">Tailwind CSS</Link>
+                        <Link href="https://tailwindcss.com" target="_blank" className="underline underline-offset-4">Tailwind CSS</Link>
                     </li>
                     <li>
-                        <Link href="https://ui.shadcn.com" target="_blank" className="font-bold underline underline-offset-4">shadcn/ui</Link>
+                        <Link href="https://ui.shadcn.com" target="_blank" className="underline underline-offset-4">shadcn/ui</Link>
                     </li>
                     <li>
-                        <Link href="https://phosphoricons.com" target="_blank" className="font-bold underline underline-offset-4">Phosphor Icons</Link>
+                        <Link href="https://phosphoricons.com" target="_blank" className="underline underline-offset-4">Phosphor Icons</Link>
                     </li>
                 </ul>
             </section>
 
             <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-black">Get Involved</h2>
-                <ul className="space-y-3 text-base">
+                <ul className="space-y-3 text-base list-disc list-inside text-black font-bold">
                     <li>
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="font-bold text-black underline underline-offset-4">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="underline underline-offset-4">
                             Star the repository on GitHub
                         </Link>
                     </li>
                     <li>
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui/issues" target="_blank" className="font-bold text-black underline underline-offset-4">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui/issues" target="_blank" className="underline underline-offset-4">
                             Report bugs or request features
                         </Link>
                     </li>
                     <li>
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui/blob/main/CONTRIBUTING.md" target="_blank" className="font-bold text-black underline underline-offset-4">
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui/blob/main/CONTRIBUTING.md" target="_blank" className="underline underline-offset-4">
                             Contribute to the project
                         </Link>
                     </li>
