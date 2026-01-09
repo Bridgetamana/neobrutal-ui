@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Link from "next/link"
-import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
