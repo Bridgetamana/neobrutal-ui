@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     default: "Neobrutal UI - A Neobrutalism-styled Component Library",
     template: "%s | Neobrutal UI",
   },
-  description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+  description:
+    "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
   keywords: [
     "neobrutalism",
     "neobrutalism ui",
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.neobrutalui.live",
     title: "Neobrutal UI",
-    description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+    description:
+      "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
     siteName: "Neobrutal UI",
     images: [
       {
@@ -53,7 +55,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Neobrutal UI",
-    description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+    description:
+      "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
     images: ["/opengraph-image.png"],
     creator: "@bridgetamana",
   },
