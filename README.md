@@ -60,3 +60,10 @@ This project is licensed under the terms of the [MIT License](license.md).
 ## Credits
 
 Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Phosphor Icons](https://phosphoricons.com).
+
+## All Contributors
+
+Thanks to everyone who has contributed to **Neobrutal UI**.
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
