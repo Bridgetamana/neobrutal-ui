@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
 import { MagnifyingGlassIcon } from "@phosphor-icons/react"
 import { Input } from "@/components/ui/input"
+import { Dialog } from "@base-ui/react"
 
 interface SearchItem {
     name: string
@@ -237,81 +238,108 @@ export function CommandSearch() {
     }, [])
 
     return (
-        <>
-            <form className="relative hidden md:block">
-                <MagnifyingGlassIcon size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60" />
-                <Input
-                    readOnly
-                    onClick={() => setOpen(true)}
-                    placeholder="Search..."
-                    className="w-36 pl-8"
-                />
-            </form>
-            <Command.Dialog
-                open={open}
-                onOpenChange={setOpen}
-                label="Search components"
-                className="fixed inset-0 z-100"
+       <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger>
+        <div className="relative block cursor-pointer">
+          <MagnifyingGlassIcon
+            size={14}
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
+          />
+          <Input
+            readOnly
+            placeholder="Search..."
+            className="w-36 pl-8 hidden lg:block"
+          />
+        </div>
+      </Dialog.Trigger>
+
+      <Dialog.Portal>
+        <Dialog.Backdrop className="fixed inset-0 bg-black/50 z-50" />
+
+        <Dialog.Popup
+          className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg
+      -translate-x-1/2 -translate-y-1/2 bg-white border-4
+      border-border shadow-brutal rounded-lg overflow-hidden"
+        >
+          <Dialog.Title className="sr-only">
+            Search components and documentation
+          </Dialog.Title>
+
+          <Command className="w-full" loop={false} shouldFilter={true}>
+            <div className="flex items-center gap-2 px-4 border-b-2 border-border">
+              <MagnifyingGlassIcon size={16} className="text-black/60" />
+              <Command.Input
+                autoFocus
+                placeholder="Search components, docs..."
+                className="flex-1 py-4 text-base outline-none placeholder:text-black/40"
+                onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
+              />
+            </div>
+
+            <Command.List
+              className="max-h-80 overflow-y-auto p-2"
+              style={{ overflowAnchor: "none" }}
             >
-                <div
-                    className="fixed inset-0 bg-black/50"
-                    onClick={() => setOpen(false)}
-                />
-                <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white border-4 border-border shadow-brutal rounded-lg overflow-hidden">
-                    <div className="flex items-center gap-2 px-4 border-b-2 border-border">
-                        <MagnifyingGlassIcon size={16} className="text-black/60" />
-                        <Command.Input
-                            placeholder="Search components, docs..."
-                            className="flex-1 py-4 text-base outline-none placeholder:text-black/40"
-                        />
-                    </div>
-                    <Command.List className="max-h-80 overflow-y-auto p-2">
-                        <Command.Empty className="py-6 text-center text-sm text-black/60">
-                            No results found.
-                        </Command.Empty>
+              <Command.Empty className="py-6 text-center text-sm text-black/60">
+                No results found.
+              </Command.Empty>
 
-                        <Command.Group heading="Components" className="px-2 py-1.5 text-base">
-                            {searchItems
-                                .filter((item) => item.category === "component")
-                                .map((item) => (
-                                    <Command.Item
-                                        key={item.href}
-                                        value={`${item.name} ${item.description} ${item.keywords.join(" ")}`}
-                                        onSelect={() => runCommand(() => router.push(item.href))}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
-                                    >
-                                        <div className="flex-1 min-w-0">
-                                            <p className="truncate">{item.name}</p>
-                                            <p className="text-xs text-black/70 truncate">{item.description}</p>
-                                        </div>
-                                    </Command.Item>
-                                ))}
-                        </Command.Group>
+              <Command.Group heading="Components" className="px-2 py-1.5">
+                {searchItems
+                  .filter((i) => i.category === "component")
+                  .map((item) => (
+                    <Command.Item
+                      key={item.href}
+                      value={`${item.name} ${
+                        item.description
+                      } ${item.keywords.join(" ")}`}
+                      onSelect={() => runCommand(() => router.push(item.href))}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md
+                  cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate">{item.name}</p>
+                        <p className="text-xs text-black/70 truncate">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Command.Item>
+                  ))}
+              </Command.Group>
 
-                        <Command.Group heading="Documentation" className="px-2 py-1.5 text-base">
-                            {searchItems
-                                .filter((item) => item.category === "docs" || item.category === "cli")
-                                .map((item) => (
-                                    <Command.Item
-                                        key={item.href}
-                                        value={`${item.name} ${item.description} ${item.keywords.join(" ")}`}
-                                        onSelect={() => runCommand(() => router.push(item.href))}
-                                        className="flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
-                                    >
-                                        <div className="flex-1 min-w-0">
-                                            <p className="truncate">{item.name}</p>
-                                            <p className="text-xs text-black/70 truncate">{item.description}</p>
-                                        </div>
-                                    </Command.Item>
-                                ))}
-                        </Command.Group>
-                    </Command.List>
-                    <span className="flex items-center gap-1 px-4 py-2 border-t-2 text-xs">
-                        <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">esc</kbd>
-                        close
-                    </span>
-                </div>
-            </Command.Dialog>
-        </>
+              <Command.Group heading="Documentation" className="px-2 py-1.5">
+                {searchItems
+                  .filter((i) => i.category === "docs" || i.category === "cli")
+                  .map((item) => (
+                    <Command.Item
+                      key={item.href}
+                      value={`${item.name} ${
+                        item.description
+                      } ${item.keywords.join(" ")}`}
+                      onSelect={() => runCommand(() => router.push(item.href))}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md
+                  cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate">{item.name}</p>
+                        <p className="text-xs text-black/70 truncate">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Command.Item>
+                  ))}
+              </Command.Group>
+            </Command.List>
+
+            <div className="flex items-center gap-1 px-4 py-2 border-t-2 text-xs">
+              <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">
+                esc
+              </kbd>
+              close
+            </div>
+          </Command>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
     )
 }
