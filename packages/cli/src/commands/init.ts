@@ -287,10 +287,6 @@ const NEOBRUTAL_CSS_VARIABLES = `
   --color-foreground: var(--black);
   --color-main: var(--main);
   --color-bg: var(--bg);
-  --color-bw: var(--white);
-  --color-text: var(--black);
-  --color-border: var(--black);
-  --color-ring: var(--black);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }

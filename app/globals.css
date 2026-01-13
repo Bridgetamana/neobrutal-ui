@@ -4,24 +4,11 @@
   --font-sans: var(--font-public-sans);
   --color-white: var(--white);
   --color-black: var(--black);
-  --color-background: var(--bg);
-  --color-foreground: var(--black);
-  --color-primary: var(--main);
-  --color-primary-foreground: var(--black);
-  --color-accent: var(--main);
-  --color-accent-foreground: var(--black);
-  --color-border: var(--black);
-  --color-ring: var(--black);
-  --color-ring-offset: var(--white);
-  --color-text: var(--black);
   --color-bg: var(--bg);
-  --color-bw: var(--white);
   --color-main: var(--main);
   --color-pastel-green: var(--pastel-green);
   --color-pastel-yellow: var(--pastel-yellow);
-  --color-pastel-orange: var(--pastel-orange);
   --color-pastel-red: var(--pastel-red);
-  --color-pastel-pink: var(--pastel-pink);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
@@ -34,9 +21,7 @@
   --radius: 5px;
   --pastel-green: #97ee88;
   --pastel-yellow: #fed170;
-  --pastel-orange: #eeaa88;
   --pastel-red: #ee8888;
-  --pastel-pink: #ee88d6;
 }
 
 body {
@@ -47,7 +32,7 @@ body {
 
 @layer utilities {
   .focus-brutal {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white;
   }
   .shadow-brutal {
     box-shadow: var(--shadow-brutal);
@@ -63,34 +48,8 @@ body {
   }
 }
 
-@keyframes accordion-down {
-  from {
-    height: 0;
-  }
-  to {
-    height: var(--accordion-panel-height);
-  }
-}
-
-@keyframes accordion-up {
-  from {
-    height: var(--accordion-panel-height);
-  }
-  to {
-    height: 0;
-  }
-}
-
 .animate-marquee {
   animation: marquee 30s linear infinite;
-}
-
-.animate-accordion-down {
-  animation: accordion-down 0.2s ease-out;
-}
-
-.animate-accordion-up {
-  animation: accordion-up 0.2s ease-out;
 }
 
 ::-webkit-scrollbar {
