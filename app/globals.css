@@ -6,9 +6,9 @@
   --color-black: var(--black);
   --color-bg: var(--bg);
   --color-main: var(--main);
-  --color-pastel-green: var(--pastel-green);
-  --color-pastel-yellow: var(--pastel-yellow);
-  --color-pastel-red: var(--pastel-red);
+  --color-mint: var(--mint);
+  --color-lemon: var(--lemon);
+  --color-rose: var(--rose);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
@@ -19,9 +19,9 @@
   --main: #b6ace4;
   --bg: #f0eefc;
   --radius: 5px;
-  --pastel-green: #97ee88;
-  --pastel-yellow: #fed170;
-  --pastel-red: #ee8888;
+  --mint: #97ee88;
+  --lemon: #fed170;
+  --rose: #ee8888;
 }
 
 body {

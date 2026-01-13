@@ -5,11 +5,11 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const tabsVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-border",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 border-2 border-black",
     {
         variants: {
             variant: {
-                default: "bg-bw text-text border-border hover:bg-main hover:text-black",
+                default: "bg-white text-black border-black hover:bg-main hover:text-black",
                 active: "bg-main text-black border-black shadow-brutal",
             },
             size: {
@@ -32,7 +32,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         <div
             ref={ref}
             role="tablist"
-            className={cn("inline-flex gap-1 rounded-base border-2 border-border bg-bw p-1", className)}
+            className={cn("inline-flex gap-1 rounded-base border-2 border-black bg-white p-1", className)}
             {...props}
         />
     )

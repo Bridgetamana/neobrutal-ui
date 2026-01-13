@@ -283,10 +283,10 @@ export function cn(...inputs: ClassValue[]) {
 const NEOBRUTAL_CSS_VARIABLES = `
 /* Neobrutal UI - Tailwind v4 Theme */
 @theme inline {
-  --color-background: var(--bg);
-  --color-foreground: var(--black);
-  --color-main: var(--main);
+  --color-white: var(--white);
+  --color-black: var(--black);
   --color-bg: var(--bg);
+  --color-main: var(--main);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
