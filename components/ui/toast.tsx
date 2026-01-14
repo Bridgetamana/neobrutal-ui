@@ -189,5 +189,4 @@ export {
     ToastClose,
     ToastAction,
     Toaster,
-    toast,
 }
