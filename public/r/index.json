@@ -195,11 +195,11 @@
     ]
   },
   {
-    "name": "sonner",
+    "name": "toast",
     "type": "registry:ui",
     "description": "An opinionated toast component with neobrutalist styling.",
     "dependencies": [
-      "sonner"
+      "@base-ui/react"
     ],
     "registryDependencies": [
       "utils"

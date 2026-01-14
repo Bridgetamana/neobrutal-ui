@@ -161,7 +161,7 @@ const searchItems: SearchItem[] = [
         name: "Toast",
         description: "An opinionated toast component with neobrutalist styling.",
         href: "/docs/components/toast",
-        keywords: ["notification", "snackbar", "message", "sonner"],
+        keywords: ["notification", "snackbar", "message"],
         category: "component",
     },
     {

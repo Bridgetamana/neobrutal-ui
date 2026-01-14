@@ -307,18 +307,18 @@
             ]
         },
         {
-            "name": "sonner",
+            "name": "toast",
             "type": "registry:ui",
             "description": "An opinionated toast component with neobrutalist styling.",
             "dependencies": [
-                "sonner"
+                "@base-ui/react"
             ],
             "registryDependencies": [
                 "utils"
             ],
             "files": [
                 {
-                    "path": "components/ui/sonner.tsx",
+                    "path": "components/ui/toast.tsx",
                     "type": "registry:ui"
                 }
             ]
