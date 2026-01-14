@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toast";
 import { Analytics } from "@vercel/analytics/next"
+import { ThemeProvider } from "@/components/theme-provider";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -13,35 +14,47 @@ const publicSans = Public_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "NeoBrutal UI",
-    template: "%s | NeoBrutal UI",
+    default: "Neobrutal UI - A Neobrutalism-styled Component Library",
+    template: "%s | Neobrutal UI",
   },
-  description: "A collection of Neobrutalist components built with Base UI and Tailwind CSS.",
-  keywords: ["react", "next.js", "tailwindcss", "neobrutalism", "component library", "ui kit", "design system"],
+  description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+  keywords: [
+    "neobrutalism",
+    "neobrutalism ui",
+    "neobrutalism components",
+    "brutalism ui",
+    "tailwind components",
+    "bold ui",
+    "neobrutalism tailwind",
+    "react neobrutalism",
+    "react tailwind components",
+    "shadcn components",
+    "shadcn neobrutalism",
+  ],
   authors: [{ name: "Bridget", url: "https://github.com/bridgetamana" }],
   creator: "Bridget",
-  metadataBase: new URL("https://neobrutal-ui.vercel.app"),
+  metadataBase: new URL("https://www.neobrutalui.live"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://neobrutal-ui.vercel.app",
-    title: "NeoBrutal UI",
-    description: "A collection of Neobrutalist components built with Base UI and Tailwind CSS.",
-    siteName: "NeoBrutal UI",
-    // images: [
-    //   {
-    //     url: "/og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "NeoBrutal UI",
-    //   },
-    // ],
+    url: "https://www.neobrutalui.live",
+    title: "Neobrutal UI",
+    description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+    siteName: "Neobrutal UI",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Neobrutal UI",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NeoBrutal UI",
-    description: "A collection of Neobrutalist components built with Base UI and Tailwind CSS.",
-    // images: ["/og-image.png"],
+    title: "Neobrutal UI",
+    description: "A collection of Neobrutalism-styled components built with Base UI and Tailwind CSS.",
+    images: ["/opengraph-image.png"],
     creator: "@bridgetamana",
   },
   robots: {
@@ -55,6 +68,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "BC_qnItrS5-84LtlJa_v3jwV0OpYALV72O-SV6Rq1zg",
+  },
 };
 
 export default function RootLayout({
@@ -65,8 +81,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${publicSans.variable} font-sans antialiased`}>
-        {children}
-        <Toaster />
+        <ThemeProvider>
+          {children}
+          <Toaster />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

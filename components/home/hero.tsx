@@ -8,6 +8,9 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Switch } from "@/components/ui/switch"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Slider } from "@/components/ui/slider"
+import { Label } from "@/components/ui/label"
 import {
     ArrowRightIcon,
     WarningIcon,
@@ -20,10 +23,10 @@ import { cn } from "@/lib/utils"
 const Marquee = ({ className, children }: { className?: string, children: React.ReactNode }) => {
     return (
         <div className={cn("flex overflow-hidden select-none", className)}>
-            <div className={cn("flex min-w-full shrink-0 gap-4 items-center animate-marquee pr-4")}>
+            <div className={cn("flex min-w-full shrink-0 gap-3 items-center animate-marquee pr-3")}>
                 {children}
             </div>
-            <div className={cn("flex min-w-full shrink-0 gap-4 items-center animate-marquee pr-4")}>
+            <div className={cn("flex min-w-full shrink-0 gap-3 items-center animate-marquee pr-3")}>
                 {children}
             </div>
         </div>
@@ -33,13 +36,13 @@ const Marquee = ({ className, children }: { className?: string, children: React.
 export function HeroSection() {
     return (
         <section className="relative pt-20 pb-0 md:pt-32 overflow-hidden min-h-dvh min-h-vh flex flex-col justify-center">
-            <div className="container mx-auto px-4 md:px-8 text-center relative z-10 mb-10">
+            <div className="container mx-auto px-4 md:px-8 text-center relative mb-10">
                 <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-[0.9]">
-                    Neobrutalist <br />
+                    Neobrutalism <br />
                     Components
                 </h1>
                 <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 text-black">
-                    A collection of Neobrutalist components built with Base UI and Tailwind CSS.
+                    A collection of Neobrutalism components built with Base UI and Tailwind CSS.
                 </p>
                 <Link href="/docs/installation">
                     <Button className="h-14 px-8 text-lg font-bold shadow-brutal hover:bg-main">
@@ -48,7 +51,7 @@ export function HeroSection() {
                 </Link>
             </div>
             <Marquee>
-                <Card className="w-44 shrink-0 bg-pastel-green border-2 border-black shadow-brutal">
+                <Card className="w-44 shrink-0 bg-mint">
                     <CardHeader className="pb-2">
                         <div className="flex justify-between items-center">
                             <CardTitle className="text-sm uppercase">Revenue</CardTitle>
@@ -61,30 +64,32 @@ export function HeroSection() {
                     </CardContent>
                 </Card>
                 <div className="flex gap-2">
-                    <Button size="icon" className="rounded-full w-12 h-12 border-2 shadow-brutal bg-pastel-yellow text-black hover:translate-y-1 hover:shadow-none">
+                    <Button size="icon" aria-label="Like" className="rounded-full w-12 h-12 bg-lemon">
                         <HeartIcon weight="fill" className="w-6 h-6" />
                     </Button>
-                    <Button size="icon" className="rounded-full w-12 h-12 border-2 shadow-brutal bg-pastel-blue text-black hover:translate-y-1 hover:shadow-none">
+                    <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-[#88c5ee]">
                         <ShareNetworkIcon weight="bold" className="w-6 h-6" />
                     </Button>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-[250px]">
                     <Avatar className="w-12 h-12 border-2 border-black">
-                        <AvatarImage src="https://github.com/shadcn.png" />
-                        <AvatarFallback>UI</AvatarFallback>
+                        <AvatarImage src="https://github.com/bridgetamana.png" />
+                        <AvatarFallback>BA</AvatarFallback>
                     </Avatar>
                     <div>
-                        <div className="font-bold">Jane Doe</div>
-                        <div className="text-xs font-medium text-gray-500">@janedoe</div>
+                        <div className="font-bold">Bridget Amana</div>
+                        <div className="text-xs font-medium text-black/60">@bridgetamana</div>
                     </div>
                 </div>
-                <Switch className="data-[state=checked]:bg-black" />
+                <Switch aria-label="Toggle setting" className="data-[state=checked]:bg-black" />
                 <Input placeholder="Enter your email..." />
-                <div className="flex gap-2">
-                    <Badge variant="default" className="bg-pastel-red text-black border-2 border-black">New</Badge>
-                    <Badge variant="outline" className="bg-white text-black border-2 border-black rounded-4xl">Featured</Badge>
+                <Badge variant="default" className="bg-hot-pink">New</Badge>
+                <div className="flex items-center gap-2 p-3 bg-[#88c5ee] border-2 border-black shadow-brutal rounded-base">
+                    <Checkbox id="demo" defaultChecked />
+                    <Label htmlFor="demo">Subscribe</Label>
                 </div>
-                <Alert className="w-full bg-pastel-red border-2 border-black shadow-brutal">
+                <Slider defaultValue={[50]} max={100} />
+                <Alert className="w-full bg-hot-pink border-2 border-black shadow-brutal">
                     <WarningIcon className="h-5 w-5" />
                     <AlertTitle className="font-bold">Heads up!</AlertTitle>
                     <AlertDescription>

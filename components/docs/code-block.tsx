@@ -26,17 +26,17 @@ export function CodeBlock({ code, language = "tsx", className, ...props }: CodeB
     }
 
     return (
-        <div className={cn("relative group rounded-base border-2 border-border bg-black text-white font-mono text-sm", className)} {...props}>
+        <div className={cn("relative group rounded-base bg-black text-white font-mono text-sm", className)} {...props}>
             <div className="absolute right-4 top-4 z-10">
                 <Button
                     size="icon"
-                    className="h-8 w-8 border-white/60 bg-white/20 hover:bg-black/30 text-white hover:translate-0"
+                    className="h-6 w-6 bg-transparent text-white hover:translate-0"
                     onClick={onCopy}
                 >
                     {hasCopied ? (
-                        <CheckIcon className="h-4 w-4" />
+                        <CheckIcon className="h-6 w-6" />
                     ) : (
-                        <CopyIcon className="h-4 w-4" />
+                        <CopyIcon className="h-6 w-6" />
                     )}
                     <span className="sr-only">Copy code</span>
                 </Button>

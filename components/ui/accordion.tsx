@@ -17,7 +17,7 @@ const AccordionItem = React.forwardRef<
     <BaseAccordion.Item
         ref={ref}
         className={cn(
-            "mb-4 border-2 border-black bg-bw data-panel-open:bg-main/30 data-panel-open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+            "mb-4 border-2 border-black bg-white data-panel-open:bg-main/30 data-panel-open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
             className
         )}
         {...props}
@@ -35,7 +35,7 @@ const AccordionTrigger = React.forwardRef<
         <BaseAccordion.Trigger
             ref={ref}
             className={cn(
-                "flex flex-1 items-center justify-between p-3 font-medium [&[data-panel-open]>svg]:rotate-180 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
+                "flex flex-1 items-center text-left justify-between p-3 font-medium [&[data-panel-open]>svg]:rotate-180 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
                 className
             )}
             {...props}

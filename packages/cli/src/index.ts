@@ -1,21 +1,21 @@
 import { Command } from "commander"
+import { createRequire } from "module"
 import { init } from "./commands/init.js"
 import { add } from "./commands/add.js"
 import { list } from "./commands/list.js"
 import { diff } from "./commands/diff.js"
+import { update } from "./commands/update.js"
 
-const packageJson = {
-    version: "0.1.0",
-    name: "neobrutal-ui",
-}
+const require = createRequire(import.meta.url)
+const packageJson = require("../package.json") as { name: string; version: string }
 
 process.on("SIGINT", () => process.exit(0))
 process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
     const program = new Command()
-        .name("neobrutal-ui")
-        .description("Add NeoBrutal UI components to your project")
+        .name("neobrutal")
+        .description("Add Neobrutal UI components to your project")
         .version(
             packageJson.version,
             "-v, --version",
@@ -27,6 +27,7 @@ async function main() {
         .addCommand(add)
         .addCommand(list)
         .addCommand(diff)
+        .addCommand(update)
 
     program.parse()
 }

@@ -1,107 +1,53 @@
 "use client"
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const selectCode = `"use client"
+const usageCode = `<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>`
 
-import * as React from "react"
-import { Select as BaseSelect } from "@base-ui/react/select"
-import { CheckIcon, CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
-
-const Select = BaseSelect.Root
-
-const SelectGroup = BaseSelect.Group
-
-const SelectValue = BaseSelect.Value
-
-type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Trigger>
-
-const SelectTrigger = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Trigger>,
-    SelectTriggerProps
->(({ className, children, ...props }, ref) => (
-    <BaseSelect.Trigger
-        ref={ref}
-        className={cn(
-            "flex h-10 w-full items-center justify-between rounded-base border-2 border-border bg-bw px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-            className
-        )}
-        {...props}
-    >
-        {children}
-        <BaseSelect.Icon>
-            <CaretDownIcon className="h-4 w-4 opacity-50" />
-        </BaseSelect.Icon>
-    </BaseSelect.Trigger>
-))
-SelectTrigger.displayName = "SelectTrigger"
-
-type SelectContentProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Popup> & {
-    position?: "popper" | "item-aligned"
-}
-
-const SelectContent = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Popup>,
-    SelectContentProps
->(({ className, children, position = "popper", ...props }, ref) => (
-    <BaseSelect.Portal>
-        <BaseSelect.Positioner sideOffset={4}>
-            <BaseSelect.Popup
-                ref={ref}
-                className={cn(
-                    "relative z-50 max-h-96 min-w-32 overflow-hidden rounded-base border-2 border-border bg-bw text-text shadow-brutal transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-                    position === "popper" &&
-                    "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-                    className
-                )}
-                {...props}
-            >
-                <BaseSelect.List className="p-1">
-                    {children}
-                </BaseSelect.List>
-            </BaseSelect.Popup>
-        </BaseSelect.Positioner>
-    </BaseSelect.Portal>
-))
-SelectContent.displayName = "SelectContent"
-
-type SelectItemProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Item>
-
-const SelectItem = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Item>,
-    SelectItemProps
->(({ className, children, ...props }, ref) => (
-    <BaseSelect.Item
-        ref={ref}
-        className={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-bold outline-none data-highlighted:bg-main data-highlighted:text-black data-disabled:pointer-events-none data-disabled:opacity-50",
-            className
-        )}
-        {...props}
-    >
-        <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-            <BaseSelect.ItemIndicator>
-                <CheckIcon className="h-4 w-4" />
-            </BaseSelect.ItemIndicator>
-        </span>
-
-        <BaseSelect.ItemText>{children}</BaseSelect.ItemText>
-    </BaseSelect.Item>
-))
-SelectItem.displayName = "SelectItem"
-
-export {
-    Select,
-    SelectGroup,
-    SelectValue,
-    SelectTrigger,
-    SelectContent,
-    SelectItem,
-}`
+const selectProps = [
+    {
+        name: "value",
+        type: "string",
+        description: "The controlled value of the select.",
+    },
+    {
+        name: "defaultValue",
+        type: "string",
+        description: "The default value of the select when uncontrolled.",
+    },
+    {
+        name: "onValueChange",
+        type: "(value: string) => void",
+        description: "Event handler called when the value changes.",
+    },
+    {
+        name: "open",
+        type: "boolean",
+        description: "The controlled open state of the select.",
+    },
+    {
+        name: "defaultOpen",
+        type: "boolean",
+        description: "The default open state when uncontrolled.",
+    },
+    {
+        name: "onOpenChange",
+        type: "(open: boolean) => void",
+        description: "Event handler called when the open state changes.",
+    },
+]
 
 export default function SelectPage() {
     return (
@@ -112,88 +58,44 @@ export default function SelectPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A dropdown select component with full accessibility. Perfect for choosing from a list of options.
+                    Displays a list of options for the user to pick from—triggered by a button.
                 </p>
             </section>
 
-            <ComponentPreview code={selectCode}>
-                <div className="w-full max-w-sm space-y-4">
-                    <div>
-                        <Label htmlFor="select-demo">Choose a framework</Label>
-                        <Select>
-                            <SelectTrigger id="select-demo">
-                                <SelectValue placeholder="Select an option" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="react">React</SelectItem>
-                                <SelectItem value="next">Next.js</SelectItem>
-                                <SelectItem value="vue">Vue</SelectItem>
-                                <SelectItem value="svelte">Svelte</SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
-                </div>
+            <ComponentPreview code={usageCode}>
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Theme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="light">Light</SelectItem>
+                        <SelectItem value="dark">Dark</SelectItem>
+                        <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                </Select>
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Dropdown portal:</strong> Renders above all content</li>
-                    <li><strong>Keyboard navigation:</strong> Arrow keys to move, Enter to select</li>
-                    <li><strong>Search/type:</strong> Type to jump to matching options</li>
-                    <li><strong>Check indicator:</strong> Shows selected item</li>
-                    <li><strong>Base UI:</strong> Full WAI-ARIA compliance</li>
-                </ul>
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal add select" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Components</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Select:</strong> Root component (Base UI Select.Root)</li>
-                    <li><strong>SelectTrigger:</strong> Button that opens the dropdown</li>
-                    <li><strong>SelectValue:</strong> Shows selected value or placeholder</li>
-                    <li><strong>SelectContent:</strong> Dropdown menu container</li>
-                    <li><strong>SelectItem:</strong> Individual option</li>
-                    <li><strong>SelectGroup:</strong> Group items with a label</li>
-                </ul>
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"`} />
+                <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Full ARIA support:</strong> Built on Base UI select primitive</li>
-                    <li><strong>Keyboard navigation:</strong> Tab, Arrow keys, Enter/Space</li>
-                    <li><strong>Screen readers:</strong> Announces selected option and availability</li>
-                    <li><strong>Focus management:</strong> Proper focus trap in dropdown</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-black mb-2">Install dependencies:</p>
-                <CodeBlock code="npm install @base-ui/react @phosphor-icons/react" language="bash" />
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/select.tsx</code>:</p>
-                <CodeBlock code={selectCode} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage</h2>
-                <CodeBlock code={`import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-
-export function SelectDemo() {
-  return (
-    <Select>
-      <SelectTrigger>
-        <SelectValue placeholder="Pick an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="option-1">Option 1</SelectItem>
-        <SelectItem value="option-2">Option 2</SelectItem>
-        <SelectItem value="option-3">Option 3</SelectItem>
-      </SelectContent>
-    </Select>
-  )
-}`} />
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="font-bold">Select</h3>
+                <PropsTable data={selectProps} />
             </div>
         </div>
     )

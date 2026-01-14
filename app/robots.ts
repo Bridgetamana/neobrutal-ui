@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://neobrutal-ui.vercel.app/sitemap.xml',
+        sitemap: 'https://www.neobrutalui.live/sitemap.xml',
     }
 }

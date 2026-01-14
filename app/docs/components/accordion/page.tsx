@@ -3,6 +3,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import {
   Accordion,
@@ -56,6 +57,51 @@ const htmlCode = `<div class="w-full max-w-md">
   </details>
 </div>`
 
+const accordionProps = [
+  {
+    name: "type",
+    type: '"single" | "multiple"',
+    defaultValue: '"single"',
+    description: "Determines whether one or multiple items can be opened at the same time.",
+  },
+  {
+    name: "collapsible",
+    type: "boolean",
+    defaultValue: "false",
+    description: "When type is 'single', allows closing the content when clicking the trigger for an open item.",
+  },
+  {
+    name: "defaultValue",
+    type: "string | string[]",
+    description: "The value of the item(s) to expand by default.",
+  },
+  {
+    name: "value",
+    type: "string | string[]",
+    description: "The controlled value of the item(s) to expand.",
+  },
+  {
+    name: "onValueChange",
+    type: "(value: string | string[]) => void",
+    description: "Event handler called when the expanded state changes.",
+  },
+]
+
+const accordionItemProps = [
+  {
+    name: "value",
+    type: "string",
+    required: true,
+    description: "A unique value for the item.",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "When true, prevents the user from interacting with the item.",
+  },
+]
+
 export default function AccordionPage() {
   return (
     <div className="space-y-8">
@@ -86,7 +132,7 @@ export default function AccordionPage() {
 
       <div className="space-y-4">
         <h2 className="text-xl font-bold">Installation</h2>
-        <CodeBlock code="npx neobrutal-ui add accordion" language="bash" />
+        <CodeBlock code="npx neobrutal add accordion" language="bash" />
         <p className="text-base text-black">Or install the dependency and copy the code:</p>
         <CodeBlock code="npm install @base-ui/react" language="bash" />
       </div>
@@ -155,6 +201,14 @@ export default function AccordionPage() {
             </Accordion>
           </ComponentPreview>
         </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-bold">Props</h2>
+        <h3 className="text-lg font-bold">Accordion</h3>
+        <PropsTable data={accordionProps} />
+        <h3 className="text-lg font-bold">AccordionItem</h3>
+        <PropsTable data={accordionItemProps} />
       </div>
     </div>
   )

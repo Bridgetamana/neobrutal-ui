@@ -3,20 +3,21 @@
 import { Avatar, AvatarGroup, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 export function AvatarDemo() {
   return (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   )
 }`
 
 const htmlCode = `<div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white">
-  <img src="https://github.com/shadcn.png" alt="@shadcn" class="aspect-square h-full w-full object-cover" />
+  <img src="https://github.com/bridgetamana.png" alt="@bridgetamana" class="aspect-square h-full w-full object-cover" />
 </div>
 
 <!-- Fallback (when image fails or is missing) -->
@@ -25,6 +26,15 @@ const htmlCode = `<div class="relative flex h-10 w-10 shrink-0 overflow-hidden r
     CN
   </div>
 </div>`
+
+const avatarGroupProps = [
+    {
+        name: "max",
+        type: "number",
+        defaultValue: "3",
+        description: "The maximum number of avatars to display before showing an overflow indicator.",
+    },
+]
 
 export default function AvatarPage() {
     return (
@@ -41,21 +51,21 @@ export default function AvatarPage() {
 
             <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                    <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
             </ComponentPreview>
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add avatar" language="bash" />
+                <CodeBlock code="npx neobrutal add avatar" language="bash" />
             </div>
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"`} />
                 <CodeBlock code={`<Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>`} />
             </div>
@@ -66,11 +76,11 @@ export default function AvatarPage() {
                 <div className="space-y-4">
                     <h3 className="font-bold">With Image</h3>
                     <ComponentPreview code={`<Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>`}>
                         <Avatar>
-                            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                            <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </ComponentPreview>
@@ -107,6 +117,12 @@ export default function AvatarPage() {
                         </AvatarGroup>
                     </ComponentPreview>
                 </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="text-lg font-bold">AvatarGroup</h3>
+                <PropsTable data={avatarGroupProps} />
             </div>
         </div>
     )

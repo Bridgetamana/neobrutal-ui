@@ -6,11 +6,13 @@
   "dependencies": [
     "@base-ui/react"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "components/ui/switch.tsx",
-      "content": "\"use client\"\r\n\r\nimport * as React from \"react\"\r\nimport { Switch as BaseSwitch } from \"@base-ui/react/switch\"\r\nimport { cn } from \"@/lib/utils\"\r\n\r\ntype SwitchProps = React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>\r\n\r\nconst Switch = React.forwardRef<\r\n    React.ComponentRef<typeof BaseSwitch.Root>,\r\n    SwitchProps\r\n>(({ className, ...props }, ref) => (\r\n    <BaseSwitch.Root\r\n        className={cn(\r\n            \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-unchecked:bg-bw\",\r\n            className\r\n        )}\r\n        {...props}\r\n        ref={ref}\r\n    >\r\n        <BaseSwitch.Thumb\r\n            className={cn(\r\n                \"pointer-events-none block h-4 w-4 rounded-full border-2 border-border bg-white shadow-none ring-0 transition-transform data-checked:translate-x-5 data-unchecked:translate-x-0.5\"\r\n            )}\r\n        />\r\n    </BaseSwitch.Root>\r\n))\r\nSwitch.displayName = \"Switch\"\r\n\r\nexport { Switch }\r\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Switch as BaseSwitch } from \"@base-ui/react/switch\"\nimport { cn } from \"@/lib/utils\"\n\ntype SwitchProps = React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>\n\nconst Switch = React.forwardRef<\n    React.ComponentRef<typeof BaseSwitch.Root>,\n    SwitchProps\n>(({ className, ...props }, ref) => (\n    <BaseSwitch.Root\n        className={cn(\n            \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-unchecked:bg-white\",\n            className\n        )}\n        {...props}\n        ref={ref}\n    >\n        <BaseSwitch.Thumb\n            className={cn(\n                \"pointer-events-none block h-4 w-4 rounded-full border-2 border-black bg-white shadow-none ring-0 transition-transform data-checked:translate-x-5 data-unchecked:translate-x-0.5\"\n            )}\n        />\n    </BaseSwitch.Root>\n))\nSwitch.displayName = \"Switch\"\n\nexport { Switch }\n",
       "type": "registry:ui"
     }
   ]

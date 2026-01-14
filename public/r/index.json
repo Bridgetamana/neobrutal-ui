@@ -1,5 +1,15 @@
 [
   {
+    "name": "utils",
+    "type": "registry:lib",
+    "description": "Utility functions for class name merging.",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": []
+  },
+  {
     "name": "accordion",
     "type": "registry:ui",
     "description": "A vertically stacked set of interactive headings that reveal content sections.",
@@ -7,7 +17,9 @@
       "@base-ui/react",
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "alert",
@@ -16,14 +28,18 @@
     "dependencies": [
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "avatar",
     "type": "registry:ui",
     "description": "An image element with a fallback for representing the user.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "badge",
@@ -32,14 +48,18 @@
     "dependencies": [
       "class-variance-authority"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "breadcrumb",
     "type": "registry:ui",
     "description": "Displays the path to the current resource using a hierarchy of links.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "button",
@@ -48,14 +68,18 @@
     "dependencies": [
       "class-variance-authority"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "card",
     "type": "registry:ui",
     "description": "Displays a card with header, content, and footer sections.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "checkbox",
@@ -65,7 +89,9 @@
       "@base-ui/react",
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "dialog",
@@ -75,14 +101,18 @@
       "@base-ui/react",
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "input",
     "type": "registry:ui",
     "description": "Displays a form input field with neobrutalist styling.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "label",
@@ -91,7 +121,9 @@
     "dependencies": [
       "class-variance-authority"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "pagination",
@@ -101,6 +133,7 @@
       "@phosphor-icons/react"
     ],
     "registryDependencies": [
+      "utils",
       "button"
     ]
   },
@@ -111,7 +144,9 @@
     "dependencies": [
       "@base-ui/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "progress",
@@ -120,7 +155,9 @@
     "dependencies": [
       "@base-ui/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "radio-group",
@@ -130,7 +167,9 @@
       "@base-ui/react",
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "select",
@@ -140,14 +179,9 @@
       "@base-ui/react",
       "@phosphor-icons/react"
     ],
-    "registryDependencies": []
-  },
-  {
-    "name": "skeleton",
-    "type": "registry:ui",
-    "description": "Use to show a placeholder while content is loading.",
-    "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "slider",
@@ -156,16 +190,20 @@
     "dependencies": [
       "@base-ui/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
-    "name": "sonner",
+    "name": "toast",
     "type": "registry:ui",
     "description": "An opinionated toast component with neobrutalist styling.",
     "dependencies": [
-      "sonner"
+      "@base-ui/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "switch",
@@ -174,21 +212,27 @@
     "dependencies": [
       "@base-ui/react"
     ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "tabs",
     "type": "registry:ui",
     "description": "A set of layered sections of content displayed one at a time.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "textarea",
     "type": "registry:ui",
     "description": "Displays a form textarea with neobrutalist styling.",
     "dependencies": [],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   },
   {
     "name": "tooltip",
@@ -197,16 +241,8 @@
     "dependencies": [
       "@base-ui/react"
     ],
-    "registryDependencies": []
-  },
-  {
-    "name": "utils",
-    "type": "registry:lib",
-    "description": "Utility functions for class name merging.",
-    "dependencies": [
-      "clsx",
-      "tailwind-merge"
-    ],
-    "registryDependencies": []
+    "registryDependencies": [
+      "utils"
+    ]
   }
 ]

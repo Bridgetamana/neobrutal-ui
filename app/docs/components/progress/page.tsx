@@ -3,47 +3,22 @@
 import { Progress } from "@/components/ui/progress"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const progressCode = `import * as React from "react"
-import { cn } from "@/lib/utils"
+const usageCode = `<Progress value={33} />`
 
-export type ProgressProps = React.HTMLAttributes<HTMLDivElement> & {
-    value?: number
-    max?: number
-    variant?: "default" | "destructive"
-}
-
-const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
-    ({ className, value = 0, max = 100, variant = "default", ...props }, ref) => {
-        const percentage = (value / max) * 100
-
-        return (
-            <div
-                ref={ref}
-                className={cn(
-                    "relative h-4 w-full overflow-hidden rounded-full border-2 border-black bg-white",
-                    className
-                )}
-                role="progressbar"
-                aria-valuenow={value}
-                aria-valuemin={0}
-                aria-valuemax={max}
-                {...props}
-            >
-                <div
-                    className={cn(
-                        "h-full transition-all",
-                        variant === "destructive" ? "bg-red-400" : "bg-main"
-                    )}
-                    style={{ width: \`\${percentage}%\` }}
-                />
-            </div>
-        )
-    }
-)
-Progress.displayName = "Progress"
-
-export { Progress }`
+const progressProps = [
+    {
+        name: "value",
+        type: "number",
+        description: "The progress value.",
+    },
+    {
+        name: "max",
+        type: "number",
+        description: "The maximum progress value.",
+    },
+]
 
 export default function ProgressPage() {
     return (
@@ -54,30 +29,28 @@ export default function ProgressPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    Show progress of file uploads, loading states, or task completion with visual indicators.
+                    Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
                 </p>
             </section>
 
-            <ComponentPreview code={progressCode}>
-                <div className="w-full space-y-4">
-                    <Progress value={33} max={100} />
-                    <Progress value={66} max={100} variant="destructive" />
-                </div>
+            <ComponentPreview code={usageCode}>
+                <Progress value={33} className="w-[60%]" />
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Installation</h2>
-                <CodeBlock code={`No dependencies required.`} language="bash" />
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal add progress" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold">Accessibility</h2>
-                <ul className="space-y-2 list-disc list-inside font-bold">
-                    <li>Uses <code className="bg-neutral-200 px-2 py-1 rounded">role=&quot;progressbar&quot;</code></li>
-                    <li>Supports <code className="bg-neutral-200 px-2 py-1 rounded">aria-valuenow</code>, <code className="bg-neutral-200 px-2 py-1 rounded">aria-valuemin</code>, <code className="bg-neutral-200 px-2 py-1 rounded">aria-valuemax</code></li>
-                    <li>Screen reader friendly</li>
-                    <li>Color contrast compliant</li>
-                </ul>
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import { Progress } from "@/components/ui/progress"`} />
+                <CodeBlock code={usageCode} />
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={progressProps} />
             </div>
         </div>
     )

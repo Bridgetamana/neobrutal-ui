@@ -1,36 +1,21 @@
-import path from "path"
 import { Command } from "commander"
-import { z } from "zod"
 import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
 import { getRegistryIndex } from "../utils/registry.js"
 
-const listOptionsSchema = z.object({
-    cwd: z.string(),
-})
-
 export const list = new Command()
     .name("list")
     .description("list all available components")
-    .option(
-        "-c, --cwd <cwd>",
-        "the working directory. defaults to the current directory.",
-        process.cwd()
-    )
-    .action(async (opts) => {
+    .action(async () => {
         try {
-            const options = listOptionsSchema.parse({
-                cwd: path.resolve(opts.cwd),
-            })
-
-            await runList(options)
+            await runList()
         } catch (error) {
             handleError(error)
         }
     })
 
-async function runList(options: z.infer<typeof listOptionsSchema>): Promise<void> {
+async function runList(): Promise<void> {
     const listSpinner = spinner("Fetching components...").start()
 
     try {
@@ -84,7 +69,7 @@ async function runList(options: z.infer<typeof listOptionsSchema>): Promise<void
 
         logger.info("To add a component, run:")
         logger.break()
-        logger.log(`  ${highlighter.code("npx neobrutal-ui add <component>")}`)
+        logger.log(`  ${highlighter.code("npx neobrutal add <component>")}`)
         logger.break()
     } catch (error) {
         listSpinner.fail("Failed to fetch components.")

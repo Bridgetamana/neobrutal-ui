@@ -10,11 +10,11 @@ const badgeVariants = cva(
                 default:
                     "bg-main text-black",
                 neutral:
-                    "bg-bw text-black",
+                    "bg-white text-black",
                 outline: "text-black bg-transparent shadow-none",
-                destructive: "bg-pastel-red text-black",
-                success: "bg-pastel-green text-black",
-                warning: "bg-pastel-yellow text-black",
+                destructive: "bg-hot-pink text-black",
+                success: "bg-mint text-black",
+                warning: "bg-lemon text-black",
             },
         },
         defaultVariants: {

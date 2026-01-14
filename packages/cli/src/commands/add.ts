@@ -12,6 +12,13 @@ import {
     getRegistryItems,
     resolveRegistryDependencies,
 } from "../utils/registry.js"
+import {
+    detectPackageManager,
+    installDependencies,
+    getInstallCommand,
+    getInstalledDependencies,
+} from "../utils/package-manager.js"
+import { transformImports } from "../utils/transform.js"
 import { runInit } from "./init.js"
 
 const addOptionsSchema = z.object({
@@ -126,7 +133,7 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
         logger.error(
             `The following components are not available: ${invalidComponents.join(", ")}`
         )
-        logger.info("Run `npx neobrutal-ui list` to see all available components.")
+        logger.info("Run `npx neobrutal list` to see all available components.")
         return
     }
 
@@ -150,6 +157,19 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
                 const targetPath = resolveFilePath(cwd, config, file.path)
 
                 if (await fs.pathExists(targetPath)) {
+                    // For utils file, check if content is identical - skip silently if so
+                    if (file.path === "lib/utils.ts") {
+                        const existingContent = await fs.readFile(targetPath, "utf-8")
+                        const transformedContent = transformImports(file.content, config)
+                        // Normalize line endings for comparison
+                        const normalizedExisting = existingContent.replace(/\r\n/g, "\n").trim()
+                        const normalizedNew = transformedContent.replace(/\r\n/g, "\n").trim()
+                        if (normalizedExisting === normalizedNew) {
+                            // Skip silently - file is identical
+                            continue
+                        }
+                    }
+
                     if (!overwrite) {
                         const { shouldOverwrite } = await prompts({
                             type: "confirm",
@@ -165,9 +185,12 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
                     }
                 }
 
+                // Transform import paths to match user's configured aliases
+                const transformedContent = transformImports(file.content, config)
+
                 filesToWrite.push({
                     path: targetPath,
-                    content: file.content,
+                    content: transformedContent,
                 })
             }
         }
@@ -181,12 +204,34 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
 
         writeSpinner.succeed(`Wrote ${filesToWrite.length} file(s).`)
 
+        // Auto-install npm dependencies (only those not already installed)
         if (npmDependencies.size > 0) {
-            logger.break()
-            logger.info("Don't forget to install the following dependencies:")
-            logger.break()
-            logger.log(`  npm install ${Array.from(npmDependencies).join(" ")}`)
-            logger.break()
+            const installedDeps = await getInstalledDependencies(cwd)
+            const depsToInstall = Array.from(npmDependencies).filter(
+                (dep) => !installedDeps.has(dep)
+            )
+
+            if (depsToInstall.length > 0) {
+                const packageManager = await detectPackageManager(cwd)
+
+                logger.break()
+                logger.info(`Installing ${depsToInstall.length} dependencies...`)
+
+                const installSpinner = spinner(
+                    `Running ${getInstallCommand(packageManager, depsToInstall)}`
+                ).start()
+
+                const success = await installDependencies(cwd, depsToInstall, { silent: true })
+
+                if (success) {
+                    installSpinner.succeed("Dependencies installed.")
+                } else {
+                    installSpinner.fail("Failed to install dependencies.")
+                    logger.break()
+                    logger.warn("Please install manually:")
+                    logger.log(`  ${getInstallCommand(packageManager, depsToInstall)}`)
+                }
+            }
         }
 
         logger.break()
@@ -201,28 +246,45 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
     }
 }
 
+/**
+ * Strips the alias prefix from a path (e.g., "@/", "~/", "#/").
+ */
+function stripAliasPrefix(aliasPath: string): string {
+    // Common alias prefixes to strip
+    const prefixes = ["@/", "~/", "#/", "$/"]
+    for (const prefix of prefixes) {
+        if (aliasPath.startsWith(prefix)) {
+            return aliasPath.slice(prefix.length)
+        }
+    }
+    return aliasPath
+}
+
 function resolveFilePath(cwd: string, config: Config, filePath: string): string {
     if (filePath.startsWith("components/ui/")) {
         const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
+        const resolvedPath = stripAliasPrefix(uiAlias)
         return path.resolve(
             cwd,
-            filePath.replace("components/ui/", uiAlias.replace("@/", "") + "/")
+            filePath.replace("components/ui/", resolvedPath + "/")
         )
     }
 
     if (filePath.startsWith("lib/")) {
         const libAlias = config.aliases.lib || "@/lib"
+        const resolvedPath = stripAliasPrefix(libAlias)
         return path.resolve(
             cwd,
-            filePath.replace("lib/", libAlias.replace("@/", "") + "/")
+            filePath.replace("lib/", resolvedPath + "/")
         )
     }
 
     if (filePath.startsWith("hooks/")) {
         const hooksAlias = config.aliases.hooks || "@/hooks"
+        const resolvedPath = stripAliasPrefix(hooksAlias)
         return path.resolve(
             cwd,
-            filePath.replace("hooks/", hooksAlias.replace("@/", "") + "/")
+            filePath.replace("hooks/", resolvedPath + "/")
         )
     }
 

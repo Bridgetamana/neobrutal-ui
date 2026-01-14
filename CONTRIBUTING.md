@@ -1,6 +1,6 @@
-# Contributing to NeoBrutal UI
+# Contributing to Neobrutal UI
 
-Thank you for your interest in contributing to NeoBrutal UI. This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Neobrutal UI. This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 
@@ -37,7 +37,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open `http://localhost:3000` in your browser.
 
 ## How to Contribute
 

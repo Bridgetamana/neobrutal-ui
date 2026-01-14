@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Badge } from "@/components/ui/badge"
 
@@ -13,6 +14,15 @@ export function BadgeDemo() {
 const htmlCode = `<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-[#88aaee] px-2.5 py-0.5 text-xs font-bold text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
   Badge
 </span>`
+
+const badgeProps = [
+    {
+        name: "variant",
+        type: '"default" | "neutral" | "outline" | "destructive" | "success" | "warning"',
+        defaultValue: '"default"',
+        description: "The visual style of the badge.",
+    },
+]
 
 export default function BadgePage() {
     return (
@@ -33,7 +43,7 @@ export default function BadgePage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal-ui add badge" language="bash" />
+                <CodeBlock code="npx neobrutal add badge" language="bash" />
             </div>
 
             <div className="space-y-4">
@@ -80,6 +90,11 @@ export default function BadgePage() {
                         </div>
                     </ComponentPreview>
                 </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={badgeProps} />
             </div>
         </div>
     )

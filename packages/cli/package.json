@@ -1,7 +1,7 @@
 {
-    "name": "neobrutal-ui",
-    "version": "0.1.0",
-    "description": "CLI for adding NeoBrutal UI components to your project",
+    "name": "neobrutal",
+    "version": "0.3.0",
+    "description": "CLI for adding Neobrutal UI components to your project",
     "type": "module",
     "license": "MIT",
     "author": {
@@ -10,11 +10,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Bridgetamana/neobrutal-ui"
+        "url": "git+https://github.com/Bridgetamana/neobrutal-ui.git"
     },
-    "homepage": "https://neobrutal-ui-mocha.vercel.app/",
+    "homepage": "https://www.neobrutalui.live/",
     "keywords": [
         "neobrutalism",
+        "neobrutalist",
+        "neobrutalism-ui",
         "ui",
         "components",
         "react",
@@ -23,7 +25,7 @@
         "cli"
     ],
     "bin": {
-        "neobrutal-ui": "./dist/index.js"
+        "neobrutal": "dist/index.js"
     },
     "files": [
         "dist"
@@ -37,12 +39,14 @@
     "dependencies": {
         "chalk": "^5.3.0",
         "commander": "^12.1.0",
+        "diff": "^8.0.2",
         "fs-extra": "^11.2.0",
         "ora": "^8.1.0",
         "prompts": "^2.4.2",
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "@types/diff": "^7.0.2",
         "@types/fs-extra": "^11.0.4",
         "@types/node": "^20.17.0",
         "@types/prompts": "^2.4.9",

@@ -4,37 +4,35 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const switchCode = `"use client"
+const usageCode = `<div className="flex items-center gap-2">
+  <Switch id="airplane-mode" />
+  <Label htmlFor="airplane-mode">Airplane Mode</Label>
+</div>`
 
-import * as React from "react"
-import { Switch as BaseSwitch } from "@base-ui/react/switch"
-import { cn } from "@/lib/utils"
-
-type SwitchProps = React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>
-
-const Switch = React.forwardRef<
-    React.ComponentRef<typeof BaseSwitch.Root>,
-    SwitchProps
->(({ className, ...props }, ref) => (
-    <BaseSwitch.Root
-        className={cn(
-            "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-unchecked:bg-bw",
-            className
-        )}
-        {...props}
-        ref={ref}
-    >
-        <BaseSwitch.Thumb
-            className={cn(
-                "pointer-events-none block h-4 w-4 rounded-full border-2 border-border bg-white shadow-none ring-0 transition-transform data-checked:translate-x-5 data-unchecked:translate-x-0.5"
-            )}
-        />
-    </BaseSwitch.Root>
-))
-Switch.displayName = "Switch"
-
-export { Switch }`
+const switchProps = [
+    {
+        name: "checked",
+        type: "boolean",
+        description: "The controlled checked state of the switch.",
+    },
+    {
+        name: "defaultChecked",
+        type: "boolean",
+        description: "The default checked state when uncontrolled.",
+    },
+    {
+        name: "onCheckedChange",
+        type: "(checked: boolean) => void",
+        description: "Event handler called when the checked state changes.",
+    },
+    {
+        name: "disabled",
+        type: "boolean",
+        description: "When true, prevents the user from interacting with the switch.",
+    },
+]
 
 export default function SwitchPage() {
     return (
@@ -45,99 +43,32 @@ export default function SwitchPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A toggle switch component for boolean on/off states. Perfect for preferences and settings.
+                    A control that allows the user to toggle between checked and not checked.
                 </p>
             </section>
 
-            <ComponentPreview code={switchCode}>
-                <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                        <Switch id="switch-1" />
-                        <Label htmlFor="switch-1">Off</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Switch id="switch-2" defaultChecked />
-                        <Label htmlFor="switch-2">On</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Switch id="switch-3" disabled />
-                        <Label htmlFor="switch-3">Disabled</Label>
-                    </div>
+            <ComponentPreview code={usageCode}>
+                <div className="flex items-center gap-2">
+                    <Switch id="airplane-mode" />
+                    <Label htmlFor="airplane-mode">Airplane Mode</Label>
                 </div>
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Smooth animation:</strong> Sliding thumb with transition</li>
-                    <li><strong>Clear states:</strong> Color change indicates on/off</li>
-                    <li><strong>Border design:</strong> 2px borders on both track and thumb</li>
-                    <li><strong>Base UI:</strong> Built on accessible switch primitive</li>
-                    <li><strong>Circular thumb:</strong> Smooth, easy-to-identify toggle</li>
-                </ul>
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal add switch" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">States</h2>
-                <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                        <Switch id="off" />
-                        <Label htmlFor="off">Off (White track)</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Switch id="on" defaultChecked />
-                        <Label htmlFor="on">On (Accent track)</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Switch id="disabled" disabled />
-                        <Label htmlFor="disabled">Disabled (Reduced opacity)</Label>
-                    </div>
-                </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>WAI-ARIA:</strong> Full Base UI accessibility compliance</li>
-                    <li><strong>Keyboard support:</strong> Space/Enter to toggle, Tab to navigate</li>
-                    <li><strong>Labels:</strong> Always pair with &lt;Label&gt; using htmlFor</li>
-                    <li><strong>Focus ring:</strong> Clear 2px black ring for keyboard users</li>
-                    <li><strong>Screen readers:</strong> Announces &quot;switch&quot; role and state</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Use Cases</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li>Feature flags and settings</li>
-                    <li>Notifications preferences</li>
-                    <li>On/off controls for system features</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-black mb-2">Install dependency:</p>
-                <CodeBlock code="npm install @base-ui/react" language="bash" />
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/switch.tsx</code>:</p>
-                <CodeBlock code={switchCode} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage</h2>
+                <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label"`} />
+                <CodeBlock code={usageCode} />
+            </div>
 
-export function SwitchDemo() {
-  const [enabled, setEnabled] = React.useState(false)
-  
-  return (
-    <div className="flex items-center space-x-2">
-      <Switch id="feature" checked={enabled} onCheckedChange={setEnabled} />
-      <Label htmlFor="feature">Enable feature</Label>
-    </div>
-  )
-}`} />
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={switchProps} />
             </div>
         </div>
     )

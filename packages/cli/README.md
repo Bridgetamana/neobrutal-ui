@@ -1,16 +1,17 @@
 # neobrutal-ui
 
-CLI for adding NeoBrutal UI components to your project.
+CLI for adding Neobrutal UI components to your project.
 
 ## Usage
 
 ### Initialize your project
 
 ```bash
-npx neobrutal-ui init
+npx neobrutal init
 ```
 
 This will:
+
 - Create a `components.json` configuration file
 - Set up the `cn` utility function
 - Create the required directory structure
@@ -18,27 +19,27 @@ This will:
 ### Add components
 
 ```bash
-npx neobrutal-ui add button
-npx neobrutal-ui add card dialog input
-npx neobrutal-ui add --all
+npx neobrutal add button
+npx neobrutal add card dialog input
+npx neobrutal add --all
 ```
 
 ### List available components
 
 ```bash
-npx neobrutal-ui list
+npx neobrutal list
 ```
 
 ### Check for updates
 
 ```bash
-npx neobrutal-ui diff button
+npx neobrutal diff button
 ```
 
 ## Commands
 
 | Command | Description |
-|---------|-------------|
+| --------- | ------------- |
 | `init` | Initialize your project and install dependencies |
 | `add [components...]` | Add components to your project |
 | `list` | List all available components |
@@ -49,7 +50,7 @@ npx neobrutal-ui diff button
 ### Global Options
 
 | Option | Description |
-|--------|-------------|
+| -------- | ------------- |
 | `-c, --cwd <cwd>` | The working directory (defaults to current directory) |
 | `-h, --help` | Display help for command |
 | `-v, --version` | Display the version number |
@@ -57,7 +58,7 @@ npx neobrutal-ui diff button
 ### Add Options
 
 | Option | Description |
-|--------|-------------|
+| -------- | ------------- |
 | `-y, --yes` | Skip confirmation prompt |
 | `-o, --overwrite` | Overwrite existing files |
 | `-a, --all` | Add all available components |
@@ -65,7 +66,7 @@ npx neobrutal-ui diff button
 ### Init Options
 
 | Option | Description |
-|--------|-------------|
+| --------- | ------------- |
 | `-y, --yes` | Skip confirmation prompt |
 | `-f, --force` | Force overwrite of existing configuration |
 

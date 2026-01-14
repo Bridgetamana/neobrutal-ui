@@ -6,31 +6,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 
-const labelCode = `"use client"
-
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-
-const labelVariants = cva(
-    "text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-)
-
-type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> &
-    VariantProps<typeof labelVariants>
-
-const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
-    ({ className, ...props }, ref) => (
-        <label
-            ref={ref}
-            className={cn(labelVariants(), className)}
-            {...props}
-        />
-    )
-)
-Label.displayName = "Label"
-
-export { Label }`
+const usageCode = `<div className="flex items-center gap-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>`
 
 export default function LabelPage() {
     return (
@@ -41,85 +20,43 @@ export default function LabelPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    An accessible form label component using native HTML. Essential for semantic form markup.
+                    An accessible form label component that renders a semantic label element.
                 </p>
             </section>
 
-            <ComponentPreview code={labelCode}>
-                <div className="w-full max-w-sm space-y-4">
-                    <div className="space-y-2">
-                        <Label htmlFor="demo-input">Your Name</Label>
-                        <Input id="demo-input" placeholder="Enter your name" />
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="demo-checkbox" />
-                        <Label htmlFor="demo-checkbox">I agree to the terms</Label>
-                    </div>
+            <ComponentPreview code={usageCode}>
+                <div className="flex items-center gap-2">
+                    <Checkbox id="terms" />
+                    <Label htmlFor="terms">Accept terms and conditions</Label>
                 </div>
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage with Form Controls</h2>
-                <p className="text-black mb-4">
-                    Labels should be paired with form controls using the <code className="bg-neutral-200 px-1 py-0.5">htmlFor</code> attribute.
-                </p>
-                <div className="space-y-6">
-                    <div>
-                        <h3 className="font-bold mb-3">With Input</h3>
-                        <div className="space-y-2">
-                            <Label htmlFor="email">Email Address</Label>
-                            <Input id="email" type="email" placeholder="your@email.com" />
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal add label" language="bash" />
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Usage</h2>
+                <CodeBlock code={`import { Label } from "@/components/ui/label"`} />
+                <CodeBlock code={usageCode} />
+            </div>
+
+            <div className="space-y-6">
+                <h2 className="text-xl font-bold">Examples</h2>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">With Input</h3>
+                    <ComponentPreview code={`<div className="grid w-full max-w-sm items-center gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="Email" />
+</div>`}>
+                        <div className="grid w-full max-w-sm items-center gap-1.5">
+                            <Label htmlFor="email">Email</Label>
+                            <Input type="email" id="email" placeholder="Email" />
                         </div>
-                    </div>
-                    <div>
-                        <h3 className="font-bold mb-3">With Checkbox</h3>
-                        <div className="flex items-center space-x-2">
-                            <Checkbox id="terms" />
-                            <Label htmlFor="terms">I agree to the terms of service</Label>
-                        </div>
-                    </div>
+                    </ComponentPreview>
                 </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Native HTML:</strong> Full accessibility support out of the box</li>
-                    <li><strong>Semantic HTML:</strong> Uses native &lt;label&gt; element</li>
-                    <li><strong>htmlFor attribute:</strong> Connects to form control via id</li>
-                    <li><strong>Peer modifiers:</strong> Automatically responds to disabled control state</li>
-                    <li><strong>Screen readers:</strong> Properly announces associations</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Styling</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Typography:</strong> Small (text-sm) bold font for clarity</li>
-                    <li><strong>Disabled state:</strong> Reduced opacity when paired control is disabled</li>
-                    <li><strong>Spacing:</strong> Designed for use with form components</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/label.tsx</code>:</p>
-                <CodeBlock code={labelCode} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage</h2>
-                <CodeBlock code={`import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-
-export function LabelDemo() {
-  return (
-    <div className="space-y-2">
-      <Label htmlFor="username">Username</Label>
-      <Input id="username" placeholder="Enter username" />
-    </div>
-  )
-}`} />
             </div>
         </div>
     )

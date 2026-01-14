@@ -4,53 +4,59 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const radioGroupCode = `"use client"
+const usageCode = `<RadioGroup defaultValue="option-one">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-one" id="option-one" />
+    <Label htmlFor="option-one">Option One</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-two" id="option-two" />
+    <Label htmlFor="option-two">Option Two</Label>
+  </div>
+</RadioGroup>`
 
-import * as React from "react"
-import { Radio } from "@base-ui/react/radio"
-import { RadioGroup as BaseRadioGroup } from "@base-ui/react/radio-group"
-import { CircleIcon } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
+const radioGroupProps = [
+    {
+        name: "defaultValue",
+        type: "string",
+        description: "The value of the radio item that should be checked by default.",
+    },
+    {
+        name: "value",
+        type: "string",
+        description: "The controlled value of the radio item to check.",
+    },
+    {
+        name: "onValueChange",
+        type: "(value: string) => void",
+        description: "Event handler called when the value changes.",
+    },
+    {
+        name: "disabled",
+        type: "boolean",
+        description: "When true, prevents the user from interacting with the radio group.",
+    },
+]
 
-type RadioGroupProps = React.ComponentPropsWithoutRef<typeof BaseRadioGroup>
-
-const RadioGroup = React.forwardRef<
-    React.ComponentRef<typeof BaseRadioGroup>,
-    RadioGroupProps
->(({ className, ...props }, ref) => (
-    <BaseRadioGroup
-        className={cn("grid gap-2", className)}
-        {...props}
-        ref={ref}
-    />
-))
-RadioGroup.displayName = "RadioGroup"
-
-type RadioGroupItemProps = React.ComponentPropsWithoutRef<typeof Radio.Root>
-
-const RadioGroupItem = React.forwardRef<
-    React.ComponentRef<typeof Radio.Root>,
-    RadioGroupItemProps
->(({ className, ...props }, ref) => {
-    return (
-        <Radio.Root
-            ref={ref}
-            className={cn(
-                "aspect-square h-5 w-5 rounded-full border-2 border-border text-text ring-offset-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main",
-                className
-            )}
-            {...props}
-        >
-            <Radio.Indicator className="flex items-center justify-center data-unchecked:hidden">
-                <CircleIcon weight="fill" className="h-2.5 w-2.5 fill-current text-current" />
-            </Radio.Indicator>
-        </Radio.Root>
-    )
-})
-RadioGroupItem.displayName = "RadioGroupItem"
-
-export { RadioGroup, RadioGroupItem }`
+const radioGroupItemProps = [
+    {
+        name: "value",
+        type: "string",
+        description: "The value given as data for the radio item when submitted in a form.",
+    },
+    {
+        name: "disabled",
+        type: "boolean",
+        description: "When true, prevents the user from interacting with the radio item.",
+    },
+    {
+        name: "required",
+        type: "boolean",
+        description: "When true, indicates that the user must check the radio item before the owning form can be submitted.",
+    },
+]
 
 export default function RadioGroupPage() {
     return (
@@ -61,94 +67,41 @@ export default function RadioGroupPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A set of radio buttons where only one option can be selected at a time. Perfect for mutually exclusive choices.
+                    A set of checkable buttons—known as radio buttons—where no more than one button can be checked at a time.
                 </p>
             </section>
 
-            <ComponentPreview code={radioGroupCode}>
-                <RadioGroup defaultValue="option-1">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="option-1" id="radio-1" />
-                        <Label htmlFor="radio-1">Option 1</Label>
+            <ComponentPreview code={usageCode}>
+                <RadioGroup defaultValue="option-one">
+                    <div className="flex items-center gap-2">
+                        <RadioGroupItem value="option-one" id="option-one" />
+                        <Label htmlFor="option-one">Option One</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="option-2" id="radio-2" />
-                        <Label htmlFor="radio-2">Option 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="option-3" id="radio-3" />
-                        <Label htmlFor="radio-3">Option 3</Label>
+                    <div className="flex items-center gap-2">
+                        <RadioGroupItem value="option-two" id="option-two" />
+                        <Label htmlFor="option-two">Option Two</Label>
                     </div>
                 </RadioGroup>
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Features</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>Mutual exclusion:</strong> Only one option selected at a time</li>
-                    <li><strong>Circular shape:</strong> Classic radio button look</li>
-                    <li><strong>Base UI:</strong> Built on accessible primitives</li>
-                    <li><strong>Group layout:</strong> Default gap-2 spacing between options</li>
-                    <li><strong>Inner indicator:</strong> Filled circle when selected</li>
-                </ul>
+                <h2 className="text-xl font-bold">Installation</h2>
+                <CodeBlock code="npx neobrutal add radio-group" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage Example</h2>
-                <RadioGroup defaultValue="comfortable">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="default" id="size-default" />
-                        <Label htmlFor="size-default">Default</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="comfortable" id="size-comfortable" />
-                        <Label htmlFor="size-comfortable">Comfortable</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="compact" id="size-compact" />
-                        <Label htmlFor="size-compact">Compact</Label>
-                    </div>
-                </RadioGroup>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Accessibility</h2>
-                <ul className="list-disc list-inside space-y-2 text-black">
-                    <li><strong>WAI-ARIA compliant:</strong> Full Base UI accessibility support</li>
-                    <li><strong>Keyboard navigation:</strong> Arrow keys move between options, Space/Enter to select</li>
-                    <li><strong>Labels:</strong> Always pair items with &lt;Label&gt; using htmlFor</li>
-                    <li><strong>Focus ring:</strong> Clear visual indicator for keyboard navigation</li>
-                    <li><strong>Screen readers:</strong> Announces group role and selected option</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Installation</h2>
-                <p className="text-black mb-2">Install dependencies:</p>
-                <CodeBlock code="npm install @base-ui/react @phosphor-icons/react" language="bash" />
-                <p className="text-black mb-2">Copy the component code into <code className="bg-neutral-200 px-2 py-1 rounded">components/ui/radio-group.tsx</code>:</p>
-                <CodeBlock code={radioGroupCode} />
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold border-b-2 border-border pb-2">Usage</h2>
+                <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label"`} />
+                <CodeBlock code={usageCode} />
+            </div>
 
-export function RadioGroupDemo() {
-  return (
-    <RadioGroup defaultValue="option-1">
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-1" id="opt1" />
-        <Label htmlFor="opt1">Option 1</Label>
-      </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-2" id="opt2" />
-        <Label htmlFor="opt2">Option 2</Label>
-      </div>
-    </RadioGroup>
-  )
-}`} />
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="font-bold">RadioGroup</h3>
+                <PropsTable data={radioGroupProps} />
+                <h3 className="font-bold mt-4">RadioGroupItem</h3>
+                <PropsTable data={radioGroupItemProps} />
             </div>
         </div>
     )

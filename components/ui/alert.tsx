@@ -8,10 +8,10 @@ const alertVariants = cva(
         variants: {
             variant: {
                 default: "bg-main text-black",
-                neutral: "bg-bw text-black",
-                destructive: "bg-pastel-red text-black",
-                success: "bg-pastel-green text-black",
-                warning: "bg-pastel-yellow text-black",
+                neutral: "bg-white text-black",
+                destructive: "bg-hot-pink text-black",
+                success: "bg-mint text-black",
+                warning: "bg-lemon text-black",
             },
         },
         defaultVariants: {
@@ -34,10 +34,10 @@ const Alert = React.forwardRef<
 Alert.displayName = "Alert"
 
 const AlertTitle = React.forwardRef<
-    HTMLHeadingElement,
-    React.HTMLAttributes<HTMLHeadingElement>
+    HTMLDivElement,
+    React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-    <h5
+    <div
         ref={ref}
         className={cn("mb-1 font-medium", className)}
         {...props}

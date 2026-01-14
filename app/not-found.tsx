@@ -12,8 +12,8 @@ export default function NotFound() {
             </h2>
 
             <p className="max-w-md mb-6">
-                Looks like you&apos;ve ventured into the void.
-                This page doesn&apos;t exist, or maybe it was too brutal to survive.
+            
+                This page doesn&apos;t exist or has been moved. Please check the URL or return to the homepage.
             </p>
 
             <Link href="/">

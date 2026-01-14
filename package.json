@@ -1,14 +1,13 @@
 {
   "name": "neobrutal-ui",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "registry:build": "npx tsx scripts/build-registry.ts",
-    "prepare": "husky"
+    "registry:build": "npx tsx scripts/build-registry.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0-alpha.12",
@@ -16,11 +15,11 @@
     "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "next": "16.0.7",
+    "cmdk": "^1.1.1",
+    "next": "^16.1.1",
     "prism-react-renderer": "^2.4.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
@@ -30,13 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "tailwindcss": "^4",
-    "tw-animate-css": "^1.4.0",
     "typescript": "^5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix --max-warnings 0"
   }
 }
