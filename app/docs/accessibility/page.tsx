@@ -29,7 +29,7 @@ export default function AccessibilityPage() {
                 </p>
             </section>
 
-            <section className="border-2 border-black bg-bw">
+            <section className="border-2 border-black bg-white">
                 <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
                     <Link href="/docs/theming" className="block p-3 hover:bg-main">
                         <span className="text-lg font-bold">Theming</span>

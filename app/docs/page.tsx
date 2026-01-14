@@ -25,7 +25,7 @@ export default function DocsPage() {
 
             <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-black">Why Neobrutal UI</h2>
-                <div className="border-2 border-black bg-bw">
+                <div className="border-2 border-black bg-white">
                     <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
                         <div className="p-6">
                             <span className="text-2xl font-bold text-black">Open Code</span>
@@ -137,7 +137,7 @@ export default function DocsPage() {
                 </ul>
             </section>
 
-            <section className="border-2 border-black bg-bw">
+            <section className="border-2 border-black bg-white">
                 <Link href="/docs/installation" className="block p-3 hover:bg-main text-right">
                     <span className="text-lg font-bold">Installation</span>
                     <p className="truncate">Learn how to install Neobrutal UI components</p>

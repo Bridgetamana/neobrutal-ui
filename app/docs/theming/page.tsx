@@ -25,7 +25,7 @@ export default function ThemingPage() {
             <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-black">Example Themes</h2>
                 <div className="border-2 border-black divide-y-2 divide-black">
-                    <div className="p-5 bg-bw">
+                    <div className="p-5 bg-white">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-6 h-6 border-2 border-black bg-[#97ee88]"></div>
                             <h3 className="font-bold text-black text-lg">Mint</h3>
@@ -33,7 +33,7 @@ export default function ThemingPage() {
                         <CodeBlock code={`--main: #97ee88;
 --bg: #eefbec;`} language="css" />
                     </div>
-                    <div className="p-5 bg-bw">
+                    <div className="p-5 bg-white">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-6 h-6 border-2 border-black bg-[#fed170]"></div>
                             <h3 className="font-bold text-black text-lg">Lemon</h3>
@@ -44,7 +44,7 @@ export default function ThemingPage() {
                 </div>
             </section>
 
-            <section className="border-2 border-black bg-bw">
+            <section className="border-2 border-black bg-white">
                 <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
                     <Link href="/docs/cli" className="block p-3 hover:bg-main">
                         <span className="text-lg font-bold">CLI Reference</span>

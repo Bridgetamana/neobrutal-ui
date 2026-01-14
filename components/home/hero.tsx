@@ -67,7 +67,7 @@ export function HeroSection() {
                     <Button size="icon" aria-label="Like" className="rounded-full w-12 h-12 bg-lemon">
                         <HeartIcon weight="fill" className="w-6 h-6" />
                     </Button>
-                    <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-main">
+                    <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-[#88c5ee]">
                         <ShareNetworkIcon weight="bold" className="w-6 h-6" />
                     </Button>
                 </div>
@@ -83,13 +83,13 @@ export function HeroSection() {
                 </div>
                 <Switch aria-label="Toggle setting" className="data-[state=checked]:bg-black" />
                 <Input placeholder="Enter your email..." />
-                <Badge variant="default" className="bg-rose">New</Badge>
-                <div className="flex items-center gap-2 p-3 bg-white border-2 border-black shadow-brutal rounded-base">
+                <Badge variant="default" className="bg-hot-pink">New</Badge>
+                <div className="flex items-center gap-2 p-3 bg-[#88c5ee] border-2 border-black shadow-brutal rounded-base">
                     <Checkbox id="demo" defaultChecked />
                     <Label htmlFor="demo">Subscribe</Label>
                 </div>
                 <Slider defaultValue={[50]} max={100} />
-                <Alert className="w-full bg-rose border-2 border-black shadow-brutal">
+                <Alert className="w-full bg-hot-pink border-2 border-black shadow-brutal">
                     <WarningIcon className="h-5 w-5" />
                     <AlertTitle className="font-bold">Heads up!</AlertTitle>
                     <AlertDescription>

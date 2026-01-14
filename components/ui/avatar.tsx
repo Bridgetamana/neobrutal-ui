@@ -19,7 +19,7 @@ const Avatar = React.forwardRef<
             <div
                 ref={ref}
                 className={cn(
-                    "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-bw",
+                    "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-black bg-white",
                     className
                 )}
                 {...props}
@@ -108,7 +108,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
             >
                 {visible}
                 {overflow > 0 && (
-                    <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-base border-2 border-border bg-bw text-sm font-bold text-black hover:z-10">
+                    <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-base border-2 border-border bg-white text-sm font-bold text-black hover:z-10">
                         +{overflow}
                     </div>
                 )}

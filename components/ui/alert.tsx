@@ -8,8 +8,8 @@ const alertVariants = cva(
         variants: {
             variant: {
                 default: "bg-main text-black",
-                neutral: "bg-bw text-black",
-                destructive: "bg-rose text-black",
+                neutral: "bg-white text-black",
+                destructive: "bg-hot-pink text-black",
                 success: "bg-mint text-black",
                 warning: "bg-lemon text-black",
             },

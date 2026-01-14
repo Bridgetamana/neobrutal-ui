@@ -8,7 +8,7 @@
   --color-main: var(--main);
   --color-mint: var(--mint);
   --color-lemon: var(--lemon);
-  --color-rose: var(--rose);
+  --color-hot-pink: var(--hot-pink);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
@@ -21,7 +21,7 @@
   --radius: 5px;
   --mint: #97ee88;
   --lemon: #fed170;
-  --rose: #ee8888;
+  --hot-pink: #ee8888;
 }
 
 body {

@@ -38,7 +38,7 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
         <a
             ref={ref}
             className={cn(
-                "font-bold text-text hover:text-main transition-colors underline decoration-2 underline-offset-2 hover:no-underline",
+                "font-bold text-black hover:text-main transition-colors underline decoration-2 underline-offset-2 hover:no-underline",
                 className
             )}
             {...props}
