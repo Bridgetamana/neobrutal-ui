@@ -130,13 +130,6 @@ const searchItems: SearchItem[] = [
         category: "component",
     },
     {
-        name: "Skeleton",
-        description: "Use to show a placeholder while content is loading.",
-        href: "/docs/components/skeleton",
-        keywords: ["loading", "placeholder", "shimmer"],
-        category: "component",
-    },
-    {
         name: "Slider",
         description: "An input where the user selects a value from within a given range.",
         href: "/docs/components/slider",

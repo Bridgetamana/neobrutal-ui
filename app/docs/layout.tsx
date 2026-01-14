@@ -40,7 +40,6 @@ const sidebarItems = [
             { title: "Progress", href: "/docs/components/progress" },
             { title: "Radio Group", href: "/docs/components/radio-group" },
             { title: "Select", href: "/docs/components/select" },
-            { title: "Skeleton", href: "/docs/components/skeleton" },
             { title: "Slider", href: "/docs/components/slider" },
             { title: "Switch", href: "/docs/components/switch" },
             { title: "Tabs", href: "/docs/components/tabs" },

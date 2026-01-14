@@ -184,15 +184,6 @@
     ]
   },
   {
-    "name": "skeleton",
-    "type": "registry:ui",
-    "description": "Use to show a placeholder while content is loading.",
-    "dependencies": [],
-    "registryDependencies": [
-      "utils"
-    ]
-  },
-  {
     "name": "slider",
     "type": "registry:ui",
     "description": "An input where the user selects a value from within a given range.",

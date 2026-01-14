@@ -38,7 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'progress',
         'radio-group',
         'select',
-        'skeleton',
         'slider',
         'switch',
         'tabs',
