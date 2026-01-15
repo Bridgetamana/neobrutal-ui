@@ -17,7 +17,7 @@ const AccordionItem = React.forwardRef<
     <BaseAccordion.Item
         ref={ref}
         className={cn(
-            "mb-4 border-2 border-black bg-white data-panel-open:bg-main/30 data-panel-open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+            "mb-4 border-2 border-black bg-white shadow-brutal hover:bg-main/20 data-open:bg-main/20 data-open:shadow-brutal transition-colors duration-200",
             className
         )}
         {...props}
@@ -35,13 +35,13 @@ const AccordionTrigger = React.forwardRef<
         <BaseAccordion.Trigger
             ref={ref}
             className={cn(
-                "flex flex-1 items-center text-left justify-between p-3 font-medium [&[data-panel-open]>svg]:rotate-180 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
+                "flex flex-1 items-center text-left justify-between p-3 font-bold text-black hover:bg-main/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset transition-colors duration-200 [&[data-open]>svg]:rotate-180",
                 className
             )}
             {...props}
         >
             {children}
-            <CaretDownIcon className="h-4 w-4 shrink-0 transition-transform duration-200" />
+            <CaretDownIcon className="h-4 w-4 shrink-0 transition-transform duration-200 text-black" />
         </BaseAccordion.Trigger>
     </BaseAccordion.Header>
 ))
@@ -58,7 +58,7 @@ const AccordionContent = React.forwardRef<
         className="overflow-hidden text-sm h-(--accordion-panel-height) transition-[height] duration-200 motion-reduce:transition-none data-ending-style:h-0 data-starting-style:h-0"
         {...props}
     >
-        <div className={cn("p-3 pt-0 border-black", className)}>{children}</div>
+        <div className={cn("p-3 pt-0", className)}>{children}</div>
     </BaseAccordion.Panel>
 ))
 AccordionContent.displayName = "AccordionContent"

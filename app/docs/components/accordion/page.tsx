@@ -31,27 +31,33 @@ export function AccordionDemo() {
   )
 }`
 
-const htmlCode = `<div class="w-full max-w-md">
-  <details class="group border-2 border-black bg-white open:bg-[#88aaee]/30 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <summary class="flex cursor-pointer items-center justify-between p-4 font-bold hover:underline list-none [&::-webkit-details-marker]:hidden">
+const htmlCode = `<style>
+  .shadow-brutal {
+    box-shadow: 4px 4px 0px 0px #000000;
+  }
+</style>
+
+<div class="w-full max-w-md space-y-4">
+  <details class="group border-2 border-black bg-white shadow-brutal hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-brutal transition-colors duration-200">
+    <summary class="flex cursor-pointer items-center justify-between p-3 font-bold text-black hover:bg-[#b6ace4]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
       Is it styled?
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="shrink-0 transition-transform duration-200 group-open:rotate-180">
-        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+      <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-black group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </summary>
-    <div class="p-4 pt-0 border-t-2 border-black text-sm">
+    <div class="p-3 pt-0 text-sm">
       Yes. It comes with Neobrutalist styling out of the box.
     </div>
   </details>
   
-  <details class="group border-2 border-black bg-white open:bg-[#88aaee]/30 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <summary class="flex cursor-pointer items-center justify-between p-4 font-bold hover:underline list-none [&::-webkit-details-marker]:hidden">
+  <details class="group border-2 border-black bg-white shadow-brutal hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-brutal transition-colors duration-200">
+    <summary class="flex cursor-pointer items-center justify-between p-3 font-bold text-black hover:bg-[#b6ace4]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
       Is it animated?
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" class="shrink-0 transition-transform duration-200 group-open:rotate-180">
-        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+      <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-black group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </summary>
-    <div class="p-4 pt-0 border-t-2 border-black text-sm">
+    <div class="p-3 pt-0 text-sm">
       Yes. Animations are enabled by default.
     </div>
   </details>
@@ -59,46 +65,92 @@ const htmlCode = `<div class="w-full max-w-md">
 
 const accordionProps = [
   {
-    name: "type",
-    type: '"single" | "multiple"',
-    defaultValue: '"single"',
-    description: "Determines whether one or multiple items can be opened at the same time.",
-  },
-  {
-    name: "collapsible",
-    type: "boolean",
-    defaultValue: "false",
-    description: "When type is 'single', allows closing the content when clicking the trigger for an open item.",
-  },
-  {
     name: "defaultValue",
-    type: "string | string[]",
-    description: "The value of the item(s) to expand by default.",
+    type: "any[]",
+    description: "The uncontrolled value of the item(s) that should be initially expanded.",
   },
   {
     name: "value",
-    type: "string | string[]",
-    description: "The controlled value of the item(s) to expand.",
+    type: "any[]",
+    description: "The controlled value of the item(s) that should be expanded.",
   },
   {
     name: "onValueChange",
-    type: "(value: string | string[]) => void",
-    description: "Event handler called when the expanded state changes.",
+    type: "(value: any[], eventDetails) => void",
+    description: "Event handler called when an accordion item is expanded or collapsed.",
+  },
+  {
+    name: "hiddenUntilFound",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Allows the browser's built-in page search to find and expand the panel contents.",
+  },
+  {
+    name: "loopFocus",
+    type: "boolean",
+    defaultValue: "true",
+    description: "Whether to loop keyboard focus back to the first item when the end is reached.",
+  },
+  {
+    name: "multiple",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Whether multiple items can be open at the same time.",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Whether the component should ignore user interaction.",
+  },
+  {
+    name: "orientation",
+    type: '"vertical" | "horizontal"',
+    defaultValue: '"vertical"',
+    description: "The visual orientation of the accordion.",
   },
 ]
 
 const accordionItemProps = [
   {
     name: "value",
-    type: "string",
-    required: true,
-    description: "A unique value for the item.",
+    type: "any",
+    description: "A unique value that identifies this accordion item.",
+  },
+  {
+    name: "onOpenChange",
+    type: "(open: boolean, eventDetails) => void",
+    description: "Event handler called when the panel is opened or closed.",
   },
   {
     name: "disabled",
     type: "boolean",
     defaultValue: "false",
-    description: "When true, prevents the user from interacting with the item.",
+    description: "Whether the component should ignore user interaction.",
+  },
+]
+
+const accordionTriggerProps = [
+  {
+    name: "nativeButton",
+    type: "boolean",
+    defaultValue: "true",
+    description: "Whether the component renders a native button element.",
+  },
+]
+
+const accordionContentProps = [
+  {
+    name: "hiddenUntilFound",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Allows the browser's built-in page search to find and expand the panel contents.",
+  },
+  {
+    name: "keepMounted",
+    type: "boolean",
+    defaultValue: "false",
+    description: "Whether to keep the element in the DOM while the panel is closed.",
   },
 ]
 
@@ -209,6 +261,10 @@ export default function AccordionPage() {
         <PropsTable data={accordionProps} />
         <h3 className="text-lg font-bold">AccordionItem</h3>
         <PropsTable data={accordionItemProps} />
+        <h3 className="text-lg font-bold">AccordionTrigger</h3>
+        <PropsTable data={accordionTriggerProps} />
+        <h3 className="text-lg font-bold">AccordionContent</h3>
+        <PropsTable data={accordionContentProps} />
       </div>
     </div>
   )
