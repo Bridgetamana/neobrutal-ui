@@ -115,7 +115,11 @@ Feature requests are welcome. Please:
 
 6. Add the component to the registry in `public/r/`.
 
-7. Update the CLI registry index.
+7. Update the CLI registry index by running:
+
+   ```bash
+   npm run registry:build
+   ```
 
 ## Questions
 
