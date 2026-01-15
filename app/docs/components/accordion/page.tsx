@@ -31,14 +31,8 @@ export function AccordionDemo() {
   )
 }`
 
-const htmlCode = `<style>
-  .shadow-brutal {
-    box-shadow: 4px 4px 0px 0px #000000;
-  }
-</style>
-
-<div class="w-full max-w-md space-y-4">
-  <details class="group border-2 border-black bg-white shadow-brutal hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-brutal transition-colors duration-200">
+const htmlCode = `<div class="w-full max-w-md space-y-4">
+  <details class="group border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200">
     <summary class="flex cursor-pointer items-center justify-between p-3 font-bold text-black hover:bg-[#b6ace4]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
       Is it styled?
       <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-black group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +44,7 @@ const htmlCode = `<style>
     </div>
   </details>
   
-  <details class="group border-2 border-black bg-white shadow-brutal hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-brutal transition-colors duration-200">
+  <details class="group border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#b6ace4]/20 open:bg-[#b6ace4]/20 open:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-colors duration-200">
     <summary class="flex cursor-pointer items-center justify-between p-3 font-bold text-black hover:bg-[#b6ace4]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset transition-colors duration-200 list-none [&::-webkit-details-marker]:hidden">
       Is it animated?
       <svg class="h-4 w-4 shrink-0 transition-transform duration-200 text-black group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">

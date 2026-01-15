@@ -21,12 +21,12 @@ export function AlertDemo() {
   )
 }`
 
-const htmlCode = `<div role="alert" class="relative w-full rounded-[5px] border-2 border-black bg-[#88aaee] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+const htmlCode = `<div role="alert" class="relative w-full rounded-[5px] border-2 border-black bg-[#b6ace4] p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
   <svg class="absolute left-4 top-4 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
     <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path>
   </svg>
   <div class="pl-7">
-    <h5 class="mb-1 font-bold">Heads up!</h5>
+    <h5 class="mb-1 font-medium">Heads up!</h5>
     <div class="text-sm">You can add components to your app using the CLI.</div>
   </div>
 </div>`

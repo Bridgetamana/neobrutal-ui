@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-    "relative w-full rounded-base border border-black p-4 [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-black",
+    "relative w-full rounded-base border-2 border-black p-4 shadow-brutal [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-black",
     {
         variants: {
             variant: {
