@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -51,8 +51,8 @@ const sidebarItems = [
 ]
 
 interface SidebarContentProps {
-    pathname: string
-    onLinkClick?: () => void
+  pathname: string;
+  onLinkClick?: () => void;
 }
 
 const SidebarContent = ({ pathname, onLinkClick }: SidebarContentProps) => (
@@ -85,12 +85,12 @@ const SidebarContent = ({ pathname, onLinkClick }: SidebarContentProps) => (
 )
 
 export default function DocsLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    const pathname = usePathname()
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const pathname = usePathname();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
         <div className="flex min-h-screen flex-col md:flex-row bg-bg">
@@ -150,5 +150,5 @@ export default function DocsLayout({
             </main>
             <ColorThemePicker />
         </div>
-    )
+  );
 }
