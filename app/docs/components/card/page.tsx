@@ -30,16 +30,20 @@ export function CardDemo() {
       </CardFooter>
     </Card>
   )
-}`
+"`
 
-const htmlCode = `<div class="rounded-base border-2 border-black bg-white text-black shadow-brutal max-w-md">
+const htmlCode = `<div class="border-2 border-black bg-white text-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-md p-4">
   <div class="flex flex-col space-y-1.5 pb-2">
     <h3 class="text-2xl font-bold">Create project</h3>
   </div>
   <p class="text-sm">This is the main content area of the card. You can put text, images, forms, or any other content here.</p>
   <div class="flex justify-between items-center pt-6">
-    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none h-10 px-4 py-2">Cancel</button>
-    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-main text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none h-10 px-4 py-2">Deploy</button>
+    <button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#fff] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer">
+        Cancel
+    </button>
+    <button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#b6ace4] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer">
+        Deploy
+    </button>
   </div>
 </div>`
 
