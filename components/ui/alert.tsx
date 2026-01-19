@@ -3,15 +3,15 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-    "relative w-full rounded-base border border-black p-4 [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-black",
+    "relative w-full rounded-base border-2 border-black p-4 shadow-brutal [&>svg~*]:pl-7 [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-black",
     {
         variants: {
             variant: {
                 default: "bg-main text-black",
-                neutral: "bg-bw text-black",
-                destructive: "bg-pastel-red text-black",
-                success: "bg-pastel-green text-black",
-                warning: "bg-pastel-yellow text-black",
+                neutral: "bg-white text-black",
+                destructive: "bg-hot-pink text-black",
+                success: "bg-mint text-black",
+                warning: "bg-lemon text-black",
             },
         },
         defaultVariants: {

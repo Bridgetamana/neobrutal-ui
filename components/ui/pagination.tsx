@@ -24,10 +24,10 @@ const PaginationItem = React.forwardRef<HTMLButtonElement, PaginationItemProps>(
         <button
             ref={ref}
             className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-base border-2 border-border text-sm font-bold transition-all",
+                "inline-flex h-10 w-10 items-center justify-center rounded-base border-2 border-black text-sm font-bold transition-all",
                 isActive
                     ? "bg-main text-black shadow-brutal hover:translate-x-px hover:translate-y-px hover:shadow-none"
-                    : "bg-bw text-text hover:bg-neutral-100",
+                    : "bg-white text-black hover:bg-neutral-100",
                 className
             )}
             aria-current={isActive ? "page" : undefined}

@@ -53,15 +53,6 @@
     ]
   },
   {
-    "name": "breadcrumb",
-    "type": "registry:ui",
-    "description": "Displays the path to the current resource using a hierarchy of links.",
-    "dependencies": [],
-    "registryDependencies": [
-      "utils"
-    ]
-  },
-  {
     "name": "button",
     "type": "registry:ui",
     "description": "Displays a button or a component that looks like a button with neobrutalist styling.",
@@ -184,15 +175,6 @@
     ]
   },
   {
-    "name": "skeleton",
-    "type": "registry:ui",
-    "description": "Use to show a placeholder while content is loading.",
-    "dependencies": [],
-    "registryDependencies": [
-      "utils"
-    ]
-  },
-  {
     "name": "slider",
     "type": "registry:ui",
     "description": "An input where the user selects a value from within a given range.",
@@ -204,11 +186,11 @@
     ]
   },
   {
-    "name": "sonner",
+    "name": "toast",
     "type": "registry:ui",
     "description": "An opinionated toast component with neobrutalist styling.",
     "dependencies": [
-      "sonner"
+      "@base-ui/react"
     ],
     "registryDependencies": [
       "utils"

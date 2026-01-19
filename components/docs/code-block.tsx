@@ -30,7 +30,7 @@ export function CodeBlock({ code, language = "tsx", className, ...props }: CodeB
             <div className="absolute right-4 top-4 z-10">
                 <Button
                     size="icon"
-                    className="h-6 w-6 bg-transparent text-white hover:translate-0"
+                    className="h-6 w-6 bg-transparent border-0 text-white hover:translate-0"
                     onClick={onCopy}
                 >
                     {hasCopied ? (

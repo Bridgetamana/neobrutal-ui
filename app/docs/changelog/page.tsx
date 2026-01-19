@@ -79,27 +79,6 @@ function parseChangelog(content: string) {
     return sections
 }
 
-function getTypeColor(type: string) {
-    switch (type.toLowerCase()) {
-        case "added":
-            return "bg-green-200 border-green-400"
-        case "changed":
-            return "bg-yellow-200 border-yellow-400"
-        case "fixed":
-            return "bg-blue-200 border-blue-400"
-        case "removed":
-            return "bg-red-200 border-red-400"
-        case "deprecated":
-            return "bg-orange-200 border-orange-400"
-        case "security":
-            return "bg-purple-200 border-purple-400"
-        case "technical":
-            return "bg-gray-200 border-gray-400"
-        default:
-            return "bg-main border-main"
-    }
-}
-
 export default async function ChangelogPage() {
     const content = await getChangelog()
     const sections = parseChangelog(content)
@@ -157,9 +136,7 @@ export default async function ChangelogPage() {
                             <div className="p-4 space-y-4">
                                 {section.changes.map((change, idx) => (
                                     <div key={idx}>
-                                        <span
-                                            className={`inline-block text-xs font-bold px-2 py-0.5 rounded border-2 ${getTypeColor(change.type)} mb-2`}
-                                        >
+                                        <span className="inline-block text-xs font-bold px-2 py-0.5 border-2 border-black bg-main mb-2">
                                             {change.type}
                                         </span>
                                         <ul className="space-y-1 ml-4">
@@ -207,7 +184,7 @@ export default async function ChangelogPage() {
                 </p>
             </div>
 
-            <section className="border-2 border-black bg-bw">
+            <section className="border-2 border-black bg-white">
                 <Link href="/docs/accessibility" className="block p-3 hover:bg-main">
                     <span className="text-lg font-bold">Accessibility</span>
                     <p className="truncate">Learn about how neobrutal ui is built with accessibility in mind</p>

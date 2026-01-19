@@ -50,11 +50,11 @@ function ColorThemePicker() {
                                 return (
                                     <Button
                                         key={theme.name}
-                                        variant="outline"
+                                        variant="noShadow"
                                         onClick={() => onSelectTheme(theme)}
                                         aria-label={`Select ${theme.name} theme`}
                                         aria-pressed={isActive ? "true" : "false"}
-                                        className="h-auto flex-col gap-1.5 p-2 hover:bg-transparent"
+                                        className="h-auto flex-col gap-1.5 p-2 bg-transparent"
                                     >
                                         <ColorSwatch
                                             color={theme.main}

@@ -87,21 +87,6 @@
             ]
         },
         {
-            "name": "breadcrumb",
-            "type": "registry:ui",
-            "description": "Displays the path to the current resource using a hierarchy of links.",
-            "dependencies": [],
-            "registryDependencies": [
-                "utils"
-            ],
-            "files": [
-                {
-                    "path": "components/ui/breadcrumb.tsx",
-                    "type": "registry:ui"
-                }
-            ]
-        },
-        {
             "name": "button",
             "type": "registry:ui",
             "description": "Displays a button or a component that looks like a button with neobrutalist styling.",
@@ -290,21 +275,6 @@
             ]
         },
         {
-            "name": "skeleton",
-            "type": "registry:ui",
-            "description": "Use to show a placeholder while content is loading.",
-            "dependencies": [],
-            "registryDependencies": [
-                "utils"
-            ],
-            "files": [
-                {
-                    "path": "components/ui/skeleton.tsx",
-                    "type": "registry:ui"
-                }
-            ]
-        },
-        {
             "name": "slider",
             "type": "registry:ui",
             "description": "An input where the user selects a value from within a given range.",
@@ -322,18 +292,18 @@
             ]
         },
         {
-            "name": "sonner",
+            "name": "toast",
             "type": "registry:ui",
             "description": "An opinionated toast component with neobrutalist styling.",
             "dependencies": [
-                "sonner"
+                "@base-ui/react"
             ],
             "registryDependencies": [
                 "utils"
             ],
             "files": [
                 {
-                    "path": "components/ui/sonner.tsx",
+                    "path": "components/ui/toast.tsx",
                     "type": "registry:ui"
                 }
             ]

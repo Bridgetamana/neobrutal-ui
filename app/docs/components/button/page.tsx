@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { MagnifyingGlassIcon } from "@phosphor-icons/react"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
@@ -11,14 +12,14 @@ export function ButtonDemo() {
   return <Button>Button</Button>
 }`
 
-const htmlCode = `<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#88aaee] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all">
+const htmlCode = `<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#b6ace4] text-black border-2 border-black rounded-[5px] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer">
   Button
 </button>`
 
 const buttonProps = [
     {
         name: "variant",
-        type: '"default" | "noShadow" | "neutral" | "primary" | "reverse" | "outline"',
+        type: '"default" | "noShadow" | "neutral"',
         defaultValue: '"default"',
         description: "The visual style of the button.",
     },
@@ -61,7 +62,7 @@ export default function ButtonPage() {
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Button } from "@/components/ui/button"`} />
-                <CodeBlock code={`<Button variant="outline">Button</Button>`} />
+                <CodeBlock code={`<Button variant="neutral">Button</Button>`} />
             </div>
 
             <div className="space-y-6">
@@ -78,20 +79,6 @@ export default function ButtonPage() {
                     <h3 className="font-bold">Neutral</h3>
                     <ComponentPreview code={`<Button variant="neutral">Neutral</Button>`}>
                         <Button variant="neutral">Neutral</Button>
-                    </ComponentPreview>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="font-bold">Reverse</h3>
-                    <ComponentPreview code={`<Button variant="reverse">Reverse</Button>`}>
-                        <Button variant="reverse">Reverse</Button>
-                    </ComponentPreview>
-                </div>
-
-                <div className="space-y-4">
-                    <h3 className="font-bold">Outline</h3>
-                    <ComponentPreview code={`<Button variant="outline">Outline</Button>`}>
-                        <Button variant="outline">Outline</Button>
                     </ComponentPreview>
                 </div>
 
@@ -119,8 +106,12 @@ export default function ButtonPage() {
 
                 <div className="space-y-4">
                     <h3 className="font-bold">Icon</h3>
-                    <ComponentPreview code={`<Button size="icon">🔍</Button>`}>
-                        <Button size="icon">🔍</Button>
+                    <ComponentPreview code={`<Button size="icon">
+  <MagnifyingGlass weight="bold" />
+</Button>`}>
+                        <Button size="icon">
+                            <MagnifyingGlassIcon weight="bold" />
+                        </Button>
                     </ComponentPreview>
                 </div>
 

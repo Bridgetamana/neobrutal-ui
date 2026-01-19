@@ -15,13 +15,13 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
     const [codeType, setCodeType] = React.useState<"react" | "html">("react")
 
     return (
-        <div className={cn("border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-bw", className)} {...props}>
+        <div className={cn("border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-white", className)} {...props}>
             <div className="flex border-b-2 border-black divide-x-2 divide-black">
                 <button
                     onClick={() => setView("preview")}
                     className={cn(
                         "flex-1 py-2 text-sm font-medium uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
-                        view === "preview" ? "bg-main" : "bg-bw hover:bg-main/30"
+                        view === "preview" ? "bg-main" : "bg-white hover:bg-main/30"
                     )}
                 >
                     Preview
@@ -30,14 +30,14 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
                     onClick={() => setView("code")}
                     className={cn(
                         "flex-1 py-2 text-sm font-medium uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
-                        view === "code" ? "bg-main" : "bg-bw hover:bg-main/30"
+                        view === "code" ? "bg-main" : "bg-white hover:bg-main/30"
                     )}
                 >
                     Code
                 </button>
             </div>
 
-            <div className="bg-bw">
+            <div className="bg-white">
                 {view === "preview" ? (
                     <div className="p-4 min-h-[200px] flex items-center justify-center">
                         {children}

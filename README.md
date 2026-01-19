@@ -40,7 +40,6 @@ Or copy the code directly from the docs.
 - Progress
 - Radio Group
 - Select
-- Skeleton
 - Slider
 - Switch
 - Tabs

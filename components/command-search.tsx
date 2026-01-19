@@ -46,13 +46,6 @@ const searchItems: SearchItem[] = [
         category: "component",
     },
     {
-        name: "Breadcrumb",
-        description: "Displays the path to the current resource using a hierarchy of links.",
-        href: "/docs/components/breadcrumb",
-        keywords: ["navigation", "path", "hierarchy", "trail"],
-        category: "component",
-    },
-    {
         name: "Button",
         description: "Displays a button or a component that looks like a button.",
         href: "/docs/components/button",
@@ -130,13 +123,6 @@ const searchItems: SearchItem[] = [
         category: "component",
     },
     {
-        name: "Skeleton",
-        description: "Use to show a placeholder while content is loading.",
-        href: "/docs/components/skeleton",
-        keywords: ["loading", "placeholder", "shimmer"],
-        category: "component",
-    },
-    {
         name: "Slider",
         description: "An input where the user selects a value from within a given range.",
         href: "/docs/components/slider",
@@ -168,7 +154,7 @@ const searchItems: SearchItem[] = [
         name: "Toast",
         description: "An opinionated toast component with neobrutalist styling.",
         href: "/docs/components/toast",
-        keywords: ["notification", "snackbar", "message", "sonner"],
+        keywords: ["notification", "snackbar", "message"],
         category: "component",
     },
     {

@@ -11,14 +11,14 @@ export function BadgeDemo() {
   return <Badge>Badge</Badge>
 }`
 
-const htmlCode = `<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-[#88aaee] px-2.5 py-0.5 text-xs font-bold text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+const htmlCode = `<span class="inline-flex items-center rounded-[5px] border-2 border-black bg-[#b6ace4] px-2.5 py-0.5 text-xs font-bold text-black">
   Badge
 </span>`
 
 const badgeProps = [
     {
         name: "variant",
-        type: '"default" | "neutral" | "outline" | "destructive" | "success" | "warning"',
+        type: '"default" | "neutral" | "destructive" | "success" | "warning"',
         defaultValue: '"default"',
         description: "The visual style of the badge.",
     },
@@ -49,7 +49,7 @@ export default function BadgePage() {
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Usage</h2>
                 <CodeBlock code={`import { Badge } from "@/components/ui/badge"`} />
-                <CodeBlock code={`<Badge variant="outline">Badge</Badge>`} />
+                <CodeBlock code={`<Badge variant="neutral">Badge</Badge>`} />
             </div>
 
             <div className="space-y-6">
@@ -70,9 +70,23 @@ export default function BadgePage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Outline</h3>
-                    <ComponentPreview code={`<Badge variant="outline">Outline</Badge>`}>
-                        <Badge variant="outline">Outline</Badge>
+                    <h3 className="font-bold">Destructive</h3>
+                    <ComponentPreview code={`<Badge variant="destructive">Destructive</Badge>`}>
+                        <Badge variant="destructive">Destructive</Badge>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">Success</h3>
+                    <ComponentPreview code={`<Badge variant="success">Success</Badge>`}>
+                        <Badge variant="success">Success</Badge>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">Warning</h3>
+                    <ComponentPreview code={`<Badge variant="warning">Warning</Badge>`}>
+                        <Badge variant="warning">Warning</Badge>
                     </ComponentPreview>
                 </div>
 
@@ -81,12 +95,16 @@ export default function BadgePage() {
                     <ComponentPreview code={`<div className="flex flex-wrap gap-2">
   <Badge>New</Badge>
   <Badge variant="neutral">Popular</Badge>
-  <Badge variant="outline">Beta</Badge>
+  <Badge variant="destructive">Error</Badge>
+  <Badge variant="success">Success</Badge>
+  <Badge variant="warning">Warning</Badge>
 </div>`}>
                         <div className="flex flex-wrap gap-2">
                             <Badge>New</Badge>
                             <Badge variant="neutral">Popular</Badge>
-                            <Badge variant="outline">Beta</Badge>
+                            <Badge variant="destructive">Error</Badge>
+                            <Badge variant="success">Success</Badge>
+                            <Badge variant="warning">Warning</Badge>
                         </div>
                     </ComponentPreview>
                 </div>
