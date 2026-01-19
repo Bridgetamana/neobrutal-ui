@@ -10,17 +10,18 @@ type CheckboxProps = React.ComponentPropsWithoutRef<typeof BaseCheckbox.Root>
 const Checkbox = React.forwardRef<
     React.ComponentRef<typeof BaseCheckbox.Root>,
     CheckboxProps
->(({ className, ...props }, ref) => (
+>(({ className, disabled, ...props }, ref) => (
     <BaseCheckbox.Root
         ref={ref}
+        disabled={disabled}
         className={cn(
-            "peer h-5 w-5 shrink-0 rounded-base border-2 border-black ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-checked:text-black",
+            "peer h-5 w-5 shrink-0 rounded-base border-2 border-black ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-checked:text-black",
             className
         )}
         {...props}
     >
         <BaseCheckbox.Indicator
-            className={cn("flex items-center justify-center text-current data-unchecked:hidden")}
+            className={cn("flex items-center justify-center text-current data-unchecked:hidden", disabled && "opacity-50")}
         >
             <CheckIcon weight="bold" className="h-3.5 w-3.5" />
         </BaseCheckbox.Indicator>

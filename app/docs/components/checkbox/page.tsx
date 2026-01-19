@@ -6,46 +6,20 @@ import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 
-const usageCode = `<div className="flex items-center gap-2">
-  <Checkbox id="terms" />
-  <Label htmlFor="terms">Accept terms and conditions</Label>
-</div>`
+const usageCode = `<Checkbox />`
+
+const htmlCode = `<input type="checkbox" class="peer h-5 w-5 shrink-0 rounded-[5px] ring-2 border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white accent-[#b6ace4]" />`
 
 const checkboxProps = [
-    {
-        name: "checked",
-        type: "boolean | 'indeterminate'",
-        description: "The controlled checked state of the checkbox.",
-    },
     {
         name: "defaultChecked",
         type: "boolean",
         description: "The default checked state when uncontrolled.",
     },
     {
-        name: "onCheckedChange",
-        type: "(checked: boolean | 'indeterminate') => void",
-        description: "Event handler called when the checked state changes.",
-    },
-    {
         name: "disabled",
         type: "boolean",
         description: "When true, prevents the user from interacting with the checkbox.",
-    },
-    {
-        name: "required",
-        type: "boolean",
-        description: "When true, indicates that the user must check the checkbox before the owning form can be submitted.",
-    },
-    {
-        name: "name",
-        type: "string",
-        description: "The name of the checkbox. Submitted with its owning form as part of a name/value pair.",
-    },
-    {
-        name: "value",
-        type: "string",
-        description: "The value given as data for the checkbox when submitted in a form.",
     },
 ]
 
@@ -62,11 +36,8 @@ export default function CheckboxPage() {
                 </p>
             </section>
 
-            <ComponentPreview code={usageCode}>
-                <div className="flex items-center gap-2">
-                    <Checkbox id="terms" />
-                    <Label htmlFor="terms">Accept terms and conditions</Label>
-                </div>
+            <ComponentPreview code={usageCode} htmlCode={htmlCode}>
+                <Checkbox />
             </ComponentPreview>
 
             <div className="space-y-4">
@@ -91,30 +62,30 @@ import { Label } from "@/components/ui/label"`} />
                     <h3 className="font-bold">States</h3>
                     <ComponentPreview code={`<div className="grid gap-4">
   <div className="flex items-center gap-2">
-    <Checkbox id="cb1" />
-    <Label htmlFor="cb1">Unchecked</Label>
+    <Checkbox id="unchecked-state" />
+    <Label htmlFor="unchecked-state">Unchecked State</Label>
   </div>
   <div className="flex items-center gap-2">
-    <Checkbox id="cb2" defaultChecked />
-    <Label htmlFor="cb2">Checked</Label>
+    <Checkbox id="checked-state" defaultChecked />
+    <Label htmlFor="checked-state">Checked State</Label>
   </div>
   <div className="flex items-center gap-2">
-    <Checkbox id="cb3" disabled />
-    <Label htmlFor="cb3">Disabled</Label>
+    <Checkbox id="disabled-state" disabled />
+    <Label htmlFor="disabled-state">Disabled State</Label>
   </div>
 </div>`}>
                         <div className="grid gap-4">
                             <div className="flex items-center gap-2">
-                                <Checkbox id="cb1" />
-                                <Label htmlFor="cb1">Unchecked</Label>
+                                <Checkbox id="unchecked-state" />
+                                <Label htmlFor="unchecked-state">Unchecked State</Label>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Checkbox id="cb2" defaultChecked />
-                                <Label htmlFor="cb2">Checked</Label>
+                                <Checkbox id="checked-state" defaultChecked />
+                                <Label htmlFor="checked-state">Checked State</Label>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Checkbox id="cb3" disabled />
-                                <Label htmlFor="cb3">Disabled</Label>
+                                <Checkbox id="disabled-state" disabled />
+                                <Label htmlFor="disabled-state">Disabled State</Label>
                             </div>
                         </div>
                     </ComponentPreview>
