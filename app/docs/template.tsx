@@ -18,7 +18,7 @@ export default function DocsTemplate({ children }: DocsTemplateProps) {
       <Link
         href={githubUrl}
         target="_blank"
-        className="text-xs font-bold text-blue-500"
+        className="text-xs font-bold text-main"
       >
         Edit this page on GitHub
       </Link>
