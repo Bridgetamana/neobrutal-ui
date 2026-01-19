@@ -11,6 +11,8 @@ const usageCode = `<div className="flex items-center gap-2">
   <Label htmlFor="terms">Accept terms and conditions</Label>
 </div>`
 
+const htmlCode = `<label for="email" class="text-sm font-bold leading-none">Accept terms and conditions</label>`
+
 export default function LabelPage() {
     return (
         <div className="space-y-8">
@@ -24,7 +26,7 @@ export default function LabelPage() {
                 </p>
             </section>
 
-            <ComponentPreview code={usageCode}>
+            <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <div className="flex items-center gap-2">
                     <Checkbox id="terms" />
                     <Label htmlFor="terms">Accept terms and conditions</Label>
