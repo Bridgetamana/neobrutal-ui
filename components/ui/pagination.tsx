@@ -8,7 +8,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
         <nav
             ref={ref}
             aria-label="Pagination"
-            className={cn("flex items-center justify-center gap-1", className)}
+            className={cn("flex items-center justify-center border-2 border-black rounded-base", className)}
             {...props}
         />
     )
@@ -24,10 +24,10 @@ const PaginationItem = React.forwardRef<HTMLButtonElement, PaginationItemProps>(
         <button
             ref={ref}
             className={cn(
-                "inline-flex h-10 w-10 items-center justify-center rounded-base border-2 border-black text-sm font-bold transition-all",
+                "inline-flex h-10 w-10 items-center justify-center text-sm font-bold transition-all border-r-2 border-black last:border-r-0",
                 isActive
-                    ? "bg-main text-black shadow-brutal hover:translate-x-px hover:translate-y-px hover:shadow-none"
-                    : "bg-white text-black hover:bg-neutral-100",
+                    ? "bg-main text-black"
+                    : "bg-white text-black hover:bg-neutral-50",
                 className
             )}
             aria-current={isActive ? "page" : undefined}
