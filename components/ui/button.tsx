@@ -30,9 +30,6 @@ const buttonVariants = cva(
                 default: "bg-main text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none",
                 noShadow: "bg-main text-black border-2 border-border",
                 neutral: "bg-white text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none",
-                primary: "bg-main text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none",
-                reverse: "bg-black text-white shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none hover:bg-neutral-800",
-                outline: "bg-white text-black border-2 border-border hover:bg-neutral-100",
             },
             size: {
                 default: "h-10 px-4 py-2",
