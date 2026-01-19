@@ -46,13 +46,6 @@ const searchItems: SearchItem[] = [
         category: "component",
     },
     {
-        name: "Breadcrumb",
-        description: "Displays the path to the current resource using a hierarchy of links.",
-        href: "/docs/components/breadcrumb",
-        keywords: ["navigation", "path", "hierarchy", "trail"],
-        category: "component",
-    },
-    {
         name: "Button",
         description: "Displays a button or a component that looks like a button.",
         href: "/docs/components/button",

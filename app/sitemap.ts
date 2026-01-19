@@ -26,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'alert',
         'avatar',
         'badge',
-        'breadcrumb',
         'button',
         'card',
         'checkbox',

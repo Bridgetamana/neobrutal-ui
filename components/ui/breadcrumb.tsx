@@ -8,7 +8,7 @@ const Breadcrumb = React.forwardRef<HTMLDivElement, BreadcrumbProps>(
         <nav
             ref={ref}
             aria-label="Breadcrumb"
-            className={cn("flex items-center gap-2 text-sm", className)}
+            className={cn("flex items-center gap-1 text-sm", className)}
             {...props}
         />
     )
@@ -23,7 +23,7 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
     ({ className, isActive, ...props }, ref) => (
         <li
             ref={ref}
-            className={cn("flex items-center gap-2", className)}
+            className={cn("flex items-center", className)}
             aria-current={isActive ? "page" : undefined}
             {...props}
         />
@@ -38,7 +38,7 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
         <a
             ref={ref}
             className={cn(
-                "font-bold text-black hover:text-main transition-colors underline decoration-2 underline-offset-2 hover:no-underline",
+                "inline-flex items-center px-3 py-1 font-bold text-black bg-white border-2 border-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all duration-200 rounded-base",
                 className
             )}
             {...props}
@@ -50,10 +50,10 @@ BreadcrumbLink.displayName = "BreadcrumbLink"
 export type BreadcrumbSeparatorProps = React.HTMLAttributes<HTMLSpanElement>
 
 const BreadcrumbSeparator = React.forwardRef<HTMLSpanElement, BreadcrumbSeparatorProps>(
-    ({ className, children = "/", ...props }, ref) => (
+    ({ className, children = ">", ...props }, ref) => (
         <span
             ref={ref}
-            className={cn("font-bold text-neutral-400", className)}
+            className={cn("inline-flex items-center justify-center w-6 h-6 font-bold text-black bg-main border-2 border-black shadow-brutal rounded-base mx-1", className)}
             {...props}
         >
             {children}
@@ -62,4 +62,20 @@ const BreadcrumbSeparator = React.forwardRef<HTMLSpanElement, BreadcrumbSeparato
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 
-export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator }
+export type BreadcrumbPageProps = React.HTMLAttributes<HTMLSpanElement>
+
+const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
+    ({ className, ...props }, ref) => (
+        <span
+            ref={ref}
+            className={cn(
+                "inline-flex items-center px-3 py-1 font-bold text-black bg-main border-2 border-black shadow-brutal rounded-base",
+                className
+            )}
+            {...props}
+        />
+    )
+)
+BreadcrumbPage.displayName = "BreadcrumbPage"
+
+export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage }

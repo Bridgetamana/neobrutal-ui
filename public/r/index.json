@@ -53,15 +53,6 @@
     ]
   },
   {
-    "name": "breadcrumb",
-    "type": "registry:ui",
-    "description": "Displays the path to the current resource using a hierarchy of links.",
-    "dependencies": [],
-    "registryDependencies": [
-      "utils"
-    ]
-  },
-  {
     "name": "button",
     "type": "registry:ui",
     "description": "Displays a button or a component that looks like a button with neobrutalist styling.",
