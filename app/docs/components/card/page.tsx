@@ -1,13 +1,15 @@
 "use client"
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
+import Image from "next/image"
 
 const usageCode = `import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -18,18 +20,37 @@ export function CardDemo() {
     <Card className="w-[350px]">
       <CardHeader>
         <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
       <CardContent>
         <p>Card Content</p>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <button className="text-sm font-bold underline text-black">Cancel</button>
-        <button className="rounded-base border-2 border-black bg-main px-3 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black">Deploy</button>
+        <Button variant="neutral">Cancel</Button>
+        <Button>Deploy</Button>
       </CardFooter>
     </Card>
   )
 }`
+
+const htmlCode = `<div class="rounded-base border-2 border-black bg-white text-black shadow-brutal max-w-md">
+  <div class="flex flex-col space-y-1.5 pb-2">
+    <h3 class="text-2xl font-bold">Create project</h3>
+  </div>
+  <p class="text-sm">This is the main content area of the card. You can put text, images, forms, or any other content here.</p>
+  <div class="flex justify-between items-center pt-6">
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none h-10 px-4 py-2">Cancel</button>
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-main text-black shadow-brutal hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none h-10 px-4 py-2">Deploy</button>
+  </div>
+</div>`
+
+const cardProps = [
+    {
+        name: "variant",
+        type: '"default"',
+        defaultValue: '"default"',
+        description: "The visual style of the card.",
+    },
+]
 
 export default function CardPage() {
     return (
@@ -40,22 +61,21 @@ export default function CardPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A container component with bold borders and shadow. Perfect for grouping related content.
+                    A flexible container component with bold borders and shadows. Perfect for displaying content, forms, or any grouped information with a neobrutalist aesthetic.
                 </p>
             </section>
 
-            <ComponentPreview code={usageCode}>
+            <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Card className="max-w-md">
                     <CardHeader>
                         <CardTitle>Create project</CardTitle>
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-sm">This is the main content area of the card. You can put anything here.</p>
+                        <p className="text-sm">This is the main content area of the card. You can put text, images, forms, or any other content here.</p>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <button className="text-sm font-bold underline text-black">Cancel</button>
-                        <button className="rounded-base border-2 border-black bg-main px-3 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black">Deploy</button>
+                        <Button variant="neutral">Cancel</Button>
+                        <Button>Deploy</Button>
                     </CardFooter>
                 </Card>
             </ComponentPreview>
@@ -70,26 +90,136 @@ export default function CardPage() {
                 <CodeBlock code={`import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"`} />
+                <CodeBlock code={`<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+  </CardHeader>
+  <CardContent>
+    Card content
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>`} />
             </div>
 
             <div className="space-y-6">
                 <h2 className="text-xl font-bold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Simple Card</h3>
-                    <ComponentPreview code={`<Card className="p-6">
-  <p>A simple card with just content and padding.</p>
+                    <h3 className="font-bold">Default</h3>
+                    <ComponentPreview code={`<Card className="max-w-sm">
+  <CardHeader>
+    <CardTitle>Project Alpha</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">This project showcases the latest in neobrutalist design principles.</p>
+  </CardContent>
 </Card>`}>
-                        <Card className="p-6 max-w-md">
-                            <p className="text-sm">A simple card with just content and padding.</p>
+                        <Card className="max-w-sm">
+                            <CardHeader>
+                                <CardTitle>Project Alpha</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm">This project showcases the latest in neobrutalist design principles.</p>
+                            </CardContent>
                         </Card>
                     </ComponentPreview>
                 </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">With Actions</h3>
+                    <ComponentPreview code={`<Card className="max-w-sm">
+  <CardHeader>
+    <CardTitle>Task Completed</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">Check out your live application at the link below.</p>
+  </CardContent>
+  <CardFooter className="flex gap-2">
+    <Button variant="neutral">View Details</Button>
+    <Button>Go to App</Button>
+  </CardFooter>
+</Card>`}>
+                        <Card className="max-w-sm">
+                            <CardHeader>
+                                <CardTitle>Task Completed</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm">Check out your live application at the link below.</p>
+                            </CardContent>
+                            <CardFooter className="flex gap-2">
+                                <Button variant="neutral">View Details</Button>
+                                <Button>Go to App</Button>
+                            </CardFooter>
+                        </Card>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">Simple Content Only</h3>
+                    <ComponentPreview code={`<Card className="p-6 max-w-sm">
+  <div className="space-y-2">
+    <h3 className="text-lg font-bold">Quick Note</h3>
+    <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
+  </div>
+</Card>`}>
+                        <Card className="p-6 max-w-sm">
+                            <div className="space-y-2">
+                                <h3 className="text-lg font-bold">Quick Note</h3>
+                                <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
+                            </div>
+                        </Card>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">With Image</h3>
+                    <ComponentPreview code={`<Card className="max-w-sm">
+  <CardHeader>
+    <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
+      <Image
+        src="/mountains-image.jpg"
+        alt="Mountain landscape"
+        width={400}
+        height={225}
+        className="h-full w-full object-cover"
+      />
+    </div>
+    <CardTitle>Beautiful Landscape</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">This card features an image at the top with content below.</p>
+  </CardContent>
+</Card>`}>
+                        <Card className="max-w-sm">
+                            <CardHeader>
+                                <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
+                                    <Image
+                                        src="/mountains-image.jpg"
+                                        alt="Mountain landscape"
+                                        width={400}
+                                        height={225}
+                                        className="h-full w-full object-cover"
+                                    />
+                                </div>
+                                <CardTitle>Beautiful Landscape</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm">This card features an image at the top with content below.</p>
+                            </CardContent>
+                        </Card>
+                    </ComponentPreview>
+                </div>
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <PropsTable data={cardProps} />
             </div>
         </div>
     )

@@ -54,7 +54,7 @@ const searchItems: SearchItem[] = [
     },
     {
         name: "Card",
-        description: "Displays a card with header, content, and footer sections.",
+        description: "Displays a flexible container with header, content, and footer sections. Supports multiple variants.",
         href: "/docs/components/card",
         keywords: ["container", "box", "panel", "tile"],
         category: "component",
