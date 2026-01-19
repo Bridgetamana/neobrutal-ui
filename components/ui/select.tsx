@@ -39,8 +39,12 @@ const SelectTrigger = React.forwardRef<
     >
         {children}
         <BaseSelect.Icon>
-            <CaretDownIcon className="h-4 w-4 opacity-50" />
-        </BaseSelect.Icon>
+            <CaretDownIcon
+                aria-hidden="true"
+                className="h-4 w-4 opacity-50"
+            />
+            </BaseSelect.Icon>
+
     </BaseSelect.Trigger>
 ))
 SelectTrigger.displayName = "SelectTrigger"
@@ -59,7 +63,8 @@ const SelectScrollUpButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretUpIcon className="h-4 w-4" />
+        <CaretUpIcon aria-hidden="true" className="h-4 w-4" />
+
     </BaseSelect.ScrollUpArrow>
 ))
 SelectScrollUpButton.displayName = "SelectScrollUpButton"
@@ -78,7 +83,7 @@ const SelectScrollDownButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretDownIcon className="h-4 w-4" />
+        <CaretDownIcon aria-hidden="true" className="h-4 w-4" />
     </BaseSelect.ScrollDownArrow>
 ))
 SelectScrollDownButton.displayName = "SelectScrollDownButton"
@@ -144,7 +149,7 @@ const SelectItem = React.forwardRef<
     >
         <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
             <BaseSelect.ItemIndicator>
-                <CheckIcon className="h-4 w-4" />
+                <CheckIcon aria-hidden="true" className="h-4 w-4" />
             </BaseSelect.ItemIndicator>
         </span>
 
