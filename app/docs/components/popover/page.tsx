@@ -7,7 +7,7 @@ import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `<Popover>
-  <PopoverTrigger render={<Button variant="neutral" />}>
+  <PopoverTrigger render={<Button variant="noShadow" />}>
     Open Popover
   </PopoverTrigger>
   <PopoverContent>
@@ -21,6 +21,17 @@ const usageCode = `<Popover>
     </div>
   </PopoverContent>
 </Popover>`
+
+const htmlCode = `<div class="z-50 w-72 rounded-base border-2 border-black bg-white p-4 text-black outline-none">
+  <div class="grid gap-4">
+    <div class="space-y-2">
+      <h4 class="font-bold leading-none">Dimensions</h4>
+      <p class="text-sm text-black">
+        Set the dimensions for the layer.
+      </p>
+    </div>
+  </div>
+</div>`
 
 const popoverProps = [
     {
@@ -49,13 +60,13 @@ export default function PopoverPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    Displays rich content in a portal, triggered by a button.
+                    Displays rich content in a portal, triggered by a button. Includes an arrow pointing to the trigger.
                 </p>
             </section>
 
-            <ComponentPreview code={usageCode}>
+            <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Popover>
-                    <PopoverTrigger render={<Button variant="neutral" />}>
+                    <PopoverTrigger render={<Button variant="noShadow" />}>
                         Open Popover
                     </PopoverTrigger>
                     <PopoverContent>
