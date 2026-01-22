@@ -29,6 +29,7 @@ function ColorThemePicker() {
         <div className="fixed bottom-6 right-6 z-50">
             <Popover open={isOpen} onOpenChange={setIsOpen}>
                 <PopoverTrigger
+                    id="color-theme-picker-trigger"
                     render={
                         <Button
                             size="icon"

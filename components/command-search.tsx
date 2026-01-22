@@ -225,7 +225,7 @@ export function CommandSearch() {
 
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
-            <Dialog.Trigger>
+            <Dialog.Trigger id="command-search-trigger">
                 <div className="relative block cursor-default">
                     <MagnifyingGlassIcon
                         size={18}
