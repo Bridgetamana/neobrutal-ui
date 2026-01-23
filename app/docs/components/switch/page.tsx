@@ -67,6 +67,23 @@ import { Label } from "@/components/ui/label"`} />
             </div>
 
             <div className="space-y-4">
+                <h2 className="text-xl font-bold">Examples</h2>
+
+                <div className="space-y-4">
+                    <h3 className="text-lg font-bold">Disabled</h3>
+                    <ComponentPreview code={`<div className="flex items-center gap-2">
+  <Switch id="disabled" disabled />
+  <Label htmlFor="disabled">Disabled</Label>
+</div>`}>
+                        <div className="flex items-center gap-2">
+                            <Switch id="disabled" disabled />
+                            <Label htmlFor="disabled">Disabled</Label>
+                        </div>
+                    </ComponentPreview>
+                </div>
+            </div>
+
+            <div className="space-y-4">
                 <h2 className="text-xl font-bold">Props</h2>
                 <PropsTable data={switchProps} />
             </div>
