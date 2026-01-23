@@ -1,81 +1,60 @@
 "use client"
 
 import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Tabs as BaseTabs } from "@base-ui/react/tabs"
 import { cn } from "@/lib/utils"
 
-const tabsVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 border-2 border-black",
-    {
-        variants: {
-            variant: {
-                default: "bg-white text-black border-black hover:bg-main hover:text-black",
-                active: "bg-main text-black border-black shadow-brutal",
-            },
-            size: {
-                default: "h-10 px-4 py-2",
-                sm: "h-9 px-3",
-                lg: "h-11 px-8",
-            },
-        },
-        defaultVariants: {
-            variant: "default",
-            size: "default",
-        },
-    }
-)
+const Tabs = BaseTabs.Root
 
-export type TabsProps = React.HTMLAttributes<HTMLDivElement>
+type TabsListProps = React.ComponentPropsWithoutRef<typeof BaseTabs.List>
 
-const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-    ({ className, ...props }, ref) => (
-        <div
-            ref={ref}
-            role="tablist"
-            className={cn("inline-flex gap-1 rounded-base border-2 border-black bg-white p-1", className)}
-            {...props}
-        />
-    )
-)
-Tabs.displayName = "Tabs"
+const TabsList = React.forwardRef<
+    React.ComponentRef<typeof BaseTabs.List>,
+    TabsListProps
+>(({ className, ...props }, ref) => (
+    <BaseTabs.List
+        ref={ref}
+        className={cn(
+            "inline-flex items-center gap-1 rounded-base border-2 border-black bg-white p-1",
+            className
+        )}
+        {...props}
+    />
+))
+TabsList.displayName = "TabsList"
 
-export type TabsTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-    VariantProps<typeof tabsVariants> & {
-        isActive?: boolean
-    }
+type TabsTriggerProps = React.ComponentPropsWithoutRef<typeof BaseTabs.Tab>
 
-const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
-    ({ className, size, isActive, ...props }, ref) => (
-        <button
-            ref={ref}
-            role="tab"
-            className={cn(
-                tabsVariants({
-                    variant: isActive ? "active" : "default",
-                    size,
-                    className,
-                })
-            )}
-            {...props}
-        />
-    )
-)
+const TabsTrigger = React.forwardRef<
+    React.ComponentRef<typeof BaseTabs.Tab>,
+    TabsTriggerProps
+>(({ className, ...props }, ref) => (
+    <BaseTabs.Tab
+        ref={ref}
+        className={cn(
+            "inline-flex items-center justify-center whitespace-nowrap rounded-base px-4 py-2 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 data-active:border-2 data-active:border-black data-active:bg-main data-active:text-black data-[state=inactive]:bg-transparent data-[state=inactive]:hover:bg-main/50",
+            className
+        )}
+        {...props}
+    />
+))
 TabsTrigger.displayName = "TabsTrigger"
 
-export type TabsContentProps = React.HTMLAttributes<HTMLDivElement> & {
-    isActive?: boolean
-}
+type TabsContentProps = React.ComponentPropsWithoutRef<typeof BaseTabs.Panel>
 
-const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-    ({ className, isActive, ...props }, ref) => (
-        <div
-            ref={ref}
-            role="tabpanel"
-            className={cn("hidden", isActive && "block", className)}
-            {...props}
-        />
-    )
-)
+const TabsContent = React.forwardRef<
+    React.ComponentRef<typeof BaseTabs.Panel>,
+    TabsContentProps
+>(({ className, ...props }, ref) => (
+    <BaseTabs.Panel
+        ref={ref}
+        className={cn(
+            "mt-4 rounded-base border-2 border-black bg-white p-4 shadow-brutal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white",
+            className
+        )}
+        {...props}
+    />
+))
 TabsContent.displayName = "TabsContent"
 
-export { Tabs, TabsTrigger, TabsContent, tabsVariants }
+export { Tabs, TabsList, TabsTrigger, TabsContent }

@@ -1,32 +1,68 @@
 "use client"
 
-import * as React from "react"
-import { Tabs, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { PropsTable } from "@/components/docs/props-table"
 
-const usageCode = `const [activeTab, setActiveTab] = React.useState("account")
-
-<div className="w-[400px]">
-  <Tabs>
-    <TabsTrigger isActive={activeTab === "account"} onClick={() => setActiveTab("account")}>
-      Account
-    </TabsTrigger>
-    <TabsTrigger isActive={activeTab === "password"} onClick={() => setActiveTab("password")}>
-      Password
-    </TabsTrigger>
-  </Tabs>
-  <TabsContent isActive={activeTab === "account"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+const usageCode = `<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
     Make changes to your account here.
   </TabsContent>
-  <TabsContent isActive={activeTab === "password"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+  <TabsContent value="password">
     Change your password here.
   </TabsContent>
-</div>`
+</Tabs>`
+
+const tabsProps = [
+    {
+        name: "defaultValue",
+        type: "string | number",
+        description: "The default active tab value when uncontrolled.",
+    },
+    {
+        name: "value",
+        type: "string | number",
+        description: "The controlled active tab value.",
+    },
+    {
+        name: "onValueChange",
+        type: "(value: string | number) => void",
+        description: "Event handler called when the active tab changes.",
+    },
+]
+
+const tabsTriggerProps = [
+    {
+        name: "value",
+        type: "string | number",
+        description: "The unique value that associates the trigger with a panel.",
+    },
+    {
+        name: "disabled",
+        type: "boolean",
+        description: "When true, prevents the user from interacting with the tab.",
+    },
+]
+
+const tabsContentProps = [
+    {
+        name: "value",
+        type: "string | number",
+        description: "The unique value that associates the panel with a trigger.",
+    },
+    {
+        name: "keepMounted",
+        type: "boolean",
+        description: "When true, keeps the panel mounted in the DOM when inactive.",
+    },
+]
 
 export default function TabsPage() {
-    const [activeTab, setActiveTab] = React.useState("account")
-
     return (
         <div className="space-y-8">
             <header>
@@ -35,27 +71,23 @@ export default function TabsPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A set of layered sections of content—known as tab panels—that are displayed one at a time.
+                    Organizes content into multiple sections with tabbed navigation.
                 </p>
             </section>
 
             <ComponentPreview code={usageCode}>
-                <div className="w-[400px]">
-                    <Tabs>
-                        <TabsTrigger isActive={activeTab === "account"} onClick={() => setActiveTab("account")}>
-                            Account
-                        </TabsTrigger>
-                        <TabsTrigger isActive={activeTab === "password"} onClick={() => setActiveTab("password")}>
-                            Password
-                        </TabsTrigger>
-                    </Tabs>
-                    <TabsContent isActive={activeTab === "account"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+                <Tabs defaultValue="account" className="w-[400px]">
+                    <TabsList>
+                        <TabsTrigger value="account">Account</TabsTrigger>
+                        <TabsTrigger value="password">Password</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="account">
                         Make changes to your account here.
                     </TabsContent>
-                    <TabsContent isActive={activeTab === "password"} className="mt-4 p-4 border-2 border-black bg-white shadow-brutal">
+                    <TabsContent value="password">
                         Change your password here.
                     </TabsContent>
-                </div>
+                </Tabs>
             </ComponentPreview>
 
             <div className="space-y-4">
@@ -65,8 +97,18 @@ export default function TabsPage() {
 
             <div className="space-y-4">
                 <h2 className="text-xl font-bold">Usage</h2>
-                <CodeBlock code={`import { Tabs, TabsContent, TabsTrigger } from "@/components/ui/tabs"`} />
+                <CodeBlock code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"`} />
                 <CodeBlock code={usageCode} />
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Props</h2>
+                <h3 className="font-bold">Tabs</h3>
+                <PropsTable data={tabsProps} />
+                <h3 className="font-bold mt-4">TabsTrigger</h3>
+                <PropsTable data={tabsTriggerProps} />
+                <h3 className="font-bold mt-4">TabsContent</h3>
+                <PropsTable data={tabsContentProps} />
             </div>
         </div>
     )
