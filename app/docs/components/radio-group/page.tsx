@@ -6,14 +6,18 @@ import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 
-const usageCode = `<RadioGroup defaultValue="option-one">
+const usageCode = `<RadioGroup defaultValue="comfortable">
   <div className="flex items-center gap-2">
-    <RadioGroupItem value="option-one" id="option-one" />
-    <Label htmlFor="option-one">Option One</Label>
+    <RadioGroupItem value="default" id="r1" />
+    <Label htmlFor="r1">Default</Label>
   </div>
   <div className="flex items-center gap-2">
-    <RadioGroupItem value="option-two" id="option-two" />
-    <Label htmlFor="option-two">Option Two</Label>
+    <RadioGroupItem value="comfortable" id="r2" />
+    <Label htmlFor="r2">Comfortable</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="compact" id="r3" />
+    <Label htmlFor="r3">Compact</Label>
   </div>
 </RadioGroup>`
 
@@ -67,19 +71,23 @@ export default function RadioGroupPage() {
 
             <section className="space-y-4">
                 <p className="text-base text-black">
-                    A set of checkable buttons—known as radio buttons—where no more than one button can be checked at a time.
+                    A set of checkable buttons where only one can be selected at a time.
                 </p>
             </section>
 
             <ComponentPreview code={usageCode}>
-                <RadioGroup defaultValue="option-one">
+                <RadioGroup defaultValue="comfortable">
                     <div className="flex items-center gap-2">
-                        <RadioGroupItem value="option-one" id="option-one" />
-                        <Label htmlFor="option-one">Option One</Label>
+                        <RadioGroupItem value="default" id="r1" />
+                        <Label htmlFor="r1">Default</Label>
                     </div>
                     <div className="flex items-center gap-2">
-                        <RadioGroupItem value="option-two" id="option-two" />
-                        <Label htmlFor="option-two">Option Two</Label>
+                        <RadioGroupItem value="comfortable" id="r2" />
+                        <Label htmlFor="r2">Comfortable</Label>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <RadioGroupItem value="compact" id="r3" />
+                        <Label htmlFor="r3">Compact</Label>
                     </div>
                 </RadioGroup>
             </ComponentPreview>
@@ -94,6 +102,35 @@ export default function RadioGroupPage() {
                 <CodeBlock code={`import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"`} />
                 <CodeBlock code={usageCode} />
+            </div>
+
+            <div className="space-y-4">
+                <h2 className="text-xl font-bold">Examples</h2>
+
+                <div className="space-y-4">
+                    <h3 className="text-lg font-bold">Disabled</h3>
+                    <ComponentPreview code={`<RadioGroup defaultValue="option-1" disabled>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-1" id="d1" />
+    <Label htmlFor="d1">Option 1</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-2" id="d2" />
+    <Label htmlFor="d2">Option 2</Label>
+  </div>
+</RadioGroup>`}>
+                        <RadioGroup defaultValue="option-1" disabled>
+                            <div className="flex items-center gap-2">
+                                <RadioGroupItem value="option-1" id="d1" />
+                                <Label htmlFor="d1">Option 1</Label>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <RadioGroupItem value="option-2" id="d2" />
+                                <Label htmlFor="d2">Option 2</Label>
+                            </div>
+                        </RadioGroup>
+                    </ComponentPreview>
+                </div>
             </div>
 
             <div className="space-y-4">
