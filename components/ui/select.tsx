@@ -43,7 +43,7 @@ const SelectTrigger = React.forwardRef<
                 aria-hidden="true"
                 className="h-4 w-4 opacity-50"
             />
-            </BaseSelect.Icon>
+        </BaseSelect.Icon>
 
     </BaseSelect.Trigger>
 ))
@@ -88,22 +88,18 @@ const SelectScrollDownButton = React.forwardRef<
 ))
 SelectScrollDownButton.displayName = "SelectScrollDownButton"
 
-type SelectContentProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Popup> & {
-    position?: "popper" | "item-aligned"
-}
+type SelectContentProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Popup>
 
 const SelectContent = React.forwardRef<
     React.ComponentRef<typeof BaseSelect.Popup>,
     SelectContentProps
->(({ className, children, position = "popper", ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
     <BaseSelect.Portal>
-        <BaseSelect.Positioner sideOffset={4}>
+        <BaseSelect.Positioner sideOffset={4} alignItemWithTrigger={false}>
             <BaseSelect.Popup
                 ref={ref}
                 className={cn(
-                    "relative z-50 max-h-96 min-w-32 overflow-hidden rounded-base border-2 border-black bg-white text-black shadow-brutal  motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-                    position === "popper" &&
-                    "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+                    "relative z-50 max-h-96 min-w-(--anchor-width) overflow-hidden rounded-base border-2 border-black bg-white text-black shadow-brutal motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
                     className
                 )}
                 {...props}
