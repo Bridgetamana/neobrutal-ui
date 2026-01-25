@@ -1,6 +1,6 @@
 {
     "name": "neobrutal",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "CLI for adding Neobrutal UI components to your project",
     "type": "module",
     "license": "MIT",
