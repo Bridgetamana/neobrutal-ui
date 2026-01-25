@@ -8,7 +8,7 @@ import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `<TooltipProvider>
   <Tooltip>
-    <TooltipTrigger render={<Button variant="neutral" />}>
+    <TooltipTrigger render={<Button variant="noShadow" />}>
       Hover
     </TooltipTrigger>
     <TooltipContent>
@@ -56,7 +56,7 @@ export default function TooltipPage() {
             <ComponentPreview code={usageCode}>
                 <TooltipProvider>
                     <Tooltip>
-                        <TooltipTrigger render={<Button variant="neutral" />}>
+                        <TooltipTrigger render={<Button variant="noShadow" />}>
                             Hover
                         </TooltipTrigger>
                         <TooltipContent>

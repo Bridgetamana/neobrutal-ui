@@ -18,13 +18,13 @@ type TooltipContentProps = React.ComponentPropsWithoutRef<typeof BaseTooltip.Pop
 const TooltipContent = React.forwardRef<
     React.ComponentRef<typeof BaseTooltip.Popup>,
     TooltipContentProps
->(({ className, sideOffset = 4, side = "top", ...props }, ref) => (
+>(({ className, sideOffset = 8, side = "top", ...props }, ref) => (
     <BaseTooltip.Portal>
         <BaseTooltip.Positioner sideOffset={sideOffset} side={side}>
             <BaseTooltip.Popup
                 ref={ref}
                 className={cn(
-                    "z-50 overflow-hidden rounded-base border-2 border-border bg-black px-3 py-1.5 text-xs text-white transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
+                    "z-50 overflow-hidden rounded-base border-2 border-black bg-main px-3 py-1.5 text-sm font-medium text-black shadow-brutal transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
                     className
                 )}
                 {...props}
