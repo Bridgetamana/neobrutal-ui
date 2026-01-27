@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Include CHANGELOG.md in the build output for the changelog page
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react"],
+  },
   outputFileTracingIncludes: {
     "/docs/changelog": ["./CHANGELOG.md"],
   },
