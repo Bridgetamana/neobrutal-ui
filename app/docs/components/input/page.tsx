@@ -2,7 +2,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
-import { MagnifyingGlassIcon, UploadSimpleIcon } from "@phosphor-icons/react"
 
 const usageCode = `<div className="grid w-full max-w-sm items-center gap-1.5">
   <Label htmlFor="email">Email</Label>
@@ -56,7 +55,7 @@ import { Label } from "@/components/ui/label"`} />
   <Input type="text" placeholder="Search..." className="pl-10" />
 </div>`}>
                         <div className="relative w-full max-w-sm">
-                            <MagnifyingGlassIcon className="absolute left-3 top-3 h-4 w-4 text-black opacity-50" />
+                            <svg className="absolute left-3 top-2.5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
                             <Input type="text" placeholder="Search..." className="pl-10" />
                         </div>
                     </ComponentPreview>
@@ -78,7 +77,7 @@ import { Label } from "@/components/ui/label"`} />
                         <div className="grid w-full max-w-sm">
                             <Label htmlFor="file">Upload Document</Label>
                             <label htmlFor="file" className="relative border-2 border-dashed border-black rounded-md p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer block">
-                                <UploadSimpleIcon className="h-8 w-8 text-black mx-auto mb-2" />
+                                <svg className=" mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0ZM93.66,77.66,120,51.31V144a8,8,0,0,0,16,0V51.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,77.66Z"></path></svg>
                                 <div className="text-sm font-bold">Click to upload</div>
                                 <p className="text-xs text-gray-600 mt-1">PDF, DOC or DOCX</p>
                             </label>

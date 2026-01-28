@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Progress } from "@/components/ui/progress"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
@@ -26,21 +25,6 @@ const progressProps = [
     },
 ]
 
-function AnimatedProgressDemo() {
-    const [value, setValue] = React.useState(20)
-
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            setValue((current) =>
-                current >= 100 ? 0 : Math.min(100, Math.round(current + Math.random() * 15))
-            )
-        }, 1000)
-        return () => clearInterval(interval)
-    }, [])
-
-    return <Progress value={value} className="w-[60%]" />
-}
-
 export default function ProgressPage() {
     return (
         <div className="space-y-8">
@@ -55,7 +39,7 @@ export default function ProgressPage() {
             </section>
 
             <ComponentPreview code={usageCode}>
-                <AnimatedProgressDemo />
+                <Progress value={33} showValue={true} className="w-[60%]" />
             </ComponentPreview>
 
             <div className="space-y-4">
