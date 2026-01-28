@@ -1,7 +1,6 @@
-import { toast } from "@/components/ui/toast"
-import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
+import { ToastDemo } from "@/components/docs/demos/toast-demo"
 
 const usageCode = `<Button
   variant="neutral"
@@ -32,20 +31,7 @@ export default function ToastPage() {
             </section>
 
             <ComponentPreview code={usageCode}>
-                <Button
-                    variant="neutral"
-                    onClick={() =>
-                        toast.info("Event has been created", {
-                            title: "Success",
-                            actionProps: {
-                                children: "Undo",
-                                onClick: () => console.log("Undo"),
-                            },
-                        })
-                    }
-                >
-                    Add to calendar
-                </Button>
+                <ToastDemo />
             </ComponentPreview>
 
             <div className="space-y-4">
