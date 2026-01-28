@@ -14,7 +14,7 @@ export async function CodeBlock({ code, language = "tsx", className, ...props }:
     })
 
     return (
-        <div className={cn("relative group rounded-base bg-[#282a36] text-white font-mono text-sm", className)} {...props}>
+        <div className={cn("relative group rounded-base bg-black text-white font-mono text-sm", className)} {...props}>
             <div className="absolute right-4 top-4 z-10">
                 <CopyButton code={code} />
             </div>
