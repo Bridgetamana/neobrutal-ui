@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { MagnifyingGlassIcon } from "@phosphor-icons/react"
 import { ComponentPreview } from "@/components/docs/component-preview"

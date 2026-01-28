@@ -1,5 +1,3 @@
-"use client"
-
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { InfoIcon, XCircleIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react"
 import { ComponentPreview } from "@/components/docs/component-preview"

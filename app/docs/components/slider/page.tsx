@@ -1,5 +1,3 @@
-"use client"
-
 import { Slider } from "@/components/ui/slider"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"

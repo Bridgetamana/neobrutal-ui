@@ -1,5 +1,3 @@
-"use client"
-
 import { Avatar, AvatarGroup, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"

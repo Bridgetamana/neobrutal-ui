@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { Pagination, PaginationItem } from "@/components/ui/pagination"
 import { ComponentPreview } from "@/components/docs/component-preview"

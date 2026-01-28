@@ -1,5 +1,3 @@
-"use client"
-
 import { toast } from "@/components/ui/toast"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"

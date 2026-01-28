@@ -1,5 +1,3 @@
-"use client"
-
 import { CodeBlock } from "@/components/docs/code-block"
 import Link from "next/link"
 

@@ -1,5 +1,3 @@
-"use client"
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -48,57 +46,57 @@ const htmlCode = `<div class="border-2 border-black bg-white text-black rounded-
 </div>`
 
 const cardProps = [
-    {
-        name: "variant",
-        type: '"default"',
-        defaultValue: '"default"',
-        description: "The visual style of the card.",
-    },
+  {
+    name: "variant",
+    type: '"default"',
+    defaultValue: '"default"',
+    description: "The visual style of the card.",
+  },
 ]
 
 export default function CardPage() {
-    return (
-        <div className="space-y-8">
-            <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Card</h1>
-            </header>
+  return (
+    <div className="space-y-8">
+      <header>
+        <h1 className="text-3xl font-bold md:text-4xl text-black">Card</h1>
+      </header>
 
-            <section className="space-y-4">
-                <p className="text-base text-black">
-                    A flexible container component with bold borders and shadows. Perfect for displaying content, forms, or any grouped information with a neobrutalist aesthetic.
-                </p>
-            </section>
+      <section className="space-y-4">
+        <p className="text-base text-black">
+          A flexible container component with bold borders and shadows. Perfect for displaying content, forms, or any grouped information with a neobrutalist aesthetic.
+        </p>
+      </section>
 
-            <ComponentPreview code={usageCode} htmlCode={htmlCode}>
-                <Card className="max-w-md">
-                    <CardHeader>
-                        <CardTitle>Create project</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-sm">This is the main content area of the card. You can put text, images, forms, or any other content here.</p>
-                    </CardContent>
-                    <CardFooter className="flex justify-between">
-                        <Button variant="neutral">Cancel</Button>
-                        <Button>Deploy</Button>
-                    </CardFooter>
-                </Card>
-            </ComponentPreview>
+      <ComponentPreview code={usageCode} htmlCode={htmlCode}>
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle>Create project</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">This is the main content area of the card. You can put text, images, forms, or any other content here.</p>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button variant="neutral">Cancel</Button>
+            <Button>Deploy</Button>
+          </CardFooter>
+        </Card>
+      </ComponentPreview>
 
-            <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
-                <CodeBlock code="npx neobrutal add card" language="bash" />
-            </div>
+      <div className="space-y-4">
+        <h2 className="text-xl font-bold">Installation</h2>
+        <CodeBlock code="npx neobrutal add card" language="bash" />
+      </div>
 
-            <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
-                <CodeBlock code={`import {
+      <div className="space-y-4">
+        <h2 className="text-xl font-bold">Usage</h2>
+        <CodeBlock code={`import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"`} />
-                <CodeBlock code={`<Card>
+        <CodeBlock code={`<Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
   </CardHeader>
@@ -109,14 +107,14 @@ export default function CardPage() {
     <Button>Action</Button>
   </CardFooter>
 </Card>`} />
-            </div>
+      </div>
 
-            <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+      <div className="space-y-6">
+        <h2 className="text-xl font-bold">Examples</h2>
 
-                <div className="space-y-4">
-                    <h3 className="font-bold">Default</h3>
-                    <ComponentPreview code={`<Card className="max-w-sm">
+        <div className="space-y-4">
+          <h3 className="font-bold">Default</h3>
+          <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <CardTitle>Project Alpha</CardTitle>
   </CardHeader>
@@ -124,20 +122,20 @@ export default function CardPage() {
     <p className="text-sm">This project showcases the latest in neobrutalist design principles.</p>
   </CardContent>
 </Card>`}>
-                        <Card className="max-w-sm">
-                            <CardHeader>
-                                <CardTitle>Project Alpha</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-sm">This project showcases the latest in neobrutalist design principles.</p>
-                            </CardContent>
-                        </Card>
-                    </ComponentPreview>
-                </div>
+            <Card className="max-w-sm">
+              <CardHeader>
+                <CardTitle>Project Alpha</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">This project showcases the latest in neobrutalist design principles.</p>
+              </CardContent>
+            </Card>
+          </ComponentPreview>
+        </div>
 
-                <div className="space-y-4">
-                    <h3 className="font-bold">With Actions</h3>
-                    <ComponentPreview code={`<Card className="max-w-sm">
+        <div className="space-y-4">
+          <h3 className="font-bold">With Actions</h3>
+          <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <CardTitle>Task Completed</CardTitle>
   </CardHeader>
@@ -149,41 +147,41 @@ export default function CardPage() {
     <Button>Go to App</Button>
   </CardFooter>
 </Card>`}>
-                        <Card className="max-w-sm">
-                            <CardHeader>
-                                <CardTitle>Task Completed</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-sm">Check out your live application at the link below.</p>
-                            </CardContent>
-                            <CardFooter className="flex gap-2">
-                                <Button variant="neutral">View Details</Button>
-                                <Button>Go to App</Button>
-                            </CardFooter>
-                        </Card>
-                    </ComponentPreview>
-                </div>
+            <Card className="max-w-sm">
+              <CardHeader>
+                <CardTitle>Task Completed</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Check out your live application at the link below.</p>
+              </CardContent>
+              <CardFooter className="flex gap-2">
+                <Button variant="neutral">View Details</Button>
+                <Button>Go to App</Button>
+              </CardFooter>
+            </Card>
+          </ComponentPreview>
+        </div>
 
-                <div className="space-y-4">
-                    <h3 className="font-bold">Simple Content Only</h3>
-                    <ComponentPreview code={`<Card className="p-6 max-w-sm">
+        <div className="space-y-4">
+          <h3 className="font-bold">Simple Content Only</h3>
+          <ComponentPreview code={`<Card className="p-6 max-w-sm">
   <div className="space-y-2">
     <h3 className="text-lg font-bold">Quick Note</h3>
     <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
   </div>
 </Card>`}>
-                        <Card className="p-6 max-w-sm">
-                            <div className="space-y-2">
-                                <h3 className="text-lg font-bold">Quick Note</h3>
-                                <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
-                            </div>
-                        </Card>
-                    </ComponentPreview>
-                </div>
+            <Card className="p-6 max-w-sm">
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold">Quick Note</h3>
+                <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
+              </div>
+            </Card>
+          </ComponentPreview>
+        </div>
 
-                <div className="space-y-4">
-                    <h3 className="font-bold">With Image</h3>
-                    <ComponentPreview code={`<Card className="max-w-sm">
+        <div className="space-y-4">
+          <h3 className="font-bold">With Image</h3>
+          <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
       <Image
@@ -200,31 +198,31 @@ export default function CardPage() {
     <p className="text-sm">This card features an image at the top with content below.</p>
   </CardContent>
 </Card>`}>
-                        <Card className="max-w-sm">
-                            <CardHeader>
-                                <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
-                                    <Image
-                                        src="/mountains-image.jpg"
-                                        alt="Mountain landscape"
-                                        width={400}
-                                        height={225}
-                                        className="h-full w-full object-cover"
-                                    />
-                                </div>
-                                <CardTitle>Beautiful Landscape</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-sm">This card features an image at the top with content below.</p>
-                            </CardContent>
-                        </Card>
-                    </ComponentPreview>
+            <Card className="max-w-sm">
+              <CardHeader>
+                <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
+                  <Image
+                    src="/mountains-image.jpg"
+                    alt="Mountain landscape"
+                    width={400}
+                    height={225}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-            </div>
-
-            <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <PropsTable data={cardProps} />
-            </div>
+                <CardTitle>Beautiful Landscape</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">This card features an image at the top with content below.</p>
+              </CardContent>
+            </Card>
+          </ComponentPreview>
         </div>
-    )
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-bold">Props</h2>
+        <PropsTable data={cardProps} />
+      </div>
+    </div>
+  )
 }

@@ -1,5 +1,3 @@
-"use client"
-
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"

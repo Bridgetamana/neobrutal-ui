@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { Progress } from "@/components/ui/progress"
 import { ComponentPreview } from "@/components/docs/component-preview"

@@ -1,5 +1,3 @@
-"use client"
-
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ComponentPreview } from "@/components/docs/component-preview"
@@ -140,7 +138,7 @@ export default function DialogPage() {
                 <h2 className="text-xl font-bold">Props</h2>
                 <h3 className="font-bold">Dialog</h3>
                 <PropsTable data={dialogProps} />
-                
+
                 <h3 className="font-bold mt-6">DialogTrigger</h3>
                 <PropsTable data={triggerProps} />
             </div>
