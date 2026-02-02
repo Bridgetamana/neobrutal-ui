@@ -4,12 +4,10 @@ import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
-import { InfoIcon } from "@phosphor-icons/react"
 
 export function AlertDemo() {
   return (
     <Alert>
-      <InfoIcon className="h-5 w-5" weight="fill" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>
         You can add components to your app using the CLI.
@@ -52,7 +50,6 @@ export default function AlertPage() {
 
             <ComponentPreview code={usageCode} htmlCode={htmlCode}>
                 <Alert className="max-w-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
                     <AlertTitle>Heads up!</AlertTitle>
                     <AlertDescription>
                         You can add components to your app using the CLI.
@@ -80,12 +77,10 @@ export default function AlertPage() {
                 <div className="space-y-4">
                     <h3 className="font-bold">Default</h3>
                     <ComponentPreview code={`<Alert>
-  <InfoIcon className="h-5 w-5" weight="fill" />
   <AlertTitle>Info</AlertTitle>
   <AlertDescription>This is an informational message.</AlertDescription>
 </Alert>`}>
                         <Alert className="max-w-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
                             <AlertTitle>Info</AlertTitle>
                             <AlertDescription>This is an informational message.</AlertDescription>
                         </Alert>
@@ -95,12 +90,10 @@ export default function AlertPage() {
                 <div className="space-y-4">
                     <h3 className="font-bold">Destructive</h3>
                     <ComponentPreview code={`<Alert variant="destructive">
-  <XCircleIcon className="h-5 w-5" weight="fill" />
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>Something went wrong. Please try again.</AlertDescription>
 </Alert>`}>
                         <Alert variant="destructive" className="max-w-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
                             <AlertTitle>Error</AlertTitle>
                             <AlertDescription>Something went wrong. Please try again.</AlertDescription>
                         </Alert>
@@ -110,12 +103,10 @@ export default function AlertPage() {
                 <div className="space-y-4">
                     <h3 className="font-bold">Success</h3>
                     <ComponentPreview code={`<Alert variant="success">
-  <CheckCircleIcon className="h-5 w-5" weight="fill" />
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>Your changes have been saved.</AlertDescription>
 </Alert>`}>
                         <Alert variant="success" className="max-w-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
                             <AlertTitle>Success</AlertTitle>
                             <AlertDescription>Your changes have been saved.</AlertDescription>
                         </Alert>
@@ -125,14 +116,40 @@ export default function AlertPage() {
                 <div className="space-y-4">
                     <h3 className="font-bold">Warning</h3>
                     <ComponentPreview code={`<Alert variant="warning">
-  <WarningIcon className="h-5 w-5" weight="fill" />
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>This action cannot be undone.</AlertDescription>
 </Alert>`}>
                         <Alert variant="warning" className="max-w-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path></svg>
                             <AlertTitle>Warning</AlertTitle>
                             <AlertDescription>This action cannot be undone.</AlertDescription>
+                        </Alert>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">Custom Icon</h3>
+                    <ComponentPreview code={`import { Bell } from "@phosphor-icons/react"
+
+<Alert icon={<Bell className="h-5 w-5" />}>
+  <AlertTitle>Notification</AlertTitle>
+  <AlertDescription>You have new updates available.</AlertDescription>
+</Alert>`}>
+                        <Alert className="max-w-md" icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z" /></svg>}>
+                            <AlertTitle>Notification</AlertTitle>
+                            <AlertDescription>You have new updates available.</AlertDescription>
+                        </Alert>
+                    </ComponentPreview>
+                </div>
+
+                <div className="space-y-4">
+                    <h3 className="font-bold">Without Icon</h3>
+                    <ComponentPreview code={`<Alert icon={null}>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>A simple alert without an icon.</AlertDescription>
+</Alert>`}>
+                        <Alert className="max-w-md" icon={null}>
+                            <AlertTitle>Note</AlertTitle>
+                            <AlertDescription>A simple alert without an icon.</AlertDescription>
                         </Alert>
                     </ComponentPreview>
                 </div>
