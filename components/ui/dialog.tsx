@@ -41,7 +41,7 @@ const DialogContent = React.forwardRef<
         <BaseDialog.Popup
             ref={ref}
             className={cn(
-                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-white p-6 shadow-brutal duration-200 transition-opacity motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
+                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-white p-6 shadow-brutal duration-200 transition-opacity motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 rounded-base",
                 className
             )}
             {...props}
@@ -93,7 +93,7 @@ const DialogTitle = React.forwardRef<
     <BaseDialog.Title
         ref={ref}
         className={cn(
-            "text-lg font-semibold leading-none tracking-tight",
+            "text-lg font-semibold leading-none tracking-tight text-black",
             className
         )}
         {...props}

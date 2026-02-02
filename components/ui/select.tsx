@@ -32,7 +32,7 @@ const SelectTrigger = React.forwardRef<
     <BaseSelect.Trigger
         ref={ref}
         className={cn(
-            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
             className
         )}
         {...props}
@@ -123,7 +123,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <BaseSelect.GroupLabel
         ref={ref}
-        className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+        className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold text-black", className)}
         {...props}
     />
 ))
@@ -138,7 +138,7 @@ const SelectItem = React.forwardRef<
     <BaseSelect.Item
         ref={ref}
         className={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-bold outline-none data-highlighted:bg-main data-highlighted:text-black data-disabled:pointer-events-none data-disabled:opacity-50",
+            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm font-bold outline-none data-highlighted:bg-main data-highlighted:text-black data-disabled:pointer-events-none data-disabled:opacity-50 text-black",
             className
         )}
         {...props}

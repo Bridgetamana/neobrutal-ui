@@ -2,10 +2,15 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
-import { CommandSearch } from "@/components/command-search"
 import { ListIcon, XIcon } from "@phosphor-icons/react"
+
+const CommandSearch = dynamic(
+    () => import("@/components/command-search").then((mod) => mod.CommandSearch),
+    { ssr: false }
+)
 
 export function SiteHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)

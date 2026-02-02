@@ -276,17 +276,15 @@ export function cn(...inputs: ClassValue[]) {
     await fs.writeFile(utilsPath, utilsContent, "utf-8")
 }
 
-/**
- * Neobrutalism CSS variables for the design system.
- * Includes @theme inline block for Tailwind v4 compatibility.
- */
 const NEOBRUTAL_CSS_VARIABLES = `
-/* Neobrutal UI - Tailwind v4 Theme */
 @theme inline {
   --color-white: var(--white);
   --color-black: var(--black);
   --color-bg: var(--bg);
   --color-main: var(--main);
+  --color-mint: var(--mint);
+  --color-lemon: var(--lemon);
+  --color-hot-pink: var(--hot-pink);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
@@ -297,6 +295,9 @@ const NEOBRUTAL_CSS_VARIABLES = `
   --main: #b6ace4;
   --bg: #f0eefc;
   --radius: 5px;
+  --mint: #97ee88;
+  --lemon: #fed170;
+  --hot-pink: #ee8888;
 }
 
 @layer utilities {

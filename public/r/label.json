@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/label.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\nconst labelVariants = cva(\n    \"text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n)\n\ntype LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> &\n    VariantProps<typeof labelVariants>\n\nconst Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n    ({ className, ...props }, ref) => (\n        <label\n            ref={ref}\n            className={cn(labelVariants(), className)}\n            {...props}\n        />\n    )\n)\nLabel.displayName = \"Label\"\n\nexport { Label }\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\n\nconst labelVariants = cva(\n    \"text-sm font-bold leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-black\"\n)\n\ntype LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> &\n    VariantProps<typeof labelVariants>\n\nconst Label = React.forwardRef<HTMLLabelElement, LabelProps>(\n    ({ className, ...props }, ref) => (\n        <label\n            ref={ref}\n            className={cn(labelVariants(), className)}\n            {...props}\n        />\n    )\n)\nLabel.displayName = \"Label\"\n\nexport { Label }\n",
       "type": "registry:ui"
     }
   ]
