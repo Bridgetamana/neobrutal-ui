@@ -22,7 +22,7 @@ const Toast = React.forwardRef<
 Toast.displayName = "Toast"
 
 const ToastViewport = React.forwardRef<
-    React.ElementRef<typeof BaseToast.Viewport>,
+    React.ComponentRef<typeof BaseToast.Viewport>,
     React.ComponentPropsWithoutRef<typeof BaseToast.Viewport>
 >(({ className, ...props }, ref) => (
     <BaseToast.Viewport
@@ -37,7 +37,7 @@ const ToastViewport = React.forwardRef<
 ToastViewport.displayName = "ToastViewport"
 
 const ToastAction = React.forwardRef<
-    React.ElementRef<typeof BaseToast.Action>,
+    React.ComponentRef<typeof BaseToast.Action>,
     React.ComponentPropsWithoutRef<typeof BaseToast.Action>
 >(({ className, ...props }, ref) => (
     <BaseToast.Action
@@ -52,7 +52,7 @@ const ToastAction = React.forwardRef<
 ToastAction.displayName = "ToastAction"
 
 const ToastClose = React.forwardRef<
-    React.ElementRef<typeof BaseToast.Close>,
+    React.ComponentRef<typeof BaseToast.Close>,
     React.ComponentPropsWithoutRef<typeof BaseToast.Close>
 >(({ className, ...props }, ref) => (
     <BaseToast.Close
@@ -70,7 +70,7 @@ const ToastClose = React.forwardRef<
 ToastClose.displayName = "ToastClose"
 
 const ToastTitle = React.forwardRef<
-    React.ElementRef<typeof BaseToast.Title>,
+    React.ComponentRef<typeof BaseToast.Title>,
     React.ComponentPropsWithoutRef<typeof BaseToast.Title>
 >(({ className, ...props }, ref) => (
     <BaseToast.Title
@@ -82,7 +82,7 @@ const ToastTitle = React.forwardRef<
 ToastTitle.displayName = "ToastTitle"
 
 const ToastDescription = React.forwardRef<
-    React.ElementRef<typeof BaseToast.Description>,
+    React.ComponentRef<typeof BaseToast.Description>,
     React.ComponentPropsWithoutRef<typeof BaseToast.Description>
 >(({ className, ...props }, ref) => (
     <BaseToast.Description
@@ -97,10 +97,6 @@ type ToastProviderProps = React.ComponentProps<typeof BaseToast.Provider>
 
 const ToastProvider = ({ ...props }: ToastProviderProps) => {
     return <BaseToast.Provider {...props} />
-}
-
-type ToasterProps = {
-    children?: React.ReactNode
 }
 
 const ToastRenderer = () => {
@@ -133,7 +129,7 @@ const ToastRenderer = () => {
                             "data-expanded:data-ending-style:data-[swipe-direction=right]:transform-[translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
                             "data-ending-style:data-[swipe-direction=up]:transform-[translateY(calc(var(--toast-swipe-movement-y)-150%))]",
                             "data-expanded:data-ending-style:data-[swipe-direction=up]:transform-[translateY(calc(var(--toast-swipe-movement-y)-150%))]",
-                            "h-[var(--height)] data-expanded:h-[var(--toast-height)]",
+                            "h-(--height) data-expanded:h-(--toast-height)",
                             "transition-[transform_0.5s_cubic-bezier(0.22,1,0.36,1),opacity_0.5s,height_0.15s]",
                             "data-[type=success]:bg-mint data-[type=success]:text-black",
                             "data-[type=error]:bg-hot-pink data-[type=error]:text-white",
@@ -144,7 +140,7 @@ const ToastRenderer = () => {
                         <BaseToast.Content className="overflow-hidden transition-opacity duration-250 data-behind:pointer-events-none data-behind:opacity-0 data-expanded:pointer-events-auto data-expanded:opacity-100">
                             <BaseToast.Title className="text-sm font-semibold" />
                             <BaseToast.Description className="text-sm opacity-90" />
-                            <BaseToast.Close className="absolute right-2 top-2 rounded-base p-1 text-black/50 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2" aria-label="Close">
+                            <BaseToast.Close className="text-xl absolute right-2 top-2 rounded-base p-1 text-black/80 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2" aria-label="Close">
                                 ×
                             </BaseToast.Close>
                         </BaseToast.Content>
