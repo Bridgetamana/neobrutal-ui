@@ -71,7 +71,7 @@ export function HeroSection() {
                         <ShareNetworkIcon weight="bold" className="w-6 h-6" />
                     </Button>
                 </div>
-                <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-[250px]">
+                <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-62.5">
                     <Avatar className="w-12 h-12 border-2 border-black">
                         <AvatarImage src="https://github.com/bridgetamana.png" />
                         <AvatarFallback>BA</AvatarFallback>

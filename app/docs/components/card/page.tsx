@@ -15,7 +15,7 @@ const usageCode = `import {
 
 export function CardDemo() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-87.5">
       <CardHeader>
         <CardTitle>Create project</CardTitle>
       </CardHeader>

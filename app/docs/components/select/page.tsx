@@ -4,7 +4,7 @@ import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 
 const usageCode = `<Select>
-  <SelectTrigger className="w-[180px]">
+  <SelectTrigger className="w-45">
     <SelectValue placeholder="Theme" />
   </SelectTrigger>
   <SelectContent>
@@ -62,7 +62,7 @@ export default function SelectPage() {
 
             <ComponentPreview code={usageCode}>
                 <Select>
-                    <SelectTrigger className="w-[180px]">
+                    <SelectTrigger className="w-45">
                         <SelectValue placeholder="Theme" />
                     </SelectTrigger>
                     <SelectContent>

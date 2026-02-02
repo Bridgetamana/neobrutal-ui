@@ -19,7 +19,7 @@ export async function CodeBlock({ code, language = "tsx", className, ...props }:
                 <CopyButton code={code} />
             </div>
             <div
-                className="overflow-x-auto p-4 [&_pre]:!bg-transparent [&_code]:!bg-transparent"
+                className="overflow-x-auto p-4 [&_pre]:bg-transparent! [&_code]:bg-transparent!"
                 dangerouslySetInnerHTML={{ __html: highlightedHtml }}
             />
         </div>
