@@ -15,7 +15,7 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
     const [codeType, setCodeType] = React.useState<"react" | "html">("react")
 
     return (
-        <div className={cn("border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-white", className)} {...props}>
+        <div className={cn("border-2 shadow-brutal bg-white rounded-base", className)} {...props}>
             <div className="flex border-b-2 border-black divide-x-2 divide-black">
                 <button
                     onClick={() => setView("preview")}
@@ -39,7 +39,7 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
 
             <div className="bg-white">
                 {view === "preview" ? (
-                    <div className="p-4 min-h-[200px] flex items-center justify-center">
+                    <div className="p-4 min-h-50 flex items-center justify-center">
                         {children}
                     </div>
                 ) : (

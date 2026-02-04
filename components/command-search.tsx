@@ -251,14 +251,14 @@ export function CommandSearch() {
                 <Dialog.Popup
                     className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg
       -translate-x-1/2 -translate-y-1/2 bg-white border-4
-      border-border shadow-brutal rounded-lg overflow-hidden"
+      border-black shadow-brutal rounded-lg overflow-hidden"
                 >
                     <Dialog.Title className="sr-only">
                         Search components and documentation
                     </Dialog.Title>
 
                     <Command className="w-full" loop={false} shouldFilter={true}>
-                        <div className="flex items-center gap-2 px-4 border-b-2 border-border">
+                        <div className="flex items-center gap-2 px-4 border-b-2 border-black">
                             <MagnifyingGlassIcon size={16} className="text-black/60" />
                             <Command.Input
                                 autoFocus
@@ -322,7 +322,7 @@ export function CommandSearch() {
                         </Command.List>
 
                         <div className="flex items-center gap-1 px-4 py-2 border-t-2 text-xs">
-                            <kbd className="px-1.5 py-0.5 rounded border border-border bg-white">
+                            <kbd className="px-1.5 py-0.5 rounded border border-black bg-white">
                                 esc
                             </kbd>
                             close

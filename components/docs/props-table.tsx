@@ -15,7 +15,7 @@ interface PropsTableProps {
 
 export function PropsTable({ data, className }: PropsTableProps) {
     return (
-        <div className={cn("my-6 overflow-x-auto border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]", className)}>
+        <div className={cn("my-6 overflow-x-auto border-4 shadow-brutal", className)}>
             <table className="w-full text-left text-sm">
                 <thead className="border-b-4 border-black bg-white">
                     <tr>

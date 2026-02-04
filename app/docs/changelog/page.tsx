@@ -94,7 +94,7 @@ export default async function ChangelogPage() {
 
             <div className="space-y-6">
                 {sections.length === 0 ? (
-                    <div className="border-2 border-border rounded-lg p-8 bg-white text-center">
+                    <div className="border-2 border-black rounded-lg p-8 bg-white text-center">
                         <p className="text-black/60">No changelog entries found.</p>
                         <p className="text-sm text-black/40 mt-2">
                             View the full changelog on{" "}
@@ -113,7 +113,7 @@ export default async function ChangelogPage() {
                         <div
                             key={section.version}
                         >
-                            <div className="flex items-center justify-between border-b-2 border-border bg-bg">
+                            <div className="flex items-center justify-between border-b-2 border-black bg-bg">
                                 <h2 className="text-xl font-bold">
                                     {section.version === "Next" ? (
                                         <span>Next</span>
@@ -139,7 +139,7 @@ export default async function ChangelogPage() {
                                                     dangerouslySetInnerHTML={{
                                                         __html: item
                                                             .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-                                                            .replace(/`(.+?)`/g, "<code class='text-xs bg-bg px-1 py-0.5 rounded border border-border'>$1</code>")
+                                                            .replace(/`(.+?)`/g, "<code class='text-xs bg-bg px-1 py-0.5 rounded border border-black'>$1</code>")
                                                     }}
                                                 />
                                             ))}
