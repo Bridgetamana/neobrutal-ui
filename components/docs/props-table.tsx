@@ -19,26 +19,26 @@ export function PropsTable({ data, className }: PropsTableProps) {
             <table className="w-full text-left text-sm">
                 <thead className="border-b-4 border-black bg-white">
                     <tr>
-                        <th className="px-4 py-3 font-bold uppercase tracking-wider">Prop</th>
-                        <th className="px-4 py-3 font-bold uppercase tracking-wider">Type</th>
-                        <th className="px-4 py-3 font-bold uppercase tracking-wider">Default</th>
-                        <th className="px-4 py-3 font-bold uppercase tracking-wider">Description</th>
+                        <th className="px-4 py-3 font-bold">Prop</th>
+                        <th className="px-4 py-3 font-bold">Type</th>
+                        <th className="px-4 py-3 font-bold">Default</th>
+                        <th className="px-4 py-3 font-bold">Description</th>
                     </tr>
                 </thead>
                 <tbody className="divide-y-4 divide-black bg-white">
                     {data.map((prop) => (
-                        <tr key={prop.name} className="hover:bg-gray-50">
-                            <td className="whitespace-nowrap px-4 py-3 font-mono font-bold">
+                        <tr key={prop.name}>
+                            <td className="whitespace-nowrap p-2 font-mono font-bold">
                                 {prop.name}
-                                {prop.required && <span className="ml-1 text-red-500">*</span>}
+                                {prop.required && <span className="ml-1 text-hot-pink">*</span>}
                             </td>
-                            <td className="px-4 py-3 font-mono text-xs text-blue-600">
+                            <td className="p-2 font-mono">
                                 {prop.type}
                             </td>
-                            <td className="px-4 py-3 font-mono text-xs text-gray-500">
+                            <td className="p-2 font-mono">
                                 {prop.defaultValue || "-"}
                             </td>
-                            <td className="px-4 py-3 text-gray-700">
+                            <td className="p-2">
                                 {prop.description}
                             </td>
                         </tr>
