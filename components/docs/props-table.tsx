@@ -15,27 +15,27 @@ interface PropsTableProps {
 
 export function PropsTable({ data, className }: PropsTableProps) {
     return (
-        <div className={cn("my-6 overflow-x-auto border-4 shadow-brutal", className)}>
+        <div className={cn("my-6 overflow-x-auto border-2 rounded bg-white", className)}>
             <table className="w-full text-left text-sm">
-                <thead className="border-b-4 border-black bg-white">
+                <thead className="border-b-2">
                     <tr>
-                        <th className="px-4 py-3 font-bold">Prop</th>
-                        <th className="px-4 py-3 font-bold">Type</th>
-                        <th className="px-4 py-3 font-bold">Default</th>
-                        <th className="px-4 py-3 font-bold">Description</th>
+                        <th className="p-2 font-semibold">Prop</th>
+                        <th className="p-2 font-semibold">Type</th>
+                        <th className="p-2 font-semibold">Default</th>
+                        <th className="p-2 font-semibold">Description</th>
                     </tr>
                 </thead>
-                <tbody className="divide-y-4 divide-black bg-white">
+                <tbody className="divide-y-2 divide-black">
                     {data.map((prop) => (
                         <tr key={prop.name}>
-                            <td className="whitespace-nowrap p-2 font-mono font-bold">
+                            <td className="p-2">
                                 {prop.name}
                                 {prop.required && <span className="ml-1 text-hot-pink">*</span>}
                             </td>
-                            <td className="p-2 font-mono">
+                            <td className="p-2">
                                 {prop.type}
                             </td>
-                            <td className="p-2 font-mono">
+                            <td className="p-2">
                                 {prop.defaultValue || "-"}
                             </td>
                             <td className="p-2">

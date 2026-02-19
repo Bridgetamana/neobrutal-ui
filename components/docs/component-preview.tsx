@@ -16,7 +16,7 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
 
     return (
         <div className={cn("border-2 shadow-brutal bg-white rounded-base", className)} {...props}>
-            <div className="flex border-b-2 border-black divide-x-2 divide-black">
+            <div className="flex border-b-2 divide-x-2 divide-black">
                 <button
                     onClick={() => setView("preview")}
                     className={cn(
@@ -45,7 +45,7 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
                 ) : (
                     <div>
                         {htmlCode && (
-                            <div className="flex border-b-2 border-black bg-neutral-100">
+                            <div className="flex border-b-2 bg-neutral-100">
                                 <button
                                     onClick={() => setCodeType("react")}
                                     className={cn(

@@ -34,7 +34,7 @@ function ColorThemePicker() {
                         <Button
                             size="icon"
                             aria-label="Change color theme"
-                            className="h-12 w-12 rounded-full hover:translate-x-0 hover:translate-y-0"
+                            className="h-12 w-12 rounded-full shadow-none! hover:translate-0"
                         >
                             <PaletteIcon weight="bold" className="h-7 w-7" />
                         </Button>
@@ -60,11 +60,11 @@ function ColorThemePicker() {
                                         <ColorSwatch
                                             color={theme.main}
                                             className={cn(
-                                                "h-8 w-8 rounded-full border-2",
-                                                isActive && "ring-2 ring-black ring-offset-2 shadow-brutal"
+                                                "h-8 w-8 rounded-full border",
+                                                isActive && "ring-2 ring-black ring-offset shadow-brutal"
                                             )}
                                         />
-                                        <span className="text-xs font-bold">
+                                        <span className="text-xs font-medium">
                                             {theme.name}
                                         </span>
                                     </Button>
