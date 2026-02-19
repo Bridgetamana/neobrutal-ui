@@ -13,9 +13,9 @@ const htmlCode = `<label for="email" class="text-sm font-bold leading-none">Acce
 
 export default function LabelPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Label</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Label</h1>
             </header>
 
             <section className="space-y-4">
@@ -32,21 +32,21 @@ export default function LabelPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add label" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Label } from "@/components/ui/label"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">With Input</h3>
+                    <h3 className="font-semibold">With Input</h3>
                     <ComponentPreview code={`<div className="grid w-full max-w-sm items-center gap-1.5">
   <Label htmlFor="email">Email</Label>
   <Input type="email" id="email" placeholder="Email" />

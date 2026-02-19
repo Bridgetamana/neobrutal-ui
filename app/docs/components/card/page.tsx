@@ -56,9 +56,9 @@ const cardProps = [
 
 export default function CardPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-black">
       <header>
-        <h1 className="text-3xl font-bold md:text-4xl text-black">Card</h1>
+        <h1 className="text-3xl font-semibold md:text-4xl">Card</h1>
       </header>
 
       <section className="space-y-4">
@@ -83,12 +83,12 @@ export default function CardPage() {
       </ComponentPreview>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Installation</h2>
+        <h2 className="text-xl font-semibold">Installation</h2>
         <CodeBlock code="npx neobrutal add card" language="bash" />
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Usage</h2>
+        <h2 className="text-xl font-semibold">Usage</h2>
         <CodeBlock code={`import {
   Card,
   CardContent,
@@ -110,10 +110,10 @@ export default function CardPage() {
       </div>
 
       <div className="space-y-6">
-        <h2 className="text-xl font-bold">Examples</h2>
+        <h2 className="text-xl font-semibold">Examples</h2>
 
         <div className="space-y-4">
-          <h3 className="font-bold">Default</h3>
+          <h3 className="font-semibold">Default</h3>
           <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <CardTitle>Project Alpha</CardTitle>
@@ -134,7 +134,7 @@ export default function CardPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-bold">With Actions</h3>
+          <h3 className="font-semibold">With Actions</h3>
           <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <CardTitle>Task Completed</CardTitle>
@@ -163,7 +163,7 @@ export default function CardPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-bold">Simple Content Only</h3>
+          <h3 className="font-semibold">Simple Content Only</h3>
           <ComponentPreview code={`<Card className="p-6 max-w-sm">
   <div className="space-y-2">
     <h3 className="text-lg font-bold">Quick Note</h3>
@@ -172,7 +172,7 @@ export default function CardPage() {
 </Card>`}>
             <Card className="p-6 max-w-sm">
               <div className="space-y-2">
-                <h3 className="text-lg font-bold">Quick Note</h3>
+                <h3 className="text-lg font-semibold">Quick Note</h3>
                 <p className="text-sm">Sometimes you just need a simple card with padding and content.</p>
               </div>
             </Card>
@@ -180,7 +180,7 @@ export default function CardPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-bold">With Image</h3>
+          <h3 className="font-semibold">With Image</h3>
           <ComponentPreview code={`<Card className="max-w-sm">
   <CardHeader>
     <div className="aspect-video w-full overflow-hidden rounded-base border-2 border-black">
@@ -220,7 +220,7 @@ export default function CardPage() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Props</h2>
+        <h2 className="text-xl font-semibold">Props</h2>
         <PropsTable data={cardProps} />
       </div>
     </div>

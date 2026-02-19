@@ -36,9 +36,9 @@ const buttonProps = [
 
 export default function ButtonPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Button</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Button</h1>
             </header>
 
             <section className="space-y-4">
@@ -52,42 +52,42 @@ export default function ButtonPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add button" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Button } from "@/components/ui/button"`} />
                 <CodeBlock code={`<Button variant="neutral">Button</Button>`} />
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Default</h3>
+                    <h3 className="font-semibold">Default</h3>
                     <ComponentPreview code={`<Button>Default</Button>`}>
                         <Button>Default</Button>
                     </ComponentPreview>
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Neutral</h3>
+                    <h3 className="font-semibold">Neutral</h3>
                     <ComponentPreview code={`<Button variant="neutral">Neutral</Button>`}>
                         <Button variant="neutral">Neutral</Button>
                     </ComponentPreview>
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">No Shadow</h3>
+                    <h3 className="font-semibold">No Shadow</h3>
                     <ComponentPreview code={`<Button variant="noShadow">No Shadow</Button>`}>
                         <Button variant="noShadow">No Shadow</Button>
                     </ComponentPreview>
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Sizes</h3>
+                    <h3 className="font-semibold">Sizes</h3>
                     <ComponentPreview code={`<div className="flex items-center gap-4">
   <Button size="sm">Small</Button>
   <Button size="default">Default</Button>
@@ -102,7 +102,7 @@ export default function ButtonPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Icon</h3>
+                    <h3 className="font-semibold">Icon</h3>
                     <ComponentPreview code={`<Button size="icon">
   <MagnifyingGlass weight="bold" />
 </Button>`}>
@@ -113,7 +113,7 @@ export default function ButtonPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Link</h3>
+                    <h3 className="font-semibold">Link</h3>
                     <p className="text-base text-black">Use the asChild prop to render as a link.</p>
                     <CodeBlock code={`import Link from "next/link"
 
@@ -124,7 +124,7 @@ export default function ButtonPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
+                <h2 className="text-xl font-semibold">Props</h2>
                 <PropsTable data={buttonProps} />
             </div>
         </div>

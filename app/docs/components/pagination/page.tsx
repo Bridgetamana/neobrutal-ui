@@ -39,9 +39,9 @@ const paginationProps = [
 
 export default function PaginationPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Pagination</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Pagination</h1>
             </header>
 
             <section className="space-y-4">
@@ -61,18 +61,18 @@ export default function PaginationPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add pagination" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Pagination, PaginationItem } from "@/components/ui/pagination"`} />
                 <CodeBlock code={usageCode} />
             </div>
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="font-bold">PaginationItem</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="font-semibold">PaginationItem</h3>
                 <PropsTable data={paginationProps} />
             </div>
         </div>

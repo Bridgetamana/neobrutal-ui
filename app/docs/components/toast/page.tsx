@@ -128,9 +128,9 @@ const toastOptionsProps = [
 
 export default function ToastPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">
+                <h1 className="text-3xl font-semibold md:text-4xl">
                     Toast
                 </h1>
             </header>
@@ -148,12 +148,12 @@ export default function ToastPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add toast" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock
                     code={`import { toast } from "@/components/ui/toast"
 import { Button } from "@/components/ui/button"`}
@@ -162,10 +162,10 @@ import { Button } from "@/components/ui/button"`}
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Types</h3>
+                    <h3 className="font-semibold">Types</h3>
                     <p className="text-sm text-black">
                         Four built-in types, each with its own color.
                     </p>
@@ -180,7 +180,7 @@ toast.info("A new version is available")`}
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Action button</h3>
+                    <h3 className="font-semibold">Action button</h3>
                     <p className="text-sm text-black">
                         Pass <code className="font-mono text-xs bg-white px-1 py-0.5 border border-black rounded-base">actionProps</code> to
                         render a neobrutalist action button inside the toast.
@@ -191,7 +191,7 @@ toast.info("A new version is available")`}
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Promise</h3>
+                    <h3 className="font-semibold">Promise</h3>
                     <p className="text-sm text-black">
                         Show a loading state that automatically transitions to
                         success or error when the promise settles.
@@ -202,7 +202,7 @@ toast.info("A new version is available")`}
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Position</h3>
+                    <h3 className="font-semibold">Position</h3>
                     <p className="text-sm text-black">
                         Set the toast position by passing a{" "}
                         <code className="font-mono text-xs bg-white px-1 py-0.5 border border-black rounded-base">position</code>{" "}
@@ -213,15 +213,15 @@ toast.info("A new version is available")`}
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">API Reference</h2>
+                <h2 className="text-xl font-semibold">API Reference</h2>
 
-                <h3 className="font-bold">Toaster</h3>
+                <h3 className="font-semibold">Toaster</h3>
                 <PropsTable data={toasterProps} />
 
-                <h3 className="font-bold mt-6">Toast methods</h3>
+                <h3 className="font-semibold mt-6">Toast methods</h3>
                 <PropsTable data={toastMethodProps} />
 
-                <h3 className="font-bold mt-6">ToastOptions</h3>
+                <h3 className="font-semibold mt-6">ToastOptions</h3>
                 <PropsTable data={toastOptionsProps} />
             </div>
         </div>

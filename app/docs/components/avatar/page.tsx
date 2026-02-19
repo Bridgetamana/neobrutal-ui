@@ -36,13 +36,13 @@ const avatarGroupProps = [
 
 export default function AvatarPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Avatar</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Avatar</h1>
             </header>
 
             <section className="space-y-4">
-                <p className="text-base text-black">
+                <p>
                     An image element with a fallback for representing the user.
                 </p>
             </section>
@@ -55,12 +55,12 @@ export default function AvatarPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add avatar" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"`} />
                 <CodeBlock code={`<Avatar>
   <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
@@ -69,10 +69,10 @@ export default function AvatarPage() {
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">With Image</h3>
+                    <h3 className="text-lg font-semibold">With Image</h3>
                     <ComponentPreview code={`<Avatar>
   <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
   <AvatarFallback>CN</AvatarFallback>
@@ -85,8 +85,8 @@ export default function AvatarPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Fallback</h3>
-                    <p className="text-base text-black">Displays initials when no image is available.</p>
+                    <h3 className="text-lg font-semibold">Fallback</h3>
+                    <p>Displays initials when no image is available.</p>
                     <ComponentPreview code={`<Avatar>
   <AvatarFallback>JD</AvatarFallback>
 </Avatar>`}>
@@ -97,8 +97,8 @@ export default function AvatarPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Group</h3>
-                    <p className="text-base text-black">Display multiple avatars with an overflow indicator.</p>
+                    <h3 className="text-lg font-semibold">Group</h3>
+                    <p>Display multiple avatars with an overflow indicator.</p>
                     <ComponentPreview code={`<AvatarGroup max={3}>
   <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
   <Avatar><AvatarFallback>B</AvatarFallback></Avatar>
@@ -118,8 +118,8 @@ export default function AvatarPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="text-lg font-bold">AvatarGroup</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="text-lg font-semibold">AvatarGroup</h3>
                 <PropsTable data={avatarGroupProps} />
             </div>
         </div>

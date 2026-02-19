@@ -62,9 +62,9 @@ const tabsContentProps = [
 
 export default function TabsPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Tabs</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Tabs</h1>
             </header>
 
             <section className="space-y-4">
@@ -89,23 +89,23 @@ export default function TabsPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add tabs" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="font-bold">Tabs</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="font-semibold">Tabs</h3>
                 <PropsTable data={tabsProps} />
-                <h3 className="font-bold mt-4">TabsTrigger</h3>
+                <h3 className="font-semibold mt-4">TabsTrigger</h3>
                 <PropsTable data={tabsTriggerProps} />
-                <h3 className="font-bold mt-4">TabsContent</h3>
+                <h3 className="font-semibold mt-4">TabsContent</h3>
                 <PropsTable data={tabsContentProps} />
             </div>
         </div>

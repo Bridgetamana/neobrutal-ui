@@ -49,9 +49,9 @@ const selectProps = [
 
 export default function SelectPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Select</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Select</h1>
             </header>
 
             <section className="space-y-4">
@@ -74,12 +74,12 @@ export default function SelectPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add select" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import {
   Select,
   SelectContent,
@@ -91,8 +91,8 @@ export default function SelectPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="font-bold">Select</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="font-semibold">Select</h3>
                 <PropsTable data={selectProps} />
             </div>
         </div>

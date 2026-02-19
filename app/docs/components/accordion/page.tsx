@@ -148,16 +148,18 @@ const accordionContentProps = [
 
 export default function AccordionPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-black">
       <header>
-        <h1 className="text-3xl font-bold md:text-4xl text-black">Accordion</h1>
+        <h1 className="text-3xl font-semibold md:text-4xl">Accordion</h1>
       </header>
 
       <section className="space-y-4">
-        <p className="text-base text-black">
+        <p>
           A vertically stacked set of collapsible sections.
         </p>
-      </section>      <ComponentPreview code={usageCode} htmlCode={htmlCode}>
+      </section>      
+      
+      <ComponentPreview code={usageCode} htmlCode={htmlCode}>
         <Accordion className="w-full max-w-md">
           <AccordionItem value="item-1">
             <AccordionTrigger>Is it styled?</AccordionTrigger>
@@ -175,14 +177,14 @@ export default function AccordionPage() {
       </ComponentPreview>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Installation</h2>
+        <h2 className="text-xl font-semibold">Installation</h2>
         <CodeBlock code="npx neobrutal add accordion" language="bash" />
-        <p className="text-base text-black">Or install the dependency and copy the code:</p>
+        <p>Or install the dependency and copy the code:</p>
         <CodeBlock code="npm install @base-ui/react" language="bash" />
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Usage</h2>
+        <h2 className="text-xl font-semibold">Usage</h2>
         <CodeBlock code={`import {
   Accordion,
   AccordionContent,
@@ -200,11 +202,11 @@ export default function AccordionPage() {
       </div>
 
       <div className="space-y-6">
-        <h2 className="text-xl font-bold">Examples</h2>
+        <h2 className="text-xl font-semibold">Examples</h2>
 
         <div className="space-y-4">
-          <h3 className="font-bold">Multiple</h3>
-          <p className="text-base text-black">Allow multiple sections to be open at once.</p>
+          <h3 className="text-lg font-semibold">Multiple</h3>
+          <p>Allow multiple sections to be open at once.</p>
           <ComponentPreview code={`<Accordion multiple className="w-full">
   <AccordionItem value="item-1">
     <AccordionTrigger>First Section</AccordionTrigger>
@@ -229,8 +231,8 @@ export default function AccordionPage() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-bold">Default Open</h3>
-          <p className="text-base text-black">Set a section to be open by default.</p>
+          <h3 className="text-lg font-semibold">Default Open</h3>
+          <p>Set a section to be open by default.</p>
           <ComponentPreview code={`<Accordion defaultValue={["item-1"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Open by default</AccordionTrigger>
@@ -248,14 +250,14 @@ export default function AccordionPage() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-bold">Props</h2>
-        <h3 className="text-lg font-bold">Accordion</h3>
+        <h2 className="text-xl font-semibold">Props</h2>
+        <h3 className="text-lg font-semibold">Accordion</h3>
         <PropsTable data={accordionProps} />
-        <h3 className="text-lg font-bold">AccordionItem</h3>
+        <h3 className="text-lg font-semibold">AccordionItem</h3>
         <PropsTable data={accordionItemProps} />
-        <h3 className="text-lg font-bold">AccordionTrigger</h3>
+        <h3 className="text-lg font-semibold">AccordionTrigger</h3>
         <PropsTable data={accordionTriggerProps} />
-        <h3 className="text-lg font-bold">AccordionContent</h3>
+        <h3 className="text-lg font-semibold">AccordionContent</h3>
         <PropsTable data={accordionContentProps} />
       </div>
     </div>

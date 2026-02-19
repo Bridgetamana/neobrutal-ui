@@ -84,9 +84,9 @@ export default async function ChangelogPage() {
     const sections = parseChangelog(content)
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <div>
-                <h1 className="text-3xl font-bold mb-2">Changelog</h1>
+                <h1 className="text-3xl font-semibold mb-2">Changelog</h1>
                 <p className="text-black/70">
                     All notable changes to Neobrutal UI are documented here.
                 </p>
@@ -114,7 +114,7 @@ export default async function ChangelogPage() {
                             key={section.version}
                         >
                             <div className="flex items-center justify-between border-b-2 border-black bg-bg">
-                                <h2 className="text-xl font-bold">
+                                <h2 className="text-xl font-semibold">
                                     {section.version === "Next" ? (
                                         <span>Next</span>
                                     ) : (
@@ -154,7 +154,7 @@ export default async function ChangelogPage() {
 
             <section className="border-2 border-black bg-white">
                 <Link href="/docs/accessibility" className="block p-3 hover:bg-main">
-                    <span className="text-lg font-bold">Accessibility</span>
+                    <span className="text-lg font-semibold">Accessibility</span>
                     <p className="truncate">Learn about how neobrutal ui is built with accessibility in mind</p>
                 </Link>
             </section>

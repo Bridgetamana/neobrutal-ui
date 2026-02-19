@@ -40,9 +40,9 @@ const sliderProps = [
 
 export default function SliderPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Slider</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Slider</h1>
             </header>
 
             <section className="space-y-4">
@@ -56,18 +56,18 @@ export default function SliderPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add slider" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Slider } from "@/components/ui/slider"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
+                <h2 className="text-xl font-semibold">Props</h2>
                 <PropsTable data={sliderProps} />
             </div>
         </div>

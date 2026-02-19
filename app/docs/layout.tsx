@@ -13,7 +13,7 @@ export default function DocsLayout({
 
             <main className="flex-1 md:pl-64">
                 <DocsHeader />
-                <div className="container max-w-4xl py-8 px-6 md:py-10">
+                <div className="container max-w-4xl py-4 px-6 md:py-6">
                     {children}
                 </div>
             </main>

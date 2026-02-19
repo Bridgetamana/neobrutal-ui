@@ -23,9 +23,9 @@ const checkboxProps = [
 
 export default function CheckboxPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Checkbox</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Checkbox</h1>
             </header>
 
             <section className="space-y-4">
@@ -39,12 +39,12 @@ export default function CheckboxPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add checkbox" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"`} />
                 <CodeBlock code={`<div className="flex items-center gap-2">
@@ -54,10 +54,10 @@ import { Label } from "@/components/ui/label"`} />
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">States</h3>
+                    <h3 className="font-semibold">States</h3>
                     <ComponentPreview code={`<div className="grid gap-4">
   <div className="flex items-center gap-2">
     <Checkbox id="unchecked-state" />
@@ -91,7 +91,7 @@ import { Label } from "@/components/ui/label"`} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
+                <h2 className="text-xl font-semibold">Props</h2>
                 <PropsTable data={checkboxProps} />
             </div>
         </div>

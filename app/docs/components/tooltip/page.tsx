@@ -40,9 +40,9 @@ const tooltipProps = [
 
 export default function TooltipPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Tooltip</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Tooltip</h1>
             </header>
 
             <section className="space-y-4">
@@ -65,12 +65,12 @@ export default function TooltipPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add tooltip" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import {
   Tooltip,
   TooltipContent,
@@ -81,8 +81,8 @@ export default function TooltipPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="font-bold">Tooltip</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="font-semibold">Tooltip</h3>
                 <PropsTable data={tooltipProps} />
             </div>
         </div>

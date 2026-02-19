@@ -3,13 +3,13 @@ import { CodeBlock } from "@/components/docs/code-block"
 
 export default function CLIPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">CLI</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">CLI</h1>
             </header>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-bold text-black">init</h2>
+                <h2 className="text-2xl font-semibold">init</h2>
                 <p className="text-base text-black">
                     Set up your project for neobrutal ui. Creates components.json, installs dependencies, and adds utilities.
                 </p>
@@ -20,7 +20,7 @@ export default function CLIPage() {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-bold text-black">add</h2>
+                <h2 className="text-2xl font-semibold">add</h2>
                 <p className="text-base text-black">
                     Add components to your project. Resolves dependencies automatically.
                 </p>
@@ -31,7 +31,7 @@ export default function CLIPage() {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-bold text-black">list</h2>
+                <h2 className="text-2xl font-semibold">list</h2>
                 <p className="text-base text-black">
                     Display all available components.
                 </p>
@@ -39,7 +39,7 @@ export default function CLIPage() {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-bold text-black">diff</h2>
+                <h2 className="text-2xl font-semibold">diff</h2>
                 <p className="text-base text-black">
                     Compare local components with the registry to check for updates.
                 </p>
@@ -47,7 +47,7 @@ export default function CLIPage() {
             </section>
 
             <section className="space-y-4">
-                <h2 className="text-2xl font-bold text-black">Configuration</h2>
+                <h2 className="text-2xl font-semibold">Configuration</h2>
                 <p className="text-base text-black">
                     The <strong>components.json</strong> file configures component paths and import aliases.
                 </p>
@@ -65,11 +65,11 @@ export default function CLIPage() {
             <section className="border-2 border-black bg-white">
                 <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
                     <Link href="/docs/installation" className="block p-3 hover:bg-main">
-                        <span className="text-lg font-bold">Installation</span>
+                        <span className="text-lg font-semibold">Installation</span>
                         <p className="truncate">Learn how to install Neobrutal UI components</p>
                     </Link>
                     <Link href="/docs/theming" className="block p-3 hover:bg-main text-right">
-                        <span className="text-lg font-bold">Theming</span>
+                        <span className="text-lg font-semibold">Theming</span>
                         <p className="truncate">Customize the look and feel of Neobrutal UI components</p>
                     </Link>
                 </div>

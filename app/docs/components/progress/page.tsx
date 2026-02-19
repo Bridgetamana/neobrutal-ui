@@ -27,9 +27,9 @@ const progressProps = [
 
 export default function ProgressPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Progress</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Progress</h1>
             </header>
 
             <section className="space-y-4">
@@ -43,21 +43,21 @@ export default function ProgressPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add progress" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Progress } from "@/components/ui/progress"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="text-lg font-bold">Without Value Badge</h3>
+                    <h3 className="text-lg font-semibold">Without Value Badge</h3>
                     <ComponentPreview code={withoutValueCode}>
                         <Progress value={50} showValue={false} className="w-[60%]" />
                     </ComponentPreview>
@@ -65,7 +65,7 @@ export default function ProgressPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
+                <h2 className="text-xl font-semibold">Props</h2>
                 <PropsTable data={progressProps} />
             </div>
         </div>

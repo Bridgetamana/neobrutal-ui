@@ -1,0 +1,5 @@
+{
+    "editor.wordWrap": "on",
+    "editor.aiStats.enabled": false,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": false
+}

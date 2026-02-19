@@ -51,9 +51,9 @@ const popoverProps = [
 
 export default function PopoverPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Popover</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Popover</h1>
             </header>
 
             <section className="space-y-4">
@@ -70,7 +70,7 @@ export default function PopoverPage() {
                     <PopoverContent>
                         <div className="grid gap-4">
                             <div className="space-y-2">
-                                <h4 className="font-bold leading-none">Dimensions</h4>
+                                <h4 className="font-semibold leading-none">Dimensions</h4>
                                 <p className="text-sm text-black">
                                     Set the dimensions for the layer.
                                 </p>
@@ -81,19 +81,19 @@ export default function PopoverPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add popover" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
-                <h3 className="font-bold">Popover</h3>
+                <h2 className="text-xl font-semibold">Props</h2>
+                <h3 className="font-semibold">Popover</h3>
                 <PropsTable data={popoverProps} />
             </div>
         </div>

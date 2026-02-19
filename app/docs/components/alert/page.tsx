@@ -37,13 +37,13 @@ const alertProps = [
 
 export default function AlertPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Alert</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Alert</h1>
             </header>
 
             <section className="space-y-4">
-                <p className="text-base text-black">
+                <p>
                     Displays a message to attract user attention.
                 </p>
             </section>
@@ -58,12 +58,12 @@ export default function AlertPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add alert" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"`} />
                 <CodeBlock code={`<Alert>
   <AlertTitle>Title</AlertTitle>
@@ -72,10 +72,10 @@ export default function AlertPage() {
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Default</h3>
+                    <h3 className="text-lg font-semibold">Default</h3>
                     <ComponentPreview code={`<Alert>
   <AlertTitle>Info</AlertTitle>
   <AlertDescription>This is an informational message.</AlertDescription>
@@ -88,7 +88,7 @@ export default function AlertPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Destructive</h3>
+                    <h3 className="text-lg font-semibold">Destructive</h3>
                     <ComponentPreview code={`<Alert variant="destructive">
   <AlertTitle>Error</AlertTitle>
   <AlertDescription>Something went wrong. Please try again.</AlertDescription>
@@ -101,7 +101,7 @@ export default function AlertPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Success</h3>
+                    <h3 className="text-lg font-semibold">Success</h3>
                     <ComponentPreview code={`<Alert variant="success">
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>Your changes have been saved.</AlertDescription>
@@ -114,7 +114,7 @@ export default function AlertPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Warning</h3>
+                    <h3 className="text-lg font-semibold">Warning</h3>
                     <ComponentPreview code={`<Alert variant="warning">
   <AlertTitle>Warning</AlertTitle>
   <AlertDescription>This action cannot be undone.</AlertDescription>
@@ -127,7 +127,7 @@ export default function AlertPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Custom Icon</h3>
+                    <h3 className="text-lg font-semibold">Custom Icon</h3>
                     <ComponentPreview code={`import { Bell } from "@phosphor-icons/react"
 
 <Alert icon={<Bell className="h-5 w-5" />}>
@@ -142,7 +142,7 @@ export default function AlertPage() {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">Without Icon</h3>
+                    <h3 className="text-lg font-semibold">Without Icon</h3>
                     <ComponentPreview code={`<Alert icon={null}>
   <AlertTitle>Note</AlertTitle>
   <AlertDescription>A simple alert without an icon.</AlertDescription>
@@ -156,7 +156,7 @@ export default function AlertPage() {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Props</h2>
+                <h2 className="text-xl font-semibold">Props</h2>
                 <PropsTable data={alertProps} />
             </div>
         </div>

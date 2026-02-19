@@ -15,9 +15,9 @@ const htmlCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
 
 export default function InputPage() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 text-black">
             <header>
-                <h1 className="text-3xl font-bold md:text-4xl text-black">Input</h1>
+                <h1 className="text-3xl font-semibold md:text-4xl">Input</h1>
             </header>
 
             <section className="space-y-4">
@@ -34,22 +34,22 @@ export default function InputPage() {
             </ComponentPreview>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Installation</h2>
+                <h2 className="text-xl font-semibold">Installation</h2>
                 <CodeBlock code="npx neobrutal add input" language="bash" />
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-xl font-bold">Usage</h2>
+                <h2 className="text-xl font-semibold">Usage</h2>
                 <CodeBlock code={`import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"`} />
                 <CodeBlock code={usageCode} />
             </div>
 
             <div className="space-y-6">
-                <h2 className="text-xl font-bold">Examples</h2>
+                <h2 className="text-xl font-semibold">Examples</h2>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">With Icon</h3>
+                    <h3 className="font-semibold">With Icon</h3>
                     <ComponentPreview code={`<div className="relative w-full max-w-sm">
   <MagnifyingGlassIcon className="absolute left-3 top-3 h-4 w-4 text-black opacity-50" />
   <Input type="text" placeholder="Search..." className="pl-10" />
@@ -62,7 +62,7 @@ import { Label } from "@/components/ui/label"`} />
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="font-bold">File Upload</h3>
+                    <h3 className="font-semibold">File Upload</h3>
                     <ComponentPreview code={`<div className="grid w-full max-w-sm">
   <Label htmlFor="file">Upload Document</Label>
   <div className="relative border-2 border-dashed border-black rounded-md p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer">
@@ -78,7 +78,7 @@ import { Label } from "@/components/ui/label"`} />
                             <Label htmlFor="file">Upload Document</Label>
                             <label htmlFor="file" className="relative border-2 border-dashed border-black rounded-md p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer block">
                                 <svg className=" mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0ZM93.66,77.66,120,51.31V144a8,8,0,0,0,16,0V51.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,77.66Z"></path></svg>
-                                <div className="text-sm font-bold">Click to upload</div>
+                                <div className="text-sm font-semibold">Click to upload</div>
                                 <p className="text-xs text-gray-600 mt-1">PDF, DOC or DOCX</p>
                             </label>
                             <Input id="file" type="file" accept=".pdf,.doc,.docx" className="hidden" />
