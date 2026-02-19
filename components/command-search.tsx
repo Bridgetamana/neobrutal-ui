@@ -9,195 +9,167 @@ import { Dialog } from "@base-ui/react"
 
 interface SearchItem {
     name: string
-    description: string
     href: string
     keywords: string[]
-    category: "component" | "docs" | "cli"
+    category: "component" | "docs"
 }
 
 const searchItems: SearchItem[] = [
     {
         name: "Accordion",
-        description: "A vertically stacked set of interactive headings that reveal content sections.",
         href: "/docs/components/accordion",
-        keywords: ["collapse", "expand", "disclosure", "faq"],
+        keywords: ["collapse", "expand"],
         category: "component",
     },
     {
         name: "Alert",
-        description: "Displays a callout for user attention with neobrutalist styling.",
         href: "/docs/components/alert",
-        keywords: ["notification", "message", "warning", "error", "info"],
+        keywords: ["notification", "warning", "error", "info"],
         category: "component",
     },
     {
         name: "Avatar",
-        description: "An image element with a fallback for representing the user.",
         href: "/docs/components/avatar",
         keywords: ["user", "profile", "image", "picture"],
         category: "component",
     },
     {
         name: "Badge",
-        description: "Displays a badge or label with neobrutalist styling.",
         href: "/docs/components/badge",
-        keywords: ["tag", "label", "chip", "status"],
+        keywords: ["tag", "label", "status"],
         category: "component",
     },
     {
         name: "Button",
-        description: "Displays a button or a component that looks like a button.",
         href: "/docs/components/button",
-        keywords: ["click", "action", "submit", "cta"],
+        keywords: ["click", "action"],
         category: "component",
     },
     {
         name: "Card",
-        description: "Displays a flexible container with header, content, and footer sections. Supports multiple variants.",
         href: "/docs/components/card",
-        keywords: ["container", "box", "panel", "tile"],
+        keywords: ["container"],
         category: "component",
     },
     {
         name: "Checkbox",
-        description: "A control that allows the user to toggle between checked and not checked.",
         href: "/docs/components/checkbox",
-        keywords: ["check", "toggle", "tick", "form"],
+        keywords: ["form"],
         category: "component",
     },
     {
         name: "Dialog",
-        description: "A window overlaid on the primary window with neobrutalist styling.",
         href: "/docs/components/dialog",
-        keywords: ["modal", "popup", "overlay", "confirm"],
+        keywords: ["modal", "popup", "overlay"],
         category: "component",
     },
     {
         name: "Input",
-        description: "Displays a form input field with neobrutalist styling.",
         href: "/docs/components/input",
-        keywords: ["text", "field", "form", "textbox"],
+        keywords: ["field", "form"],
         category: "component",
     },
     {
         name: "Label",
-        description: "Renders an accessible label associated with controls.",
         href: "/docs/components/label",
-        keywords: ["text", "form", "accessibility"],
+        keywords: ["text", "form"],
         category: "component",
     },
     {
         name: "Pagination",
-        description: "Pagination with page navigation and ellipsis.",
         href: "/docs/components/pagination",
         keywords: ["pages", "navigation", "next", "previous"],
         category: "component",
     },
     {
         name: "Popover",
-        description: "Displays rich content in a portal, triggered by a button.",
         href: "/docs/components/popover",
-        keywords: ["popup", "dropdown", "tooltip", "overlay"],
+        keywords: ["popup", "overlay"],
         category: "component",
     },
     {
         name: "Progress",
-        description: "Displays an indicator showing the completion progress of a task.",
         href: "/docs/components/progress",
-        keywords: ["loading", "bar", "indicator", "percent"],
+        keywords: ["loading", "bar", "indicator"],
         category: "component",
     },
     {
         name: "Radio Group",
-        description: "A set of checkable buttons where only one can be checked at a time.",
         href: "/docs/components/radio-group",
-        keywords: ["radio", "option", "select", "form"],
+        keywords: ["form"],
         category: "component",
     },
     {
         name: "Select",
-        description: "Displays a list of options for the user to pick from.",
         href: "/docs/components/select",
-        keywords: ["dropdown", "option", "picker", "form"],
+        keywords: ["dropdown", "form"],
         category: "component",
     },
     {
         name: "Slider",
-        description: "An input where the user selects a value from within a given range.",
         href: "/docs/components/slider",
-        keywords: ["range", "input", "volume", "form"],
+        keywords: ["range"],
         category: "component",
     },
     {
         name: "Switch",
-        description: "A control that allows the user to toggle between on and off.",
         href: "/docs/components/switch",
-        keywords: ["toggle", "on", "off", "boolean"],
+        keywords: ["toggle", "on", "off"],
         category: "component",
     },
     {
         name: "Tabs",
-        description: "A set of layered sections of content displayed one at a time.",
         href: "/docs/components/tabs",
-        keywords: ["navigation", "panel", "section"],
+        keywords: ["navigation", "panel"],
         category: "component",
     },
     {
         name: "Textarea",
-        description: "Displays a form textarea with neobrutalist styling.",
         href: "/docs/components/textarea",
-        keywords: ["text", "multiline", "form", "input"],
+        keywords: ["form", "input"],
         category: "component",
     },
     {
         name: "Toast",
-        description: "An opinionated toast component with neobrutalist styling.",
         href: "/docs/components/toast",
-        keywords: ["notification", "snackbar", "message"],
+        keywords: ["notification", "sonner"],
         category: "component",
     },
     {
         name: "Tooltip",
-        description: "A popup that displays information related to an element.",
         href: "/docs/components/tooltip",
-        keywords: ["hint", "help", "info", "hover"],
+        keywords: ["hint", "help"],
         category: "component",
     },
-    // Documentation
     {
         name: "Getting Started",
-        description: "Learn how to get started with Neobrutal UI.",
         href: "/docs",
-        keywords: ["start", "intro", "begin", "overview"],
+        keywords: ["start", "intro"],
         category: "docs",
     },
     {
         name: "Installation",
-        description: "How to install Neobrutal UI in your project.",
         href: "/docs/installation",
-        keywords: ["setup", "install", "npm", "pnpm"],
+        keywords: ["setup", "install"],
         category: "docs",
     },
     {
         name: "Theming",
-        description: "Customize the look and feel with CSS variables.",
         href: "/docs/theming",
-        keywords: ["theme", "colors", "customize", "css", "variables"],
+        keywords: ["theme", "colors", "customize"],
         category: "docs",
     },
     {
         name: "Changelog",
-        description: "All notable changes to Neobrutal UI.",
         href: "/docs/changelog",
-        keywords: ["changelog", "releases", "updates", "versions", "history"],
+        keywords: ["changelog", "releases", "updates"],
         category: "docs",
     },
     {
         name: "CLI",
-        description: "Use the neobrutal CLI to add components.",
         href: "/docs/cli",
-        keywords: ["command", "terminal", "npx", "add"],
-        category: "cli",
+        keywords: ["command", "add"],
+        category: "docs",
     },
 ]
 
@@ -237,7 +209,7 @@ export function CommandSearch() {
                     <Input
                         readOnly
                         placeholder="Search..."
-                        className="w-44 h-9 pl-8 hidden md:block cursor-default placehlolder-black/60"
+                        className="w-44 h-9 pl-8 hidden md:block cursor-default"
                     />
                 </div>
             </Dialog.Trigger>
@@ -246,80 +218,64 @@ export function CommandSearch() {
                 <Dialog.Backdrop className="fixed inset-0 bg-black/70 backdrop-blur-xs z-50" />
 
                 <Dialog.Popup
-                    className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg
-      -translate-x-1/2 -translate-y-1/2 bg-white border-4
-      border-black shadow-brutal rounded-lg overflow-hidden"
+                    className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-black rounded-base overflow-hidden"
                 >
                     <Dialog.Title className="sr-only">
                         Search components and documentation
                     </Dialog.Title>
 
                     <Command className="w-full" loop={false} shouldFilter={true}>
-                        <div className="flex items-center gap-2 px-4 border-b-2 border-black">
-                            <MagnifyingGlassIcon size={16} className="text-black/60" />
+                        <div className="flex items-center gap-2 px-4 border-b">
+                            <MagnifyingGlassIcon size={14} className="text-black/60" />
                             <Command.Input
                                 autoFocus
                                 placeholder="Search components, docs..."
-                                className="flex-1 py-4 text-base outline-none placeholder:text-black/40"
+                                className="flex-1 py-3 outline-none"
                                 onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
                             />
                         </div>
 
                         <Command.List
-                            className="max-h-80 overflow-y-auto p-2"
+                            className="max-h-90 overflow-y-auto p-2"
                             style={{ overflowAnchor: "none" }}
                         >
                             <Command.Empty className="py-6 text-center text-sm text-black/60">
                                 No results found.
                             </Command.Empty>
 
-                            <Command.Group heading="Components" className="px-2 py-1.5">
+                            <Command.Group heading="Components" className="p-2">
                                 {searchItems
                                     .filter((i) => i.category === "component")
                                     .map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name} ${item.description
-                                                } ${item.keywords.join(" ")}`}
+                                            value={`${item.name}} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 px-3 py-2.5 rounded-md
-                  cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
+                                            className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
-                                            <div className="min-w-0">
-                                                <p className="truncate">{item.name}</p>
-                                                <p className="text-xs text-black/70 truncate">
-                                                    {item.description}
-                                                </p>
-                                            </div>
+                                            <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
                                     ))}
                             </Command.Group>
 
-                            <Command.Group heading="Documentation" className="px-2 py-1.5">
+                            <Command.Group heading="Documentation" className="p-2">
                                 {searchItems
-                                    .filter((i) => i.category === "docs" || i.category === "cli")
+                                    .filter((i) => i.category === "docs")
                                     .map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name} ${item.description
-                                                } ${item.keywords.join(" ")}`}
+                                            value={`${item.name}} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 px-3 py-2.5 rounded-md
-                  cursor-pointer data-[selected=true]:bg-main/30 hover:bg-main/20"
+                                            className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
-                                            <div className="min-w-0">
-                                                <p className="truncate">{item.name}</p>
-                                                <p className="text-xs text-black/70 truncate">
-                                                    {item.description}
-                                                </p>
-                                            </div>
+                                            <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
                                     ))}
                             </Command.Group>
                         </Command.List>
 
-                        <div className="flex items-center gap-1 px-4 py-2 border-t-2 text-xs">
-                            <kbd className="px-1.5 py-0.5 rounded border border-black bg-white">
+                        <div className="flex items-center gap-1 px-4 py-2 border-t text-xs">
+                            <kbd className="px-1 rounded border bg-white">
                                 esc
                             </kbd>
                             close

@@ -68,9 +68,9 @@ function SidebarContent({ pathname, onLinkClick }: SidebarContentProps) {
                                 href={item.href}
                                 onClick={onLinkClick}
                                 className={cn(
-                                    "ml-3 block rounded-base px-2 py-1 text-black/90",
+                                    "ml-3 block rounded-base px-2 py-1 text-black/80",
                                     pathname === item.href
-                                        ? "bg-main border-2 font-semibold"
+                                        ? "bg-main"
                                         : "hover:text-black"
                                 )}
                             >
