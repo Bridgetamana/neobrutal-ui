@@ -16,7 +16,7 @@ export function SiteHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-black bg-white">
+        <header className="fixed top-0 left-0 right-0 z-50 border-b-2 bg-white">
             <div className="container mx-auto flex h-14 lg:h-16 items-center justify-between px-4 md:px-8">
                 <Link href="/">
                     <Logo />
@@ -42,7 +42,7 @@ export function SiteHeader() {
                 </div>
             </div>
             {isMenuOpen && (
-                <div className="lg:hidden bg-white border-t-2 border-black">
+                <div className="lg:hidden bg-white border-t-2">
                     <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
                         <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
                         <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>

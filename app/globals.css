@@ -30,6 +30,14 @@ body {
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+p {
+  text-wrap: pretty;
+}
+
+h1, h2 {
+  letter-spacing: -0.025em;
+}
+
 @layer utilities {
   .focus-brutal {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white;

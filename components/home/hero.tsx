@@ -45,8 +45,8 @@ export function HeroSection() {
                     A collection of Neobrutalism components built with Base UI and Tailwind CSS.
                 </p>
                 <Link href="/docs/installation">
-                    <Button className="h-14 px-8 text-lg font-bold shadow-brutal hover:bg-main">
-                        Quick Start <ArrowRightIcon weight="bold" className="ml-2 h-5 w-5" />
+                    <Button className="h-12 px-8 text-lg font-bold shadow-brutal">
+                        Get Started <ArrowRightIcon weight="bold" className="ml-2 h-5 w-5" />
                     </Button>
                 </Link>
             </div>
