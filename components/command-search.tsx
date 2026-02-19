@@ -16,7 +16,6 @@ interface SearchItem {
 }
 
 const searchItems: SearchItem[] = [
-    // Components
     {
         name: "Accordion",
         description: "A vertically stacked set of interactive headings that reveal content sections.",
@@ -228,19 +227,17 @@ export function CommandSearch() {
             <Dialog.Trigger id="command-search-trigger">
                 <div className="relative block cursor-default">
                     <MagnifyingGlassIcon
-                        size={18}
-                        weight="bold"
+                        size={20}
                         className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
                     />
                     <MagnifyingGlassIcon
                         size={14}
-                        weight="bold"
                         className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
                     />
                     <Input
                         readOnly
                         placeholder="Search..."
-                        className="w-30 pl-8 hidden md:block cursor-default"
+                        className="w-44 h-9 pl-8 hidden md:block cursor-default placehlolder-black/60"
                     />
                 </div>
             </Dialog.Trigger>
