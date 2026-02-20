@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { HeroSection } from "@/components/home/hero"
 import { StatsSection } from "@/components/home/stats"
 import { ColorThemePicker } from "@/components/home/color-theme-picker"
-import { Sponsor } from "@/components/home/sponsor"
+/* import { Sponsor } from "@/components/home/sponsor" */
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <StatsSection />
-        <Sponsor />
         <SiteFooter />
       </main>
       <ColorThemePicker />
