@@ -78,30 +78,48 @@ export function OnThisPage() {
     <aside className="hidden xl:block">
       <nav className="sticky top-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
         <p className="text-sm font-semibold mb-3">On This Page</p>
-        <ul className="space-y-1 text-[13px] border-l-2 border-black/10">
-          {headings.map((heading) => (
-            <li key={heading.id}>
-              <a
-                href={`#${heading.id}`}
-                onClick={(e) => {
-                  e.preventDefault()
-                  document.getElementById(heading.id)?.scrollIntoView({
-                    behavior: "smooth",
-                  })
-                  setActiveId(heading.id)
-                }}
-                className={cn(
-                  "block py-0.5 pl-3 border-l-2 -ml-0.5 transition-colors",
-                  heading.level === 3 && "pl-5",
-                  activeId === heading.id
-                    ? "border-black text-black font-medium"
-                    : "border-transparent text-black/40 hover:text-black/70"
+        <ul className="text-[13px]">
+          {headings.map((heading, i) => {
+            const isActive = activeId === heading.id
+            const isLast = i === headings.length - 1
+
+            return (
+              <li key={heading.id} className="relative flex items-center min-h-7">
+                {/* Vertical stem — runs full height except for the last item */}
+                {!isLast && (
+                  <span className="absolute left-1.25 top-1/2 bottom-0 w-px bg-black/10" />
                 )}
-              >
-                {heading.text}
-              </a>
-            </li>
-          ))}
+
+                {/* L-bend: top-to-middle vertical + short horizontal arm */}
+                <span
+                  className={cn(
+                    "absolute left-1.25 top-0 h-1/2 w-3 border-l border-b rounded-bl-sm transition-colors",
+                    isActive ? "border-black/50" : "border-black/10"
+                  )}
+                />
+
+                <a
+                  href={`#${heading.id}`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.getElementById(heading.id)?.scrollIntoView({
+                      behavior: "smooth",
+                    })
+                    setActiveId(heading.id)
+                  }}
+                  className={cn(
+                    "relative pl-5 py-0.5 transition-colors leading-snug",
+                    heading.level === 3 && "pl-7 text-[12px]",
+                    isActive
+                      ? "text-black font-medium"
+                      : "text-black/40 hover:text-black/70"
+                  )}
+                >
+                  {heading.text}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </nav>
     </aside>

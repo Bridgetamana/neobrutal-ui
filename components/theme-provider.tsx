@@ -46,11 +46,6 @@ function applyTheme(theme: ColorTheme) {
 
 function ThemeProvider({ children }: ThemeProviderProps) {
     const [currentTheme, setCurrentTheme] = React.useState<ColorTheme>(colorThemes[0])
-    const [mounted, setMounted] = React.useState(false)
-
-    React.useEffect(() => {
-        setMounted(true)
-    }, [])
 
     function setTheme(theme: ColorTheme) {
         setCurrentTheme(theme)
@@ -58,10 +53,8 @@ function ThemeProvider({ children }: ThemeProviderProps) {
     }
 
     React.useEffect(() => {
-        if (mounted) {
-            applyTheme(currentTheme)
-        }
-    }, [currentTheme, mounted])
+        applyTheme(currentTheme)
+    }, [currentTheme])
 
     return (
         <ThemeContext.Provider value={{ currentTheme, setTheme, themes: colorThemes }}>

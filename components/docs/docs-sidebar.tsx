@@ -3,10 +3,15 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import { ListIcon, XIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/logo"
-import { CommandSearch } from "@/components/command-search"
+
+const CommandSearch = dynamic(
+    () => import("@/components/command-search").then((m) => m.CommandSearch),
+    { ssr: false }
+)
 
 const sidebarItems = [
     {

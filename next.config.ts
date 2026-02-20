@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    optimizePackageImports: ["@phosphor-icons/react"],
-  },
   outputFileTracingIncludes: {
     "/docs/changelog": ["./CHANGELOG.md"],
   },
