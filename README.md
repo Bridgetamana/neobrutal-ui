@@ -8,6 +8,8 @@
 
 A collection of neobrutalism-styled components built with Base UI and Tailwind CSS.
 
+[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+
 ## Documentation
 
 [neobrutalui](https://www.neobrutalui.live) for comprehensive documentation, examples, and guides.
