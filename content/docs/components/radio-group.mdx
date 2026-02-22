@@ -1,0 +1,88 @@
+---
+title: Radio Group
+description: A set of checkable buttons where only one can be selected at a time.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="radio-group" />
+
+## Installation
+
+```bash
+npx neobrutal add radio-group
+```
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<RadioGroup defaultValue="comfortable">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="default" id="r1" />
+    <Label htmlFor="r1">Default</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="comfortable" id="r2" />
+    <Label htmlFor="r2">Comfortable</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="compact" id="r3" />
+    <Label htmlFor="r3">Compact</Label>
+  </div>
+</RadioGroup>
+```
+
+## Examples
+
+### Disabled
+
+<Preview path="radio-group-disabled" />
+
+## Props
+
+### RadioGroup
+
+<TypeTable
+  type={{
+    defaultValue: {
+      type: "string",
+      description: "The value of the radio item that should be checked by default.",
+    },
+    value: {
+      type: "string",
+      description: "The controlled value of the radio item to check.",
+    },
+    onValueChange: {
+      type: "(value: string) => void",
+      description: "Event handler called when the value changes.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the radio group.",
+    },
+  }}
+/>
+
+### RadioGroupItem
+
+<TypeTable
+  type={{
+    value: {
+      type: "string",
+      description: "The value given as data for the radio item when submitted in a form.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the radio item.",
+    },
+    required: {
+      type: "boolean",
+      description: "When true, indicates that the user must check the radio item before the owning form can be submitted.",
+    },
+  }}
+/>

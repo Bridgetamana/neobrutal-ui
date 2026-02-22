@@ -1,0 +1,55 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="slider" />
+
+## Installation
+
+```bash
+npx neobrutal add slider
+```
+
+## Usage
+
+```tsx
+import { Slider } from "@/components/ui/slider"
+```
+
+```tsx
+<Slider defaultValue={[50]} max={100} step={1} />
+```
+
+## Props
+
+<TypeTable
+  type={{
+    defaultValue: {
+      type: "number[]",
+      description: "The default value of the slider when uncontrolled.",
+    },
+    value: {
+      type: "number[]",
+      description: "The controlled value of the slider.",
+    },
+    onValueChange: {
+      type: "(value: number[]) => void",
+      description: "Event handler called when the value changes.",
+    },
+    min: {
+      type: "number",
+      description: "The minimum value of the slider.",
+    },
+    max: {
+      type: "number",
+      description: "The maximum value of the slider.",
+    },
+    step: {
+      type: "number",
+      description: "The step value of the slider.",
+    },
+  }}
+/>

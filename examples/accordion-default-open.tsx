@@ -1,0 +1,12 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+export default function AccordionDefaultOpenDemo() {
+  return (
+    <Accordion defaultValue={["item-1"]} className="w-full max-w-md">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Open by default</AccordionTrigger>
+        <AccordionContent>This section starts open.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}

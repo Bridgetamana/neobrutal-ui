@@ -1,0 +1,49 @@
+---
+title: Checkbox
+description: A customizable checkbox input with bold styling and accessible controls.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="checkbox" />
+
+## Installation
+
+```bash
+npx neobrutal add checkbox
+```
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<div className="flex items-center gap-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>
+```
+
+## Examples
+
+### States
+
+<Preview path="checkbox-states" />
+
+## Props
+
+<TypeTable
+  type={{
+    defaultChecked: {
+      type: "boolean",
+      description: "The default checked state when uncontrolled.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the checkbox.",
+    },
+  }}
+/>

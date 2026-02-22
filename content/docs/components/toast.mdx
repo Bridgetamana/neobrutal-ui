@@ -1,0 +1,147 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily. Supports multiple types, action buttons, promise-based flows, and configurable positioning.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="toast" />
+
+## Installation
+
+```bash
+npx neobrutal add toast
+```
+
+## Usage
+
+```tsx
+import { toast } from "@/components/ui/toast"
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button
+  variant="neutral"
+  onClick={() =>
+    toast.info("Event has been created", {
+      title: "Success",
+    })
+  }
+>
+  Basic toast
+</Button>
+```
+
+## Examples
+
+### Types
+
+Four built-in types, each with its own color.
+
+<Preview path="toast-types" />
+
+### Action Button
+
+Pass `actionProps` to render a neobrutalist action button inside the toast.
+
+<Preview path="toast-action" />
+
+### Promise
+
+Show a loading state that automatically transitions to success or error when the promise settles.
+
+<Preview path="toast-promise" />
+
+### Position
+
+Set the toast position by passing a `position` prop to the Toaster component in your root layout.
+
+```tsx
+import { Toaster } from "@/components/ui/toast"
+
+// In your root layout
+<Toaster position="top-right" />
+```
+
+## API Reference
+
+### Toaster
+
+<TypeTable
+  type={{
+    position: {
+      type: '"top-left" | "top-right" | "top-center" | "bottom-left" | "bottom-right" | "bottom-center"',
+      default: '"bottom-right"',
+      description: "Screen position for the toast stack.",
+    },
+  }}
+/>
+
+### Toast Methods
+
+<TypeTable
+  type={{
+    "toast.success": {
+      type: "(message: string, options?: ToastOptions) => string",
+      description: "Show a success toast. Returns the toast id.",
+    },
+    "toast.error": {
+      type: "(message: string, options?: ToastOptions) => string",
+      description: "Show an error toast. Returns the toast id.",
+    },
+    "toast.info": {
+      type: "(message: string, options?: ToastOptions) => string",
+      description: "Show an info toast. Returns the toast id.",
+    },
+    "toast.warning": {
+      type: "(message: string, options?: ToastOptions) => string",
+      description: "Show a warning toast. Returns the toast id.",
+    },
+    "toast.promise": {
+      type: "(promise, options) => Promise<Value>",
+      description: "Show a loading toast that transitions to success/error based on promise resolution.",
+    },
+    "toast.dismiss": {
+      type: "(toastId: string) => void",
+      description: "Dismiss a specific toast by id.",
+    },
+  }}
+/>
+
+### ToastOptions
+
+<TypeTable
+  type={{
+    title: {
+      type: "ReactNode",
+      description: "Bold heading displayed at the top of the toast.",
+    },
+    description: {
+      type: "ReactNode",
+      description: "Secondary text below the title (auto-set by the first argument of toast methods).",
+    },
+    timeout: {
+      type: "number",
+      default: "5000",
+      description: "Auto-dismiss delay in ms. Use 0 to disable.",
+    },
+    priority: {
+      type: '"low" | "high"',
+      default: '"low"',
+      description: "Aria announcement urgency (polite vs assertive).",
+    },
+    actionProps: {
+      type: "React.ComponentPropsWithoutRef<'button'>",
+      description: "Props spread onto the action button (children, onClick, etc.).",
+    },
+    onClose: {
+      type: "() => void",
+      description: "Callback fired when the toast begins closing.",
+    },
+    onRemove: {
+      type: "() => void",
+      description: "Callback fired after the toast finishes its exit animation.",
+    },
+  }}
+/>

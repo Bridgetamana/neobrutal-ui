@@ -1,0 +1,53 @@
+---
+title: Textarea
+description: A multi-line text input field for longer form content.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="textarea" />
+
+## Installation
+
+```bash
+npx neobrutal add textarea
+```
+
+## Usage
+
+```tsx
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<div className="grid w-full gap-1.5">
+  <Label htmlFor="message">Your message</Label>
+  <Textarea placeholder="Type your message here." id="message" />
+</div>
+```
+
+## Examples
+
+### Disabled
+
+<Preview path="textarea-disabled" />
+
+## Props
+
+<TypeTable
+  type={{
+    placeholder: {
+      type: "string",
+      description: "Placeholder text displayed when the textarea is empty.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the textarea.",
+    },
+    rows: {
+      type: "number",
+      description: "The number of visible text lines.",
+    },
+  }}
+/>

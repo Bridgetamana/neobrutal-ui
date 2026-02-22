@@ -1,0 +1,84 @@
+---
+title: Dialog
+description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="dialog" />
+
+## Installation
+
+```bash
+npx neobrutal add dialog
+```
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+```
+
+```tsx
+<Dialog>
+  <DialogTrigger render={<Button variant="neutral" />}>
+    Open Dialog
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+## Props
+
+### Dialog
+
+<TypeTable
+  type={{
+    open: {
+      type: "boolean",
+      description: "The controlled open state of the dialog.",
+    },
+    defaultOpen: {
+      type: "boolean",
+      description: "The default open state when uncontrolled.",
+    },
+    onOpenChange: {
+      type: "(open: boolean) => void",
+      description: "Event handler called when the open state changes.",
+    },
+    modal: {
+      type: "boolean",
+      description: "The modality of the dialog. When set to true, interaction with outside elements will be disabled.",
+    },
+  }}
+/>
+
+### DialogTrigger
+
+<TypeTable
+  type={{
+    id: {
+      type: "string",
+      description: "Unique identifier for the trigger when using multiple triggers.",
+    },
+    render: {
+      type: "ReactElement | function",
+      description: "Custom element to render as the trigger.",
+    },
+  }}
+/>

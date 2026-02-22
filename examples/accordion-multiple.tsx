@@ -1,0 +1,16 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+export default function AccordionMultipleDemo() {
+  return (
+    <Accordion multiple className="w-full max-w-md">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>First Section</AccordionTrigger>
+        <AccordionContent>First content</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Second Section</AccordionTrigger>
+        <AccordionContent>Second content</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}

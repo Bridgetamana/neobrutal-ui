@@ -1,0 +1,23 @@
+"use client"
+
+import { toast } from "@/components/ui/toast"
+import { Button } from "@/components/ui/button"
+
+export default function ToastTypesDemo() {
+  return (
+    <div className="flex flex-wrap gap-3">
+      <Button variant="neutral" onClick={() => toast.success("Operation completed")}>
+        Success
+      </Button>
+      <Button variant="neutral" onClick={() => toast.error("Something went wrong")}>
+        Error
+      </Button>
+      <Button variant="neutral" onClick={() => toast.warning("Disk space is running low")}>
+        Warning
+      </Button>
+      <Button variant="neutral" onClick={() => toast.info("A new version is available")}>
+        Info
+      </Button>
+    </div>
+  )
+}

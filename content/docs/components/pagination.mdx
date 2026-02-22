@@ -1,0 +1,43 @@
+---
+title: Pagination
+description: Pagination with bold borders and clear active states.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="pagination" />
+
+## Installation
+
+```bash
+npx neobrutal add pagination
+```
+
+## Usage
+
+```tsx
+import { Pagination, PaginationItem } from "@/components/ui/pagination"
+```
+
+```tsx
+<Pagination>
+  <PaginationItem>Prev</PaginationItem>
+  <PaginationItem>1</PaginationItem>
+  <PaginationItem isActive>2</PaginationItem>
+  <PaginationItem>3</PaginationItem>
+  <PaginationItem>Next</PaginationItem>
+</Pagination>
+```
+
+## Props
+
+### PaginationItem
+
+<TypeTable
+  type={{
+    isActive: {
+      type: "boolean",
+      description: "Whether the pagination item is the current page.",
+    },
+  }}
+/>

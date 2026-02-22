@@ -1,0 +1,59 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="popover" />
+
+## Installation
+
+```bash
+npx neobrutal add popover
+```
+
+## Usage
+
+```tsx
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+```
+
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="noShadow" />}>
+    Open Popover
+  </PopoverTrigger>
+  <PopoverContent>
+    <div className="grid gap-4">
+      <div className="space-y-2">
+        <h4 className="font-bold leading-none">Dimensions</h4>
+        <p className="text-sm text-black">
+          Set the dimensions for the layer.
+        </p>
+      </div>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+## Props
+
+### Popover
+
+<TypeTable
+  type={{
+    open: {
+      type: "boolean",
+      description: "The controlled open state of the popover.",
+    },
+    defaultOpen: {
+      type: "boolean",
+      description: "The default open state when uncontrolled.",
+    },
+    onOpenChange: {
+      type: "(open: boolean) => void",
+      description: "Event handler called when the open state changes.",
+    },
+  }}
+/>

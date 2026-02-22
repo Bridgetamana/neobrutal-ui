@@ -1,0 +1,17 @@
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Label } from "@/components/ui/label"
+
+export default function RadioGroupDisabledDemo() {
+  return (
+    <RadioGroup defaultValue="option-1" disabled>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-1" id="d1" />
+        <Label htmlFor="d1">Option 1</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="option-2" id="d2" />
+        <Label htmlFor="d2">Option 2</Label>
+      </div>
+    </RadioGroup>
+  )
+}

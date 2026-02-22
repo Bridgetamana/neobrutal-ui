@@ -1,0 +1,20 @@
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+export default function AccordionDemo() {
+  return (
+    <Accordion className="w-full max-w-md">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with Neobrutalist styling out of the box.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. Animations are enabled by default.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}

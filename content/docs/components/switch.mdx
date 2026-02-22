@@ -1,0 +1,57 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="switch" />
+
+## Installation
+
+```bash
+npx neobrutal add switch
+```
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+```
+
+```tsx
+<div className="flex items-center gap-2">
+  <Switch id="airplane-mode" />
+  <Label htmlFor="airplane-mode">Airplane Mode</Label>
+</div>
+```
+
+## Examples
+
+### Disabled
+
+<Preview path="switch-disabled" />
+
+## Props
+
+<TypeTable
+  type={{
+    checked: {
+      type: "boolean",
+      description: "The controlled checked state of the switch.",
+    },
+    defaultChecked: {
+      type: "boolean",
+      description: "The default checked state when uncontrolled.",
+    },
+    onCheckedChange: {
+      type: "(checked: boolean) => void",
+      description: "Event handler called when the checked state changes.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the switch.",
+    },
+  }}
+/>

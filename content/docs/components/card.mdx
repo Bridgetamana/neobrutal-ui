@@ -1,0 +1,62 @@
+---
+title: Card
+description: A flexible container component with bold borders and shadows.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="card" />
+
+## Installation
+
+```bash
+npx neobrutal add card
+```
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+```
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+  </CardHeader>
+  <CardContent>
+    Card content
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+```
+
+## Examples
+
+### With Actions
+
+<Preview path="card-with-actions" />
+
+### Simple Content Only
+
+<Preview path="card-simple" />
+
+## Props
+
+<TypeTable
+  type={{
+    variant: {
+      type: '"default"',
+      default: '"default"',
+      description: "The visual style of the card.",
+    },
+  }}
+/>

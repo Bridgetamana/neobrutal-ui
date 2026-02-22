@@ -1,0 +1,21 @@
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+
+export default function CheckboxStatesDemo() {
+  return (
+    <div className="grid gap-4">
+      <div className="flex items-center gap-2">
+        <Checkbox id="unchecked-state" />
+        <Label htmlFor="unchecked-state">Unchecked State</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="checked-state" defaultChecked />
+        <Label htmlFor="checked-state">Checked State</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="disabled-state" disabled />
+        <Label htmlFor="disabled-state">Disabled State</Label>
+      </div>
+    </div>
+  )
+}

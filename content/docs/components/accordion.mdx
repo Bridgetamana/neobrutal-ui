@@ -1,0 +1,151 @@
+---
+title: Accordion
+description: A vertically stacked set of collapsible sections.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="accordion" />
+
+## Installation
+
+```bash
+npx neobrutal add accordion
+```
+
+Or install the dependency and copy the code:
+
+```bash
+npm install @base-ui/react
+```
+
+## Usage
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx
+<Accordion>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Section Title</AccordionTrigger>
+    <AccordionContent>
+      Section content goes here.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Multiple
+
+Allow multiple sections to be open at once.
+
+<Preview path="accordion-multiple" />
+
+### Default Open
+
+Set a section to be open by default.
+
+<Preview path="accordion-default-open" />
+
+## Props
+
+### Accordion
+
+<TypeTable
+  type={{
+    defaultValue: {
+      type: "any[]",
+      description: "The uncontrolled value of the item(s) that should be initially expanded.",
+    },
+    value: {
+      type: "any[]",
+      description: "The controlled value of the item(s) that should be expanded.",
+    },
+    onValueChange: {
+      type: "(value: any[], eventDetails) => void",
+      description: "Event handler called when an accordion item is expanded or collapsed.",
+    },
+    hiddenUntilFound: {
+      type: "boolean",
+      default: "false",
+      description: "Allows the browser's built-in page search to find and expand the panel contents.",
+    },
+    loopFocus: {
+      type: "boolean",
+      default: "true",
+      description: "Whether to loop keyboard focus back to the first item when the end is reached.",
+    },
+    multiple: {
+      type: "boolean",
+      default: "false",
+      description: "Whether multiple items can be open at the same time.",
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+      description: "Whether the component should ignore user interaction.",
+    },
+    orientation: {
+      type: '"vertical" | "horizontal"',
+      default: '"vertical"',
+      description: "The visual orientation of the accordion.",
+    },
+  }}
+/>
+
+### AccordionItem
+
+<TypeTable
+  type={{
+    value: {
+      type: "any",
+      description: "A unique value that identifies this accordion item.",
+    },
+    onOpenChange: {
+      type: "(open: boolean, eventDetails) => void",
+      description: "Event handler called when the panel is opened or closed.",
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+      description: "Whether the component should ignore user interaction.",
+    },
+  }}
+/>
+
+### AccordionTrigger
+
+<TypeTable
+  type={{
+    nativeButton: {
+      type: "boolean",
+      default: "true",
+      description: "Whether the component renders a native button element.",
+    },
+  }}
+/>
+
+### AccordionContent
+
+<TypeTable
+  type={{
+    hiddenUntilFound: {
+      type: "boolean",
+      default: "false",
+      description: "Allows the browser's built-in page search to find and expand the panel contents.",
+    },
+    keepMounted: {
+      type: "boolean",
+      default: "false",
+      description: "Whether to keep the element in the DOM while the panel is closed.",
+    },
+  }}
+/>

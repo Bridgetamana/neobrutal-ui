@@ -1,0 +1,65 @@
+---
+title: Alert
+description: Displays a message to attract user attention.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="alert" />
+
+## Installation
+
+```bash
+npx neobrutal add alert
+```
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+```
+
+```tsx
+<Alert>
+  <AlertTitle>Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+## Examples
+
+### Default
+
+<Preview path="alert" />
+
+### Destructive
+
+<Preview path="alert-destructive" />
+
+### Success
+
+<Preview path="alert-success" />
+
+### Warning
+
+<Preview path="alert-warning" />
+
+### Custom Icon
+
+<Preview path="alert-custom-icon" />
+
+### Without Icon
+
+<Preview path="alert-no-icon" />
+
+## Props
+
+<TypeTable
+  type={{
+    variant: {
+      type: '"default" | "neutral" | "destructive" | "success" | "warning"',
+      default: '"default"',
+      description: "The visual style of the alert.",
+    },
+  }}
+/>

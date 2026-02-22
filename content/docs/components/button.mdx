@@ -1,0 +1,80 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="button" />
+
+## Installation
+
+```bash
+npx neobrutal add button
+```
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="neutral">Button</Button>
+```
+
+## Examples
+
+### Default
+
+<Preview path="button" />
+
+### Neutral
+
+<Preview path="button-neutral" />
+
+### No Shadow
+
+<Preview path="button-no-shadow" />
+
+### Sizes
+
+<Preview path="button-sizes" />
+
+### Icon
+
+<Preview path="button-icon" />
+
+### Link
+
+Use the `asChild` prop to render as a link.
+
+```tsx
+import Link from "next/link"
+
+<Button asChild>
+  <Link href="/login">Login</Link>
+</Button>
+```
+
+## Props
+
+<TypeTable
+  type={{
+    variant: {
+      type: '"default" | "noShadow" | "neutral"',
+      default: '"default"',
+      description: "The visual style of the button.",
+    },
+    size: {
+      type: '"default" | "sm" | "lg" | "icon"',
+      default: '"default"',
+      description: "The size of the button.",
+    },
+    asChild: {
+      type: "boolean",
+      default: "false",
+      description: "Whether to render the button as a child component using Slot.",
+    },
+  }}
+/>

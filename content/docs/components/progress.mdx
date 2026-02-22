@@ -1,0 +1,50 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, with a floating badge that shows the current percentage.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="progress" />
+
+## Installation
+
+```bash
+npx neobrutal add progress
+```
+
+## Usage
+
+```tsx
+import { Progress } from "@/components/ui/progress"
+```
+
+```tsx
+<Progress value={33} />
+```
+
+## Examples
+
+### Without Value Badge
+
+<Preview path="progress-no-value" />
+
+## Props
+
+<TypeTable
+  type={{
+    value: {
+      type: "number | null",
+      description: "The progress value from 0 to 100.",
+    },
+    max: {
+      type: "number",
+      description: "The maximum progress value. Defaults to 100.",
+    },
+    showValue: {
+      type: "boolean",
+      default: "true",
+      description: "Whether to show the floating percentage badge.",
+    },
+  }}
+/>

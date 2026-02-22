@@ -1,0 +1,72 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="select" />
+
+## Installation
+
+```bash
+npx neobrutal add select
+```
+
+## Usage
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx
+<Select>
+  <SelectTrigger className="w-45">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Props
+
+### Select
+
+<TypeTable
+  type={{
+    value: {
+      type: "string",
+      description: "The controlled value of the select.",
+    },
+    defaultValue: {
+      type: "string",
+      description: "The default value of the select when uncontrolled.",
+    },
+    onValueChange: {
+      type: "(value: string) => void",
+      description: "Event handler called when the value changes.",
+    },
+    open: {
+      type: "boolean",
+      description: "The controlled open state of the select.",
+    },
+    defaultOpen: {
+      type: "boolean",
+      description: "The default open state when uncontrolled.",
+    },
+    onOpenChange: {
+      type: "(open: boolean) => void",
+      description: "Event handler called when the open state changes.",
+    },
+  }}
+/>

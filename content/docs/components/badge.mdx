@@ -1,0 +1,62 @@
+---
+title: Badge
+description: Displays a small label for status or categorization.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="badge" />
+
+## Installation
+
+```bash
+npx neobrutal add badge
+```
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+```
+
+```tsx
+<Badge variant="neutral">Badge</Badge>
+```
+
+## Examples
+
+### Default
+
+<Preview path="badge" />
+
+### Neutral
+
+<Preview path="badge-neutral" />
+
+### Destructive
+
+<Preview path="badge-destructive" />
+
+### Success
+
+<Preview path="badge-success" />
+
+### Warning
+
+<Preview path="badge-warning" />
+
+### Multiple Badges
+
+<Preview path="badge-all" />
+
+## Props
+
+<TypeTable
+  type={{
+    variant: {
+      type: '"default" | "neutral" | "destructive" | "success" | "warning"',
+      default: '"default"',
+      description: "The visual style of the badge.",
+    },
+  }}
+/>

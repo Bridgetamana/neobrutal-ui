@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "index",
+    "installation",
+    "cli",
+    "theming",
+    "accessibility",
+    "changelog",
+    "---Components---",
+    "components"
+  ]
+}

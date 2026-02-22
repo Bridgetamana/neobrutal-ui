@@ -1,0 +1,86 @@
+---
+title: Tabs
+description: Organizes content into multiple sections with tabbed navigation.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="tabs" />
+
+## Installation
+
+```bash
+npx neobrutal add tabs
+```
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+```
+
+```tsx
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">
+    Make changes to your account here.
+  </TabsContent>
+  <TabsContent value="password">
+    Change your password here.
+  </TabsContent>
+</Tabs>
+```
+
+## Props
+
+### Tabs
+
+<TypeTable
+  type={{
+    defaultValue: {
+      type: "string | number",
+      description: "The default active tab value when uncontrolled.",
+    },
+    value: {
+      type: "string | number",
+      description: "The controlled active tab value.",
+    },
+    onValueChange: {
+      type: "(value: string | number) => void",
+      description: "Event handler called when the active tab changes.",
+    },
+  }}
+/>
+
+### TabsTrigger
+
+<TypeTable
+  type={{
+    value: {
+      type: "string | number",
+      description: "The unique value that associates the trigger with a panel.",
+    },
+    disabled: {
+      type: "boolean",
+      description: "When true, prevents the user from interacting with the tab.",
+    },
+  }}
+/>
+
+### TabsContent
+
+<TypeTable
+  type={{
+    value: {
+      type: "string | number",
+      description: "The unique value that associates the panel with a trigger.",
+    },
+    keepMounted: {
+      type: "boolean",
+      description: "When true, keeps the panel mounted in the DOM when inactive.",
+    },
+  }}
+/>

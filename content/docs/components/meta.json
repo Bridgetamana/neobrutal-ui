@@ -1,0 +1,27 @@
+{
+  "title": "Components",
+  "defaultOpen": true,
+  "pages": [
+    "accordion",
+    "alert",
+    "avatar",
+    "badge",
+    "button",
+    "card",
+    "checkbox",
+    "dialog",
+    "input",
+    "label",
+    "pagination",
+    "popover",
+    "progress",
+    "radio-group",
+    "select",
+    "slider",
+    "switch",
+    "tabs",
+    "textarea",
+    "toast",
+    "tooltip"
+  ]
+}

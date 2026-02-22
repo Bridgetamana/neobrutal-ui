@@ -1,0 +1,59 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+---
+
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
+<Preview path="avatar" />
+
+## Installation
+
+```bash
+npx neobrutal add avatar
+```
+
+## Usage
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+```
+
+```tsx
+<Avatar>
+  <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+## Examples
+
+### With Image
+
+<Preview path="avatar" />
+
+### Fallback
+
+Displays initials when no image is available.
+
+<Preview path="avatar-fallback" />
+
+### Group
+
+Display multiple avatars with an overflow indicator.
+
+<Preview path="avatar-group" />
+
+## Props
+
+### AvatarGroup
+
+<TypeTable
+  type={{
+    max: {
+      type: "number",
+      default: "3",
+      description: "The maximum number of avatars to display before showing an overflow indicator.",
+    },
+  }}
+/>
