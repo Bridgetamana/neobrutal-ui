@@ -1,0 +1,52 @@
+---
+title: CLI
+description: Learn how to use the Neobrutal UI CLI to generate components and manage your project.
+---
+
+## init
+
+Set up your project for neobrutal ui. Creates components.json, installs dependencies, and adds utilities.
+
+```npm
+npx neobrutal init
+```
+
+Use **-y** to skip prompts.
+
+## add
+
+Add components to your project. Resolves dependencies automatically.
+
+```npm
+npx neobrutal add Button
+```
+
+Use **-a** for all components, **-o** to overwrite existing files.
+
+## list
+
+List available components and their dependencies.
+
+```npm
+npx neobrutal list
+```
+
+## diff
+
+Compare local components with the registry to check for updates.
+```npm
+npx neobrutal diff
+```
+
+## configuration
+The **components.json** file configures component paths and import aliases.
+
+```css
+"tailwind": {
+    "css": "app/globals.css"
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+```

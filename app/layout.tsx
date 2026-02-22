@@ -80,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${publicSans.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <RootProvider>
           <ThemeProvider>
