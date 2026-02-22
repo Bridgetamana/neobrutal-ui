@@ -1,5 +1,18 @@
 {
     "editor.wordWrap": "on",
-    "editor.aiStats.enabled": false,
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": false
+    "search.exclude": {
+        "**/.next": true,
+        "**/node_modules": true,
+        "**/public/r": true,
+        "**/dist": true
+    },
+    "files.exclude": {
+        "**/.next": true,
+        "**/dist": true
+    },
+    "files.watcherExclude": {
+        "**/.next/**": true,
+        "**/node_modules/**": true,
+        "**/dist/**": true
+    }
 }
