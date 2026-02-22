@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toast";
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider";
+import {RootProvider} from "fumadocs-ui/provider/next";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -79,12 +80,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${publicSans.variable} font-sans antialiased`}>
-        <ThemeProvider>
-          {children}
-          <Toaster />
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${publicSans.variable} font-sans antialiased flex flex-col min-h-screen`}>
+        <RootProvider>
+          <ThemeProvider>
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </RootProvider>
         <Analytics />
       </body>
     </html>
