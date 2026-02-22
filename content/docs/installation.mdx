@@ -1,0 +1,80 @@
+---
+title: Quick Start
+description: Get started with Neobrutal UI
+---
+
+## Using the CLI
+
+This guide will walk you through the installation steps for using Neobrutal UI via the CLI.
+
+### Step 1: Install the CLI
+
+To install the Neobrutal UI CLI, run the following command:
+
+```bash
+npx neobrutal init
+```
+
+### Step 2: Add a Component
+To add a component to your project, use the following command:
+
+```bash
+npx neobrutal add button
+```
+
+### Step 3: Import the Component
+
+After adding the component, you can import it into your project like this:
+
+```jsx
+import { Button } from "@/components/ui/button"
+
+export default function Page() {
+  return <Button>Click me</Button>
+}`
+```
+
+### Step 4: Customize the Component
+
+Since you own the code, you can customize the component freely. Simply navigate to the component's file and make your desired changes.
+
+## Manual Installation
+
+Follow these steps to add components to your project without the CLI
+
+### Step 1: Install Dependencies
+
+Make sure you have the necessary dependencies installed. You can use npm or yarn to install them:
+
+```bash
+npm install class-variance-authority clsx tailwind-merge
+```
+
+### Step 2: Create the utility function
+Create a utility function to handle class names. You can create a file named `lib/utils.ts` in your project:
+
+```ts
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+### Step 3: Copy the Component Code
+Copy the component code from the Neobrutal UI repository and paste it into your project. Install Base UI if required.
+
+### Step 4: Import the Component
+Import the component into your project like this:
+
+```jsx
+import { Button } from "@/components/ui/button"
+export default function Page() {
+  return <Button>Click me</Button>
+}`
+```
+
+## HTML/Tailwind CSS Only
+
+If you prefer to use only HTML and Tailwind CSS, you can copy the relevant HTML and Tailwind classes from the Neobrutal UI docs and use them directly in your project. This way, you can still achieve the neobrutalism style without needing to use React or Base UI.
