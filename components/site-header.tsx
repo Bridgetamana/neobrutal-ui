@@ -2,18 +2,15 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
-import { ListIcon, XIcon } from "@phosphor-icons/react"
-
-const CommandSearch = dynamic(
-    () => import("@/components/command-search").then((mod) => mod.CommandSearch),
-    { ssr: false }
-)
+import { ListIcon, XIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
+import { Input } from "@/components/ui/input"
+import { useSearchContext } from "fumadocs-ui/contexts/search"
 
 export function SiteHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { setOpenSearch } = useSearchContext()
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 border-b-2 bg-white">
@@ -26,7 +23,22 @@ export function SiteHeader() {
                     <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80  focus-brutal">Github</Link>
                 </nav>
                 <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
-                    <CommandSearch />
+                    <button onClick={() => setOpenSearch(true)} className="relative block cursor-default" aria-label="Search documentation">
+                        <MagnifyingGlassIcon
+                            size={20}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
+                        />
+                        <MagnifyingGlassIcon
+                            size={14}
+                            className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
+                        />
+                        <Input
+                            readOnly
+                            placeholder="Search..."
+                            className="w-44 h-9 pl-8 hidden md:block cursor-default pointer-events-none"
+                            tabIndex={-1}
+                        />
+                    </button>
                     <Link href="/docs/components/accordion" aria-label="Explore Components" className="hidden lg:flex ">
                         <Button className="font-bold shadow-brutal hover:bg-main">
                             Explore Components
