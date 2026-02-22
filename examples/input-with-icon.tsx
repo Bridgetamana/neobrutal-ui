@@ -1,3 +1,5 @@
+"use client"
+
 import { Input } from "@/components/ui/input"
 import { MagnifyingGlass } from "@phosphor-icons/react"
 
