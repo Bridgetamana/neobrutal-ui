@@ -11,6 +11,9 @@ export function Providers({ children }: { children: ReactNode }) {
             search={{
                 SearchDialog: CommandSearch,
             }}
+            theme={{
+                enabled: false,
+            }}
         >
             <ThemeProvider>
                 {children}
