@@ -1,6 +1,7 @@
 import { logo } from "@/components/logo";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { GitHubButton } from "@/components/github-button"
+// import { GitHubButton } from "@/components/github-button"
+import { GithubInfo } from 'fumadocs-ui/components/github-info';
 
 export function baseOptions(): BaseLayoutProps {
   return {
@@ -14,11 +15,8 @@ export function baseOptions(): BaseLayoutProps {
     },
     links: [
       {
-        type: "custom",
-        children: 
-          <GitHubButton />
-        ,
-        secondary: true,
+        type: 'custom',
+        children: <GithubInfo owner="Bridgetamana" repo="neobrutal-ui" className="lg:-mx-2" />,
       },
     ],
   };
