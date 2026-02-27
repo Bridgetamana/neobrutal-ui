@@ -74,6 +74,54 @@ h2 {
   z-index: 60 !important;
 }
 
+/* ── Neobrutal Docs Sidebar Overrides ── */
+#nd-sidebar {
+  background-color: var(--bg) !important;
+  border-right: 2px solid var(--black);
+}
+
+/* Sidebar link items */
+#nd-sidebar a[data-active] {
+  border-radius: var(--radius) !important;
+  font-weight: 600;
+  transition: all 0.1s ease;
+}
+
+/* Active sidebar item */
+#nd-sidebar a[data-active="true"] {
+  background-color: var(--main) !important;
+  color: var(--black) !important;
+  font-weight: 700;
+  box-shadow: 2px 2px 0px 0px var(--black);
+  border: 1px solid var(--black);
+}
+
+/* Hover state for inactive items */
+#nd-sidebar a[data-active="false"]:hover {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+}
+
+/* Category / section headers */
+#nd-sidebar [class*="text-fd-muted-foreground"] {
+  color: var(--black) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Sidebar separator / folder items */
+#nd-sidebar button[data-active] {
+  border-radius: var(--radius) !important;
+  font-weight: 600;
+}
+
+#nd-sidebar button[data-active="true"] {
+  color: var(--black) !important;
+  font-weight: 700;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

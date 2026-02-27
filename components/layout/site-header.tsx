@@ -8,7 +8,11 @@ import { Menu, X, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { useSearchContext } from "fumadocs-ui/contexts/search"
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+    githubStars?: React.ReactNode
+}
+
+export function SiteHeader({ githubStars }: SiteHeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const { setOpenSearch } = useSearchContext()
 
@@ -18,11 +22,7 @@ export function SiteHeader() {
                 <Link href="/">
                     {logo}
                 </Link>
-                <nav className="hidden lg:flex items-center gap-6 font-medium">
-                    <Link href="/docs" className="hover:text-black/80  focus-brutal">Docs</Link>
-                    <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80  focus-brutal">Github</Link>
-                </nav>
-                <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
+                <div className="flex items-center gap-2 lg:gap-3">
                     <button onClick={() => setOpenSearch(true)} className="relative block cursor-default" aria-label="Search documentation">
                         <Search
                             strokeWidth={2.5}
@@ -35,7 +35,13 @@ export function SiteHeader() {
                             tabIndex={-1}
                         />
                     </button>
-                    <Link href="/docs/components/accordion" aria-label="Explore Components" className="hidden lg:flex ">
+                    <nav className="hidden lg:flex items-center gap-2">
+                        <Link href="/docs" className="rounded-base border-2 border-black px-3 py-1.5 text-sm font-bold hover:bg-bg transition-colors focus-brutal">
+                            Docs
+                        </Link>
+                        {githubStars}
+                    </nav>
+                    <Link href="/docs/components/accordion" aria-label="Explore Components" className="hidden lg:flex">
                         <Button className="font-bold shadow-brutal hover:bg-main">
                             Explore Components
                         </Button>
@@ -56,7 +62,11 @@ export function SiteHeader() {
                 <div className="overflow-hidden">
                     <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
                         <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
+                        {githubStars && (
+                            <div onClick={() => setIsMenuOpen(false)}>
+                                {githubStars}
+                            </div>
+                        )}
                         <Link href="/docs/components/accordion" onClick={() => setIsMenuOpen(false)}>
                             <Button className="font-bold shadow-brutal hover:bg-main">
                                 Explore Components
