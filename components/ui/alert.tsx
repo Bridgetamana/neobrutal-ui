@@ -89,52 +89,41 @@ const variantIcons = {
 }
 
 interface AlertProps
-    extends React.HTMLAttributes<HTMLDivElement>,
+    extends React.ComponentProps<"div">,
     VariantProps<typeof alertVariants> {
     icon?: React.ReactNode
 }
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-    ({ className, variant = "default", icon, children, ...props }, ref) => {
-        const IconComponent = variantIcons[variant ?? "default"]
+const Alert = ({ className, variant = "default", icon, children, ref, ...props }: AlertProps) => {
+    const IconComponent = variantIcons[variant ?? "default"]
 
-        return (
-            <div
-                ref={ref}
-                role="alert"
-                className={cn(alertVariants({ variant }), className)}
-                {...props}
-            >
-                {icon !== undefined ? icon : <IconComponent aria-hidden="true" />}
-                {children}
-            </div>
-        )
-    }
-)
-Alert.displayName = "Alert"
+    return (
+        <div
+            ref={ref}
+            role="alert"
+            className={cn(alertVariants({ variant }), className)}
+            {...props}
+        >
+            {icon !== undefined ? icon : <IconComponent aria-hidden="true" />}
+            {children}
+        </div>
+    )
+}
 
-const AlertTitle = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const AlertTitle = ({ className, ref, ...props }: React.ComponentProps<"div">) => (
     <div
         ref={ref}
         className={cn("mb-1 font-medium", className)}
         {...props}
     />
-))
-AlertTitle.displayName = "AlertTitle"
+)
 
-const AlertDescription = React.forwardRef<
-    HTMLParagraphElement,
-    React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+const AlertDescription = ({ className, ref, ...props }: React.ComponentProps<"div">) => (
     <div
         ref={ref}
         className={cn("text-sm", className)}
         {...props}
     />
-))
-AlertDescription.displayName = "AlertDescription"
+)
 
 export { Alert, AlertTitle, AlertDescription }

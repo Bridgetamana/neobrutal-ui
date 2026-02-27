@@ -4,26 +4,24 @@ import { cn } from "@/lib/utils"
 
 type SlotProps = React.HTMLAttributes<HTMLElement> & {
     children?: React.ReactNode
+    ref?: React.Ref<HTMLElement>
 }
 
-const Slot = React.forwardRef<HTMLElement, SlotProps>(
-    ({ children, ...props }, ref) => {
-        if (React.isValidElement<Record<string, unknown>>(children)) {
-            const childProps = children.props as Record<string, unknown>
-            return React.cloneElement(children, {
-                ...props,
-                ...childProps,
-                ref,
-                className: cn(props.className as string, childProps.className as string),
-            })
-        }
-        return null
+const Slot = ({ children, ref, ...props }: SlotProps) => {
+    if (React.isValidElement<Record<string, unknown>>(children)) {
+        const childProps = children.props as Record<string, unknown>
+        return React.cloneElement(children, {
+            ...props,
+            ...childProps,
+            ref,
+            className: cn(props.className as string, childProps.className as string),
+        })
     }
-)
-Slot.displayName = "Slot"
+    return null
+}
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-black cursor-pointer",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-transform focus-brutal disabled:pointer-events-none disabled:opacity-50 border-2 border-black cursor-pointer",
     {
         variants: {
             variant: {
@@ -45,23 +43,20 @@ const buttonVariants = cva(
     }
 )
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = React.ComponentProps<"button"> &
     VariantProps<typeof buttonVariants> & {
         asChild?: boolean
     }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
-        const Comp = asChild ? Slot : "button"
-        return (
-            <Comp
-                className={cn(buttonVariants({ variant, size, className }))}
-                ref={ref}
-                {...props}
-            />
-        )
-    }
-)
-Button.displayName = "Button"
+const Button = ({ className, variant, size, asChild = false, ref, ...props }: ButtonProps) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+        <Comp
+            className={cn(buttonVariants({ variant, size, className }))}
+            ref={ref}
+            {...props}
+        />
+    )
+}
 
 export { Button, buttonVariants }

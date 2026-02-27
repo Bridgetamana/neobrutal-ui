@@ -5,14 +5,11 @@ import { Progress as BaseProgress } from "@base-ui/react/progress"
 
 import { cn } from "@/lib/utils"
 
-type ProgressProps = React.ComponentPropsWithoutRef<typeof BaseProgress.Root> & {
+type ProgressProps = React.ComponentProps<typeof BaseProgress.Root> & {
     showValue?: boolean
 }
 
-const Progress = React.forwardRef<
-    React.ComponentRef<typeof BaseProgress.Root>,
-    ProgressProps
->(({ className, value, showValue = true, ...props }, ref) => {
+const Progress = ({ className, value, showValue = true, ref, ...props }: ProgressProps) => {
     const percentage = value ?? 0
 
     return (
@@ -53,19 +50,14 @@ const Progress = React.forwardRef<
             </BaseProgress.Track>
         </BaseProgress.Root>
     )
-})
-Progress.displayName = "Progress"
+}
 
-const ProgressLabel = React.forwardRef<
-    React.ComponentRef<typeof BaseProgress.Label>,
-    React.ComponentPropsWithoutRef<typeof BaseProgress.Label>
->(({ className, ...props }, ref) => (
+const ProgressLabel = ({ className, ref, ...props }: React.ComponentProps<typeof BaseProgress.Label>) => (
     <BaseProgress.Label
         ref={ref}
         className={cn("text-sm font-bold text-black", className)}
         {...props}
     />
-))
-ProgressLabel.displayName = "ProgressLabel"
+)
 
 export { Progress, ProgressLabel }

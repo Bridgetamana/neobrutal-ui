@@ -1,6 +1,5 @@
 import { logo } from "@/components/shared/logo";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-// import { GitHubButton } from "@/components/github-button"
 import { GithubInfo } from 'fumadocs-ui/components/github-info';
 
 export function baseOptions(): BaseLayoutProps {

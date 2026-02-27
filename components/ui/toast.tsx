@@ -119,10 +119,7 @@ function resolvePromisePhase(
     return { type: defaultType, ...option }
 }
 
-const Toast = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Root>,
-    ToastProps
->(({ className, ...props }, ref) => (
+const Toast = ({ className, ref, ...props }: ToastProps) => (
     <BaseToast.Root
         ref={ref}
         className={cn(
@@ -131,13 +128,9 @@ const Toast = React.forwardRef<
         )}
         {...props}
     />
-))
-Toast.displayName = "Toast"
+)
 
-const ToastViewport = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Viewport>,
-    React.ComponentPropsWithoutRef<typeof BaseToast.Viewport>
->(({ className, ...props }, ref) => (
+const ToastViewport = ({ className, ref, ...props }: React.ComponentProps<typeof BaseToast.Viewport>) => (
     <BaseToast.Viewport
         ref={ref}
         className={cn(
@@ -146,13 +139,9 @@ const ToastViewport = React.forwardRef<
         )}
         {...props}
     />
-))
-ToastViewport.displayName = "ToastViewport"
+)
 
-const ToastAction = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Action>,
-    React.ComponentPropsWithoutRef<typeof BaseToast.Action>
->(({ className, ...props }, ref) => (
+const ToastAction = ({ className, ref, ...props }: React.ComponentProps<typeof BaseToast.Action>) => (
     <BaseToast.Action
         ref={ref}
         className={cn(
@@ -161,13 +150,9 @@ const ToastAction = React.forwardRef<
         )}
         {...props}
     />
-))
-ToastAction.displayName = "ToastAction"
+)
 
-const ToastClose = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Close>,
-    React.ComponentPropsWithoutRef<typeof BaseToast.Close>
->(({ className, ...props }, ref) => (
+const ToastClose = ({ className, ref, ...props }: React.ComponentProps<typeof BaseToast.Close>) => (
     <BaseToast.Close
         ref={ref}
         className={cn(
@@ -179,32 +164,23 @@ const ToastClose = React.forwardRef<
     >
         ×
     </BaseToast.Close>
-))
-ToastClose.displayName = "ToastClose"
+)
 
-const ToastTitle = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Title>,
-    React.ComponentPropsWithoutRef<typeof BaseToast.Title>
->(({ className, ...props }, ref) => (
+const ToastTitle = ({ className, ref, ...props }: React.ComponentProps<typeof BaseToast.Title>) => (
     <BaseToast.Title
         ref={ref}
         className={cn("text-sm font-semibold", className)}
         {...props}
     />
-))
-ToastTitle.displayName = "ToastTitle"
+)
 
-const ToastDescription = React.forwardRef<
-    React.ComponentRef<typeof BaseToast.Description>,
-    React.ComponentPropsWithoutRef<typeof BaseToast.Description>
->(({ className, ...props }, ref) => (
+const ToastDescription = ({ className, ref, ...props }: React.ComponentProps<typeof BaseToast.Description>) => (
     <BaseToast.Description
         ref={ref}
         className={cn("text-sm opacity-90", className)}
         {...props}
     />
-))
-ToastDescription.displayName = "ToastDescription"
+)
 
 type ToastProviderProps = React.ComponentProps<typeof BaseToast.Provider>
 
@@ -281,12 +257,12 @@ export const toast = {
             success:
                 typeof success === "function"
                     ? (result: Value) =>
-                          resolvePromisePhase(success(result), "success")
+                        resolvePromisePhase(success(result), "success")
                     : resolvePromisePhase(success, "success"),
             error:
                 typeof error === "function"
                     ? (err: unknown) =>
-                          resolvePromisePhase(error(err), "error")
+                        resolvePromisePhase(error(err), "error")
                     : resolvePromisePhase(error, "error"),
         })
     },

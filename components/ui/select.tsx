@@ -2,59 +2,49 @@
 
 import * as React from "react"
 import { Select as BaseSelect } from "@base-ui/react/select"
-import { CheckIcon, CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react"
+import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const Select = BaseSelect.Root
 
 const SelectGroup = BaseSelect.Group
 
-type SelectValueProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Value> & {
+type SelectValueProps = React.ComponentProps<typeof BaseSelect.Value> & {
     placeholder?: string
 }
 
-const SelectValue = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Value>,
-    SelectValueProps
->(({ placeholder, ...props }, ref) => (
+const SelectValue = ({ placeholder, ref, ...props }: SelectValueProps) => (
     <BaseSelect.Value ref={ref} {...props}>
         {(value) => value ?? placeholder}
     </BaseSelect.Value>
-))
-SelectValue.displayName = "SelectValue"
+)
 
-type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Trigger>
+type SelectTriggerProps = React.ComponentProps<typeof BaseSelect.Trigger>
 
-const SelectTrigger = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Trigger>,
-    SelectTriggerProps
->(({ className, children, ...props }, ref) => (
+const SelectTrigger = ({ className, children, ref, ...props }: SelectTriggerProps) => (
     <BaseSelect.Trigger
         ref={ref}
         className={cn(
-            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-black focus-brutal disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
             className
         )}
         {...props}
     >
         {children}
         <BaseSelect.Icon>
-            <CaretDownIcon
+            <ChevronDown
                 aria-hidden="true"
+                strokeWidth={2.5}
                 className="h-4 w-4 opacity-50"
             />
         </BaseSelect.Icon>
 
     </BaseSelect.Trigger>
-))
-SelectTrigger.displayName = "SelectTrigger"
+)
 
-type SelectScrollUpButtonProps = React.ComponentPropsWithoutRef<typeof BaseSelect.ScrollUpArrow>
+type SelectScrollUpButtonProps = React.ComponentProps<typeof BaseSelect.ScrollUpArrow>
 
-const SelectScrollUpButton = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.ScrollUpArrow>,
-    SelectScrollUpButtonProps
->(({ className, ...props }, ref) => (
+const SelectScrollUpButton = ({ className, ref, ...props }: SelectScrollUpButtonProps) => (
     <BaseSelect.ScrollUpArrow
         ref={ref}
         className={cn(
@@ -63,18 +53,14 @@ const SelectScrollUpButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretUpIcon aria-hidden="true" className="h-4 w-4" />
+        <ChevronUp aria-hidden="true" strokeWidth={2.5} className="h-4 w-4" />
 
     </BaseSelect.ScrollUpArrow>
-))
-SelectScrollUpButton.displayName = "SelectScrollUpButton"
+)
 
-type SelectScrollDownButtonProps = React.ComponentPropsWithoutRef<typeof BaseSelect.ScrollDownArrow>
+type SelectScrollDownButtonProps = React.ComponentProps<typeof BaseSelect.ScrollDownArrow>
 
-const SelectScrollDownButton = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.ScrollDownArrow>,
-    SelectScrollDownButtonProps
->(({ className, ...props }, ref) => (
+const SelectScrollDownButton = ({ className, ref, ...props }: SelectScrollDownButtonProps) => (
     <BaseSelect.ScrollDownArrow
         ref={ref}
         className={cn(
@@ -83,17 +69,13 @@ const SelectScrollDownButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretDownIcon aria-hidden="true" className="h-4 w-4" />
+        <ChevronDown aria-hidden="true" strokeWidth={2.5} className="h-4 w-4" />
     </BaseSelect.ScrollDownArrow>
-))
-SelectScrollDownButton.displayName = "SelectScrollDownButton"
+)
 
-type SelectContentProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Popup>
+type SelectContentProps = React.ComponentProps<typeof BaseSelect.Popup>
 
-const SelectContent = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Popup>,
-    SelectContentProps
->(({ className, children, ...props }, ref) => (
+const SelectContent = ({ className, children, ref, ...props }: SelectContentProps) => (
     <BaseSelect.Portal>
         <BaseSelect.Positioner sideOffset={4} alignItemWithTrigger={false}>
             <BaseSelect.Popup
@@ -112,29 +94,21 @@ const SelectContent = React.forwardRef<
             </BaseSelect.Popup>
         </BaseSelect.Positioner>
     </BaseSelect.Portal>
-))
-SelectContent.displayName = "SelectContent"
+)
 
-type SelectLabelProps = React.ComponentPropsWithoutRef<typeof BaseSelect.GroupLabel>
+type SelectLabelProps = React.ComponentProps<typeof BaseSelect.GroupLabel>
 
-const SelectLabel = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.GroupLabel>,
-    SelectLabelProps
->(({ className, ...props }, ref) => (
+const SelectLabel = ({ className, ref, ...props }: SelectLabelProps) => (
     <BaseSelect.GroupLabel
         ref={ref}
         className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold text-black", className)}
         {...props}
     />
-))
-SelectLabel.displayName = "SelectLabel"
+)
 
-type SelectItemProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Item>
+type SelectItemProps = React.ComponentProps<typeof BaseSelect.Item>
 
-const SelectItem = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Item>,
-    SelectItemProps
->(({ className, children, ...props }, ref) => (
+const SelectItem = ({ className, children, ref, ...props }: SelectItemProps) => (
     <BaseSelect.Item
         ref={ref}
         className={cn(
@@ -145,28 +119,23 @@ const SelectItem = React.forwardRef<
     >
         <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
             <BaseSelect.ItemIndicator>
-                <CheckIcon aria-hidden="true" className="h-4 w-4" />
+                <Check aria-hidden="true" strokeWidth={2.5} className="h-4 w-4" />
             </BaseSelect.ItemIndicator>
         </span>
 
         <BaseSelect.ItemText>{children}</BaseSelect.ItemText>
     </BaseSelect.Item>
-))
-SelectItem.displayName = "SelectItem"
+)
 
-type SelectSeparatorProps = React.ComponentPropsWithoutRef<typeof BaseSelect.Separator>
+type SelectSeparatorProps = React.ComponentProps<typeof BaseSelect.Separator>
 
-const SelectSeparator = React.forwardRef<
-    React.ComponentRef<typeof BaseSelect.Separator>,
-    SelectSeparatorProps
->(({ className, ...props }, ref) => (
+const SelectSeparator = ({ className, ref, ...props }: SelectSeparatorProps) => (
     <BaseSelect.Separator
         ref={ref}
         className={cn("-mx-1 my-1 h-px bg-black", className)}
         {...props}
     />
-))
-SelectSeparator.displayName = "SelectSeparator"
+)
 
 export {
     Select,

@@ -10,15 +10,12 @@ const Tooltip = BaseTooltip.Root
 
 const TooltipTrigger = BaseTooltip.Trigger
 
-type TooltipContentProps = React.ComponentPropsWithoutRef<typeof BaseTooltip.Popup> & {
+type TooltipContentProps = React.ComponentProps<typeof BaseTooltip.Popup> & {
     sideOffset?: number
     side?: "top" | "bottom" | "left" | "right"
 }
 
-const TooltipContent = React.forwardRef<
-    React.ComponentRef<typeof BaseTooltip.Popup>,
-    TooltipContentProps
->(({ className, sideOffset = 8, side = "top", ...props }, ref) => (
+const TooltipContent = ({ className, sideOffset = 8, side = "top", ref, ...props }: TooltipContentProps) => (
     <BaseTooltip.Portal>
         <BaseTooltip.Positioner sideOffset={sideOffset} side={side}>
             <BaseTooltip.Popup
@@ -31,7 +28,6 @@ const TooltipContent = React.forwardRef<
             />
         </BaseTooltip.Positioner>
     </BaseTooltip.Portal>
-))
-TooltipContent.displayName = "TooltipContent"
+)
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }

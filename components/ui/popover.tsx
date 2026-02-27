@@ -8,15 +8,12 @@ const Popover = BasePopover.Root
 
 const PopoverTrigger = BasePopover.Trigger
 
-type PopoverContentProps = React.ComponentPropsWithoutRef<typeof BasePopover.Popup> & {
+type PopoverContentProps = React.ComponentProps<typeof BasePopover.Popup> & {
     align?: "start" | "center" | "end"
     sideOffset?: number
 }
 
-const PopoverContent = React.forwardRef<
-    React.ComponentRef<typeof BasePopover.Popup>,
-    PopoverContentProps
->(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
+const PopoverContent = ({ className, align = "center", sideOffset = 4, ref, ...props }: PopoverContentProps) => (
     <BasePopover.Portal>
         <BasePopover.Positioner sideOffset={sideOffset} align={align}>
             <BasePopover.Popup
@@ -29,7 +26,6 @@ const PopoverContent = React.forwardRef<
             />
         </BasePopover.Positioner>
     </BasePopover.Portal>
-))
-PopoverContent.displayName = "PopoverContent"
+)
 
 export { Popover, PopoverTrigger, PopoverContent }

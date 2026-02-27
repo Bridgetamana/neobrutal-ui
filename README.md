@@ -16,13 +16,13 @@
 
 ## Why Neobrutal UI?
 
-Neobrutalism UI is characterized by bold typography, high-contrast colors, harsh borders, and solid shadows. Our goal is to provide a complete suite of raw, accessible, and easily customizable React components that just work. 
+Neobrutalism UI is characterized by bold typography, high-contrast colors, harsh borders, and solid shadows. Our goal is to provide a complete suite of raw, accessible, and easily customizable React components. 
 
-✨ **Features**
-- **Copy-Paste Architecture**: Like `shadcn/ui`, you own the code. No hidden NPM packages that break your layout.
-- **Accessible First**: Built on top of `Base UI` guaranteeing full keyboard and screen reader support.
-- **Dark/Light Flexibility**: Effortlessly custom themes via straightforward CSS variables.
-- **TypeScript Ready**: Written in 100% strict TypeScript.
+### Features
+
+- Like `shadcn/ui`, you own the code. No hidden NPM packages that break your layout.
+- Built on top of `Base UI` guaranteeing full keyboard and screen reader support.
+- Effortlessly custom themes via straightforward CSS variables.
 
 ## Quick Start
 
@@ -40,7 +40,7 @@ Or just copy the source code directly from our [Documentation](https://www.neobr
 
 ## Available Components
 
-Currently, we support the following out-of-the-box components:
+Currently, we support the following components:
 
 <details>
 <summary><b>View Component List</b></summary>
@@ -71,22 +71,13 @@ Currently, we support the following out-of-the-box components:
 *More coming soon...*
 </details>
 
-## Community & Contributing
+## Contributing
 
-We absolutely love community contributions! Help us make Neobrutal UI the defacto library for Neobrutalism style.
-- Read our [Contributing Guide](CONTRIBUTING.md) to get started on creating a PR.
-- Please adhere to our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-## Supporters
-
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+We welcome contributions. Read our [Contributing Guide](CONTRIBUTING.md) before submitting a Pull Request.
+Please adhere to this project's [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md).
 
 ## License
 
 This project is licensed under the terms of the [MIT License](license.md).
 
----
-
-<div align="center">
-  Built with ❤️, <b>React</b>, <b>Tailwind CSS</b>, and <b>Base UI</b>.
-</div>
+[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
