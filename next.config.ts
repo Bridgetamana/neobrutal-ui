@@ -4,6 +4,14 @@ import { createMDX } from 'fumadocs-mdx/next';
 const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+      },
+    ],
+  },
   outputFileTracingIncludes: {
     "/docs/changelog": ["./CHANGELOG.md"],
   },
@@ -16,9 +24,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-    experimental: {
-      turbopackFileSystemCacheForDev: true,
-      turbopackFileSystemCacheForBuild: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+    turbopackFileSystemCacheForBuild: true,
   },
 };
 
