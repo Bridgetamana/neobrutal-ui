@@ -53,7 +53,8 @@ p {
   text-wrap: pretty;
 }
 
-h1, h2 {
+h1,
+h2 {
   letter-spacing: -0.025em;
 }
 
@@ -61,15 +62,23 @@ h1, h2 {
   .focus-brutal {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white;
   }
+
   .shadow-brutal {
     box-shadow: var(--shadow-brutal);
   }
+}
+
+/* Ensure fumadocs search dialog sits above the fixed header (z-50) */
+[role="dialog"][data-state],
+[data-state].fixed.inset-0 {
+  z-index: 60 !important;
 }
 
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-100%);
   }

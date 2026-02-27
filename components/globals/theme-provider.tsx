@@ -28,7 +28,7 @@ interface ThemeContextValue {
 const ThemeContext = React.createContext<ThemeContextValue | undefined>(undefined)
 
 function useTheme() {
-    const context = React.useContext(ThemeContext)
+    const context = React.use(ThemeContext)
     if (!context) {
         throw new Error("useTheme must be used within a ThemeProvider")
     }
@@ -51,9 +51,7 @@ function ThemeProvider({ children }: ThemeProviderProps) {
     function setTheme(theme: ColorTheme) {
         setCurrentTheme(theme)
         applyTheme(theme)
-        if (typeof window !== "undefined") {
-            localStorage.setItem("neobrutal-theme", theme.name)
-        }
+        localStorage.setItem("neobrutal-theme", theme.name)
     }
 
     React.useEffect(() => {
@@ -71,6 +69,7 @@ function ThemeProvider({ children }: ThemeProviderProps) {
     return (
         <ThemeContext.Provider value={{ currentTheme, setTheme, themes: colorThemes }}>
             <script
+                id="theme-init"
                 dangerouslySetInnerHTML={{
                     __html: `
                         try {

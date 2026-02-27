@@ -1,24 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-
-type SlotProps = React.HTMLAttributes<HTMLElement> & {
-    children?: React.ReactNode
-    ref?: React.Ref<HTMLElement>
-}
-
-const Slot = ({ children, ref, ...props }: SlotProps) => {
-    if (React.isValidElement<Record<string, unknown>>(children)) {
-        const childProps = children.props as Record<string, unknown>
-        return React.cloneElement(children, {
-            ...props,
-            ...childProps,
-            ref,
-            className: cn(props.className as string, childProps.className as string),
-        })
-    }
-    return null
-}
+import { Slot } from "@/lib/slot"
 
 const buttonVariants = cva(
     "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold ring-offset-white transition-transform focus-brutal disabled:pointer-events-none disabled:opacity-50 border-2 border-black cursor-pointer",

@@ -27,7 +27,7 @@ const Avatar = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
 }
 
 const AvatarImage = ({ className, src, alt = "Avatar", ref, ...props }: React.ComponentProps<"img">) => {
-    const context = React.useContext(AvatarContext)
+    const context = React.use(AvatarContext)
     const { setStatus, status } = context || {}
 
     React.useEffect(() => {
@@ -36,7 +36,7 @@ const AvatarImage = ({ className, src, alt = "Avatar", ref, ...props }: React.Co
             return
         }
 
-        const img = new Image()
+        const img = new globalThis.Image()
         img.src = src as string
         img.onload = () => setStatus?.("loaded")
         img.onerror = () => setStatus?.("error")
@@ -62,7 +62,7 @@ const AvatarImage = ({ className, src, alt = "Avatar", ref, ...props }: React.Co
 }
 
 const AvatarFallback = ({ className, ref, ...props }: React.ComponentProps<"div">) => {
-    const context = React.useContext(AvatarContext)
+    const context = React.use(AvatarContext)
     const status = context?.status
 
     if (status === "loaded") return null
@@ -79,7 +79,7 @@ const AvatarFallback = ({ className, ref, ...props }: React.ComponentProps<"div"
     )
 }
 
-export type AvatarGroupProps = React.HTMLAttributes<HTMLDivElement> & {
+export type AvatarGroupProps = React.ComponentProps<"div"> & {
     max?: number
 }
 

@@ -25,14 +25,8 @@ export function SiteHeader() {
                 <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
                     <button onClick={() => setOpenSearch(true)} className="relative block cursor-default" aria-label="Search documentation">
                         <Search
-                            size={20}
                             strokeWidth={2.5}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
-                        />
-                        <Search
-                            size={14}
-                            strokeWidth={2.5}
-                            className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 md:h-3.5 md:w-3.5 md:text-black/60"
                         />
                         <Input
                             readOnly
@@ -55,8 +49,11 @@ export function SiteHeader() {
                     </button>
                 </div>
             </div>
-            {isMenuOpen && (
-                <div className="lg:hidden bg-white border-t-2">
+            <div
+                className="lg:hidden bg-white border-t-2 grid transition-[grid-template-rows] duration-200 ease-in-out"
+                style={{ gridTemplateRows: isMenuOpen ? "1fr" : "0fr" }}
+            >
+                <div className="overflow-hidden">
                     <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
                         <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
                         <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
@@ -67,7 +64,7 @@ export function SiteHeader() {
                         </Link>
                     </nav>
                 </div>
-            )}
+            </div>
         </header>
     )
 }
