@@ -1,10 +1,93 @@
 ---
 title: Introduction
-description: Get started with Neobrutal UI
 ---
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 Neobrutal UI is a collection of neobrutalism-styled components with smooth animations built with Base UI, React and Tailwind CSS.
 
 Components are distributed via CLI or direct copy-paste. You own the code, customize it freely, and never worry about breaking changes from upstream updates.
 
 ## Why Neobrutal UI
+
+<div className="border-2 border-black bg-white my-6 flex flex-col">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
+        <div className="p-6">
+            <span className="text-xl font-bold">Open Code</span>
+            <div className="mt-2 text-black/80">
+                No hidden abstractions or version lock-in. Every line lives in your project.
+            </div>
+        </div>
+        <div className="p-6">
+            <span className="text-xl font-bold">Accessible</span>
+            <div className="mt-2 text-black/80">
+                Built on Base UI with keyboard navigation and screen reader support.
+            </div>
+        </div>
+    </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black border-t-2 border-black">
+        <div className="p-6">
+            <span className="text-xl font-bold">Two Formats</span>
+            <div className="mt-2 text-black/80">
+                React components for applications. Plain HTML with Tailwind for prototypes.
+            </div>
+        </div>
+        <div className="p-6">
+            <span className="text-xl font-bold">Customizable</span>
+            <div className="mt-2 text-black/80">
+                Styled with CSS variables for straightforward theming and customization.
+            </div>
+        </div>
+    </div>
+</div>
+
+## FAQ
+
+<Accordion className="w-full my-6 flex flex-col gap-4">
+    <AccordionItem value="item-1" className="bg-white border-2 border-black rounded-none mb-0 shadow-none hover:bg-main/20">
+        <AccordionTrigger className="font-bold">
+            Is this a component library I install from npm?
+        </AccordionTrigger>
+        <AccordionContent className="text-black/80">
+            No. Neobrutal UI uses a CLI to copy component source code directly into your project. You own and control every file.
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2" className="bg-white border-2 border-black rounded-none mb-0 shadow-none hover:bg-main/20">
+        <AccordionTrigger className="font-bold">
+            How do I customize the colors?
+        </AccordionTrigger>
+        <AccordionContent className="text-black/80">
+            All styling uses CSS variables defined in your globals.css file. Change the values and the entire library updates automatically.
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3" className="bg-white border-2 border-black rounded-none mb-0 shadow-none hover:bg-main/20">
+        <AccordionTrigger className="font-bold">
+            What if a component updates after I copy it?
+        </AccordionTrigger>
+        <AccordionContent className="text-black/80">
+            Use the diff command to compare your local version with the registry. Apply updates selectively while preserving your customizations.
+        </AccordionContent>
+    </AccordionItem>
+</Accordion>
+
+## Credits
+
+Neobrutal UI is built on the work of several open source projects and design systems.
+
+- [Base UI](https://base-ui.com)
+- [Tailwind CSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
+- [Phosphor Icons](https://phosphoricons.com)
+
+## Get Involved
+
+- [Star the repository on GitHub](https://github.com/bridgetamana/neobrutal-ui)
+- [Report bugs or request features](https://github.com/bridgetamana/neobrutal-ui/issues)
+- [Contribute to the project](https://github.com/bridgetamana/neobrutal-ui/blob/main/CONTRIBUTING.md)
+
+<div className="border-2 border-black bg-white mt-8 hover:bg-main transition-colors duration-200">
+    <a href="/docs/installation" className="block p-3 text-right">
+        <span className="text-lg font-bold">Installation</span>
+        <p className="truncate m-0">Learn how to install Neobrutal UI components</p>
+    </a>
+</div>
