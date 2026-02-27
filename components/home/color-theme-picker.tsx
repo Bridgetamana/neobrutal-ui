@@ -1,7 +1,7 @@
 "use client"
 
 import { PaletteIcon } from "@phosphor-icons/react"
-import { useTheme, type ColorTheme } from "@/components/theme-provider"
+import { useTheme, type ColorTheme } from "@/components/globals/theme-provider"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"

@@ -3,7 +3,7 @@ import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toast";
 import { Analytics } from "@vercel/analytics/next"
-import { Providers } from "@/components/providers";
+import { Providers } from "@/components/globals/providers";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -30,7 +30,13 @@ export const metadata: Metadata = {
     "react tailwind components",
     "shadcn components",
     "shadcn neobrutalism",
+    "react ui library",
+    "open source ui",
+    "base ui components"
   ],
+  alternates: {
+    canonical: "https://www.neobrutalui.live",
+  },
   authors: [{ name: "Bridget", url: "https://github.com/bridgetamana" }],
   creator: "Bridget",
   metadataBase: new URL("https://www.neobrutalui.live"),
@@ -78,8 +84,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Neobrutal UI",
+    "description": "A free, open-source collection of Neobrutalism-styled React components built with Base UI and Tailwind CSS.",
+    "codeRepository": "https://github.com/bridgetamana/neobrutal-ui",
+    "author": {
+      "@type": "Person",
+      "name": "Bridget",
+      "url": "https://github.com/bridgetamana"
+    },
+    "programmingLanguage": ["TypeScript", "React", "CSS"]
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${publicSans.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <Providers>
           {children}

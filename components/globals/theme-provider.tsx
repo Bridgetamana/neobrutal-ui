@@ -46,19 +46,44 @@ function applyTheme(theme: ColorTheme) {
 
 function ThemeProvider({ children }: ThemeProviderProps) {
     const [currentTheme, setCurrentTheme] = React.useState<ColorTheme>(colorThemes[0])
+    const [mounted, setMounted] = React.useState(false)
 
     function setTheme(theme: ColorTheme) {
         setCurrentTheme(theme)
         applyTheme(theme)
+        if (typeof window !== "undefined") {
+            localStorage.setItem("neobrutal-theme", theme.name)
+        }
     }
 
     React.useEffect(() => {
-        applyTheme(currentTheme)
-    }, [currentTheme])
+        setMounted(true)
+        const savedThemeName = localStorage.getItem("neobrutal-theme")
+        const savedTheme = colorThemes.find(t => t.name === savedThemeName)
+        if (savedTheme) {
+            setCurrentTheme(savedTheme)
+            applyTheme(savedTheme)
+        } else {
+            applyTheme(currentTheme)
+        }
+    }, [])
 
     return (
         <ThemeContext.Provider value={{ currentTheme, setTheme, themes: colorThemes }}>
-            {children}
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        try {
+                            const savedThemeName = localStorage.getItem('neobrutal-theme');
+                            const colorThemes = ${JSON.stringify(colorThemes)};
+                            const theme = colorThemes.find(t => t.name === savedThemeName) || colorThemes[0];
+                            document.documentElement.style.setProperty('--main', theme.main);
+                            document.documentElement.style.setProperty('--bg', theme.bg);
+                        } catch (e) {}
+                    `,
+                }}
+            />
+            {mounted ? children : <div style={{ visibility: "hidden" }}>{children}</div>}
         </ThemeContext.Provider>
     )
 }

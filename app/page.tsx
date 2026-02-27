@@ -1,5 +1,5 @@
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/layout/site-header"
+import { SiteFooter } from "@/components/layout/site-footer"
 import { HeroSection } from "@/components/home/hero"
 import { StatsSection } from "@/components/home/stats"
 import { ColorThemePicker } from "@/components/home/color-theme-picker"

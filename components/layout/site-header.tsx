@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { logo } from "@/components/logo"
+import { logo } from "@/components/shared/logo"
 import { ListIcon, XIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
 import { Input } from "@/components/ui/input"
 import { useSearchContext } from "fumadocs-ui/contexts/search"
