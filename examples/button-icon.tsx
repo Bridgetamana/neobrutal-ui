@@ -1,12 +1,10 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
-import { MagnifyingGlass } from "@phosphor-icons/react"
+import { Search } from "lucide-react"
 
 export default function ButtonIconDemo() {
   return (
     <Button size="icon" aria-label="Search">
-      <MagnifyingGlass weight="bold" />
+      <Search />
     </Button>
   )
 }

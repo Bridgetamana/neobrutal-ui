@@ -24,6 +24,23 @@
   --mint: #97ee88;
   --lemon: #fed170;
   --hot-pink: #ee8888;
+
+  --color-fd-background: #f0eefc;
+  --color-fd-foreground: #000000;
+  --color-fd-muted: hsl(0, 0%, 96.1%);
+  --color-fd-muted-foreground: hsl(0, 0%, 45.1%);
+  --color-fd-popover: #f0eefc;
+  --color-fd-popover-foreground: hsl(0, 0%, 15.1%);
+  --color-fd-card: hsl(0, 0%, 94.7%);
+  --color-fd-card-foreground: #000000;
+  --color-fd-border: #000000;
+  --color-fd-primary: var(--main);
+  --color-fd-primary-foreground: #f0eefc;
+  --color-fd-secondary: #ffffff;
+  --color-fd-secondary-foreground: var(--main);
+  --color-fd-accent: var(--main);
+  --color-fd-accent-foreground: var(--main);
+  --color-fd-ring: var(--main);
 }
 
 body {

@@ -25,7 +25,7 @@
             "description": "A vertically stacked set of interactive headings that reveal content sections.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -41,9 +41,7 @@
             "name": "alert",
             "type": "registry:ui",
             "description": "Displays a callout for user attention with neobrutalist styling.",
-            "dependencies": [
-                "@phosphor-icons/react"
-            ],
+            "dependencies": [],
             "registryDependencies": [
                 "utils"
             ],
@@ -124,7 +122,7 @@
             "description": "A control that allows the user to toggle between checked and not checked.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -142,7 +140,7 @@
             "description": "A window overlaid on the primary window with neobrutalist styling.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -190,9 +188,7 @@
             "name": "pagination",
             "type": "registry:ui",
             "description": "Pagination with page navigation and ellipsis.",
-            "dependencies": [
-                "@phosphor-icons/react"
-            ],
+            "dependencies": [],
             "registryDependencies": [
                 "utils",
                 "button"
@@ -243,8 +239,7 @@
             "type": "registry:ui",
             "description": "A set of checkable buttons where only one can be checked at a time.",
             "dependencies": [
-                "@base-ui/react",
-                "@phosphor-icons/react"
+                "@base-ui/react"
             ],
             "registryDependencies": [
                 "utils"
@@ -262,7 +257,7 @@
             "description": "Displays a list of options for the user to pick from.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"

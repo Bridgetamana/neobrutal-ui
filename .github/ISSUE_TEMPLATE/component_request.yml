@@ -1,18 +1,11 @@
-name: Feature Request
-description: Suggest an idea for Neobrutal UI
+name: Component Request
+description: Suggest a component for Neobrutal UI
 labels: ["enhancement"]
 body:
   - type: textarea
-    id: feature-description
+    id: component-description
     attributes:
       label: Description
-      description: What is the new feature you are requesting?
-    validations:
-      required: true
-  - type: textarea
-    id: motivation
-    attributes:
-      label: Motivation
-      description: Why do you need this feature? How does it benefit the community?
+      description: What is the new component you are requesting?
     validations:
       required: true

@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { logo } from "@/components/shared/logo"
-import { ListIcon, XIcon, MagnifyingGlassIcon } from "@phosphor-icons/react"
+import { Menu, X, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { useSearchContext } from "fumadocs-ui/contexts/search"
 
@@ -24,12 +24,14 @@ export function SiteHeader() {
                 </nav>
                 <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
                     <button onClick={() => setOpenSearch(true)} className="relative block cursor-default" aria-label="Search documentation">
-                        <MagnifyingGlassIcon
+                        <Search
                             size={20}
+                            strokeWidth={2.5}
                             className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
                         />
-                        <MagnifyingGlassIcon
+                        <Search
                             size={14}
+                            strokeWidth={2.5}
                             className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
                         />
                         <Input
@@ -49,7 +51,7 @@ export function SiteHeader() {
                         className="lg:hidden p-2 focus-brutal cursor-pointer"
                         aria-label="Toggle menu"
                     >
-                        {isMenuOpen ? <XIcon size={24} weight="bold" /> : <ListIcon size={24} weight="bold" />}
+                        {isMenuOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
                     </button>
                 </div>
             </div>

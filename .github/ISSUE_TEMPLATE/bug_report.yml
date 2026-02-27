@@ -16,8 +16,3 @@ body:
       description: Steps to reproduce the behavior
     validations:
       required: true
-  - type: input
-    id: browser
-    attributes:
-      label: Environment Info
-      description: Please provide your browser, OS, and Node version if applicable.
