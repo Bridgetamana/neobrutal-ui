@@ -23,6 +23,12 @@ export function SiteHeader({ githubStars }: SiteHeaderProps) {
                     {logo}
                 </Link>
                 <div className="flex items-center gap-2 lg:gap-3">
+                    <nav className="hidden lg:flex items-center gap-2">
+                        <Link href="/docs">
+                            Docs
+                        </Link>
+                        {githubStars}
+                    </nav>
                     <button onClick={() => setOpenSearch(true)} className="relative block cursor-default" aria-label="Search documentation">
                         <Search
                             strokeWidth={2.5}
@@ -35,12 +41,7 @@ export function SiteHeader({ githubStars }: SiteHeaderProps) {
                             tabIndex={-1}
                         />
                     </button>
-                    <nav className="hidden lg:flex items-center gap-2">
-                        <Link href="/docs" className="rounded-base border-2 border-black px-3 py-1.5 text-sm font-bold hover:bg-bg transition-colors focus-brutal">
-                            Docs
-                        </Link>
-                        {githubStars}
-                    </nav>
+
                     <Link href="/docs/components/accordion" aria-label="Explore Components" className="hidden lg:flex">
                         <Button className="font-bold shadow-brutal hover:bg-main">
                             Explore Components
