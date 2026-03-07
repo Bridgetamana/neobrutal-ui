@@ -1,0 +1,21 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+---
+
+<ComponentPreview 
+code="import { Slider } from '@/components/ui/slider'\n\nexport function SliderDemo() {\n  return <Slider defaultValue={[50]} max={100} step={1} className='w-[60%]' />\n}">
+  <div className="flex w-full justify-center">
+    <Slider defaultValue={[50]} max={100} step={1} className="w-[60%]" />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add slider" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Slider } from '@/components/ui/slider'" />
+
+<CodeBlock code="<Slider defaultValue={[50]} max={100} step={1} />" />

@@ -1,0 +1,68 @@
+---
+title: Badge
+description: Displays a small label for status or categorization.
+---
+
+<ComponentPreview 
+code={`import { Badge } from "@/components/ui/badge"
+
+export function BadgeDemo() {
+  return <Badge>Badge</Badge>
+} 
+>
+  <Badge>Badge</Badge>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add badge" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Badge } from '@/components/ui/badge'" />
+
+<CodeBlock code="<Badge variant='neutral'>Badge</Badge>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview code="<Badge>Default</Badge>">
+  <Badge>Default</Badge>
+</ComponentPreview>
+
+### Neutral
+
+<ComponentPreview code="<Badge variant='neutral'>Neutral</Badge>">
+  <Badge variant="neutral">Neutral</Badge>
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview code="<Badge variant='destructive'>Destructive</Badge>">
+  <Badge variant="destructive">Destructive</Badge>
+</ComponentPreview>
+
+### Success
+
+<ComponentPreview code="<Badge variant='success'>Success</Badge>">
+  <Badge variant="success">Success</Badge>
+</ComponentPreview>
+
+### Warning
+
+<ComponentPreview code="<Badge variant='warning'>Warning</Badge>">
+  <Badge variant="warning">Warning</Badge>
+</ComponentPreview>
+
+### Multiple Badges
+
+<ComponentPreview code="<div className='flex flex-wrap gap-2'>\n  <Badge>New</Badge>\n  <Badge variant='neutral'>Popular</Badge>\n  <Badge variant='destructive'>Error</Badge>\n  <Badge variant='success'>Success</Badge>\n  <Badge variant='warning'>Warning</Badge>\n</div>">
+  <div className="flex flex-wrap gap-2">
+      <Badge>New</Badge>
+      <Badge variant="neutral">Popular</Badge>
+      <Badge variant="destructive">Error</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
+  </div>
+</ComponentPreview>

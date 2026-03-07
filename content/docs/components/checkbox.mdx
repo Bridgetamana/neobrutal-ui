@@ -1,0 +1,54 @@
+---
+title: Checkbox
+description: A customizable checkbox input with bold styling and accessible controls.
+---
+
+<ComponentPreview 
+code={`import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+
+export function CheckboxDemo() {
+  return (
+    <div className="flex items-center gap-2">
+      <Checkbox id="terms" />
+      <Label htmlFor="terms">Accept terms and conditions</Label>
+    </div>
+  )
+} 
+>
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" />
+    <Label htmlFor="terms">Accept terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add checkbox" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Checkbox } from '@/components/ui/checkbox'\nimport { Label } from '@/components/ui/label'" />
+
+<CodeBlock code="<div className='flex items-center gap-2'>\n  <Checkbox id='terms' />\n  <Label htmlFor='terms'>Accept terms and conditions</Label>\n</div>" />
+
+## Examples
+
+### States
+
+<ComponentPreview code="<div className='grid gap-4'>\n  <div className='flex items-center gap-2'>\n    <Checkbox id='unchecked-state' />\n    <Label htmlFor='unchecked-state'>Unchecked State</Label>\n  </div>\n  <div className='flex items-center gap-2'>\n    <Checkbox id='checked-state' defaultChecked />\n    <Label htmlFor='checked-state'>Checked State</Label>\n  </div>\n  <div className='flex items-center gap-2'>\n    <Checkbox id='disabled-state' disabled />\n    <Label htmlFor='disabled-state'>Disabled State</Label>\n  </div>\n</div>">
+  <div className="grid gap-4">
+    <div className="flex items-center gap-2">
+        <Checkbox id="unchecked-state" />
+        <Label htmlFor="unchecked-state">Unchecked State</Label>
+    </div>
+    <div className="flex items-center gap-2">
+        <Checkbox id="checked-state" defaultChecked />
+        <Label htmlFor="checked-state">Checked State</Label>
+    </div>
+    <div className="flex items-center gap-2">
+        <Checkbox id="disabled-state" disabled />
+        <Label htmlFor="disabled-state">Disabled State</Label>
+    </div>
+  </div>
+</ComponentPreview>

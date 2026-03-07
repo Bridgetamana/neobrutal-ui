@@ -1,0 +1,31 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, with a floating badge that shows the current percentage.
+---
+
+<ComponentPreview 
+code="import { Progress } from '@/components/ui/progress'\n\nexport function ProgressDemo() {\n  return <Progress value={33} showValue={true} className='w-[60%]' />\n}">
+  <div className="flex w-full justify-center">
+    <Progress value={33} showValue={true} className="w-[60%]" />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add progress" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Progress } from '@/components/ui/progress'" />
+
+<CodeBlock code="<Progress value={33} />" />
+
+## Examples
+
+### Without Value Badge
+
+<ComponentPreview code="<Progress value={50} showValue={false} />">
+  <div className="flex w-full justify-center">
+    <Progress value={50} showValue={false} className="w-[60%]" />
+  </div>
+</ComponentPreview>

@@ -1,0 +1,30 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+---
+
+<ComponentPreview 
+code="import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/components/ui/tooltip'\nimport { Button } from '@/components/ui/button'\n\nexport function TooltipDemo() {\n  return (\n    <TooltipProvider>\n      <Tooltip>\n        <TooltipTrigger render={<Button variant='noShadow' />}>\n          Hover\n        </TooltipTrigger>\n        <TooltipContent>\n          <p>Add to library</p>\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  )\n}">
+  <div className="flex w-full justify-center">
+    <TooltipProvider>
+        <Tooltip>
+            <TooltipTrigger render={<Button variant="noShadow" />}>
+                Hover
+            </TooltipTrigger>
+            <TooltipContent>
+                <p>Add to library</p>
+            </TooltipContent>
+        </Tooltip>
+    </TooltipProvider>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add tooltip" language="bash" />
+
+## Usage
+
+<CodeBlock code="import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/components/ui/tooltip'" />
+
+<CodeBlock code="<TooltipProvider>\n  <Tooltip>\n    <TooltipTrigger render={<Button variant='noShadow' />}>\n      Hover\n    </TooltipTrigger>\n    <TooltipContent>\n      <p>Add to library</p>\n    </TooltipContent>\n  </Tooltip>\n</TooltipProvider>" />
