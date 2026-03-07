@@ -1,0 +1,54 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+<ComponentPreview code={`import { Button } from "@/components/ui/button"\n\nexport function ButtonDemo() {\n  return <Button>Button</Button>\n}`} htmlCode={`<button class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold bg-[#b6ace4] text-black border-2 border-black rounded-base shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all cursor-pointer">\n  Button\n</button>`}>
+  <Button>Button</Button>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add button" language="bash" />
+
+## Usage
+
+<CodeBlock code={`import { Button } from "@/components/ui/button"`} />
+
+<CodeBlock code={`<Button variant="neutral">Button</Button>`} />
+
+## Examples
+
+### Default
+
+<ComponentPreview code={`<Button>Default</Button>`}>
+  <Button>Default</Button>
+</ComponentPreview>
+
+### Neutral
+
+<ComponentPreview code={`<Button variant="neutral">Neutral</Button>`}>
+  <Button variant="neutral">Neutral</Button>
+</ComponentPreview>
+
+### No Shadow
+
+<ComponentPreview code={`<Button variant="noShadow">No Shadow</Button>`}>
+  <Button variant="noShadow">No Shadow</Button>
+</ComponentPreview>
+
+### Sizes
+
+<ComponentPreview code={`<div className="flex items-center gap-4">\n  <Button size="sm">Small</Button>\n  <Button size="default">Default</Button>\n  <Button size="lg">Large</Button>\n</div>`}>
+  <div className="flex items-center gap-4">
+    <Button size="sm">Small</Button>
+    <Button size="default">Default</Button>
+    <Button size="lg">Large</Button>
+  </div>
+</ComponentPreview>
+
+### Link
+
+Use the asChild prop to render as a link.
+
+<CodeBlock code={`import Link from "next/link"\n\n<Button asChild>\n  <Link href="/login">Login</Link>\n</Button>`} />
