@@ -6,10 +6,10 @@ import { useState } from "react"
 import dynamic from "next/dynamic"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { Logo } from "@/components/logo"
+import { Logo } from "@/components/site/layout/logo"
 
 const CommandSearch = dynamic(
-    () => import("@/components/command-search").then((m) => m.CommandSearch),
+    () => import("@/components/site/command-search").then((m) => m.CommandSearch),
     { ssr: false }
 )
 
