@@ -5,7 +5,7 @@ import { useState } from "react"
 import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
-import { ListIcon, XIcon } from "@phosphor-icons/react"
+import { Menu, X } from "lucide-react"
 
 const CommandSearch = dynamic(
     () => import("@/components/command-search").then((mod) => mod.CommandSearch),
@@ -37,7 +37,7 @@ export function SiteHeader() {
                         className="lg:hidden p-2 focus-brutal cursor-pointer"
                         aria-label="Toggle menu"
                     >
-                        {isMenuOpen ? <XIcon size={24} weight="bold" /> : <ListIcon size={24} weight="bold" />}
+                        {isMenuOpen ? <X size={24} strokeWidth={3} /> : <Menu size={24} strokeWidth={3} />}
                     </button>
                 </div>
             </div>

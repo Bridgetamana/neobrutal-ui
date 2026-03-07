@@ -128,7 +128,7 @@ export default function AlertPage() {
 
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Custom Icon</h3>
-                    <ComponentPreview code={`import { Bell } from "@phosphor-icons/react"
+                    <ComponentPreview code={`import { Bell } from "lucide-react"
 
 <Alert icon={<Bell className="h-5 w-5" />}>
   <AlertTitle>Notification</AlertTitle>

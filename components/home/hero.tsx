@@ -12,12 +12,11 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import {
-    ArrowRightIcon,
-    WarningIcon,
-    HeartIcon,
-    TrendUpIcon,
-    ShareNetworkIcon
-} from "@phosphor-icons/react"
+    ArrowRight, TriangleAlert,
+    Heart,
+    TrendingUp,
+    Share2
+} from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const Marquee = ({ className, children }: { className?: string, children: React.ReactNode }) => {
@@ -46,7 +45,7 @@ export function HeroSection() {
                 </p>
                 <Link href="/docs/installation">
                     <Button className="h-12 px-8 text-lg font-bold shadow-brutal">
-                        Get Started <ArrowRightIcon weight="bold" className="ml-2 h-5 w-5" />
+                        Get Started <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
                     </Button>
                 </Link>
             </div>
@@ -55,7 +54,7 @@ export function HeroSection() {
                     <CardHeader className="pb-2">
                         <div className="flex justify-between items-center">
                             <CardTitle className="text-sm uppercase">Revenue</CardTitle>
-                            <TrendUpIcon weight="bold" className="w-5 h-5" />
+                            <TrendingUp className="w-5 h-5" strokeWidth={3} />
                         </div>
                     </CardHeader>
                     <CardContent>
@@ -65,10 +64,10 @@ export function HeroSection() {
                 </Card>
                 <div className="flex gap-2">
                     <Button size="icon" aria-label="Like" className="rounded-full w-12 h-12 bg-lemon">
-                        <HeartIcon weight="fill" className="w-6 h-6" />
+                        <Heart className="w-6 h-6 fill-black" />
                     </Button>
                     <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-[#88c5ee]">
-                        <ShareNetworkIcon weight="bold" className="w-6 h-6" />
+                        <Share2 className="w-6 h-6" strokeWidth={3} />
                     </Button>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-62.5">
@@ -90,7 +89,7 @@ export function HeroSection() {
                 </div>
                 <Slider defaultValue={[50]} max={100} />
                 <Alert className="w-full bg-hot-pink border-2 border-black shadow-brutal">
-                    <WarningIcon className="h-5 w-5" />
+                    <TriangleAlert className="h-5 w-5" />
                     <AlertTitle className="font-bold">Heads up!</AlertTitle>
                     <AlertDescription>
                         Your session is about to expire.

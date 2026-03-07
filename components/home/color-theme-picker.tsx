@@ -1,6 +1,6 @@
 "use client"
 
-import { PaletteIcon } from "@phosphor-icons/react"
+import { Palette } from "lucide-react"
 import { useTheme, type ColorTheme } from "@/components/theme-provider"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
@@ -36,7 +36,7 @@ function ColorThemePicker() {
                             aria-label="Change color theme"
                             className="h-12 w-12 rounded-full shadow-none! hover:translate-0"
                         >
-                            <PaletteIcon weight="bold" className="h-7 w-7" />
+                            <Palette className="h-7 w-7" strokeWidth={3} />
                         </Button>
                     }
                 />

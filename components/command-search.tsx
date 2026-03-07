@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
-import { MagnifyingGlassIcon } from "@phosphor-icons/react"
+import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Dialog } from "@base-ui/react"
 
@@ -198,11 +198,11 @@ export function CommandSearch() {
         <Dialog.Root open={open} onOpenChange={setOpen}>
             <Dialog.Trigger id="command-search-trigger">
                 <div className="relative block cursor-default">
-                    <MagnifyingGlassIcon
+                    <Search
                         size={20}
                         className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
                     />
-                    <MagnifyingGlassIcon
+                    <Search
                         size={14}
                         className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
                     />
@@ -226,7 +226,7 @@ export function CommandSearch() {
 
                     <Command className="w-full" loop={false} shouldFilter={true}>
                         <div className="flex items-center gap-2 px-4 border-b">
-                            <MagnifyingGlassIcon size={14} className="text-black/60" />
+                            <Search size={14} className="text-black/60" />
                             <Command.Input
                                 autoFocus
                                 placeholder="Search components, docs..."

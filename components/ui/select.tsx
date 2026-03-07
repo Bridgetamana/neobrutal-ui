@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Select as BaseSelect } from "@base-ui/react/select"
-import { CheckIcon, CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react"
+import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const Select = BaseSelect.Root
@@ -39,7 +39,7 @@ const SelectTrigger = React.forwardRef<
     >
         {children}
         <BaseSelect.Icon>
-            <CaretDownIcon
+            <ChevronDown
                 aria-hidden="true"
                 className="h-4 w-4 opacity-50"
             />
@@ -63,7 +63,7 @@ const SelectScrollUpButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretUpIcon aria-hidden="true" className="h-4 w-4" />
+        <ChevronUp aria-hidden="true" className="h-4 w-4" />
 
     </BaseSelect.ScrollUpArrow>
 ))
@@ -83,7 +83,7 @@ const SelectScrollDownButton = React.forwardRef<
         )}
         {...props}
     >
-        <CaretDownIcon aria-hidden="true" className="h-4 w-4" />
+        <ChevronDown aria-hidden="true" className="h-4 w-4" />
     </BaseSelect.ScrollDownArrow>
 ))
 SelectScrollDownButton.displayName = "SelectScrollDownButton"
@@ -145,7 +145,7 @@ const SelectItem = React.forwardRef<
     >
         <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
             <BaseSelect.ItemIndicator>
-                <CheckIcon aria-hidden="true" className="h-4 w-4" />
+                <Check aria-hidden="true" className="h-4 w-4" />
             </BaseSelect.ItemIndicator>
         </span>
 

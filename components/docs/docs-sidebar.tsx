@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import dynamic from "next/dynamic"
-import { ListIcon, XIcon } from "@phosphor-icons/react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/logo"
 
@@ -123,7 +123,7 @@ export function MobileHeader() {
                         className="focus-brutal cursor-pointer"
                         aria-label={isSidebarOpen ? "Close menu" : "Open menu"}
                     >
-                        {isSidebarOpen ? <XIcon size={24} /> : <ListIcon size={24} />}
+                        {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </div>
