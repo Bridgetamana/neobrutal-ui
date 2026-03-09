@@ -17,7 +17,7 @@ This guide will walk you through the installation steps for using Neobrutal UI v
 
 ### 3. Import and use
 
-<CodeBlock code={`import { Button } from "@/components/ui/button"\n\nexport default function Page() {\n  return <Button>Click me</Button>\n}`} />
+<CodeBlock code="import { Button } from '@/components/ui/button'\n\nexport default function Page() {\n  return <Button>Click me</Button>\n}" />
 
 ## Manual Installation
 
@@ -31,7 +31,7 @@ Follow these steps to add components to your project without the CLI
 
 Add this to `lib/utils.ts`
 
-<CodeBlock code={`import { clsx, type ClassValue } from "clsx"\nimport { twMerge } from "tailwind-merge"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}`} />
+<CodeBlock code="import { clsx, type ClassValue } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}" />
 
 ### 3. Copy the component
 

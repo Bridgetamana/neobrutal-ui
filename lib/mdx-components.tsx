@@ -22,7 +22,7 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
-import { Toaster, toast } from "@/components/ui/toast"
+import { Toaster } from "@/components/ui/toast"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Changelog } from "@/components/docs/changelog"
 
@@ -73,7 +73,7 @@ export const mdxComponents = {
     Switch,
     Tabs, TabsList, TabsTrigger, TabsContent,
     Textarea,
-    Toaster, "toast": toast as unknown,
+    Toaster,
     Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
     ToastDemo, ToastTypesDemo, ToastActionDemo, ToastPromiseDemo,
 }

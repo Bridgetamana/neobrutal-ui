@@ -2,11 +2,13 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-const CONTENT_PATH = path.join(process.cwd(), 'content/docs/components')
+const DOCS_PATH = path.join(process.cwd(), 'content/docs')
+const COMPONENTS_PATH = path.join(DOCS_PATH, 'components')
 
-export async function getMdxBySlug(slug: string) {
+export async function getMdxBySlug(slug: string, section: 'components' | 'docs' = 'components') {
+    const basePath = section === 'components' ? COMPONENTS_PATH : DOCS_PATH
     const realSlug = slug.replace(/\.mdx$/, '')
-    const filePath = path.join(CONTENT_PATH, `${realSlug}.mdx`)
+    const filePath = path.join(basePath, `${realSlug}.mdx`)
     const fileContents = fs.readFileSync(filePath, 'utf8')
     const { data, content } = matter(fileContents)
 
@@ -16,10 +18,13 @@ export async function getMdxBySlug(slug: string) {
     }
 }
 
-export async function getAllMdxSlugs() {
-    if (!fs.existsSync(CONTENT_PATH)) return []
-    const paths = fs.readdirSync(CONTENT_PATH)
-    return paths.filter(path => path.endsWith('.mdx')).map(pathname => ({
-        slug: pathname.replace(/\.mdx$/, ''),
-    }))
+export async function getAllMdxSlugs(section: 'components' | 'docs' = 'components') {
+    const basePath = section === 'components' ? COMPONENTS_PATH : DOCS_PATH
+    if (!fs.existsSync(basePath)) return []
+    const entries = fs.readdirSync(basePath, { withFileTypes: true })
+    return entries
+        .filter(entry => entry.isFile() && entry.name.endsWith('.mdx'))
+        .map(entry => ({
+            slug: entry.name.replace(/\.mdx$/, ''),
+        }))
 }

@@ -46,7 +46,7 @@ Pass <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-bla
 
 Show a loading state that automatically transitions to success or error when the promise settles.
 
-<ComponentPreview code={`toast.promise(saveDocument(), {\n  loading: "Saving document...",\n  success: (data) => ({\n    title: "Saved",\n    description: \`\${data.name} saved successfully\`,\n  }),\n  error: (err) =>\n    err instanceof Error\n      ? err.message\n      : "Something went wrong",\n})`}>
+<ComponentPreview code="toast.promise(saveDocument(), {\n  loading: 'Saving document...',\n  success: (data) => ({\n    title: 'Saved',\n    description: \`\${data.name} saved successfully\`,\n  }),\n  error: (err) =>\n    err instanceof Error\n      ? err.message\n      : 'Something went wrong',\n})">
   <div className="flex w-full justify-center">
     <ToastPromiseDemo />
   </div>
