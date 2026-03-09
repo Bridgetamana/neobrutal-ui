@@ -1,0 +1,51 @@
+---
+title: CLI
+description: All available commands and options for the Neobrutal UI CLI.
+---
+
+## init
+
+Set up your project for neobrutal ui. Creates components.json, installs dependencies, and adds utilities.
+
+<CodeBlock code="npx neobrutal init" language="bash" />
+
+Use **-y** to skip prompts.
+
+## add
+
+Add components to your project. Resolves dependencies automatically.
+
+<CodeBlock code="npx neobrutal add button dialog" language="bash" />
+
+Use **-a** for all components, **-o** to overwrite existing files.
+
+## list
+
+Display all available components.
+
+<CodeBlock code="npx neobrutal list" language="bash" />
+
+## diff
+
+Compare local components with the registry to check for updates.
+
+<CodeBlock code="npx neobrutal diff button" language="bash" />
+
+## Configuration
+
+The **components.json** file configures component paths and import aliases.
+
+<CodeBlock code={`{\n  "tailwind": {\n    "css": "app/globals.css"\n  },\n  "aliases": {\n    "components": "@/components",\n    "utils": "@/lib/utils"\n  }\n}`} language="json" />
+
+<div className="border-2 border-black bg-white">
+  <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
+    <Link href="/docs/installation" className="block p-3 hover:bg-main">
+      <span className="text-lg font-semibold">Installation</span>
+      <p className="truncate">Learn how to install Neobrutal UI components</p>
+    </Link>
+    <Link href="/docs/theming" className="block p-3 hover:bg-main text-right">
+      <span className="text-lg font-semibold">Theming</span>
+      <p className="truncate">Customize the look and feel of Neobrutal UI components</p>
+    </Link>
+  </div>
+</div>

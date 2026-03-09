@@ -9,8 +9,19 @@ interface DocsTemplateProps {
 
 export default function DocsTemplate({ children }: DocsTemplateProps) {
   const pathname = usePathname();
-  const githubUrl = new URL("https://github.com");
-  githubUrl.pathname = `/Bridgetamana/neobrutal-ui/blob/main/app${pathname}/page.tsx`;
+
+  let editPath: string;
+  if (pathname === "/docs") {
+    editPath = "content/docs/introduction.mdx";
+  } else if (pathname.startsWith("/docs/components/")) {
+    const slug = pathname.replace("/docs/components/", "");
+    editPath = `content/docs/components/${slug}.mdx`;
+  } else {
+    const slug = pathname.replace("/docs/", "");
+    editPath = `content/docs/${slug}.mdx`;
+  }
+
+  const githubUrl = `https://github.com/Bridgetamana/neobrutal-ui/blob/main/${editPath}`;
 
   return (
     <div className="flex flex-col">
