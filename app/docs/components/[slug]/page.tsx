@@ -5,7 +5,34 @@ import { Metadata } from 'next'
 import { ComponentPreview } from "@/components/docs/component-preview"
 import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
+import { Avatar, AvatarImage, AvatarFallback, AvatarGroup } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardFooter, CardTitle, CardContent } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Pagination, PaginationItem } from "@/components/ui/pagination"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Progress } from "@/components/ui/progress"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Textarea } from "@/components/ui/textarea"
+import { Toaster, toast } from "@/components/ui/toast"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
+import {
+    ToastDemo,
+    ToastTypesDemo,
+    ToastActionDemo,
+    ToastPromiseDemo,
+} from "@/components/docs/demos/toast-demo"
 
 const components = {
     h1: (props: any) => <h1 className="text-3xl font-semibold md:text-4xl mt-8 mb-4 text-black" {...props} />,
@@ -19,7 +46,28 @@ const components = {
     ComponentPreview,
     CodeBlock,
     PropsTable,
-    Button
+    Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+    Alert, AlertTitle, AlertDescription,
+    Avatar, AvatarImage, AvatarFallback, AvatarGroup,
+    Badge,
+    Button,
+    Card, CardHeader, CardFooter, CardTitle, CardContent,
+    Checkbox,
+    Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger,
+    Input,
+    Label,
+    Pagination, PaginationItem,
+    Popover, PopoverContent, PopoverTrigger,
+    Progress,
+    RadioGroup, RadioGroupItem,
+    Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+    Slider,
+    Switch,
+    Tabs, TabsList, TabsTrigger, TabsContent,
+    Textarea,
+    Toaster, "toast": toast as any,
+    Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
+    ToastDemo, ToastTypesDemo, ToastActionDemo, ToastPromiseDemo
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

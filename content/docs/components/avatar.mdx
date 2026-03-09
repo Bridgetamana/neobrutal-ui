@@ -1,0 +1,57 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+---
+
+<ComponentPreview 
+code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'\n\nexport function AvatarDemo() {\n  return (\n    <Avatar>\n      <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  )\n}">
+  <Avatar>
+      <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
+      <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add avatar" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'" />
+
+<CodeBlock code="<Avatar>\n  <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>" />
+
+## Examples
+
+### With Image
+
+<ComponentPreview code="<Avatar>\n  <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>">
+  <Avatar>
+      <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
+      <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+### Fallback
+
+Displays initials when no image is available.
+
+<ComponentPreview code="<Avatar>\n  <AvatarFallback>JD</AvatarFallback>\n</Avatar>">
+  <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+### Group
+
+Display multiple avatars with an overflow indicator.
+
+<ComponentPreview code="<AvatarGroup max={3}>\n  <Avatar><AvatarFallback>A</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>B</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>C</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>D</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>E</AvatarFallback></Avatar>\n</AvatarGroup>">
+  <AvatarGroup max={3}>
+      <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>B</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>C</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>D</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>E</AvatarFallback></Avatar>
+  </AvatarGroup>
+</ComponentPreview>

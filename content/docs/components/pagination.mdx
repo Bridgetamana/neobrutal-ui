@@ -1,0 +1,40 @@
+---
+title: Pagination
+description: Pagination with bold borders and clear active states.
+---
+
+<ComponentPreview 
+code={`import { Pagination, PaginationItem } from "@/components/ui/pagination"
+
+export function PaginationDemo() {
+  return (
+    <Pagination>
+      <PaginationItem>Prev</PaginationItem>
+      <PaginationItem>1</PaginationItem>
+      <PaginationItem isActive>2</PaginationItem>
+      <PaginationItem>3</PaginationItem>
+      <PaginationItem>Next</PaginationItem>
+    </Pagination>
+  )
+} 
+>
+  <div className="flex w-full justify-center">
+    <Pagination>
+        <PaginationItem>Prev</PaginationItem>
+        <PaginationItem>1</PaginationItem>
+        <PaginationItem isActive>2</PaginationItem>
+        <PaginationItem>3</PaginationItem>
+        <PaginationItem>Next</PaginationItem>
+    </Pagination>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add pagination" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Pagination, PaginationItem } from '@/components/ui/pagination'" />
+
+<CodeBlock code="<Pagination>\n  <PaginationItem>Prev</PaginationItem>\n  <PaginationItem>1</PaginationItem>\n  <PaginationItem isActive>2</PaginationItem>\n  <PaginationItem>3</PaginationItem>\n  <PaginationItem>Next</PaginationItem>\n</Pagination>" />

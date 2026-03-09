@@ -12,7 +12,7 @@ export async function getMdxBySlug(slug: string) {
 
     return {
         frontmatter: data,
-        content
+        content: content || ""
     }
 }
 

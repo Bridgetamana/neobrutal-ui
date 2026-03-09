@@ -1,0 +1,32 @@
+---
+title: Tabs
+description: Organizes content into multiple sections with tabbed navigation.
+---
+
+<ComponentPreview 
+code="import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'\n\nexport function TabsDemo() {\n  return (\n    <Tabs defaultValue='account' className='w-[400px]'>\n      <TabsList>\n        <TabsTrigger value='account'>Account</TabsTrigger>\n        <TabsTrigger value='password'>Password</TabsTrigger>\n      </TabsList>\n      <TabsContent value='account'>\n        Make changes to your account here.\n      </TabsContent>\n      <TabsContent value='password'>\n        Change your password here.\n      </TabsContent>\n    </Tabs>\n  )\n}">
+  <div className="flex w-full justify-center">
+    <Tabs defaultValue="account" className="w-full max-w-sm">
+        <TabsList>
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+            Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password">
+            Change your password here.
+        </TabsContent>
+    </Tabs>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add tabs" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'" />
+
+<CodeBlock code="<Tabs defaultValue='account'>\n  <TabsList>\n    <TabsTrigger value='account'>Account</TabsTrigger>\n    <TabsTrigger value='password'>Password</TabsTrigger>\n  </TabsList>\n  <TabsContent value='account'>\n    Make changes to your account here.\n  </TabsContent>\n  <TabsContent value='password'>\n    Change your password here.\n  </TabsContent>\n</Tabs>" />

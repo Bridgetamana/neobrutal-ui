@@ -1,0 +1,30 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+---
+
+<ComponentPreview 
+code="import {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from '@/components/ui/select'\n\nexport function SelectDemo() {\n  return (\n    <Select>\n      <SelectTrigger className='w-45'>\n        <SelectValue placeholder='Theme' />\n      </SelectTrigger>\n      <SelectContent>\n        <SelectItem value='light'>Light</SelectItem>\n        <SelectItem value='dark'>Dark</SelectItem>\n        <SelectItem value='system'>System</SelectItem>\n      </SelectContent>\n    </Select>\n  )\n}">
+  <div className="flex w-full justify-center">
+    <Select>
+        <SelectTrigger className="w-45">
+            <SelectValue placeholder="Theme" />
+        </SelectTrigger>
+        <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add select" language="bash" />
+
+## Usage
+
+<CodeBlock code="import {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from '@/components/ui/select'" />
+
+<CodeBlock code="<Select>\n  <SelectTrigger className='w-45'>\n    <SelectValue placeholder='Theme' />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value='light'>Light</SelectItem>\n    <SelectItem value='dark'>Dark</SelectItem>\n    <SelectItem value='system'>System</SelectItem>\n  </SelectContent>\n</Select>" />
