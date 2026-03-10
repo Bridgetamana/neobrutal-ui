@@ -1,11 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { cache } from 'react'
 
 const DOCS_PATH = path.join(process.cwd(), 'content/docs')
 const COMPONENTS_PATH = path.join(DOCS_PATH, 'components')
 
-export async function getMdxBySlug(slug: string, section: 'components' | 'docs' = 'components') {
+export const getMdxBySlug = cache(async (slug: string, section: 'components' | 'docs' = 'components') => {
     const basePath = section === 'components' ? COMPONENTS_PATH : DOCS_PATH
     const realSlug = slug.replace(/\.mdx$/, '')
     const filePath = path.join(basePath, `${realSlug}.mdx`)
@@ -16,7 +17,7 @@ export async function getMdxBySlug(slug: string, section: 'components' | 'docs' 
         frontmatter: data,
         content: content || ""
     }
-}
+})
 
 export async function getAllMdxSlugs(section: 'components' | 'docs' = 'components') {
     const basePath = section === 'components' ? COMPONENTS_PATH : DOCS_PATH
