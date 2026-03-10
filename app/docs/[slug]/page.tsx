@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { mdxComponents } from '@/lib/mdx-components'
+import { EditPageLink } from '@/components/docs/edit-page-link'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     try {
@@ -49,6 +50,8 @@ export default async function DocsPage({ params }: { params: Promise<{ slug: str
             <div className="space-y-6">
                 <MDXRemote source={content} components={mdxComponents} />
             </div>
+
+            <EditPageLink editPath={`content/docs/${slug}.mdx`} />
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { getMdxBySlug } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Metadata } from 'next'
 import { mdxComponents } from '@/lib/mdx-components'
+import { EditPageLink } from '@/components/docs/edit-page-link'
 
 export const metadata: Metadata = {
     title: "Introduction",
@@ -20,6 +21,8 @@ export default async function DocsPage() {
             <div className="space-y-6">
                 <MDXRemote source={content} components={mdxComponents} />
             </div>
+
+            <EditPageLink editPath="content/docs/introduction.mdx" />
         </div>
     )
 }

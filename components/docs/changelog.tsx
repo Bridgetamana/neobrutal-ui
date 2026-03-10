@@ -1,11 +1,11 @@
-import fs from "fs"
+import fs from "fs/promises"
 import path from "path"
 import { Badge } from "@/components/ui/badge"
 
-function getChangelog() {
+async function getChangelog() {
     try {
         const changelogPath = path.join(process.cwd(), "CHANGELOG.md")
-        return fs.readFileSync(changelogPath, "utf-8")
+        return await fs.readFile(changelogPath, "utf-8")
     } catch {
         return ""
     }
@@ -68,8 +68,8 @@ function parseChangelog(content: string) {
     return sections
 }
 
-export function Changelog() {
-    const content = getChangelog()
+export async function Changelog() {
+    const content = await getChangelog()
     const sections = parseChangelog(content)
 
     return (
