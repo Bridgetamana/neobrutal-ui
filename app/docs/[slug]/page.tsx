@@ -25,16 +25,16 @@ export async function generateStaticParams() {
 }
 
 export default async function DocsPage({ params }: { params: Promise<{ slug: string }> }) {
-    const p = await params
+    const { slug } = await params
 
     let content: string
     let frontmatter: Record<string, string>
     try {
-        const result = await getMdxBySlug(p.slug, 'docs')
+        const result = await getMdxBySlug(slug, 'docs')
         content = result.content
         frontmatter = result.frontmatter as Record<string, string>
     } catch {
-        return notFound()
+        notFound()
     }
 
     return (
