@@ -18,6 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
     const slugs = await getAllMdxSlugs()
     return slugs.map(({ slug }) => ({ slug }))

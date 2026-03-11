@@ -56,7 +56,13 @@ code="import { Badge } from '@/components/ui/badge'
 
 ### Multiple Badges
 
-<ComponentPreview code="<div className='flex flex-wrap gap-2'>\n  <Badge>New</Badge>\n  <Badge variant='neutral'>Popular</Badge>\n  <Badge variant='destructive'>Error</Badge>\n  <Badge variant='success'>Success</Badge>\n  <Badge variant='warning'>Warning</Badge>\n</div>">
+<ComponentPreview code="<div className='flex flex-wrap gap-2'>
+\n  <Badge>New</Badge>
+\n  <Badge variant='neutral'>Popular</Badge>
+\n  <Badge variant='destructive'>Error</Badge>
+\n  <Badge variant='success'>Success</Badge>
+\n  <Badge variant='warning'>Warning</Badge>
+\n</div>">
   <div className="flex flex-wrap gap-2">
       <Badge>New</Badge>
       <Badge variant="neutral">Popular</Badge>
@@ -65,3 +71,9 @@ code="import { Badge } from '@/components/ui/badge'
       <Badge variant="warning">Warning</Badge>
   </div>
 </ComponentPreview>
+
+## API Reference
+
+<PropsTable data={[
+  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "The visual style of the badge." }
+]} />

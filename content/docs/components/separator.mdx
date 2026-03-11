@@ -1,0 +1,87 @@
+---
+title: Separator
+description: A visual divider used to separate content into distinct sections.
+---
+
+<ComponentPreview
+code="import { Separator } from '@/components/ui/separator'
+\n
+\nexport function SeparatorDemo() {
+\n  return (
+\n    <div className='w-full max-w-sm'>
+\n      <div className='space-y-1'>
+\n        <h4 className='text-sm font-bold'>Neobrutal UI</h4>
+\n        <p className='text-sm text-black/70'>
+\n          An open-source UI component library.
+\n        </p>
+\n      </div>
+\n      <Separator className='my-4' />
+\n      <div className='flex h-5 items-center gap-4 text-sm'>
+\n        <span>Docs</span>
+\n        <Separator orientation='vertical' />
+\n        <span>Source</span>
+\n        <Separator orientation='vertical' />
+\n        <span>Blog</span>
+\n      </div>
+\n    </div>
+\n  )
+\n}">
+  <div className="w-full max-w-sm">
+    <div className="space-y-1">
+      <h4 className="text-sm font-bold">Neobrutal UI</h4>
+      <p className="text-sm text-black/70">
+        An open-source UI component library.
+      </p>
+    </div>
+    <Separator className="my-4" />
+    <div className="flex h-5 items-center gap-4 text-sm">
+      <span>Docs</span>
+      <Separator orientation="vertical" />
+      <span>Source</span>
+      <Separator orientation="vertical" />
+      <span>Blog</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<CodeBlock code="npx neobrutal add separator" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Separator } from '@/components/ui/separator'" />
+
+<CodeBlock code="<Separator />" />
+
+## Examples
+
+### Horizontal
+
+<ComponentPreview code="<div className='space-y-4 w-full max-w-sm'>\n  <p className='text-sm'>Above the separator</p>\n  <Separator />\n  <p className='text-sm'>Below the separator</p>\n</div>">
+  <div className="space-y-4 w-full max-w-sm">
+    <p className="text-sm">Above the separator</p>
+    <Separator />
+    <p className="text-sm">Below the separator</p>
+  </div>
+</ComponentPreview>
+
+### Vertical
+
+<ComponentPreview code="<div className='flex h-5 items-center gap-4 text-sm'>\n  <span>Item One</span>\n  <Separator orientation='vertical' />\n  <span>Item Two</span>\n  <Separator orientation='vertical' />\n  <span>Item Three</span>\n</div>">
+  <div className="flex h-5 items-center gap-4 text-sm">
+    <span>Item One</span>
+    <Separator orientation="vertical" />
+    <span>Item Two</span>
+    <Separator orientation="vertical" />
+    <span>Item Three</span>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable data={[
+  { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "The orientation of the separator." },
+  { name: "decorative", type: "boolean", defaultValue: "true", description: 'When true, renders role="none" instead of role="separator". Use for purely visual dividers.' },
+  { name: "className", type: "string", defaultValue: "-", description: "Additional CSS classes to apply." }
+]} />

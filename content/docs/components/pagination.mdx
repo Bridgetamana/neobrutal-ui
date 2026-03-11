@@ -37,3 +37,15 @@ code="import { Pagination, PaginationItem } from '@/components/ui/pagination'
 <CodeBlock code="import { Pagination, PaginationItem } from '@/components/ui/pagination'" />
 
 <CodeBlock code="<Pagination>\n  <PaginationItem>Prev</PaginationItem>\n  <PaginationItem>1</PaginationItem>\n  <PaginationItem isActive>2</PaginationItem>\n  <PaginationItem>3</PaginationItem>\n  <PaginationItem>Next</PaginationItem>\n</Pagination>" />
+
+## API Reference
+
+### Pagination
+
+The root navigation container. Renders a `<nav>` with `aria-label="Pagination"`. Supports keyboard navigation with Arrow Left/Right and Home/End keys.
+
+### PaginationItem
+
+<PropsTable data={[
+  { name: "isActive", type: "boolean", defaultValue: "-", description: 'Marks this item as the current page. Adds aria-current="page".' }
+]} />
