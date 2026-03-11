@@ -1,18 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { CodeBlock } from "@/components/docs/code-block"
+import { CopyButton } from "./copy-button"
 import { cn } from "@/lib/utils"
 
-interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ComponentPreviewClientProps extends React.HTMLAttributes<HTMLDivElement> {
     code: string
-    htmlCode?: string
+    highlightedCode: string
     children: React.ReactNode
 }
 
-export function ComponentPreview({ code, htmlCode, children, className, ...props }: ComponentPreviewProps) {
+export function ComponentPreviewClient({
+    code,
+    highlightedCode,
+    children,
+    className,
+    ...props
+}: ComponentPreviewClientProps) {
     const [view, setView] = React.useState<"preview" | "code">("preview")
-    const [codeType, setCodeType] = React.useState<"react" | "html">("react")
 
     return (
         <div className={cn("border-2 shadow-brutal bg-white rounded-base", className)} {...props}>
@@ -43,37 +48,13 @@ export function ComponentPreview({ code, htmlCode, children, className, ...props
                         {children}
                     </div>
                 ) : (
-                    <div>
-                        {htmlCode && (
-                            <div className="flex border-b-2 bg-neutral-100">
-                                <button
-                                    onClick={() => setCodeType("react")}
-                                    className={cn(
-                                        "px-4 py-2 text-xs font-bold uppercase transition-colors",
-                                        codeType === "react"
-                                            ? "bg-black text-white"
-                                            : "bg-transparent text-black hover:bg-black/10"
-                                    )}
-                                >
-                                    React
-                                </button>
-                                <button
-                                    onClick={() => setCodeType("html")}
-                                    className={cn(
-                                        "px-4 py-2 text-xs font-bold uppercase transition-colors",
-                                        codeType === "html"
-                                            ? "bg-black text-white"
-                                            : "bg-transparent text-black hover:bg-black/10"
-                                    )}
-                                >
-                                    HTML
-                                </button>
-                            </div>
-                        )}
-                        <CodeBlock
-                            code={codeType === "html" && htmlCode ? htmlCode : code}
-                            language={codeType === "html" ? "html" : "tsx"}
-                            className="border-0 rounded-none shadow-none m-0"
+                    <div className="relative group bg-black text-white font-mono text-sm border-0 rounded-none shadow-none m-0">
+                        <div className="absolute right-4 top-4 z-10">
+                            <CopyButton code={code} />
+                        </div>
+                        <div
+                            className="overflow-x-auto p-4 [&_pre]:bg-transparent! [&_code]:bg-transparent!"
+                            dangerouslySetInnerHTML={{ __html: highlightedCode }}
                         />
                     </div>
                 )}

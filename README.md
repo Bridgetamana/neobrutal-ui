@@ -8,7 +8,7 @@
 
 A collection of neobrutalism-styled components built with Base UI and Tailwind CSS.
 
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+[![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/oss)
 
 ## Documentation
 

@@ -4,7 +4,14 @@ import * as React from "react"
 import { Switch as BaseSwitch } from "@base-ui/react/switch"
 import { cn } from "@/lib/utils"
 
-type SwitchProps = React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>
+type SwitchRootProps = React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>
+
+type SwitchA11yProps =
+    | { "aria-label": string; "aria-labelledby"?: string; id?: string }
+    | { "aria-labelledby": string; "aria-label"?: string; id?: string }
+    | { id: string; "aria-label"?: string; "aria-labelledby"?: string }
+
+type SwitchProps = Omit<SwitchRootProps, "aria-label" | "aria-labelledby" | "id"> & SwitchA11yProps
 
 const Switch = React.forwardRef<
     React.ComponentRef<typeof BaseSwitch.Root>,

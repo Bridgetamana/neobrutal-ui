@@ -4,18 +4,17 @@ description: An accessible form label component that renders a semantic label el
 ---
 
 <ComponentPreview 
-code={`import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-
-export function LabelDemo() {
-  return (
-    <div className="flex items-center gap-2">
-      <Checkbox id="terms" />
-      <Label htmlFor="terms">Accept terms and conditions</Label>
-    </div>
-  )
-} 
->
+code="import { Checkbox } from '@/components/ui/checkbox'
+\nimport { Label } from '@/components/ui/label'
+\n
+\nexport function LabelDemo() {
+\n  return (
+\n    <div className='flex items-center gap-2'>
+\n      <Checkbox id='terms' />
+\n      <Label htmlFor='terms'>Accept terms and conditions</Label>
+\n    </div>
+\n  )
+\n}">
   <div className="flex items-center gap-2">
       <input type="checkbox" id="termsDemo" className="peer h-5 w-5 shrink-0 rounded-base ring-2 border-white focus-brutal accent-main" />
       <Label htmlFor="termsDemo">Accept terms and conditions</Label>

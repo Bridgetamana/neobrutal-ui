@@ -87,7 +87,7 @@ export function HeroSection() {
                     <Checkbox id="demo" defaultChecked />
                     <Label htmlFor="demo">Subscribe</Label>
                 </div>
-                <Slider defaultValue={[50]} max={100} />
+                <Slider aria-label="Demo value" defaultValue={[50]} max={100} />
                 <Alert className="w-full bg-hot-pink border-2 border-black shadow-brutal">
                     <TriangleAlert className="h-5 w-5" />
                     <AlertTitle className="font-bold">Heads up!</AlertTitle>

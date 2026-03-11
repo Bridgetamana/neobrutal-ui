@@ -4,7 +4,31 @@ description: A vertically stacked set of collapsible sections.
 ---
 
 <ComponentPreview 
-code="import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from '@/components/ui/accordion'\n\nexport function AccordionDemo() {\n  return (\n    <Accordion className='w-full'>\n      <AccordionItem value='item-1'>\n        <AccordionTrigger>Is it styled?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It comes with Neobrutalist styling out of the box.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value='item-2'>\n        <AccordionTrigger>Is it animated?</AccordionTrigger>\n        <AccordionContent>\n          Yes. Animations are enabled by default.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  )\n}">
+code="import {
+\n  Accordion,
+\n  AccordionContent,
+\n  AccordionItem,
+\n  AccordionTrigger,
+\n} from '@/components/ui/accordion'
+\n
+\nexport function AccordionDemo() {
+\n  return (
+\n    <Accordion className='w-full'>
+\n      <AccordionItem value='item-1'>
+\n        <AccordionTrigger>Is it styled?</AccordionTrigger>
+\n        <AccordionContent>
+\n          Yes. It comes with Neobrutalist styling out of the box.
+\n        </AccordionContent>
+\n      </AccordionItem>
+\n      <AccordionItem value='item-2'>
+\n        <AccordionTrigger>Is it animated?</AccordionTrigger>
+\n        <AccordionContent>
+\n          Yes. Animations are enabled by default.
+\n        </AccordionContent>
+\n      </AccordionItem>
+\n    </Accordion>
+\n  )
+\n}">
   <Accordion className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>Is it styled?</AccordionTrigger>
@@ -31,9 +55,21 @@ Or install the dependency and copy the code:
 
 ## Usage
 
-<CodeBlock code="import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from '@/components/ui/accordion'" />
+<CodeBlock code="import {
+\n  Accordion,
+\n  AccordionContent,
+\n  AccordionItem,
+\n  AccordionTrigger,
+\n} from '@/components/ui/accordion'" />
 
-<CodeBlock code="<Accordion>\n  <AccordionItem value='item-1'>\n    <AccordionTrigger>Section Title</AccordionTrigger>\n    <AccordionContent>\n      Section content goes here.\n    </AccordionContent>\n  </AccordionItem>\n</Accordion>" />
+<CodeBlock code="<Accordion>
+\n  <AccordionItem value='item-1'>
+\n    <AccordionTrigger>Section Title</AccordionTrigger>
+\n    <AccordionContent>
+\n      Section content goes here.
+\n    </AccordionContent>
+\n  </AccordionItem>
+\n</Accordion>" />
 
 ## Examples
 
@@ -41,7 +77,16 @@ Or install the dependency and copy the code:
 
 Allow multiple sections to be open at once.
 
-<ComponentPreview code="<Accordion multiple className='w-full'>\n...\n</Accordion>">
+<ComponentPreview code="<Accordion multiple className='w-full'>
+  <AccordionItem value='item-1'>
+    <AccordionTrigger>First Section</AccordionTrigger>
+    <AccordionContent>First content</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value='item-2'>
+    <AccordionTrigger>Second Section</AccordionTrigger>
+    <AccordionContent>Second content</AccordionContent>
+  </AccordionItem>
+</Accordion>">
   <Accordion multiple className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>First Section</AccordionTrigger>
@@ -58,7 +103,12 @@ Allow multiple sections to be open at once.
 
 Set a section to be open by default.
 
-<ComponentPreview code="<Accordion defaultValue={['item-1']}>\n...\n</Accordion>">
+<ComponentPreview code="<Accordion defaultValue={['item-1']}>
+  <AccordionItem value='item-1'>
+    <AccordionTrigger>Open by default</AccordionTrigger>
+    <AccordionContent>This section starts open.</AccordionContent>
+  </AccordionItem>
+</Accordion>">
   <Accordion defaultValue={["item-1"]} className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>Open by default</AccordionTrigger>

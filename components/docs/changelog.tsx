@@ -1,11 +1,11 @@
-import fs from "fs"
+import fs from "fs/promises"
 import path from "path"
 import { Badge } from "@/components/ui/badge"
 
-function getChangelog() {
+async function getChangelog() {
     try {
         const changelogPath = path.join(process.cwd(), "CHANGELOG.md")
-        return fs.readFileSync(changelogPath, "utf-8")
+        return await fs.readFile(changelogPath, "utf-8")
     } catch {
         return ""
     }
@@ -68,8 +68,36 @@ function parseChangelog(content: string) {
     return sections
 }
 
-export function Changelog() {
-    const content = getChangelog()
+function renderInlineTokens(text: string) {
+    return text
+        .split(/(\*\*[^*]+\*\*|`[^`]+`)/g)
+        .filter(Boolean)
+        .map((part, index) => {
+            if (part.startsWith("**") && part.endsWith("**")) {
+                return (
+                    <strong key={index} className="font-bold">
+                        {part.slice(2, -2)}
+                    </strong>
+                )
+            }
+
+            if (part.startsWith("`") && part.endsWith("`")) {
+                return (
+                    <code
+                        key={index}
+                        className="text-xs bg-bg px-1 py-0.5 rounded border border-black"
+                    >
+                        {part.slice(1, -1)}
+                    </code>
+                )
+            }
+
+            return <span key={index}>{part}</span>
+        })
+}
+
+export async function Changelog() {
+    const content = await getChangelog()
     const sections = parseChangelog(content)
 
     return (
@@ -77,7 +105,7 @@ export function Changelog() {
             {sections.length === 0 ? (
                 <div className="border-2 border-black rounded-lg p-8 bg-white text-center">
                     <p className="text-black/60">No changelog entries found.</p>
-                    <p className="text-sm text-black/40 mt-2">
+                    <p className="text-sm text-black/60 mt-2">
                         View the full changelog on{" "}
                         <a
                             href="https://github.com/bridgetamana/neobrutal-ui/blob/main/CHANGELOG.md"
@@ -115,12 +143,9 @@ export function Changelog() {
                                             <li
                                                 key={itemIdx}
                                                 className="text-sm list-disc list-outside ml-2"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: item
-                                                        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-                                                        .replace(/`(.+?)`/g, "<code class='text-xs bg-bg px-1 py-0.5 rounded border border-black'>$1</code>")
-                                                }}
-                                            />
+                                            >
+                                                {renderInlineTokens(item)}
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>

@@ -78,26 +78,12 @@ export function OnThisPage() {
     <aside className="hidden xl:block">
       <nav className="sticky top-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
         <p className="text-sm font-semibold mb-3">On This Page</p>
-        <ul className="text-[13px]">
-          {headings.map((heading, i) => {
+        <ul className="space-y-1 text-[13px]">
+          {headings.map((heading) => {
             const isActive = activeId === heading.id
-            const isLast = i === headings.length - 1
 
             return (
-              <li key={heading.id} className="relative flex items-center min-h-7">
-                {/* Vertical stem — runs full height except for the last item */}
-                {!isLast && (
-                  <span className="absolute left-1.25 top-1/2 bottom-0 w-px bg-black/10" />
-                )}
-
-                {/* L-bend: top-to-middle vertical + short horizontal arm */}
-                <span
-                  className={cn(
-                    "absolute left-1.25 top-0 h-1/2 w-3 border-l border-b rounded-bl-sm transition-colors",
-                    isActive ? "border-black/50" : "border-black/10"
-                  )}
-                />
-
+              <li key={heading.id} className={cn(heading.level === 3 && "ml-3")}>
                 <a
                   href={`#${heading.id}`}
                   onClick={(e) => {
@@ -108,11 +94,11 @@ export function OnThisPage() {
                     setActiveId(heading.id)
                   }}
                   className={cn(
-                    "relative pl-5 py-0.5 transition-colors leading-snug",
-                    heading.level === 3 && "pl-7 text-[12px]",
+                    "block rounded-base px-2 py-1 transition-colors leading-snug focus-brutal",
+                    heading.level === 3 && "text-[12px]",
                     isActive
-                      ? "text-black font-medium"
-                      : "text-black/40 hover:text-black/70"
+                      ? "bg-main text-black font-medium"
+                      : "text-black/70 hover:bg-white hover:text-black"
                   )}
                 >
                   {heading.text}
