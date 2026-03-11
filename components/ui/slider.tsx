@@ -4,7 +4,14 @@ import * as React from "react"
 import { Slider as BaseSlider } from "@base-ui/react/slider"
 import { cn } from "@/lib/utils"
 
-type SliderProps = React.ComponentPropsWithoutRef<typeof BaseSlider.Root>
+type SliderRootProps = React.ComponentPropsWithoutRef<typeof BaseSlider.Root>
+
+type SliderA11yProps =
+    | { "aria-label": string; "aria-labelledby"?: string; id?: string }
+    | { "aria-labelledby": string; "aria-label"?: string; id?: string }
+    | { id: string; "aria-label"?: string; "aria-labelledby"?: string }
+
+type SliderProps = Omit<SliderRootProps, "aria-label" | "aria-labelledby" | "id"> & SliderA11yProps
 
 const Slider = React.forwardRef<
     React.ComponentRef<typeof BaseSlider.Root>,

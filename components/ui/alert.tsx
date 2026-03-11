@@ -114,10 +114,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 Alert.displayName = "Alert"
 
 const AlertTitle = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
+    HTMLHeadingElement,
+    React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
-    <div
+    <h5
         ref={ref}
         className={cn("mb-1 font-medium", className)}
         {...props}
@@ -129,7 +129,7 @@ const AlertDescription = React.forwardRef<
     HTMLParagraphElement,
     React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-    <div
+    <p
         ref={ref}
         className={cn("text-sm", className)}
         {...props}
