@@ -101,7 +101,6 @@ export function SiteHeader() {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="lg:hidden p-2 focus-brutal cursor-pointer"
                         aria-label="Toggle menu"
-                        aria-expanded={isMenuOpen ? "true" : "false"}
                         aria-controls="site-mobile-menu"
                     >
                         {isMenuOpen ? <X aria-hidden="true" size={24} strokeWidth={3} /> : <Menu aria-hidden="true" size={24} strokeWidth={3} />}
