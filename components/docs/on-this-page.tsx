@@ -108,11 +108,11 @@ export function OnThisPage() {
                     setActiveId(heading.id)
                   }}
                   className={cn(
-                    "relative pl-5 py-0.5 transition-colors leading-snug",
+                    "relative pl-5 py-0.5 transition-colors leading-snug focus-brutal",
                     heading.level === 3 && "pl-7 text-[12px]",
                     isActive
                       ? "text-black font-medium"
-                      : "text-black/40 hover:text-black/70"
+                      : "text-black/60 hover:text-black/80"
                   )}
                 >
                   {heading.text}
