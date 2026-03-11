@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react"
 import Link from "next/link"
-import { ComponentPreview } from "@/components/docs/component-preview"
+import { ComponentPreview } from "@/components/docs/component-preview-server"
 import { CodeBlock } from "@/components/docs/code-block"
 import { PropsTable } from "@/components/docs/props-table"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
