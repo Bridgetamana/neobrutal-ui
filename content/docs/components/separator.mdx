@@ -3,35 +3,13 @@ title: Separator
 description: A visual divider used to separate content into distinct sections.
 ---
 
-<ComponentPreview
-code="import { Separator } from '@/components/ui/separator'
-\n
-\nexport function SeparatorDemo() {
-\n  return (
-\n    <div className='w-full max-w-sm'>
-\n      <div className='space-y-1'>
-\n        <h4 className='text-sm font-bold'>Neobrutal UI</h4>
-\n        <p className='text-sm text-black/70'>
-\n          An open-source UI component library.
-\n        </p>
-\n      </div>
-\n      <Separator className='my-4' />
-\n      <div className='flex h-5 items-center gap-4 text-sm'>
-\n        <span>Docs</span>
-\n        <Separator orientation='vertical' />
-\n        <span>Source</span>
-\n        <Separator orientation='vertical' />
-\n        <span>Blog</span>
-\n      </div>
-\n    </div>
-\n  )
-\n}">
+<ComponentPreview codeFile="separator/example-1.txt">
   <div className="w-full max-w-sm">
     <div className="space-y-1">
       <h4 className="text-sm font-bold">Neobrutal UI</h4>
-      <p className="text-sm text-black/70">
+      <div className="text-sm text-black/70">
         An open-source UI component library.
-      </p>
+      </div>
     </div>
     <Separator className="my-4" />
     <div className="flex h-5 items-center gap-4 text-sm">
@@ -58,17 +36,17 @@ code="import { Separator } from '@/components/ui/separator'
 
 ### Horizontal
 
-<ComponentPreview code="<div className='space-y-4 w-full max-w-sm'>\n  <p className='text-sm'>Above the separator</p>\n  <Separator />\n  <p className='text-sm'>Below the separator</p>\n</div>">
+<ComponentPreview codeFile="separator/example-2.txt">
   <div className="space-y-4 w-full max-w-sm">
-    <p className="text-sm">Above the separator</p>
+    <div className="text-sm">Above the separator</div>
     <Separator />
-    <p className="text-sm">Below the separator</p>
+    <div className="text-sm">Below the separator</div>
   </div>
 </ComponentPreview>
 
 ### Vertical
 
-<ComponentPreview code="<div className='flex h-5 items-center gap-4 text-sm'>\n  <span>Item One</span>\n  <Separator orientation='vertical' />\n  <span>Item Two</span>\n  <Separator orientation='vertical' />\n  <span>Item Three</span>\n</div>">
+<ComponentPreview codeFile="separator/example-3.txt">
   <div className="flex h-5 items-center gap-4 text-sm">
     <span>Item One</span>
     <Separator orientation="vertical" />

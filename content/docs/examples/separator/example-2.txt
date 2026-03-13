@@ -1,0 +1,5 @@
+<div className="space-y-4 w-full max-w-sm">
+    <div className="text-sm">Above the separator</div>
+    <Separator />
+    <div className="text-sm">Below the separator</div>
+  </div>

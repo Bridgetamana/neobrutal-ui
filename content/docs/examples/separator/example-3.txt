@@ -1,0 +1,7 @@
+<div className="flex h-5 items-center gap-4 text-sm">
+    <span>Item One</span>
+    <Separator orientation="vertical" />
+    <span>Item Two</span>
+    <Separator orientation="vertical" />
+    <span>Item Three</span>
+  </div>

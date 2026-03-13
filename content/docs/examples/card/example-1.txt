@@ -1,0 +1,13 @@
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Account Settings</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <div className="text-sm text-black/80">
+      Manage your profile and preferences from one place.
+    </div>
+  </CardContent>
+  <CardFooter className="justify-end">
+    <Button variant="neutral" size="sm">Save</Button>
+  </CardFooter>
+</Card>

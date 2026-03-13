@@ -3,18 +3,7 @@ title: Textarea
 description: A multi-line text input field for longer form content.
 ---
 
-<ComponentPreview 
-code="import { Textarea } from '@/components/ui/textarea'
-\nimport { Label } from '@/components/ui/label'
-\n
-\nexport function TextareaDemo() {
-\n  return (
-\n    <div className='grid w-full gap-1.5'>
-\n      <Label htmlFor='message'>Your message</Label>
-\n      <Textarea placeholder='Type your message here.' id='message' />
-\n    </div>
-\n  )
-\n}">
+<ComponentPreview codeFile="textarea/example-1.txt">
   <div className="grid w-full max-w-sm gap-1.5">
       <Label htmlFor="message">Your message</Label>
       <Textarea placeholder="Type your message here." id="message" />
@@ -35,7 +24,7 @@ code="import { Textarea } from '@/components/ui/textarea'
 
 ### Disabled
 
-<ComponentPreview code="<Textarea placeholder='Disabled textarea' disabled />">
+<ComponentPreview codeFile="textarea/example-2.txt">
   <div className="w-full max-w-sm">
     <Textarea placeholder="Disabled textarea" disabled />
   </div>

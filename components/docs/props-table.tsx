@@ -9,11 +9,13 @@ interface PropItem {
 }
 
 interface PropsTableProps {
-    data: PropItem[]
+    data?: PropItem[]
     className?: string
 }
 
 export function PropsTable({ data, className }: PropsTableProps) {
+    const rows = Array.isArray(data) ? data : []
+
     return (
         <div className={cn("my-6 overflow-x-auto border-2 rounded bg-white", className)}>
             <table className="w-full text-left text-sm">
@@ -26,7 +28,7 @@ export function PropsTable({ data, className }: PropsTableProps) {
                     </tr>
                 </thead>
                 <tbody className="divide-y-2 divide-black">
-                    {data.map((prop) => (
+                    {rows.map((prop) => (
                         <tr key={prop.name}>
                             <td className="p-2">
                                 {prop.name}

@@ -3,35 +3,7 @@ title: Dialog
 description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
 ---
 
-<ComponentPreview 
-code="import {
-\n  Dialog,
-\n  DialogContent,
-\n  DialogDescription,
-\n  DialogHeader,
-\n  DialogTitle,
-\n  DialogTrigger,
-\n} from '@/components/ui/dialog'
-\nimport { Button } from '@/components/ui/button'
-\n
-\nexport function DialogDemo() {
-\n  return (
-\n    <Dialog>
-\n      <DialogTrigger render={<Button variant='neutral' />}>
-\n        Open Dialog
-\n      </DialogTrigger>
-\n      <DialogContent>
-\n        <DialogHeader>
-\n          <DialogTitle>Are you absolutely sure?</DialogTitle>
-\n          <DialogDescription>
-\n            This action cannot be undone. This will permanently delete your account
-\n            and remove your data from our servers.
-\n          </DialogDescription>
-\n        </DialogHeader>
-\n      </DialogContent>
-\n    </Dialog>
-\n  )
-\n}">
+<ComponentPreview codeFile="dialog/example-1.txt">
   <div className="flex justify-center w-full">
     <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
   </div>

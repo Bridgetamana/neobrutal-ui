@@ -1,0 +1,4 @@
+<Alert variant="warning" className="max-w-md">
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>This action cannot be undone.</AlertDescription>
+  </Alert>

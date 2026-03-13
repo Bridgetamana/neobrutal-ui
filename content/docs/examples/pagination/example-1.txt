@@ -1,0 +1,9 @@
+<div className="flex w-full justify-center">
+    <Pagination>
+        <PaginationItem>Prev</PaginationItem>
+        <PaginationItem>1</PaginationItem>
+        <PaginationItem isActive>2</PaginationItem>
+        <PaginationItem>3</PaginationItem>
+        <PaginationItem>Next</PaginationItem>
+    </Pagination>
+  </div>

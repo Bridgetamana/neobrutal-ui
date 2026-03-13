@@ -1,0 +1,16 @@
+<div className="w-full max-w-sm">
+    <div className="space-y-1">
+      <h4 className="text-sm font-bold">Neobrutal UI</h4>
+      <div className="text-sm text-black/70">
+        An open-source UI component library.
+      </div>
+    </div>
+    <Separator className="my-4" />
+    <div className="flex h-5 items-center gap-4 text-sm">
+      <span>Docs</span>
+      <Separator orientation="vertical" />
+      <span>Source</span>
+      <Separator orientation="vertical" />
+      <span>Blog</span>
+    </div>
+  </div>
