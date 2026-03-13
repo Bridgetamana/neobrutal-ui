@@ -53,7 +53,7 @@ code="import {
 \n} from '@/components/ui/dialog'" />
 
 <CodeBlock code="<Dialog>
-\n  <DialogTrigger render={<Button variant='neutral' />}>
+\n<DialogTrigger render={<Button variant='neutral' />}>
 \n    Open Dialog
 \n  </DialogTrigger>
 \n  <DialogContent>
@@ -70,19 +70,3 @@ code="import {
 ## API Reference
 
 This component is built on top of [Base UI Dialog](https://base-ui.com/react/components/dialog). All Base UI Dialog props are supported.
-
-### Dialog
-
-The root provider. Accepts `open`, `defaultOpen`, and `onOpenChange` props from Base UI.
-
-### DialogTrigger
-
-The element that opens the dialog. Use the `render` prop to customize the trigger element.
-
-### DialogContent
-
-The modal panel. Includes a built-in close button and overlay.
-
-### DialogHeader, DialogTitle, DialogDescription
-
-Layout helpers for structuring dialog content.
