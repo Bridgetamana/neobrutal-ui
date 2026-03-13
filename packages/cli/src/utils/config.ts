@@ -2,7 +2,18 @@ import path from "path"
 import fs from "fs-extra"
 import { z } from "zod"
 
-export const REGISTRY_URL = "https://www.neobrutalui.live/r"
+const DEFAULT_REGISTRY_URL = "https://www.neobrutalui.live/r"
+
+function resolveRegistryUrl(): string {
+    const envUrl = process.env.NEOBRUTAL_REGISTRY_URL?.trim()
+    if (!envUrl) {
+        return DEFAULT_REGISTRY_URL
+    }
+
+    return envUrl.replace(/\/+$/, "")
+}
+
+export const REGISTRY_URL = resolveRegistryUrl()
 
 export const configSchema = z.object({
     $schema: z.string().optional(),
@@ -26,6 +37,11 @@ export const configSchema = z.object({
 })
 
 export type Config = z.infer<typeof configSchema>
+
+interface PackageJson {
+    dependencies?: Record<string, string>
+    devDependencies?: Record<string, string>
+}
 
 export async function getConfig(cwd: string): Promise<Config | null> {
     const configPath = path.resolve(cwd, "components.json")
@@ -97,7 +113,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo> {
         }
     }
 
-    const deps = { ...packageJson.dependencies, ...packageJson.devDependencies }
+    const deps = {
+        ...(packageJson.dependencies ?? {}),
+        ...(packageJson.devDependencies ?? {}),
+    }
 
     // Check for Next.js and determine if it's App Router or Pages Router
     if (deps.next) {
@@ -156,12 +175,12 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo> {
     }
 }
 
-async function getPackageJson(cwd: string): Promise<Record<string, unknown> | null> {
+async function getPackageJson(cwd: string): Promise<PackageJson | null> {
     const packageJsonPath = path.resolve(cwd, "package.json")
     if (!await fs.pathExists(packageJsonPath)) {
         return null
     }
-    return fs.readJson(packageJsonPath)
+    return fs.readJson(packageJsonPath) as Promise<PackageJson>
 }
 
 /**
@@ -174,8 +193,8 @@ async function detectTailwindCss(cwd: string): Promise<boolean> {
     }
 
     const deps = {
-        ...packageJson.dependencies as Record<string, string>,
-        ...packageJson.devDependencies as Record<string, string>
+        ...(packageJson.dependencies ?? {}),
+        ...(packageJson.devDependencies ?? {}),
     }
 
     return !!deps.tailwindcss

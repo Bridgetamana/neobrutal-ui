@@ -8,6 +8,7 @@ import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
 import { getConfig, type Config } from "../utils/config.js"
 import { getRegistryItem } from "../utils/registry.js"
+import { transformImports } from "../utils/transform.js"
 
 const diffOptionsSchema = z.object({
     component: z.string(),
@@ -84,7 +85,7 @@ async function runDiff(options: z.infer<typeof diffOptionsSchema>): Promise<void
             }
 
             const localContent = await fs.readFile(localPath, "utf-8")
-            const registryContent = file.content
+            const registryContent = transformImports(file.content, config)
 
             if (localContent === registryContent) {
                 logger.break()
@@ -156,25 +157,44 @@ function printUnifiedDiff(
 }
 
 function resolveFilePath(cwd: string, config: Config, filePath: string): string {
+    const normalizedPath = filePath.replace(/\\/g, "/")
+    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
+        throw new Error(`Invalid registry file path: ${filePath}`)
+    }
+
     const aliasPrefix = extractAliasPrefix(config)
 
     if (filePath.startsWith("components/ui/")) {
         const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("components/ui/", stripAliasPrefix(uiAlias, aliasPrefix) + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
     if (filePath.startsWith("lib/")) {
         const libAlias = config.aliases.lib || `${aliasPrefix}lib`
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("lib/", stripAliasPrefix(libAlias, aliasPrefix) + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
-    return path.resolve(cwd, filePath)
+    const targetPath = path.resolve(cwd, filePath)
+    return ensurePathInProjectRoot(cwd, targetPath, filePath)
+}
+
+function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
+    const relative = path.relative(cwd, targetPath)
+    if (relative.startsWith("..") || path.isAbsolute(relative)) {
+        throw new Error(`Refusing to read outside project root for ${sourcePath}`)
+    }
+
+    return targetPath
 }
 
 function extractAliasPrefix(config: Config): string {

@@ -1,0 +1,52 @@
+name: Release CLI
+
+on:
+  push:
+    tags:
+      - cli-v*
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Validate tag version
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#cli-v}"
+          PACKAGE_VERSION="$(node -p \"require('./packages/cli/package.json').version\")"
+
+          if [ "$TAG_VERSION" != "$PACKAGE_VERSION" ]; then
+            echo "Tag version ($TAG_VERSION) does not match packages/cli/package.json ($PACKAGE_VERSION)."
+            exit 1
+          fi
+
+      - name: Install CLI dependencies
+        run: npm --prefix packages/cli install
+
+      - name: Build CLI
+        run: npm --prefix packages/cli run build
+
+      - name: Publish CLI package
+        run: npm publish --provenance --access public
+        working-directory: packages/cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true

@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "registry:build": "npx tsx scripts/build-registry.ts"
+    "registry:build": "npx tsx scripts/build-registry.ts",
+    "ci:cli": "npm --prefix packages/cli install && npm --prefix packages/cli run typecheck && npm --prefix packages/cli run build",
+    "ci:registry": "npm run registry:build && git diff --exit-code -- lib/search-data.ts public/r",
+    "ci:check": "npm run lint && npm run ci:cli && npm run ci:registry"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0-alpha.12",
