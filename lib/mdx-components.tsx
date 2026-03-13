@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef } from "react"
 import Link from "next/link"
 import { ComponentPreview } from "@/components/docs/component-preview-server"
 import { CodeBlock } from "@/components/docs/code-block"
+import { InstallTabs } from "@/components/docs/install-tabs"
 import { PropsTable } from "@/components/docs/props-table"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
@@ -53,6 +54,7 @@ export const mdxComponents = {
     Link,
     ComponentPreview,
     CodeBlock,
+    InstallTabs,
     PropsTable,
     Changelog,
     Accordion, AccordionItem, AccordionTrigger, AccordionContent,
