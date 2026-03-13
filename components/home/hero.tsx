@@ -43,11 +43,11 @@ export function HeroSection() {
                 <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 text-black">
                     A collection of Neobrutalism components built with Base UI and Tailwind CSS.
                 </p>
-                <Link href="/docs/installation">
-                    <Button className="h-12 px-8 text-lg font-bold shadow-brutal">
+                <Button asChild className="h-12 px-8 text-lg font-bold shadow-brutal">
+                    <Link href="/docs/installation">
                         Get Started <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
             <Marquee>
                 <Card className="w-44 shrink-0 bg-mint">

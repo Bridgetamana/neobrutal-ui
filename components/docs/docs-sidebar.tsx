@@ -126,6 +126,7 @@ export function MobileHeader() {
         if (!sidebar) return
 
         const previouslyFocused = document.activeElement as HTMLElement | null
+        const toggleButton = toggleButtonRef.current
         const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
         const getFocusable = () =>
@@ -181,7 +182,7 @@ export function MobileHeader() {
                 return
             }
 
-            toggleButtonRef.current?.focus()
+            toggleButton?.focus()
         }
     }, [isSidebarOpen])
 

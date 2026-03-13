@@ -65,7 +65,7 @@ export function CommandSearch() {
                             <Command.Input
                                 autoFocus
                                 placeholder="Search components, docs..."
-                                className="flex-1 py-3 outline-none"
+                                className="flex-1 py-3 focus-brutal"
                                 onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
                             />
                         </div>
@@ -84,7 +84,7 @@ export function CommandSearch() {
                                     .map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name}} ${item.keywords.join(" ")}`}
+                                            value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
                                             className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
@@ -99,7 +99,7 @@ export function CommandSearch() {
                                     .map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name}} ${item.keywords.join(" ")}`}
+                                            value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
                                             className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
