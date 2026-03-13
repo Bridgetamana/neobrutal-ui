@@ -3,18 +3,7 @@ title: Input
 description: A text input field with bold borders and accessible focus states.
 ---
 
-<ComponentPreview 
-code="import { Input } from '@/components/ui/input'
-\nimport { Label } from '@/components/ui/label'
-\n
-\nexport function InputDemo() {
-\n  return (
-\n    <div className='grid w-full max-w-sm items-center gap-1.5'>
-\n      <Label htmlFor='email'>Email</Label>
-\n      <Input type='email' id='email' placeholder='Email' />
-\n    </div>
-\n  )
-\n}">
+<ComponentPreview codeFile="input/example-1.txt">
   <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="email">Email</Label>
       <Input type="email" id="email" placeholder="Email" />
@@ -35,7 +24,7 @@ code="import { Input } from '@/components/ui/input'
 
 ### With Icon
 
-<ComponentPreview code="<div className='relative w-full max-w-sm'>\n  <MagnifyingGlassIcon className='absolute left-3 top-3 h-4 w-4 text-black opacity-50' />\n  <Input type='text' placeholder='Search...' className='pl-10' />\n</div>">
+<ComponentPreview codeFile="input/example-2.txt">
   <div className="relative w-full max-w-sm">
       <svg className="absolute left-3 top-2.5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
       <Input type="text" placeholder="Search..." className="pl-10" />
@@ -44,7 +33,7 @@ code="import { Input } from '@/components/ui/input'
 
 ### File Upload
 
-<ComponentPreview code="<div className='grid w-full max-w-sm'>\n  <Label htmlFor='file'>Upload Document</Label>\n  <div className='relative border-2 border-dashed border-black rounded-md p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer'>\n    <UploadSimpleIcon className='h-8 w-8 text-black mx-auto mb-2' />\n    <Label htmlFor='file' className='block text-sm font-bold cursor-pointer'>\n      Click to upload\n    </Label>\n    <p className='text-xs text-gray-600 mt-1'>PDF, DOC or DOCX</p>\n    <Input id='file' type='file' accept='.pdf,.doc,.docx' className='hidden' />\n  </div>\n</div>">
+<ComponentPreview codeFile="input/example-3.txt">
   <div className="grid w-full max-w-sm">
       <Label htmlFor="file">Upload Document</Label>
       <label htmlFor="file" className="relative border-2 border-dashed border-black rounded-base p-6 text-center hover:bg-white transition-colors cursor-pointer block">
@@ -55,3 +44,7 @@ code="import { Input } from '@/components/ui/input'
       <Input id="file" type="file" accept=".pdf,.doc,.docx" className="hidden" />
   </div>
 </ComponentPreview>
+
+## API Reference
+
+Extends the native `<input>` element. All standard HTML input attributes (`type`, `placeholder`, `disabled`, `value`, `onChange`, etc.) are supported.

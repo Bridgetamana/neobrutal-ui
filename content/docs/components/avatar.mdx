@@ -3,8 +3,7 @@ title: Avatar
 description: An image element with a fallback for representing the user.
 ---
 
-<ComponentPreview 
-code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'\n\nexport function AvatarDemo() {\n  return (\n    <Avatar>\n      <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  )\n}">
+<ComponentPreview codeFile="avatar/example-1.txt">
   <Avatar>
       <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
       <AvatarFallback>CN</AvatarFallback>
@@ -25,7 +24,7 @@ code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avata
 
 ### With Image
 
-<ComponentPreview code="<Avatar>\n  <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>">
+<ComponentPreview codeFile="avatar/example-2.txt">
   <Avatar>
       <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
       <AvatarFallback>CN</AvatarFallback>
@@ -36,7 +35,7 @@ code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avata
 
 Displays initials when no image is available.
 
-<ComponentPreview code="<Avatar>\n  <AvatarFallback>JD</AvatarFallback>\n</Avatar>">
+<ComponentPreview codeFile="avatar/example-3.txt">
   <Avatar>
       <AvatarFallback>JD</AvatarFallback>
   </Avatar>
@@ -46,7 +45,7 @@ Displays initials when no image is available.
 
 Display multiple avatars with an overflow indicator.
 
-<ComponentPreview code="<AvatarGroup max={3}>\n  <Avatar><AvatarFallback>A</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>B</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>C</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>D</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>E</AvatarFallback></Avatar>\n</AvatarGroup>">
+<ComponentPreview codeFile="avatar/example-4.txt">
   <AvatarGroup max={3}>
       <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
       <Avatar><AvatarFallback>B</AvatarFallback></Avatar>
@@ -55,3 +54,13 @@ Display multiple avatars with an overflow indicator.
       <Avatar><AvatarFallback>E</AvatarFallback></Avatar>
   </AvatarGroup>
 </ComponentPreview>
+
+## API Reference
+
+`Avatar`, `AvatarImage`, and `AvatarFallback` are thin wrappers around their native HTML counterparts and accept all standard HTML attributes.
+
+### AvatarGroup
+
+<PropsTable data={[
+  { name: "max", type: "number", defaultValue: "3", description: "Maximum number of avatars to display before showing an overflow count." },
+]} />

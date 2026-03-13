@@ -1,0 +1,4 @@
+<div className="flex items-center gap-2">
+      <input type="checkbox" id="termsDemo" aria-label="Accept terms and conditions" className="peer h-5 w-5 shrink-0 rounded-base ring-2 border-white focus-brutal accent-main" />
+      <Label htmlFor="termsDemo">Accept terms and conditions</Label>
+  </div>

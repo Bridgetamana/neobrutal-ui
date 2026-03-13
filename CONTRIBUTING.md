@@ -109,9 +109,9 @@ Feature requests are welcome. Please:
 
 3. Follow the existing component patterns for structure and styling.
 
-4. Create a documentation page at `app/docs/components/component-name/page.tsx`.
+4. Create a documentation page at `content/docs/components/component-name.mdx`.
 
-5. Add the component to the sidebar in `app/docs/layout.tsx`.
+5. Add the component to the sidebar in `components/docs/docs-sidebar.tsx`.
 
 6. Add the component to the registry in `public/r/`.
 

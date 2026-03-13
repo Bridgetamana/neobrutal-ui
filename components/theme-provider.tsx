@@ -44,12 +44,28 @@ function applyTheme(theme: ColorTheme) {
     document.documentElement.style.setProperty("--bg", theme.bg)
 }
 
+function getStoredTheme(): ColorTheme {
+    if (typeof window === "undefined") return colorThemes[0]
+    try {
+        const stored = localStorage.getItem("neobrutal-theme")
+        if (stored) {
+            const parsed = JSON.parse(stored) as ColorTheme
+            const match = colorThemes.find(t => t.name === parsed.name)
+            if (match) return match
+        }
+    } catch { /* ignore */ }
+    return colorThemes[0]
+}
+
 function ThemeProvider({ children }: ThemeProviderProps) {
-    const [currentTheme, setCurrentTheme] = React.useState<ColorTheme>(colorThemes[0])
+    const [currentTheme, setCurrentTheme] = React.useState<ColorTheme>(getStoredTheme)
 
     function setTheme(theme: ColorTheme) {
         setCurrentTheme(theme)
         applyTheme(theme)
+        try {
+            localStorage.setItem("neobrutal-theme", JSON.stringify(theme))
+        } catch { /* ignore */ }
     }
 
     React.useEffect(() => {

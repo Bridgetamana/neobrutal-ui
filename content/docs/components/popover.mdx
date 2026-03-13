@@ -3,8 +3,7 @@ title: Popover
 description: Displays rich content in a portal, triggered by a button. Includes an arrow pointing to the trigger.
 ---
 
-<ComponentPreview 
-code="import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'\nimport { Button } from '@/components/ui/button'\n\nexport function PopoverDemo() {\n  return (\n    <Popover>\n      <PopoverTrigger render={<Button variant='noShadow' />}>\n        Open Popover\n      </PopoverTrigger>\n      <PopoverContent>\n        <div className='grid gap-4'>\n          <div className='space-y-2'>\n            <h4 className='font-semibold leading-none'>Dimensions</h4>\n            <p className='text-sm text-black'>\n              Set the dimensions for the layer.\n            </p>\n          </div>\n        </div>\n      </PopoverContent>\n    </Popover>\n  )\n}">
+<ComponentPreview codeFile="popover/example-1.txt">
   <div className="flex w-full justify-center">
     <Popover>
         <PopoverTrigger render={<Button variant="noShadow" />}>
@@ -33,3 +32,8 @@ code="import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/p
 <CodeBlock code="import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'" />
 
 <CodeBlock code="<Popover>\n  <PopoverTrigger render={<Button variant='noShadow' />}>\n    Open Popover\n  </PopoverTrigger>\n  <PopoverContent>\n    <div className='grid gap-4'>\n      <div className='space-y-2'>\n        <h4 className='font-bold leading-none'>Dimensions</h4>\n        <p className='text-sm text-black'>\n          Set the dimensions for the layer.\n        </p>\n      </div>\n    </div>\n  </PopoverContent>\n</Popover>" />
+
+
+## API Reference
+
+This component is built on top of [Base UI Popover](https://base-ui.com/react/components/popover). Refer to the Base UI documentation for the full list of available props.

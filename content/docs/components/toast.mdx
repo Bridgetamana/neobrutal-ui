@@ -3,8 +3,7 @@ title: Toast
 description: A succinct message that is displayed temporarily. Supports multiple types, action buttons, promise-based flows, and configurable positioning.
 ---
 
-<ComponentPreview 
-code="import { Button } from '@/components/ui/button'\nimport { toast } from '@/components/ui/toast'\nimport { Toaster } from '@/components/ui/toast'\n\nexport function ToastDemo() {\n  return (\n    <div className='flex flex-col items-center gap-4'>\n      <Button\n        variant='neutral'\n        onClick={() =>\n          toast.info('Event has been created', {\n            title: 'Success',\n          })\n        }\n      >\n        Show Toast\n      </Button>\n      {/* Ensure <Toaster /> is rendered at the root of your app */}\n      <Toaster position='bottom-right' />\n    </div>\n  )\n}">
+<ComponentPreview codeFile="toast/example-1.txt">
   <div className="flex w-full justify-center">
     <ToastDemo />
   </div>
@@ -26,7 +25,7 @@ code="import { Button } from '@/components/ui/button'\nimport { toast } from '@
 
 Four built-in types, each with its own color.
 
-<ComponentPreview code="toast.success('Operation completed')\ntoast.error('Something went wrong')\ntoast.warning('Disk space is running low')\ntoast.info('A new version is available')">
+<ComponentPreview codeFile="toast/example-2.txt">
   <div className="flex w-full justify-center">
     <ToastTypesDemo />
   </div>
@@ -36,7 +35,7 @@ Four built-in types, each with its own color.
 
 Pass <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-black rounded-base font-bold shadow-brutal">actionProps</code> to render a neobrutalist action button inside the toast.
 
-<ComponentPreview code="toast.success('File deleted', {\n  title: 'Deleted',\n  actionProps: {\n    children: 'Undo',\n    onClick: () => toast.info('File restored'),\n  },\n})">
+<ComponentPreview codeFile="toast/example-3.txt">
   <div className="flex w-full justify-center">
     <ToastActionDemo />
   </div>
@@ -46,7 +45,7 @@ Pass <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-bla
 
 Show a loading state that automatically transitions to success or error when the promise settles.
 
-<ComponentPreview code="toast.promise(saveDocument(), {\n  loading: 'Saving document...',\n  success: (data) => ({\n    title: 'Saved',\n    description: \`\${data.name} saved successfully\`,\n  }),\n  error: (err) =>\n    err instanceof Error\n      ? err.message\n      : 'Something went wrong',\n})">
+<ComponentPreview codeFile="toast/example-4.txt">
   <div className="flex w-full justify-center">
     <ToastPromiseDemo />
   </div>
@@ -57,3 +56,8 @@ Show a loading state that automatically transitions to success or error when the
 Set the toast position by passing a <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-black rounded-base font-bold shadow-brutal">position</code> prop to the Toaster component in your root layout.
 
 <CodeBlock code="import { Toaster } from '@/components/ui/toast'\n\n// In your root layout\n<Toaster position='top-right' />" />
+
+
+## API Reference
+
+This component is built on top of [Base UI Toast](https://base-ui.com/react/components/toast). Refer to the Base UI documentation for the full list of available props.

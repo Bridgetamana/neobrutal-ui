@@ -1,0 +1,3 @@
+<div className="flex justify-center w-full">
+    <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
+  </div>

@@ -1,0 +1,4 @@
+<Alert variant="destructive" className="max-w-md">
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+  </Alert>

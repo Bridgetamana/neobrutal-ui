@@ -3,12 +3,7 @@ title: Badge
 description: Displays a small label for status or categorization.
 ---
 
-<ComponentPreview 
-code="import { Badge } from '@/components/ui/badge'
-\n
-\nexport function BadgeDemo() {
-\n  return <Badge>Badge</Badge>
-\n}">
+<ComponentPreview codeFile="badge/example-1.txt">
   <Badge>Badge</Badge>
 </ComponentPreview>
 
@@ -26,37 +21,37 @@ code="import { Badge } from '@/components/ui/badge'
 
 ### Default
 
-<ComponentPreview code="<Badge>Default</Badge>">
+<ComponentPreview codeFile="badge/example-2.txt">
   <Badge>Default</Badge>
 </ComponentPreview>
 
 ### Neutral
 
-<ComponentPreview code="<Badge variant='neutral'>Neutral</Badge>">
+<ComponentPreview codeFile="badge/example-3.txt">
   <Badge variant="neutral">Neutral</Badge>
 </ComponentPreview>
 
 ### Destructive
 
-<ComponentPreview code="<Badge variant='destructive'>Destructive</Badge>">
+<ComponentPreview codeFile="badge/example-4.txt">
   <Badge variant="destructive">Destructive</Badge>
 </ComponentPreview>
 
 ### Success
 
-<ComponentPreview code="<Badge variant='success'>Success</Badge>">
+<ComponentPreview codeFile="badge/example-5.txt">
   <Badge variant="success">Success</Badge>
 </ComponentPreview>
 
 ### Warning
 
-<ComponentPreview code="<Badge variant='warning'>Warning</Badge>">
+<ComponentPreview codeFile="badge/example-6.txt">
   <Badge variant="warning">Warning</Badge>
 </ComponentPreview>
 
 ### Multiple Badges
 
-<ComponentPreview code="<div className='flex flex-wrap gap-2'>\n  <Badge>New</Badge>\n  <Badge variant='neutral'>Popular</Badge>\n  <Badge variant='destructive'>Error</Badge>\n  <Badge variant='success'>Success</Badge>\n  <Badge variant='warning'>Warning</Badge>\n</div>">
+<ComponentPreview codeFile="badge/example-7.txt">
   <div className="flex flex-wrap gap-2">
       <Badge>New</Badge>
       <Badge variant="neutral">Popular</Badge>
@@ -65,3 +60,9 @@ code="import { Badge } from '@/components/ui/badge'
       <Badge variant="warning">Warning</Badge>
   </div>
 </ComponentPreview>
+
+## API Reference
+
+<PropsTable data={[
+  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "The visual style of the badge." }
+]} />

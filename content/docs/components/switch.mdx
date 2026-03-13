@@ -3,8 +3,7 @@ title: Switch
 description: A control that allows the user to toggle between checked and not checked.
 ---
 
-<ComponentPreview 
-code="import { Switch } from '@/components/ui/switch'\nimport { Label } from '@/components/ui/label'\n\nexport function SwitchDemo() {\n  return (\n    <div className='flex items-center gap-2'>\n      <Switch id='airplane-mode' />\n      <Label htmlFor='airplane-mode'>Airplane Mode</Label>\n    </div>\n  )\n}">
+<ComponentPreview codeFile="switch/example-1.txt">
   <div className="flex items-center gap-2">
       <Switch id="airplane-mode" />
       <Label htmlFor="airplane-mode">Airplane Mode</Label>
@@ -25,9 +24,14 @@ code="import { Switch } from '@/components/ui/switch'\nimport { Label } from '@
 
 ### Disabled
 
-<ComponentPreview code="<div className='flex items-center gap-2'>\n  <Switch id='disabled' disabled />\n  <Label htmlFor='disabled'>Disabled</Label>\n</div>">
+<ComponentPreview codeFile="switch/example-2.txt">
   <div className="flex items-center gap-2">
       <Switch id="disabled" disabled />
       <Label htmlFor="disabled">Disabled</Label>
   </div>
 </ComponentPreview>
+
+
+## API Reference
+
+This component is built on top of [Base UI Switch](https://base-ui.com/react/components/switch). Refer to the Base UI documentation for the full list of available props.

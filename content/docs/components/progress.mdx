@@ -3,8 +3,7 @@ title: Progress
 description: Displays an indicator showing the completion progress of a task, with a floating badge that shows the current percentage.
 ---
 
-<ComponentPreview 
-code="import { Progress } from '@/components/ui/progress'\n\nexport function ProgressDemo() {\n  return <Progress value={33} showValue={true} className='w-[60%]' />\n}">
+<ComponentPreview codeFile="progress/example-1.txt">
   <div className="flex w-full justify-center">
     <Progress value={33} showValue={true} className="w-[60%]" />
   </div>
@@ -24,8 +23,13 @@ code="import { Progress } from '@/components/ui/progress'\n\nexport function Pro
 
 ### Without Value Badge
 
-<ComponentPreview code="<Progress value={50} showValue={false} />">
+<ComponentPreview codeFile="progress/example-2.txt">
   <div className="flex w-full justify-center">
     <Progress value={50} showValue={false} className="w-[60%]" />
   </div>
 </ComponentPreview>
+
+
+## API Reference
+
+This component is built on top of [Base UI Progress](https://base-ui.com/react/components/progress). Refer to the Base UI documentation for the full list of available props.
