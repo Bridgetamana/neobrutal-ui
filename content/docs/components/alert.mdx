@@ -4,7 +4,18 @@ description: Displays a message to attract user attention.
 ---
 
 <ComponentPreview 
-code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'\n\nexport function AlertDemo() {\n  return (\n    <Alert>\n      <AlertTitle>Heads up!</AlertTitle>\n      <AlertDescription>\n        You can add components to your app using the CLI.\n      </AlertDescription>\n    </Alert>\n  )\n}">
+code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+\n
+\nexport function AlertDemo() {
+\n  return (
+\n    <Alert>
+\n      <AlertTitle>Heads up!</AlertTitle>
+\n      <AlertDescription>
+\n        You can add components to your app using the CLI.
+\n      </AlertDescription>
+\n    </Alert>
+\n  )
+\n}">
   <Alert className="max-w-md">
     <AlertTitle>Heads up!</AlertTitle>
     <AlertDescription>
@@ -21,13 +32,19 @@ code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert
 
 <CodeBlock code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'" />
 
-<CodeBlock code="<Alert>\n  <AlertTitle>Title</AlertTitle>\n  <AlertDescription>Description</AlertDescription>\n</Alert>" />
+<CodeBlock code="<Alert>
+\n  <AlertTitle>Title</AlertTitle>
+\n  <AlertDescription>Description</AlertDescription>
+\n</Alert>" />
 
 ## Examples
 
 ### Default
 
-<ComponentPreview code="<Alert>\n  <AlertTitle>Info</AlertTitle>\n  <AlertDescription>This is an informational message.</AlertDescription>\n</Alert>">
+<ComponentPreview code="<Alert>
+\n  <AlertTitle>Info</AlertTitle>
+\n  <AlertDescription>This is an informational message.</AlertDescription>
+\n</Alert>">
   <Alert className="max-w-md">
       <AlertTitle>Info</AlertTitle>
       <AlertDescription>This is an informational message.</AlertDescription>
@@ -36,7 +53,10 @@ code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert
 
 ### Destructive
 
-<ComponentPreview code="<Alert variant='destructive'>\n  <AlertTitle>Error</AlertTitle>\n  <AlertDescription>Something went wrong. Please try again.</AlertDescription>\n</Alert>">
+<ComponentPreview code="<Alert variant='destructive'>
+\n  <AlertTitle>Error</AlertTitle>
+\n  <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+\n</Alert>">
   <Alert variant="destructive" className="max-w-md">
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>Something went wrong. Please try again.</AlertDescription>
@@ -45,7 +65,10 @@ code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert
 
 ### Success
 
-<ComponentPreview code="<Alert variant='success'>\n  <AlertTitle>Success</AlertTitle>\n  <AlertDescription>Your changes have been saved.</AlertDescription>\n</Alert>">
+<ComponentPreview code="<Alert variant='success'>
+\n  <AlertTitle>Success</AlertTitle>
+\n  <AlertDescription>Your changes have been saved.</AlertDescription>
+\n</Alert>">
   <Alert variant="success" className="max-w-md">
       <AlertTitle>Success</AlertTitle>
       <AlertDescription>Your changes have been saved.</AlertDescription>
@@ -54,7 +77,10 @@ code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert
 
 ### Warning
 
-<ComponentPreview code="<Alert variant='warning'>\n  <AlertTitle>Warning</AlertTitle>\n  <AlertDescription>This action cannot be undone.</AlertDescription>\n</Alert>">
+<ComponentPreview code="<Alert variant='warning'>
+\n  <AlertTitle>Warning</AlertTitle>
+\n  <AlertDescription>This action cannot be undone.</AlertDescription>
+\n</Alert>">
   <Alert variant="warning" className="max-w-md">
       <AlertTitle>Warning</AlertTitle>
       <AlertDescription>This action cannot be undone.</AlertDescription>
@@ -63,9 +89,23 @@ code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert
 
 ### Without Icon
 
-<ComponentPreview code="<Alert icon={null}>\n  <AlertTitle>Note</AlertTitle>\n  <AlertDescription>A simple alert without an icon.</AlertDescription>\n</Alert>">
+<ComponentPreview code="<Alert icon={null}>
+\n  <AlertTitle>Note</AlertTitle>
+\n  <AlertDescription>A simple alert without an icon.</AlertDescription>
+\n</Alert>">
   <Alert className="max-w-md" icon={null}>
       <AlertTitle>Note</AlertTitle>
       <AlertDescription>A simple alert without an icon.</AlertDescription>
   </Alert>
 </ComponentPreview>
+
+## API Reference
+
+### Alert
+
+<PropsTable data={[
+  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "Controls the color scheme and default icon of the alert." },
+  { name: "icon", type: "React.ReactNode", defaultValue: "-", description: "Custom icon to display. Pass null to hide the icon entirely." },
+]} />
+
+`AlertTitle` and `AlertDescription` extend the native `<h5>` and `<div>` elements respectively and accept all standard HTML attributes.

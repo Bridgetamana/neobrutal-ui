@@ -4,7 +4,16 @@ description: An image element with a fallback for representing the user.
 ---
 
 <ComponentPreview 
-code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'\n\nexport function AvatarDemo() {\n  return (\n    <Avatar>\n      <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n      <AvatarFallback>CN</AvatarFallback>\n    </Avatar>\n  )\n}">
+code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+\n
+\nexport function AvatarDemo() {
+\n  return (
+\n    <Avatar>
+\n      <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />
+\n      <AvatarFallback>CN</AvatarFallback>
+\n    </Avatar>
+\n  )
+\n}">
   <Avatar>
       <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
       <AvatarFallback>CN</AvatarFallback>
@@ -55,3 +64,13 @@ Display multiple avatars with an overflow indicator.
       <Avatar><AvatarFallback>E</AvatarFallback></Avatar>
   </AvatarGroup>
 </ComponentPreview>
+
+## API Reference
+
+`Avatar`, `AvatarImage`, and `AvatarFallback` are thin wrappers around their native HTML counterparts and accept all standard HTML attributes.
+
+### AvatarGroup
+
+<PropsTable data={[
+  { name: "max", type: "number", defaultValue: "3", description: "Maximum number of avatars to display before showing an overflow count." },
+]} />
