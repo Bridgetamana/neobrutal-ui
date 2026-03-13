@@ -19,9 +19,9 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const Marquee = ({ className, children }: { className?: string, children: React.ReactNode }) => {
+const Marquee = ({ className, children, ...props }: { className?: string, children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <div className={cn("flex overflow-hidden select-none", className)}>
+        <div className={cn("flex overflow-hidden select-none", className)} {...props}>
             <div className={cn("flex min-w-full shrink-0 gap-3 items-center animate-marquee pr-3")}>
                 {children}
             </div>
@@ -49,7 +49,7 @@ export function HeroSection() {
                     </Link>
                 </Button>
             </div>
-            <Marquee>
+            <Marquee aria-hidden="true" inert>
                 <Card className="w-44 shrink-0 bg-mint">
                     <CardHeader className="pb-2">
                         <div className="flex justify-between items-center">
@@ -72,7 +72,7 @@ export function HeroSection() {
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-62.5">
                     <Avatar className="w-12 h-12 border-2 border-black">
-                        <AvatarImage src="https://github.com/bridgetamana.png" />
+                        <AvatarImage src="https://github.com/bridgetamana.png?size=96" />
                         <AvatarFallback>BA</AvatarFallback>
                     </Avatar>
                     <div>

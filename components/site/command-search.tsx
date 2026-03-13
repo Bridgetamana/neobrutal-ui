@@ -31,7 +31,7 @@ export function CommandSearch() {
 
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
-            <Dialog.Trigger id="command-search-trigger">
+            <Dialog.Trigger id="command-search-trigger" aria-label="Search documentation">
                 <div className="relative block cursor-default">
                     <Search
                         size={20}
