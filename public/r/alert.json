@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "description": "Displays a callout for user attention with neobrutalist styling.",
   "dependencies": [
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"

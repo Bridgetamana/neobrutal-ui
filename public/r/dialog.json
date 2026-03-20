@@ -5,7 +5,7 @@
   "description": "A window overlaid on the primary window with neobrutalist styling.",
   "dependencies": [
     "@base-ui/react",
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"

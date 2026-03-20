@@ -5,7 +5,7 @@
   "description": "A vertically stacked set of interactive headings that reveal content sections.",
   "dependencies": [
     "@base-ui/react",
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"
