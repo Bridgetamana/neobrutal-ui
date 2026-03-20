@@ -1,0 +1,28 @@
+---
+title: Accessibility
+description: Learn about how Neobrutal UI is built with accessibility in mind.
+order: 4
+---
+
+Components use semantic HTML and are built on [Base UI](https://base-ui.com) for keyboard navigation, focus management, and screen reader support.
+
+## Focus Indicators
+
+All interactive components have visible focus states that meet contrast requirements. Modal dialogs trap focus to prevent tabbing outside the dialog.
+
+## Motion
+
+Animations respect `prefers-reduced-motion`. Users who prefer reduced motion will see minimal or no animations.
+
+<div className="border-2 border-black bg-white">
+  <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">
+    <Link href="/docs/theming" className="block p-3 hover:bg-main">
+      <span className="text-lg font-semibold">Theming</span>
+      <p className="truncate">Customize the look and feel of Neobrutal UI components</p>
+    </Link>
+    <Link href="/docs/changelog" className="block p-3 hover:bg-main text-right">
+      <span className="text-lg font-semibold">Changelog</span>
+      <p className="truncate">See what&apos;s new in each release</p>
+    </Link>
+  </div>
+</div>

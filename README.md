@@ -1,3 +1,4 @@
+UNDER SERIOUS RECONSTRUCTION
 # Neobrutal UI
 
 ![Neobrutalism UI Components Preview](public/neobrutal-preview.png)
@@ -8,7 +9,7 @@
 
 A collection of neobrutalism-styled components built with Base UI and Tailwind CSS.
 
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+[![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/oss)
 
 ## Documentation
 
@@ -60,4 +61,4 @@ This project is licensed under the terms of the [MIT License](license.md).
 
 ## Credits
 
-Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Phosphor Icons](https://phosphoricons.com).
+Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Lucide](https://lucide.dev).

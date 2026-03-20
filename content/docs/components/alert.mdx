@@ -1,0 +1,84 @@
+---
+title: Alert
+description: Displays a message to attract user attention.
+---
+
+<ComponentPreview codeFile="alert/example-1.txt">
+  <Alert className="max-w-md">
+    <AlertTitle>Heads up!</AlertTitle>
+    <AlertDescription>
+        You can add components to your app using the CLI.
+    </AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="alert" />
+
+## Usage
+
+<CodeBlock code="import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'" />
+
+<CodeBlock code="<Alert>
+\n  <AlertTitle>Title</AlertTitle>
+\n  <AlertDescription>Description</AlertDescription>
+\n</Alert>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="alert/example-2.txt">
+  <Alert className="max-w-md">
+      <AlertTitle>Info</AlertTitle>
+      <AlertDescription>This is an informational message.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview codeFile="alert/example-3.txt">
+  <Alert variant="destructive" className="max-w-md">
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+### Success
+
+<ComponentPreview codeFile="alert/example-4.txt">
+  <Alert variant="success" className="max-w-md">
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>Your changes have been saved.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+### Warning
+
+<ComponentPreview codeFile="alert/example-5.txt">
+  <Alert variant="warning" className="max-w-md">
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>This action cannot be undone.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+### Without Icon
+
+<ComponentPreview codeFile="alert/example-6.txt">
+  <Alert className="max-w-md" icon={null}>
+      <AlertTitle>Note</AlertTitle>
+      <AlertDescription>A simple alert without an icon.</AlertDescription>
+  </Alert>
+</ComponentPreview>
+
+## API Reference
+
+### Alert
+
+<PropsTable data={[
+  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "Controls the color scheme and default icon of the alert." },
+  { name: "icon", type: "React.ReactNode", defaultValue: "-", description: "Custom icon to display. Pass null to hide the icon entirely." },
+]} />
+
+`AlertTitle` and `AlertDescription` extend the native `<h5>` and `<div>` elements respectively and accept all standard HTML attributes.

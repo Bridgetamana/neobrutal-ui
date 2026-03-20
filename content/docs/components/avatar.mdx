@@ -1,0 +1,66 @@
+---
+title: Avatar
+description: An image element with a fallback for representing the user.
+---
+
+<ComponentPreview codeFile="avatar/example-1.txt">
+  <Avatar>
+      <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
+      <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="avatar" />
+
+## Usage
+
+<CodeBlock code="import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'" />
+
+<CodeBlock code="<Avatar>\n  <AvatarImage src='https://github.com/bridgetamana.png' alt='@bridgetamana' />\n  <AvatarFallback>CN</AvatarFallback>\n</Avatar>" />
+
+## Examples
+
+### With Image
+
+<ComponentPreview codeFile="avatar/example-2.txt">
+  <Avatar>
+      <AvatarImage src="https://github.com/bridgetamana.png" alt="@bridgetamana" />
+      <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+### Fallback
+
+Displays initials when no image is available.
+
+<ComponentPreview codeFile="avatar/example-3.txt">
+  <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+### Group
+
+Display multiple avatars with an overflow indicator.
+
+<ComponentPreview codeFile="avatar/example-4.txt">
+  <AvatarGroup max={3}>
+      <Avatar><AvatarFallback>A</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>B</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>C</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>D</AvatarFallback></Avatar>
+      <Avatar><AvatarFallback>E</AvatarFallback></Avatar>
+  </AvatarGroup>
+</ComponentPreview>
+
+## API Reference
+
+`Avatar`, `AvatarImage`, and `AvatarFallback` are thin wrappers around their native HTML counterparts and accept all standard HTML attributes.
+
+### AvatarGroup
+
+<PropsTable data={[
+  { name: "max", type: "number", defaultValue: "3", description: "Maximum number of avatars to display before showing an overflow count." },
+]} />

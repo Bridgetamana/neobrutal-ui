@@ -1,0 +1,44 @@
+---
+title: Card
+description: A flexible container component for grouping related content.
+---
+
+<ComponentPreview codeFile="card/example-1.txt">
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Account Settings</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-sm text-black/80">
+        Manage your profile and preferences from one place.
+      </div>
+    </CardContent>
+    <CardFooter className="justify-end">
+      <Button variant="neutral" size="sm">Save</Button>
+    </CardFooter>
+  </Card>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="card" />
+
+## Usage
+
+<CodeBlock code="import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'" />
+
+<CodeBlock code="<Card className='w-full max-w-sm'>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+  </CardHeader>
+  <CardContent>
+    Card content goes here.
+  </CardContent>
+  <CardFooter className='justify-end'>
+    <Button variant='neutral' size='sm'>Action</Button>
+  </CardFooter>
+</Card>" />
+
+## API Reference
+
+`Card`, `CardHeader`, `CardTitle`, `CardContent`, and `CardFooter` are layout wrappers that extend native HTML elements and accept all standard HTML attributes.

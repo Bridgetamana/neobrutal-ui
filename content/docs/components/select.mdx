@@ -1,0 +1,34 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+---
+
+<ComponentPreview codeFile="select/example-1.txt">
+  <div className="flex w-full justify-center">
+    <Select>
+        <SelectTrigger className="w-45">
+            <SelectValue placeholder="Theme" />
+        </SelectTrigger>
+        <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+            <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+    </Select>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="select" />
+
+## Usage
+
+<CodeBlock code="import {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from '@/components/ui/select'" />
+
+<CodeBlock code="<Select>\n  <SelectTrigger className='w-45'>\n    <SelectValue placeholder='Theme' />\n  </SelectTrigger>\n  <SelectContent>\n    <SelectItem value='light'>Light</SelectItem>\n    <SelectItem value='dark'>Dark</SelectItem>\n    <SelectItem value='system'>System</SelectItem>\n  </SelectContent>\n</Select>" />
+
+
+## API Reference
+
+This component is built on top of [Base UI Select](https://base-ui.com/react/components/select). Refer to the Base UI documentation for the full list of available props.

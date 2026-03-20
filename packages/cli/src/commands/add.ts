@@ -79,7 +79,7 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
             return
         }
 
-        await runInit({ cwd, yes: false, force: false })
+        await runInit({ cwd, yes: false, force: false, skipCss: false })
         config = await getConfig(cwd)
 
         if (!config) {
@@ -125,8 +125,11 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
         return
     }
 
+    components = normalizeComponentNames(components)
+
+    const availableComponents = new Set(registryIndex.map((item) => item.name))
     const invalidComponents = components.filter(
-        (component) => !registryIndex.find((item) => item.name === component)
+        (component) => !availableComponents.has(component)
     )
 
     if (invalidComponents.length > 0) {
@@ -146,11 +149,16 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
         addSpinner.succeed(`Found ${resolvedItems.length} component(s).`)
 
         const npmDependencies = new Set<string>()
+        const npmDevDependencies = new Set<string>()
         const filesToWrite: Array<{ path: string; content: string }> = []
 
         for (const item of resolvedItems) {
             if (item.dependencies) {
                 item.dependencies.forEach((dep) => npmDependencies.add(dep))
+            }
+
+            if (item.devDependencies) {
+                item.devDependencies.forEach((dep) => npmDevDependencies.add(dep))
             }
 
             for (const file of item.files) {
@@ -204,32 +212,61 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
 
         writeSpinner.succeed(`Wrote ${filesToWrite.length} file(s).`)
 
-        // Auto-install npm dependencies (only those not already installed)
-        if (npmDependencies.size > 0) {
+        // Auto-install dependencies that are missing locally.
+        if (npmDependencies.size > 0 || npmDevDependencies.size > 0) {
             const installedDeps = await getInstalledDependencies(cwd)
             const depsToInstall = Array.from(npmDependencies).filter(
                 (dep) => !installedDeps.has(dep)
             )
+            const devDepsToInstall = Array.from(npmDevDependencies).filter(
+                (dep) => !installedDeps.has(dep) && !depsToInstall.includes(dep)
+            )
 
-            if (depsToInstall.length > 0) {
+            const totalDepsToInstall = depsToInstall.length + devDepsToInstall.length
+
+            if (totalDepsToInstall > 0) {
                 const packageManager = await detectPackageManager(cwd)
 
                 logger.break()
-                logger.info(`Installing ${depsToInstall.length} dependencies...`)
+                logger.info(`Installing ${totalDepsToInstall} dependencies...`)
 
-                const installSpinner = spinner(
-                    `Running ${getInstallCommand(packageManager, depsToInstall)}`
-                ).start()
+                if (depsToInstall.length > 0) {
+                    const installSpinner = spinner(
+                        `Running ${getInstallCommand(packageManager, depsToInstall)}`
+                    ).start()
 
-                const success = await installDependencies(cwd, depsToInstall, { silent: true })
+                    const success = await installDependencies(cwd, depsToInstall, {
+                        silent: true,
+                    })
 
-                if (success) {
-                    installSpinner.succeed("Dependencies installed.")
-                } else {
-                    installSpinner.fail("Failed to install dependencies.")
-                    logger.break()
-                    logger.warn("Please install manually:")
-                    logger.log(`  ${getInstallCommand(packageManager, depsToInstall)}`)
+                    if (success) {
+                        installSpinner.succeed("Dependencies installed.")
+                    } else {
+                        installSpinner.fail("Failed to install dependencies.")
+                        logger.break()
+                        logger.warn("Please install manually:")
+                        logger.log(`  ${getInstallCommand(packageManager, depsToInstall)}`)
+                    }
+                }
+
+                if (devDepsToInstall.length > 0) {
+                    const installDevSpinner = spinner(
+                        `Running ${getInstallCommand(packageManager, devDepsToInstall, true)}`
+                    ).start()
+
+                    const success = await installDependencies(cwd, devDepsToInstall, {
+                        isDev: true,
+                        silent: true,
+                    })
+
+                    if (success) {
+                        installDevSpinner.succeed("Dev dependencies installed.")
+                    } else {
+                        installDevSpinner.fail("Failed to install dev dependencies.")
+                        logger.break()
+                        logger.warn("Please install manually:")
+                        logger.log(`  ${getInstallCommand(packageManager, devDepsToInstall, true)}`)
+                    }
                 }
             }
         }
@@ -246,11 +283,20 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
     }
 }
 
+function normalizeComponentNames(components: string[]): string[] {
+    return Array.from(
+        new Set(
+            components
+                .map((component) => component.trim().toLowerCase())
+                .filter(Boolean)
+        )
+    )
+}
+
 /**
  * Strips the alias prefix from a path (e.g., "@/", "~/", "#/").
  */
 function stripAliasPrefix(aliasPath: string): string {
-    // Common alias prefixes to strip
     const prefixes = ["@/", "~/", "#/", "$/"]
     for (const prefix of prefixes) {
         if (aliasPath.startsWith(prefix)) {
@@ -260,33 +306,54 @@ function stripAliasPrefix(aliasPath: string): string {
     return aliasPath
 }
 
+function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
+    const relative = path.relative(cwd, targetPath)
+    if (relative.startsWith("..") || path.isAbsolute(relative)) {
+        throw new Error(`Refusing to write outside project root for ${sourcePath}`)
+    }
+
+    return targetPath
+}
+
 function resolveFilePath(cwd: string, config: Config, filePath: string): string {
+    const normalizedPath = filePath.replace(/\\/g, "/")
+    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
+        throw new Error(`Invalid registry file path: ${filePath}`)
+    }
+
     if (filePath.startsWith("components/ui/")) {
         const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
         const resolvedPath = stripAliasPrefix(uiAlias)
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("components/ui/", resolvedPath + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
     if (filePath.startsWith("lib/")) {
         const libAlias = config.aliases.lib || "@/lib"
         const resolvedPath = stripAliasPrefix(libAlias)
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("lib/", resolvedPath + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
     if (filePath.startsWith("hooks/")) {
         const hooksAlias = config.aliases.hooks || "@/hooks"
         const resolvedPath = stripAliasPrefix(hooksAlias)
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("hooks/", resolvedPath + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
-    return path.resolve(cwd, filePath)
+    const targetPath = path.resolve(cwd, filePath)
+    return ensurePathInProjectRoot(cwd, targetPath, filePath)
 }

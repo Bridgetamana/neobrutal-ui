@@ -19,9 +19,9 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const Marquee = ({ className, children }: { className?: string, children: React.ReactNode }) => {
+const Marquee = ({ className, children, ...props }: { className?: string, children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => {
     return (
-        <div className={cn("flex overflow-hidden select-none", className)}>
+        <div className={cn("flex overflow-hidden select-none", className)} {...props}>
             <div className={cn("flex min-w-full shrink-0 gap-3 items-center animate-marquee pr-3")}>
                 {children}
             </div>
@@ -43,13 +43,13 @@ export function HeroSection() {
                 <p className="text-lg md:text-xl font-medium max-w-2xl mx-auto mb-6 text-black">
                     A collection of Neobrutalism components built with Base UI and Tailwind CSS.
                 </p>
-                <Link href="/docs/installation">
-                    <Button className="h-12 px-8 text-lg font-bold shadow-brutal">
+                <Button asChild className="h-12 px-8 text-lg font-bold shadow-brutal">
+                    <Link href="/docs/installation">
                         Get Started <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             </div>
-            <Marquee>
+            <Marquee aria-hidden="true" inert>
                 <Card className="w-44 shrink-0 bg-mint">
                     <CardHeader className="pb-2">
                         <div className="flex justify-between items-center">
@@ -72,7 +72,7 @@ export function HeroSection() {
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-62.5">
                     <Avatar className="w-12 h-12 border-2 border-black">
-                        <AvatarImage src="https://github.com/bridgetamana.png" />
+                        <AvatarImage src="https://github.com/bridgetamana.png?size=96" />
                         <AvatarFallback>BA</AvatarFallback>
                     </Avatar>
                     <div>
@@ -87,7 +87,7 @@ export function HeroSection() {
                     <Checkbox id="demo" defaultChecked />
                     <Label htmlFor="demo">Subscribe</Label>
                 </div>
-                <Slider defaultValue={[50]} max={100} />
+                <Slider aria-label="Demo value" defaultValue={[50]} max={100} />
                 <Alert className="w-full bg-hot-pink border-2 border-black shadow-brutal">
                     <TriangleAlert className="h-5 w-5" />
                     <AlertTitle className="font-bold">Heads up!</AlertTitle>

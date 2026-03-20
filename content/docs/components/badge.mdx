@@ -1,0 +1,68 @@
+---
+title: Badge
+description: Displays a small label for status or categorization.
+---
+
+<ComponentPreview codeFile="badge/example-1.txt">
+  <Badge>Badge</Badge>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="badge" />
+
+## Usage
+
+<CodeBlock code="import { Badge } from '@/components/ui/badge'" />
+
+<CodeBlock code="<Badge variant='neutral'>Badge</Badge>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="badge/example-2.txt">
+  <Badge>Default</Badge>
+</ComponentPreview>
+
+### Neutral
+
+<ComponentPreview codeFile="badge/example-3.txt">
+  <Badge variant="neutral">Neutral</Badge>
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview codeFile="badge/example-4.txt">
+  <Badge variant="destructive">Destructive</Badge>
+</ComponentPreview>
+
+### Success
+
+<ComponentPreview codeFile="badge/example-5.txt">
+  <Badge variant="success">Success</Badge>
+</ComponentPreview>
+
+### Warning
+
+<ComponentPreview codeFile="badge/example-6.txt">
+  <Badge variant="warning">Warning</Badge>
+</ComponentPreview>
+
+### Multiple Badges
+
+<ComponentPreview codeFile="badge/example-7.txt">
+  <div className="flex flex-wrap gap-2">
+      <Badge>New</Badge>
+      <Badge variant="neutral">Popular</Badge>
+      <Badge variant="destructive">Error</Badge>
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+<PropsTable data={[
+  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "The visual style of the badge." }
+]} />

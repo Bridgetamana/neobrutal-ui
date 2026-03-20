@@ -1,0 +1,36 @@
+---
+title: Label
+description: An accessible form label component that renders a semantic label element.
+---
+
+<ComponentPreview codeFile="label/example-1.txt">
+  <div className="flex items-center gap-2">
+      <input type="checkbox" id="termsDemo" aria-label="Accept terms and conditions" className="peer h-5 w-5 shrink-0 rounded-base ring-2 border-white focus-brutal accent-main" />
+      <Label htmlFor="termsDemo">Accept terms and conditions</Label>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="label" />
+
+## Usage
+
+<CodeBlock code="import { Label } from '@/components/ui/label'" />
+
+<CodeBlock code="<div className='flex items-center gap-2'>\n  <Checkbox id='terms' />\n  <Label htmlFor='terms'>Accept terms and conditions</Label>\n</div>" />
+
+## Examples
+
+### With Input
+
+<ComponentPreview codeFile="label/example-2.txt">
+  <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Label htmlFor="emailInputDemo">Email</Label>
+      <input type="email" id="emailInputDemo" placeholder="Email" className="flex h-10 w-full rounded-base border-2 border-black bg-white px-3 py-2 text-sm placeholder:text-gray-500 focus-brutal" />
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+Extends the native `<label>` element. All standard HTML label attributes (`htmlFor`, etc.) are supported. Includes automatic styling for disabled peer elements.

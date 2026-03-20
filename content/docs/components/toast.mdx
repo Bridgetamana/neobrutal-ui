@@ -1,0 +1,67 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily. Supports multiple types, action buttons, promise-based flows, and configurable positioning.
+---
+
+<ComponentPreview codeFile="toast/example-1.txt">
+  <div className="flex w-full justify-center">
+    <ToastDemo />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="toast" />
+
+## Required setup
+
+Before calling `toast.*`, mount `Toaster` once in your root layout.
+
+<CodeBlock code="import { Toaster } from '@/components/ui/toast'\n\n// In your root layout\n<Toaster position='top-right' />" />
+
+## Usage
+
+<CodeBlock code="import { toast } from '@/components/ui/toast'\nimport { Button } from '@/components/ui/button'" />
+
+<CodeBlock code="<Button\n  variant='neutral'\n  onClick={() =>\n    toast.info('Event has been created', {\n      title: 'Success',\n    })\n  }\n>\n  Basic toast\n</Button>" />
+
+## Examples
+
+### Types
+
+Four built-in types, each with its own color.
+
+<ComponentPreview codeFile="toast/example-2.txt">
+  <div className="flex w-full justify-center">
+    <ToastTypesDemo />
+  </div>
+</ComponentPreview>
+
+### Action button
+
+Pass <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-black rounded-base font-bold shadow-brutal">actionProps</code> to render a neobrutalist action button inside the toast.
+
+<ComponentPreview codeFile="toast/example-3.txt">
+  <div className="flex w-full justify-center">
+    <ToastActionDemo />
+  </div>
+</ComponentPreview>
+
+### Promise
+
+Show a loading state that automatically transitions to success or error when the promise settles.
+
+<ComponentPreview codeFile="toast/example-4.txt">
+  <div className="flex w-full justify-center">
+    <ToastPromiseDemo />
+  </div>
+</ComponentPreview>
+
+### Position
+
+Set the toast position by passing a <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-black rounded-base font-bold shadow-brutal">position</code> prop to the Toaster component in your root layout.
+
+
+## API Reference
+
+This component is built on top of [Base UI Toast](https://base-ui.com/react/components/toast). Refer to the Base UI documentation for the full list of available props.

@@ -1,0 +1,35 @@
+---
+title: Textarea
+description: A multi-line text input field for longer form content.
+---
+
+<ComponentPreview codeFile="textarea/example-1.txt">
+  <div className="grid w-full max-w-sm gap-1.5">
+      <Label htmlFor="message">Your message</Label>
+      <Textarea placeholder="Type your message here." id="message" />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="textarea" />
+
+## Usage
+
+<CodeBlock code="import { Textarea } from '@/components/ui/textarea'\nimport { Label } from '@/components/ui/label'" />
+
+<CodeBlock code="<div className='grid w-full gap-1.5'>\n  <Label htmlFor='message'>Your message</Label>\n  <Textarea placeholder='Type your message here.' id='message' />\n</div>" />
+
+## Examples
+
+### Disabled
+
+<ComponentPreview codeFile="textarea/example-2.txt">
+  <div className="w-full max-w-sm">
+    <Textarea placeholder="Disabled textarea" disabled />
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+`Textarea` extends the native `<textarea>` element. All standard `<textarea>` attributes are supported.
