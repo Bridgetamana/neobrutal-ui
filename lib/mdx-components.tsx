@@ -19,7 +19,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Progress } from "@/components/ui/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
@@ -72,7 +71,6 @@ export const mdxComponents = {
     Progress,
     RadioGroup, RadioGroupItem,
     Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
-    Separator,
     Slider,
     Switch,
     Tabs, TabsList, TabsTrigger, TabsContent,

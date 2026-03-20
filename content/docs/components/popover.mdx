@@ -29,7 +29,7 @@ description: Displays rich content in a portal, triggered by a button. Includes 
 
 ## Usage
 
-<CodeBlock code="import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'" />
+<CodeBlock code="import { Button } from '@/components/ui/button'\nimport { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'" />
 
 <CodeBlock code="<Popover>\n  <PopoverTrigger render={<Button variant='noShadow' />}>\n    Open Popover\n  </PopoverTrigger>\n  <PopoverContent>\n    <div className='grid gap-4'>\n      <div className='space-y-2'>\n        <h4 className='font-bold leading-none'>Dimensions</h4>\n        <p className='text-sm text-black'>\n          Set the dimensions for the layer.\n        </p>\n      </div>\n    </div>\n  </PopoverContent>\n</Popover>" />
 

@@ -235,14 +235,5 @@
     "registryDependencies": [
       "utils"
     ]
-  },
-  {
-    "name": "separator",
-    "type": "registry:ui",
-    "description": "A visual divider between content sections.",
-    "dependencies": [],
-    "registryDependencies": [
-      "utils"
-    ]
   }
 ]

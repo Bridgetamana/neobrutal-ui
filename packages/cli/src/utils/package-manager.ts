@@ -50,6 +50,29 @@ const PACKAGE_MANAGERS: Record<PackageManager, PackageManagerConfig> = {
     },
 }
 
+function getInstallProcess(
+    packageManager: PackageManager
+): { command: string; shell: boolean } {
+    const config = PACKAGE_MANAGERS[packageManager]
+
+    if (process.platform !== "win32") {
+        return { command: config.installCommand, shell: false }
+    }
+
+    // Use explicit executables on Windows to avoid shell argument concatenation warnings.
+    const windowsCommandMap: Record<PackageManager, string> = {
+        npm: "npm.cmd",
+        pnpm: "pnpm.cmd",
+        yarn: "yarn.cmd",
+        bun: "bun.exe",
+    }
+
+    return {
+        command: windowsCommandMap[packageManager] ?? config.installCommand,
+        shell: false,
+    }
+}
+
 async function detectPackageManagerFromPackageJson(cwd: string): Promise<PackageManager | null> {
     const packageJsonPath = path.resolve(cwd, "package.json")
     if (!await fs.pathExists(packageJsonPath)) {
@@ -168,6 +191,7 @@ export async function installDependencies(
 
     const packageManager = await detectPackageManager(cwd)
     const config = PACKAGE_MANAGERS[packageManager]
+    const installProcess = getInstallProcess(packageManager)
 
     const args = [config.addFlag]
     if (isDev) {
@@ -180,12 +204,10 @@ export async function installDependencies(
     }
 
     return new Promise((resolve) => {
-        // Use shell: true on Windows for proper command resolution
-        const isWindows = process.platform === "win32"
-        const child = spawn(config.installCommand, args, {
+        const child = spawn(installProcess.command, args, {
             cwd,
             stdio: silent ? "ignore" : "inherit",
-            shell: isWindows,
+            shell: installProcess.shell,
         })
 
         child.on("close", (code) => {

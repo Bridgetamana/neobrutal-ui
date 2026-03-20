@@ -371,21 +371,6 @@
                     "type": "registry:ui"
                 }
             ]
-        },
-        {
-            "name": "separator",
-            "type": "registry:ui",
-            "description": "A visual divider between content sections.",
-            "dependencies": [],
-            "registryDependencies": [
-                "utils"
-            ],
-            "files": [
-                {
-                    "path": "components/ui/separator.tsx",
-                    "type": "registry:ui"
-                }
-            ]
         }
     ]
 }
