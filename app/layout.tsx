@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Public_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toast";
-import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider";
 
 const publicSans = Public_Sans({
@@ -78,6 +77,15 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+async function ProductionAnalytics() {
+  if (process.env.NODE_ENV !== "production") {
+    return null;
+  }
+
+  const { Analytics } = await import("@vercel/analytics/next");
+  return <Analytics />;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -90,7 +98,7 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
-        <Analytics />
+        <ProductionAnalytics />
       </body>
     </html>
   );
