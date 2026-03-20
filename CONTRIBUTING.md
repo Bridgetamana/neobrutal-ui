@@ -109,17 +109,20 @@ Feature requests are welcome. Please:
 
 3. Follow the existing component patterns for structure and styling.
 
-4. Create a documentation page at `content/docs/components/component-name.mdx`.
+4. Create a documentation page at `content/docs/components/component-name.mdx` with a clear title and description.
 
-5. Add the component to the sidebar in `components/docs/docs-sidebar.tsx`.
-
-6. Add the component to the registry in `public/r/`.
-
-7. Update the CLI registry index by running:
+5. Update the CLI registry index by running:
 
    ```bash
    npm run registry:build
    ```
+
+   This command automatically:
+   - Detects your new component from the registry metadata
+   - Regenerates the sidebar navigation
+   - Updates search indexes and documentation artifacts
+
+   No manual sidebar or public registry edits needed.
 
 ## Questions
 

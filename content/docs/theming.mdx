@@ -8,6 +8,26 @@ Edit the CSS variables in your **globals.css** to customize colors, shadows, and
 
 <CodeBlock code=":root {\n  --main: #B6ACE4;      /* accent color */\n  --bg: #f0eefc;        /* page background */\n  --white: #ffffff;     /* component backgrounds */\n  --black: #000000;     /* text and borders */\n  --radius: 5px;        /* border radius */\n  --shadow-brutal: 4px 4px 0px 0px var(--black);\n}" language="css" />
 
+## Typography
+
+Neobrutal UI looks best with geometric sans-serif fonts that have clear letterforms and strong medium-to-bold weights.
+
+Recommended options:
+
+- **Public Sans**: clean and readable for body text and UI labels
+- **Space Grotesk**: expressive headings with a sharper neobrutalist feel
+- **IBM Plex Sans**: technical tone with excellent legibility
+
+Use one primary font across components and docs, then optionally layer a second font for headings only.
+
+### Next.js setup example
+
+<CodeBlock code="import { Space_Grotesk } from 'next/font/google'\n\nconst spaceGrotesk = Space_Grotesk({\n  subsets: ['latin'],\n  variable: '--font-neobrutal',\n  display: 'swap',\n})\n\nexport default function RootLayout({ children }) {\n  return (\n    <html lang='en'>\n      <body className={`${spaceGrotesk.variable} font-sans`}>{children}</body>\n    </html>\n  )\n}" language="tsx" />
+
+Then point your theme token to the injected font variable:
+
+<CodeBlock code="@theme inline {\n  --font-sans: var(--font-neobrutal);\n}" language="css" />
+
 ## Example Themes
 
 <div className="border-2 border-black divide-y-2 divide-black">
@@ -35,7 +55,7 @@ Edit the CSS variables in your **globals.css** to customize colors, shadows, and
     </Link>
     <Link href="/docs/accessibility" className="block p-3 hover:bg-main text-right">
       <span className="text-lg font-semibold">Accessibility</span>
-      <p className="truncate">Learn about how neobrutal ui is built with accessibility in mind</p>
+      <p className="truncate">Learn about how Neobrutal UI is built with accessibility in mind</p>
     </Link>
   </div>
 </div>
