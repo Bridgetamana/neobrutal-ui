@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "description": "Pagination with page navigation and ellipsis.",
   "dependencies": [
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils",

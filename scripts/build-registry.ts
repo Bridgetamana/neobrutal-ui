@@ -34,6 +34,8 @@ async function buildRegistry() {
     const registryContent = await fs.readFile(registryPath, "utf-8")
     const registry: Registry = JSON.parse(registryContent)
 
+    // Start from a clean output directory so removed registry items do not linger.
+    await fs.rm(OUTPUT_DIR, { recursive: true, force: true })
     await fs.mkdir(OUTPUT_DIR, { recursive: true })
 
     const index: Array<{

@@ -5,7 +5,7 @@
   "description": "Displays a list of options for the user to pick from.",
   "dependencies": [
     "@base-ui/react",
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"

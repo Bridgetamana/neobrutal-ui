@@ -30,7 +30,6 @@ export const searchItems: SearchItem[] = [
     { name: "Tabs", href: "/docs/components/tabs", keywords: ["a", "set", "of", "layered", "sections", "of", "content", "displayed", "one", "at", "a", "time"], category: "component" },
     { name: "Textarea", href: "/docs/components/textarea", keywords: ["displays", "a", "form", "textarea", "with", "neobrutalist", "styling"], category: "component" },
     { name: "Tooltip", href: "/docs/components/tooltip", keywords: ["a", "popup", "that", "displays", "information", "related", "to", "an", "element"], category: "component" },
-    { name: "Separator", href: "/docs/components/separator", keywords: ["a", "visual", "divider", "between", "content", "sections"], category: "component" },
     { name: "Getting Started", href: "/docs", keywords: ["start", "intro", "introduction", "overview"], category: "docs" },
     { name: "Installation", href: "/docs/installation", keywords: ["setup", "install", "npm", "cli"], category: "docs" },
     { name: "Theming", href: "/docs/theming", keywords: ["theme", "colors", "customize", "tokens"], category: "docs" },

@@ -13,6 +13,12 @@ description: A succinct message that is displayed temporarily. Supports multiple
 
 <InstallTabs name="toast" />
 
+## Required setup
+
+Before calling `toast.*`, mount `Toaster` once in your root layout.
+
+<CodeBlock code="import { Toaster } from '@/components/ui/toast'\n\n// In your root layout\n<Toaster position='top-right' />" />
+
 ## Usage
 
 <CodeBlock code="import { toast } from '@/components/ui/toast'\nimport { Button } from '@/components/ui/button'" />
@@ -54,8 +60,6 @@ Show a loading state that automatically transitions to success or error when the
 ### Position
 
 Set the toast position by passing a <code className="font-mono text-xs bg-white px-1 py-0.5 border-2 border-black rounded-base font-bold shadow-brutal">position</code> prop to the Toaster component in your root layout.
-
-<CodeBlock code="import { Toaster } from '@/components/ui/toast'\n\n// In your root layout\n<Toaster position='top-right' />" />
 
 
 ## API Reference

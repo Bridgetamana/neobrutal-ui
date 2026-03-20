@@ -61,4 +61,4 @@ This project is licensed under the terms of the [MIT License](license.md).
 
 ## Credits
 
-Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Phosphor Icons](https://phosphoricons.com).
+Built with [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Base UI](https://base-ui.com), and [Lucide](https://lucide.dev).

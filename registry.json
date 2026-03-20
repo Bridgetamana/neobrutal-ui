@@ -25,7 +25,7 @@
             "description": "A vertically stacked set of interactive headings that reveal content sections.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -42,7 +42,7 @@
             "type": "registry:ui",
             "description": "Displays a callout for user attention with neobrutalist styling.",
             "dependencies": [
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -124,7 +124,7 @@
             "description": "A control that allows the user to toggle between checked and not checked.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -142,7 +142,7 @@
             "description": "A window overlaid on the primary window with neobrutalist styling.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -191,7 +191,7 @@
             "type": "registry:ui",
             "description": "Pagination with page navigation and ellipsis.",
             "dependencies": [
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils",
@@ -244,7 +244,7 @@
             "description": "A set of checkable buttons where only one can be checked at a time.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -262,7 +262,7 @@
             "description": "Displays a list of options for the user to pick from.",
             "dependencies": [
                 "@base-ui/react",
-                "@phosphor-icons/react"
+                "lucide-react"
             ],
             "registryDependencies": [
                 "utils"
@@ -368,21 +368,6 @@
             "files": [
                 {
                     "path": "components/ui/tooltip.tsx",
-                    "type": "registry:ui"
-                }
-            ]
-        },
-        {
-            "name": "separator",
-            "type": "registry:ui",
-            "description": "A visual divider between content sections.",
-            "dependencies": [],
-            "registryDependencies": [
-                "utils"
-            ],
-            "files": [
-                {
-                    "path": "components/ui/separator.tsx",
                     "type": "registry:ui"
                 }
             ]

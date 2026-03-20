@@ -5,7 +5,7 @@
   "description": "A set of checkable buttons where only one can be checked at a time.",
   "dependencies": [
     "@base-ui/react",
-    "@phosphor-icons/react"
+    "lucide-react"
   ],
   "registryDependencies": [
     "utils"
