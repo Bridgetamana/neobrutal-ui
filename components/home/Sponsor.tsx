@@ -12,14 +12,15 @@ export function Sponsor() {
           <p className="text-base md:text-lg font-medium mb-6">
             Support Neobrutalism UI and help us build better components for everyone.
           </p>
-          <Link href="https://github.com/sponsors/Bridgetamana" target="_blank" rel="noopener noreferrer">
-            <Button 
-              className="h-12 px-8 text-base font-bold"
-              variant="default"
-            >
+          <Button
+            asChild
+            className="h-12 px-8 text-base font-bold"
+            variant="default"
+          >
+            <Link href="https://github.com/sponsors/Bridgetamana" target="_blank" rel="noopener noreferrer">
               Become a Sponsor
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -24,6 +24,7 @@ export function SiteHeader() {
         if (!menu) return
 
         const previouslyFocused = document.activeElement as HTMLElement | null
+        const menuButton = menuButtonRef.current
         const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
         const getFocusable = () =>
@@ -75,7 +76,7 @@ export function SiteHeader() {
                 return
             }
 
-            menuButtonRef.current?.focus()
+            menuButton?.focus()
         }
     }, [isMenuOpen])
 
@@ -91,42 +92,42 @@ export function SiteHeader() {
                 </nav>
                 <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
                     <CommandSearch />
-                    <Link href="/docs/components/accordion" aria-label="Explore Components" className="hidden lg:flex ">
-                        <Button className="font-bold shadow-brutal hover:bg-main">
+                    <Button asChild className="hidden lg:flex font-bold shadow-brutal hover:bg-main">
+                        <Link href="/docs/components/accordion" aria-label="Explore Components">
                             Explore Components
-                        </Button>
-                    </Link>
+                        </Link>
+                    </Button>
                     <button
                         ref={menuButtonRef}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="lg:hidden p-2 focus-brutal cursor-pointer"
                         aria-label="Toggle menu"
                         aria-controls="site-mobile-menu"
+                        aria-expanded={isMenuOpen}
                     >
                         {isMenuOpen ? <X aria-hidden="true" size={24} strokeWidth={3} /> : <Menu aria-hidden="true" size={24} strokeWidth={3} />}
                     </button>
                 </div>
             </div>
-            {isMenuOpen && (
-                <div
-                    id="site-mobile-menu"
-                    ref={mobileMenuRef}
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="Site navigation"
-                    className="lg:hidden bg-white border-t-2"
-                >
+            <div
+                id="site-mobile-menu"
+                ref={mobileMenuRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Site navigation"
+                hidden={!isMenuOpen}
+                className="lg:hidden bg-white border-t-2"
+            >
                     <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
                         <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
                         <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
-                        <Link href="/docs/components/accordion" onClick={() => setIsMenuOpen(false)}>
-                            <Button className="font-bold shadow-brutal hover:bg-main">
+                        <Button asChild className="font-bold shadow-brutal hover:bg-main">
+                            <Link href="/docs/components/accordion" onClick={() => setIsMenuOpen(false)}>
                                 Explore Components
-                            </Button>
-                        </Link>
+                            </Link>
+                        </Button>
                     </nav>
-                </div>
-            )}
+            </div>
         </header>
     )
 }

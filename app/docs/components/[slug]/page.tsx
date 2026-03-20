@@ -1,4 +1,4 @@
-import { getMdxBySlug, getAllMdxSlugs } from '@/lib/mdx'
+import { getMdxBySlug, getAllMdxSlugs, type MdxFrontmatter } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
@@ -29,11 +29,11 @@ export default async function ComponentDocPage({ params }: { params: Promise<{ s
     const { slug } = await params
 
     let content: string
-    let frontmatter: Record<string, string>
+    let frontmatter: MdxFrontmatter
     try {
         const result = await getMdxBySlug(slug)
         content = result.content
-        frontmatter = result.frontmatter as Record<string, string>
+        frontmatter = result.frontmatter
     } catch {
         notFound()
     }

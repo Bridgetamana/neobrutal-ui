@@ -247,35 +247,57 @@ function countDeletions(localContent: string, registryContent: string): number {
 }
 
 function resolveFilePath(cwd: string, config: Config, filePath: string): string {
+    const normalizedPath = filePath.replace(/\\/g, "/")
+    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
+        throw new Error(`Invalid registry file path: ${filePath}`)
+    }
+
     const aliasPrefix = extractAliasPrefix(config)
 
     if (filePath.startsWith("components/ui/")) {
         const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("components/ui/", stripAliasPrefix(uiAlias, aliasPrefix) + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
     if (filePath.startsWith("lib/")) {
         const libAlias = config.aliases.lib || `${aliasPrefix}lib`
-        return path.resolve(
+        const targetPath = path.resolve(
             cwd,
             filePath.replace("lib/", stripAliasPrefix(libAlias, aliasPrefix) + "/")
         )
+
+        return ensurePathInProjectRoot(cwd, targetPath, filePath)
     }
 
-    return path.resolve(cwd, filePath)
+    const targetPath = path.resolve(cwd, filePath)
+    return ensurePathInProjectRoot(cwd, targetPath, filePath)
 }
 
 function resolveAliasPath(cwd: string, alias: string): string {
     const prefixes = ["@/", "~/", "#/", "$/"]
     for (const prefix of prefixes) {
         if (alias.startsWith(prefix)) {
-            return path.resolve(cwd, alias.slice(prefix.length))
+            const targetPath = path.resolve(cwd, alias.slice(prefix.length))
+            return ensurePathInProjectRoot(cwd, targetPath, alias)
         }
     }
-    return path.resolve(cwd, alias)
+
+    const targetPath = path.resolve(cwd, alias)
+    return ensurePathInProjectRoot(cwd, targetPath, alias)
+}
+
+function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
+    const relative = path.relative(cwd, targetPath)
+    if (relative.startsWith("..") || path.isAbsolute(relative)) {
+        throw new Error(`Refusing to access path outside project root for ${sourcePath}`)
+    }
+
+    return targetPath
 }
 
 function extractAliasPrefix(config: Config): string {

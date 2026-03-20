@@ -3,7 +3,6 @@ import { SiteFooter } from "@/components/site/layout/site-footer"
 import { HeroSection } from "@/components/home/hero"
 import { StatsSection } from "@/components/home/stats"
 import { ColorThemePicker } from "@/components/home/color-theme-picker"
-/* import { Sponsor } from "@/components/home/sponsor" */
 
 export default function Home() {
   return (

@@ -29,12 +29,24 @@ export function OnThisPage() {
 
     const elements = content.querySelectorAll<HTMLElement>("h2, h3")
     const items: TocItem[] = []
+    const usedIds = new Set<string>()
 
     elements.forEach((el) => {
-      if (!el.id) el.id = slugify(el.textContent || "")
-      if (el.id) {
+      const rawId = (el.id || slugify(el.textContent || "") || "section").trim()
+      let uniqueId = rawId
+      let index = 2
+
+      while (usedIds.has(uniqueId)) {
+        uniqueId = `${rawId}-${index}`
+        index += 1
+      }
+
+      el.id = uniqueId
+      usedIds.add(uniqueId)
+
+      if (uniqueId) {
         items.push({
-          id: el.id,
+          id: uniqueId,
           text: el.textContent?.trim() || "",
           level: el.tagName === "H2" ? 2 : 3,
         })

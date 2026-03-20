@@ -36,6 +36,30 @@ npx neobrutal list
 npx neobrutal diff button
 ```
 
+## Registry
+
+The CLI pulls component metadata from the hosted registry by default:
+
+- `https://www.neobrutalui.live/r`
+
+To test against a different registry (for staging or local mirrors), set:
+
+```bash
+NEOBRUTAL_REGISTRY_URL="https://your-registry.example.com/r" npx neobrutal list
+```
+
+## Release Automation
+
+CLI publishing is automated through GitHub Actions:
+
+1. Bump `packages/cli/package.json` version.
+2. Push a matching tag in the format `cli-v<version>` (example: `cli-v0.3.2`).
+3. The release workflow validates tag/version parity, builds the CLI, publishes to npm, and creates a GitHub release.
+
+Required repository secret:
+
+- `NPM_TOKEN`
+
 ## Commands
 
 | Command | Description |

@@ -14,6 +14,7 @@ interface PackageManagerConfig {
 }
 
 interface PackageJson {
+    packageManager?: string
     dependencies?: Record<string, string>
     devDependencies?: Record<string, string>
 }
@@ -38,7 +39,7 @@ const PACKAGE_MANAGERS: Record<PackageManager, PackageManagerConfig> = {
         installCommand: "bun",
         addFlag: "add",
         devFlag: "-d",
-        lockfile: "bun.lockb",
+        lockfile: "bun.lock",
     },
     npm: {
         name: "npm",
@@ -49,15 +50,54 @@ const PACKAGE_MANAGERS: Record<PackageManager, PackageManagerConfig> = {
     },
 }
 
+async function detectPackageManagerFromPackageJson(cwd: string): Promise<PackageManager | null> {
+    const packageJsonPath = path.resolve(cwd, "package.json")
+    if (!await fs.pathExists(packageJsonPath)) {
+        return null
+    }
+
+    try {
+        const content = await fs.readFile(packageJsonPath, "utf-8")
+        const pkg = JSON.parse(content) as PackageJson
+        const packageManager = pkg.packageManager?.trim().toLowerCase() ?? ""
+
+        if (packageManager.startsWith("pnpm@") || packageManager === "pnpm") {
+            return "pnpm"
+        }
+
+        if (packageManager.startsWith("yarn@") || packageManager === "yarn") {
+            return "yarn"
+        }
+
+        if (packageManager.startsWith("bun@") || packageManager === "bun") {
+            return "bun"
+        }
+
+        if (packageManager.startsWith("npm@") || packageManager === "npm") {
+            return "npm"
+        }
+    } catch {
+        return null
+    }
+
+    return null
+}
+
 /**
  * Detects the package manager used in the project by checking for lockfiles.
  * Falls back to npm if no lockfile is found.
  */
 export async function detectPackageManager(cwd: string): Promise<PackageManager> {
+    const packageManagerFromConfig = await detectPackageManagerFromPackageJson(cwd)
+    if (packageManagerFromConfig) {
+        return packageManagerFromConfig
+    }
+
     // Check in order of preference: pnpm > yarn > bun > npm
     const checks: Array<{ pm: PackageManager; lockfile: string }> = [
         { pm: "pnpm", lockfile: "pnpm-lock.yaml" },
         { pm: "yarn", lockfile: "yarn.lock" },
+        { pm: "bun", lockfile: "bun.lock" },
         { pm: "bun", lockfile: "bun.lockb" },
         { pm: "npm", lockfile: "package-lock.json" },
     ]

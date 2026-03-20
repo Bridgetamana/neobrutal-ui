@@ -1,15 +1,25 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Dialog } from "@base-ui/react"
-import { searchItems } from "@/lib/search-data"
+import type { SearchItem } from "@/lib/search-data"
+
+const RESULT_LIMIT = 24
+const SEARCH_DEBOUNCE_MS = 120
+
+interface SearchResponse {
+    items: SearchItem[]
+}
 
 export function CommandSearch() {
     const [open, setOpen] = useState(false)
+    const [query, setQuery] = useState("")
+    const [items, setItems] = useState<SearchItem[]>([])
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
@@ -24,14 +34,80 @@ export function CommandSearch() {
         return () => document.removeEventListener("keydown", onKeyDown)
     }, [])
 
+    useEffect(() => {
+        if (!open) {
+            setQuery("")
+            setItems([])
+            setIsLoading(false)
+        }
+    }, [open])
+
+    useEffect(() => {
+        if (!open) {
+            return
+        }
+
+        const controller = new AbortController()
+        const trimmedQuery = query.trim()
+        const timeout = window.setTimeout(async () => {
+            const params = new URLSearchParams({
+                limit: RESULT_LIMIT.toString(),
+            })
+
+            if (trimmedQuery.length > 0) {
+                params.set("q", trimmedQuery)
+            }
+
+            setIsLoading(true)
+            try {
+                const response = await fetch(`/api/search?${params.toString()}`, {
+                    signal: controller.signal,
+                    cache: "no-store",
+                })
+
+                if (!response.ok) {
+                    throw new Error("Search request failed")
+                }
+
+                const data = (await response.json()) as SearchResponse
+                setItems(Array.isArray(data.items) ? data.items : [])
+            } catch {
+                if (!controller.signal.aborted) {
+                    setItems([])
+                }
+            } finally {
+                if (!controller.signal.aborted) {
+                    setIsLoading(false)
+                }
+            }
+        }, trimmedQuery.length === 0 ? 0 : SEARCH_DEBOUNCE_MS)
+
+        return () => {
+            controller.abort()
+            window.clearTimeout(timeout)
+        }
+    }, [open, query])
+
     const runCommand = useCallback((command: () => void) => {
         setOpen(false)
         command()
     }, [])
 
+    const componentItems = useMemo(
+        () => items.filter((item) => item.category === "component"),
+        [items]
+    )
+
+    const docsItems = useMemo(
+        () => items.filter((item) => item.category === "docs"),
+        [items]
+    )
+
+    const hasResults = componentItems.length > 0 || docsItems.length > 0
+
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
-            <Dialog.Trigger id="command-search-trigger">
+            <Dialog.Trigger id="command-search-trigger" aria-label="Search documentation">
                 <div className="relative block cursor-default">
                     <Search
                         size={20}
@@ -59,13 +135,15 @@ export function CommandSearch() {
                         Search components and documentation
                     </Dialog.Title>
 
-                    <Command className="w-full" loop={false} shouldFilter={true}>
+                    <Command className="w-full" loop={false} shouldFilter={false}>
                         <div className="flex items-center gap-2 px-4 border-b">
                             <Search size={14} className="text-black/60" />
                             <Command.Input
                                 autoFocus
+                                value={query}
+                                onValueChange={setQuery}
                                 placeholder="Search components, docs..."
-                                className="flex-1 py-3 outline-none"
+                                className="flex-1 py-3 focus-brutal"
                                 onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
                             />
                         </div>
@@ -74,39 +152,47 @@ export function CommandSearch() {
                             className="max-h-90 overflow-y-auto p-2"
                             style={{ overflowAnchor: "none" }}
                         >
-                            <Command.Empty className="py-6 text-center text-sm text-black/60">
-                                No results found.
-                            </Command.Empty>
+                            {isLoading && (
+                                <div className="py-6 text-center text-sm text-black/60">
+                                    Searching...
+                                </div>
+                            )}
 
-                            <Command.Group heading="Components" className="p-2">
-                                {searchItems
-                                    .filter((i) => i.category === "component")
-                                    .map((item) => (
+                            {!isLoading && !hasResults && (
+                                <div className="py-6 text-center text-sm text-black/60">
+                                    No results found.
+                                </div>
+                            )}
+
+                            {!isLoading && componentItems.length > 0 && (
+                                <Command.Group heading="Components" className="p-2">
+                                    {componentItems.map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name}} ${item.keywords.join(" ")}`}
+                                            value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
                                             className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
                                             <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
                                     ))}
-                            </Command.Group>
+                                </Command.Group>
+                            )}
 
-                            <Command.Group heading="Documentation" className="p-2">
-                                {searchItems
-                                    .filter((i) => i.category === "docs")
-                                    .map((item) => (
+                            {!isLoading && docsItems.length > 0 && (
+                                <Command.Group heading="Documentation" className="p-2">
+                                    {docsItems.map((item) => (
                                         <Command.Item
                                             key={item.href}
-                                            value={`${item.name}} ${item.keywords.join(" ")}`}
+                                            value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
                                             className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
                                             <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
                                     ))}
-                            </Command.Group>
+                                </Command.Group>
+                            )}
                         </Command.List>
 
                         <div className="flex items-center gap-1 px-4 py-2 border-t text-xs">

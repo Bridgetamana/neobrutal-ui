@@ -7,52 +7,16 @@ import dynamic from "next/dynamic"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/site/layout/logo"
+import type { DocsNavigationGroup } from "@/lib/mdx"
 
 const CommandSearch = dynamic(
     () => import("@/components/site/command-search").then((m) => m.CommandSearch),
     { ssr: false }
 )
 
-const sidebarItems = [
-    {
-        title: "Getting Started",
-        items: [
-            { title: "About", href: "/docs" },
-            { title: "Quick Start", href: "/docs/installation" },
-            { title: "CLI", href: "/docs/cli" },
-            { title: "Theming", href: "/docs/theming" },
-            { title: "Accessibility", href: "/docs/accessibility" },
-            { title: "Changelog", href: "/docs/changelog" },
-        ],
-    },
-    {
-        title: "Components",
-        items: [
-            { title: "Accordion", href: "/docs/components/accordion" },
-            { title: "Alert", href: "/docs/components/alert" },
-            { title: "Avatar", href: "/docs/components/avatar" },
-            { title: "Badge", href: "/docs/components/badge" },
-            { title: "Button", href: "/docs/components/button" },
-            { title: "Card", href: "/docs/components/card" },
-            { title: "Checkbox", href: "/docs/components/checkbox" },
-            { title: "Dialog", href: "/docs/components/dialog" },
-            { title: "Input", href: "/docs/components/input" },
-            { title: "Label", href: "/docs/components/label" },
-            { title: "Pagination", href: "/docs/components/pagination" },
-            { title: "Popover", href: "/docs/components/popover" },
-            { title: "Progress", href: "/docs/components/progress" },
-            { title: "Radio Group", href: "/docs/components/radio-group" },
-            { title: "Select", href: "/docs/components/select" },
-            { title: "Separator", href: "/docs/components/separator" },
-            { title: "Slider", href: "/docs/components/slider" },
-            { title: "Switch", href: "/docs/components/switch" },
-            { title: "Tabs", href: "/docs/components/tabs" },
-            { title: "Textarea", href: "/docs/components/textarea" },
-            { title: "Toast", href: "/docs/components/toast" },
-            { title: "Tooltip", href: "/docs/components/tooltip" },
-        ],
-    },
-]
+interface DocsSidebarProps {
+    navigation: DocsNavigationGroup[]
+}
 
 function formatStarCount(stars: number) {
     if (stars >= 1000) {
@@ -64,13 +28,14 @@ function formatStarCount(stars: number) {
 
 interface SidebarContentProps {
     pathname: string
+    navigation: DocsNavigationGroup[]
     onLinkClick?: () => void
 }
 
-function SidebarContent({ pathname, onLinkClick }: SidebarContentProps) {
+function SidebarContent({ pathname, navigation, onLinkClick }: SidebarContentProps) {
     return (
         <div className="h-full overflow-y-auto p-4 bg-white">
-            {sidebarItems.map((group, i) => (
+            {navigation.map((group, i) => (
                 <div key={i} className="mb-4">
                     <h4 className="mb-2 px-2 font-semibold">
                         {group.title}
@@ -98,7 +63,7 @@ function SidebarContent({ pathname, onLinkClick }: SidebarContentProps) {
     )
 }
 
-export function DesktopSidebar() {
+export function DesktopSidebar({ navigation }: DocsSidebarProps) {
     const pathname = usePathname()
 
     return (
@@ -107,13 +72,13 @@ export function DesktopSidebar() {
                 <Logo />
             </Link>
             <div className="h-[calc(100vh-4rem)]">
-                <SidebarContent pathname={pathname} />
+                <SidebarContent pathname={pathname} navigation={navigation} />
             </div>
         </aside>
     )
 }
 
-export function MobileHeader() {
+export function MobileHeader({ navigation }: DocsSidebarProps) {
     const pathname = usePathname()
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     const toggleButtonRef = useRef<HTMLButtonElement>(null)
@@ -126,6 +91,7 @@ export function MobileHeader() {
         if (!sidebar) return
 
         const previouslyFocused = document.activeElement as HTMLElement | null
+        const toggleButton = toggleButtonRef.current
         const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
         const getFocusable = () =>
@@ -181,7 +147,7 @@ export function MobileHeader() {
                 return
             }
 
-            toggleButtonRef.current?.focus()
+            toggleButton?.focus()
         }
     }, [isSidebarOpen])
 
@@ -226,7 +192,11 @@ export function MobileHeader() {
                     isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 )}
             >
-                <SidebarContent pathname={pathname} onLinkClick={() => setIsSidebarOpen(false)} />
+                <SidebarContent
+                    pathname={pathname}
+                    navigation={navigation}
+                    onLinkClick={() => setIsSidebarOpen(false)}
+                />
             </aside>
         </>
     )
