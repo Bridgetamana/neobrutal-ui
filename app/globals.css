@@ -75,12 +75,6 @@ h2 {
     transition-duration: var(--motion-fast);
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .transition-brutal-fast {
-    transition-property:
-      color, background-color, border-color, opacity, transform, box-shadow;
-    transition-duration: var(--motion-fast);
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  }
 }
 
 @keyframes marquee {

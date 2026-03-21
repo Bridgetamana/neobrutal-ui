@@ -47,10 +47,10 @@ function SidebarContent({ pathname, navigation, onLinkClick }: SidebarContentPro
                                 href={item.href}
                                 onClick={onLinkClick}
                                 className={cn(
-                                    "ml-3 block rounded-base px-2 py-1 text-black/80 focus-brutal focus-visible:bg-main",
+                                    "ml-3 block border-l-2 pl-2 py-1  transition-colors duration-150 focus-brutal",
                                     pathname === item.href
-                                        ? "bg-main"
-                                        : "hover:text-black"
+                                        ? "border-black font-semibold text-black"
+                                        : "border-transparent text-black/60 hover:border-black/30 hover:text-black"
                                 )}
                             >
                                 {item.title}

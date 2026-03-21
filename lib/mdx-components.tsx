@@ -26,7 +26,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from "@/components/ui/toast"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Changelog } from "@/components/docs/changelog"
-import { DocNavLinks } from "@/components/docs/doc-nav-links"
 import { InfoGrid, InfoGridItem } from "@/components/docs/info-grid"
 
 import {
@@ -58,7 +57,6 @@ export const mdxComponents = {
     InstallTabs,
     PropsTable,
     Changelog,
-    DocNavLinks,
     InfoGrid, InfoGridItem,
     Accordion, AccordionItem, AccordionTrigger, AccordionContent,
     Alert, AlertTitle, AlertDescription,
