@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar",
   "type": "registry:ui",
-  "description": "An image element with a fallback for representing the user.",
+  "description": "Display user profile images with automatic fallback text.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

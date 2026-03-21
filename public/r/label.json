@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
   "type": "registry:ui",
-  "description": "Renders an accessible label associated with controls.",
+  "description": "Associate descriptive text with form controls.",
   "dependencies": [
     "class-variance-authority"
   ],

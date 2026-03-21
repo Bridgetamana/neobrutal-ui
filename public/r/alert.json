@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert",
   "type": "registry:ui",
-  "description": "Displays a callout for user attention with neobrutalist styling.",
+  "description": "Communicate important information or status to users.",
   "dependencies": [
     "lucide-react"
   ],

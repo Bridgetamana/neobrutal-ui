@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toast",
   "type": "registry:ui",
-  "description": "An opinionated toast component with neobrutalist styling.",
+  "description": "Show temporary notifications with automatic dismissal and optional actions.",
   "dependencies": [
     "@base-ui/react"
   ],

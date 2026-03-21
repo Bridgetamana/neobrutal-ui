@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "type": "registry:ui",
-  "description": "Displays a form input field with neobrutalist styling.",
+  "description": "Collect single-line text input from users.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

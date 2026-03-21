@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover",
   "type": "registry:ui",
-  "description": "Displays rich content in a portal, triggered by a button.",
+  "description": "Show contextual content anchored to a trigger element.",
   "dependencies": [
     "@base-ui/react"
   ],

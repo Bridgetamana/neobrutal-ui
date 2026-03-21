@@ -12,7 +12,7 @@
   {
     "name": "accordion",
     "type": "registry:ui",
-    "description": "A vertically stacked set of interactive headings that reveal content sections.",
+    "description": "Collapse and expand sections to show or hide content.",
     "dependencies": [
       "@base-ui/react",
       "lucide-react"
@@ -24,7 +24,7 @@
   {
     "name": "alert",
     "type": "registry:ui",
-    "description": "Displays a callout for user attention with neobrutalist styling.",
+    "description": "Communicate important information or status to users.",
     "dependencies": [
       "lucide-react"
     ],
@@ -35,7 +35,7 @@
   {
     "name": "avatar",
     "type": "registry:ui",
-    "description": "An image element with a fallback for representing the user.",
+    "description": "Display user profile images with automatic fallback text.",
     "dependencies": [],
     "registryDependencies": [
       "utils"
@@ -44,7 +44,7 @@
   {
     "name": "badge",
     "type": "registry:ui",
-    "description": "Displays a badge or label with neobrutalist styling.",
+    "description": "Label items with status or category tags.",
     "dependencies": [
       "class-variance-authority"
     ],
@@ -55,7 +55,7 @@
   {
     "name": "button",
     "type": "registry:ui",
-    "description": "Displays a button or a component that looks like a button with neobrutalist styling.",
+    "description": "Trigger actions or navigate when clicked.",
     "dependencies": [
       "class-variance-authority"
     ],
@@ -66,7 +66,7 @@
   {
     "name": "card",
     "type": "registry:ui",
-    "description": "Displays a card with header, content, and footer sections.",
+    "description": "Group and organize related content into a contained unit.",
     "dependencies": [],
     "registryDependencies": [
       "utils"
@@ -75,7 +75,7 @@
   {
     "name": "checkbox",
     "type": "registry:ui",
-    "description": "A control that allows the user to toggle between checked and not checked.",
+    "description": "Let users select or deselect individual options.",
     "dependencies": [
       "@base-ui/react",
       "lucide-react"
@@ -87,7 +87,7 @@
   {
     "name": "dialog",
     "type": "registry:ui",
-    "description": "A window overlaid on the primary window with neobrutalist styling.",
+    "description": "Display focused content in a modal overlay.",
     "dependencies": [
       "@base-ui/react",
       "lucide-react"
@@ -99,7 +99,7 @@
   {
     "name": "input",
     "type": "registry:ui",
-    "description": "Displays a form input field with neobrutalist styling.",
+    "description": "Collect single-line text input from users.",
     "dependencies": [],
     "registryDependencies": [
       "utils"
@@ -108,7 +108,7 @@
   {
     "name": "label",
     "type": "registry:ui",
-    "description": "Renders an accessible label associated with controls.",
+    "description": "Associate descriptive text with form controls.",
     "dependencies": [
       "class-variance-authority"
     ],
@@ -119,7 +119,7 @@
   {
     "name": "pagination",
     "type": "registry:ui",
-    "description": "Pagination with page navigation and ellipsis.",
+    "description": "Navigate through paginated content with page indicators.",
     "dependencies": [
       "lucide-react"
     ],
@@ -131,7 +131,7 @@
   {
     "name": "popover",
     "type": "registry:ui",
-    "description": "Displays rich content in a portal, triggered by a button.",
+    "description": "Show contextual content anchored to a trigger element.",
     "dependencies": [
       "@base-ui/react"
     ],
@@ -142,7 +142,7 @@
   {
     "name": "progress",
     "type": "registry:ui",
-    "description": "Displays an indicator showing the completion progress of a task.",
+    "description": "Visualize task completion progress with a percentage indicator.",
     "dependencies": [
       "@base-ui/react"
     ],
@@ -153,7 +153,7 @@
   {
     "name": "radio-group",
     "type": "registry:ui",
-    "description": "A set of checkable buttons where only one can be checked at a time.",
+    "description": "Let users select exactly one option from a group.",
     "dependencies": [
       "@base-ui/react",
       "lucide-react"
@@ -165,7 +165,7 @@
   {
     "name": "select",
     "type": "registry:ui",
-    "description": "Displays a list of options for the user to pick from.",
+    "description": "Choose a single option from a collapsible list.",
     "dependencies": [
       "@base-ui/react",
       "lucide-react"
@@ -177,7 +177,7 @@
   {
     "name": "slider",
     "type": "registry:ui",
-    "description": "An input where the user selects a value from within a given range.",
+    "description": "Select a numeric value within a range using a slider.",
     "dependencies": [
       "@base-ui/react"
     ],
@@ -188,7 +188,7 @@
   {
     "name": "toast",
     "type": "registry:ui",
-    "description": "An opinionated toast component with neobrutalist styling.",
+    "description": "Show temporary notifications with automatic dismissal and optional actions.",
     "dependencies": [
       "@base-ui/react"
     ],
@@ -199,7 +199,7 @@
   {
     "name": "switch",
     "type": "registry:ui",
-    "description": "A control that allows the user to toggle between on and off.",
+    "description": "Toggle a boolean setting on or off.",
     "dependencies": [
       "@base-ui/react"
     ],
@@ -210,7 +210,7 @@
   {
     "name": "tabs",
     "type": "registry:ui",
-    "description": "A set of layered sections of content displayed one at a time.",
+    "description": "Switch between multiple content sections with tab controls.",
     "dependencies": [],
     "registryDependencies": [
       "utils"
@@ -219,7 +219,7 @@
   {
     "name": "textarea",
     "type": "registry:ui",
-    "description": "Displays a form textarea with neobrutalist styling.",
+    "description": "Collect multi-line text input from users.",
     "dependencies": [],
     "registryDependencies": [
       "utils"
@@ -228,7 +228,7 @@
   {
     "name": "tooltip",
     "type": "registry:ui",
-    "description": "A popup that displays information related to an element.",
+    "description": "Display contextual information on hover or focus.",
     "dependencies": [
       "@base-ui/react"
     ],

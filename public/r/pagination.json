@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pagination",
   "type": "registry:ui",
-  "description": "Pagination with page navigation and ellipsis.",
+  "description": "Navigate through paginated content with page indicators.",
   "dependencies": [
     "lucide-react"
   ],

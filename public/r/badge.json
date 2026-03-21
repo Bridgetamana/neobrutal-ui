@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
   "type": "registry:ui",
-  "description": "Displays a badge or label with neobrutalist styling.",
+  "description": "Label items with status or category tags.",
   "dependencies": [
     "class-variance-authority"
   ],

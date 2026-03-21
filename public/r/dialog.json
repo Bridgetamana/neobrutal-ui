@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dialog",
   "type": "registry:ui",
-  "description": "A window overlaid on the primary window with neobrutalist styling.",
+  "description": "Display focused content in a modal overlay.",
   "dependencies": [
     "@base-ui/react",
     "lucide-react"

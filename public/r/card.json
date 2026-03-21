@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "card",
   "type": "registry:ui",
-  "description": "Displays a card with header, content, and footer sections.",
+  "description": "Group and organize related content into a contained unit.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

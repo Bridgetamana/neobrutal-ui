@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
   "type": "registry:ui",
-  "description": "Displays a button or a component that looks like a button with neobrutalist styling.",
+  "description": "Trigger actions or navigate when clicked.",
   "dependencies": [
     "class-variance-authority"
   ],

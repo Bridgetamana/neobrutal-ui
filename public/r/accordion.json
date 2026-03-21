@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "accordion",
   "type": "registry:ui",
-  "description": "A vertically stacked set of interactive headings that reveal content sections.",
+  "description": "Collapse and expand sections to show or hide content.",
   "dependencies": [
     "@base-ui/react",
     "lucide-react"

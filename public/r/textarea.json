@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea",
   "type": "registry:ui",
-  "description": "Displays a form textarea with neobrutalist styling.",
+  "description": "Collect multi-line text input from users.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

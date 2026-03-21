@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tabs",
   "type": "registry:ui",
-  "description": "A set of layered sections of content displayed one at a time.",
+  "description": "Switch between multiple content sections with tab controls.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

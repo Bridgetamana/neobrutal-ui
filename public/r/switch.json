@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch",
   "type": "registry:ui",
-  "description": "A control that allows the user to toggle between on and off.",
+  "description": "Toggle a boolean setting on or off.",
   "dependencies": [
     "@base-ui/react"
   ],

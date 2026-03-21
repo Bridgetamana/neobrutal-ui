@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip",
   "type": "registry:ui",
-  "description": "A popup that displays information related to an element.",
+  "description": "Display contextual information on hover or focus.",
   "dependencies": [
     "@base-ui/react"
   ],
