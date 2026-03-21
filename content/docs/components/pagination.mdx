@@ -1,6 +1,6 @@
 ---
 title: Pagination
-description: Pagination with bold borders and clear active states.
+description: Navigate through paginated content with page indicators.
 ---
 
 <ComponentPreview codeFile="pagination/example-1.txt">
@@ -24,6 +24,22 @@ description: Pagination with bold borders and clear active states.
 <CodeBlock code="import { Pagination, PaginationItem } from '@/components/ui/pagination'" />
 
 <CodeBlock code="<Pagination>\n  <PaginationItem>Prev</PaginationItem>\n  <PaginationItem>1</PaginationItem>\n  <PaginationItem isActive>2</PaginationItem>\n  <PaginationItem>3</PaginationItem>\n  <PaginationItem>Next</PaginationItem>\n</Pagination>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="pagination/example-1.txt">
+  <div className="flex w-full justify-center">
+    <Pagination>
+        <PaginationItem>Prev</PaginationItem>
+        <PaginationItem>1</PaginationItem>
+        <PaginationItem isActive>2</PaginationItem>
+        <PaginationItem>3</PaginationItem>
+        <PaginationItem>Next</PaginationItem>
+    </Pagination>
+  </div>
+</ComponentPreview>
 
 ## API Reference
 

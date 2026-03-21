@@ -6,7 +6,7 @@ order: 2
 
 ## init
 
-Set up your project for neobrutal ui. Creates components.json, installs dependencies, and adds utilities.
+Set up your project for Neobrutal UI. Creates components.json, installs dependencies, and adds utilities.
 
 <CodeBlock code="npx neobrutal init" language="bash" />
 
@@ -36,7 +36,13 @@ Compare local components with the registry to check for updates.
 
 The **components.json** file configures component paths and import aliases.
 
-<CodeBlock code="{\n  'tailwind': {\n    'css': 'app/globals.css'\n  },\n  'aliases': {\n    'components': '@/components',\n    'utils': '@/lib/utils'\n  }\n}" language="json" />
+<CodeBlock code='{
+    "tailwind": {
+    "css": "app/globals.css"},
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"}
+}' language="json" />
 
 <div className="border-2 border-black bg-white">
   <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black">

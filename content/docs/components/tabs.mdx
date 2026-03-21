@@ -1,6 +1,6 @@
 ---
 title: Tabs
-description: Organizes content into multiple sections with tabbed navigation.
+description: Switch between multiple content sections with tab controls.
 ---
 
 <ComponentPreview codeFile="tabs/example-1.txt">
@@ -29,6 +29,27 @@ description: Organizes content into multiple sections with tabbed navigation.
 <CodeBlock code="import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'" />
 
 <CodeBlock code="<Tabs defaultValue='account'>\n  <TabsList>\n    <TabsTrigger value='account'>Account</TabsTrigger>\n    <TabsTrigger value='password'>Password</TabsTrigger>\n  </TabsList>\n  <TabsContent value='account'>\n    Make changes to your account here.\n  </TabsContent>\n  <TabsContent value='password'>\n    Change your password here.\n  </TabsContent>\n</Tabs>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="tabs/example-1.txt">
+  <div className="flex w-full justify-center">
+    <Tabs defaultValue="account" className="w-full max-w-sm">
+        <TabsList>
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+            Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password">
+            Change your password here.
+        </TabsContent>
+    </Tabs>
+  </div>
+</ComponentPreview>
 
 
 ## API Reference

@@ -1,6 +1,6 @@
 ---
 title: Textarea
-description: A multi-line text input field for longer form content.
+description: Collect multi-line text input from users.
 ---
 
 <ComponentPreview codeFile="textarea/example-1.txt">
@@ -32,4 +32,10 @@ description: A multi-line text input field for longer form content.
 
 ## API Reference
 
-`Textarea` extends the native `<textarea>` element. All standard `<textarea>` attributes are supported.
+<PropsTable data={[
+  { name: "rows", type: "number", defaultValue: "-", description: "Sets the number of visible text lines." },
+  { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the textarea and prevents user interaction." },
+  { name: "className", type: "string", defaultValue: "-", description: "Adds custom classes to adjust layout and styling." }
+]} />
+
+Supports all standard native `<textarea>` attributes.

@@ -1,6 +1,6 @@
 ---
 title: Toast
-description: A succinct message that is displayed temporarily. Supports multiple types, action buttons, promise-based flows, and configurable positioning.
+description: Show temporary notifications with automatic dismissal and optional actions.
 ---
 
 <ComponentPreview codeFile="toast/example-1.txt">
@@ -13,7 +13,7 @@ description: A succinct message that is displayed temporarily. Supports multiple
 
 <InstallTabs name="toast" />
 
-## Required setup
+### Required setup
 
 Before calling `toast.*`, mount `Toaster` once in your root layout.
 
@@ -64,4 +64,19 @@ Set the toast position by passing a <code className="font-mono text-xs bg-white 
 
 ## API Reference
 
-This component is built on top of [Base UI Toast](https://base-ui.com/react/components/toast). Refer to the Base UI documentation for the full list of available props.
+### Toaster
+
+<PropsTable data={[
+  { name: "position", type: '"top-left" | "top-right" | "top-center" | "bottom-left" | "bottom-right" | "bottom-center"', defaultValue: '"bottom-right"', description: "Controls where toast notifications are rendered." }
+]} />
+
+### toast helpers
+
+<PropsTable data={[
+  { name: "toast.success(message, options)", type: "function", defaultValue: "-", description: "Shows a success toast." },
+  { name: "toast.error(message, options)", type: "function", defaultValue: "-", description: "Shows an error toast." },
+  { name: "toast.info(message, options)", type: "function", defaultValue: "-", description: "Shows an informational toast." },
+  { name: "toast.warning(message, options)", type: "function", defaultValue: "-", description: "Shows a warning toast." },
+  { name: "toast.promise(promise, options)", type: "function", defaultValue: "-", description: "Shows loading/success/error toasts based on promise state." },
+  { name: "toast.dismiss(toastId)", type: "function", defaultValue: "-", description: "Dismisses a toast by id." }
+]} />

@@ -1,6 +1,6 @@
 ---
 title: Card
-description: A flexible container component for grouping related content.
+description: Group and organize related content into a contained unit.
 ---
 
 <ComponentPreview codeFile="card/example-1.txt">
@@ -39,6 +39,32 @@ description: A flexible container component for grouping related content.
   </CardFooter>
 </Card>" />
 
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="card/example-1.txt">
+  <Card className="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle>Account Settings</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <div className="text-sm text-black/80">
+        Manage your profile and preferences from one place.
+      </div>
+    </CardContent>
+    <CardFooter className="justify-end">
+      <Button variant="neutral" size="sm">Save</Button>
+    </CardFooter>
+  </Card>
+</ComponentPreview>
+
 ## API Reference
 
-`Card`, `CardHeader`, `CardTitle`, `CardContent`, and `CardFooter` are layout wrappers that extend native HTML elements and accept all standard HTML attributes.
+<PropsTable data={[
+  { name: "Card", type: "React.HTMLAttributes<HTMLDivElement>", defaultValue: "-", description: "Root container for a card." },
+  { name: "CardHeader", type: "React.HTMLAttributes<HTMLDivElement>", defaultValue: "-", description: "Header area for card title and metadata." },
+  { name: "CardTitle", type: "React.HTMLAttributes<HTMLHeadingElement>", defaultValue: "-", description: "Title text inside the card header." },
+  { name: "CardContent", type: "React.HTMLAttributes<HTMLDivElement>", defaultValue: "-", description: "Main content area of the card." },
+  { name: "CardFooter", type: "React.HTMLAttributes<HTMLDivElement>", defaultValue: "-", description: "Footer area for actions or summary content." }
+]} />

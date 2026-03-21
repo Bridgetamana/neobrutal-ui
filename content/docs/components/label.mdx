@@ -1,6 +1,6 @@
 ---
 title: Label
-description: An accessible form label component that renders a semantic label element.
+description: Associate descriptive text with form controls.
 ---
 
 <ComponentPreview codeFile="label/example-1.txt">
@@ -33,4 +33,9 @@ description: An accessible form label component that renders a semantic label el
 
 ## API Reference
 
-Extends the native `<label>` element. All standard HTML label attributes (`htmlFor`, etc.) are supported. Includes automatic styling for disabled peer elements.
+<PropsTable data={[
+  { name: "htmlFor", type: "string", defaultValue: "-", description: "Associates the label with a form control id." },
+  { name: "className", type: "string", defaultValue: "-", description: "Adds custom classes to adjust layout and styling." }
+]} />
+
+Supports all standard native `<label>` attributes.

@@ -1,6 +1,6 @@
 ---
 title: Input
-description: A text input field with bold borders and accessible focus states.
+description: Collect single-line text input from users.
 ---
 
 <ComponentPreview codeFile="input/example-1.txt">
@@ -47,4 +47,10 @@ description: A text input field with bold borders and accessible focus states.
 
 ## API Reference
 
-Extends the native `<input>` element. All standard HTML input attributes (`type`, `placeholder`, `disabled`, `value`, `onChange`, etc.) are supported.
+<PropsTable data={[
+  { name: "type", type: "string", defaultValue: '"text"', description: "Sets the input type such as text, email, password, or file." },
+  { name: "disabled", type: "boolean", defaultValue: "false", description: "Disables the input and prevents user interaction." },
+  { name: "className", type: "string", defaultValue: "-", description: "Adds custom classes to adjust layout and styling." }
+]} />
+
+Supports all standard native `<input>` attributes.

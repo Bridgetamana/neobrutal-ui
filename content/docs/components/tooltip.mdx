@@ -1,6 +1,6 @@
 ---
 title: Tooltip
-description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+description: Display contextual information on hover or focus.
 ---
 
 <ComponentPreview codeFile="tooltip/example-1.txt">
@@ -27,6 +27,25 @@ description: A popup that displays information related to an element when the el
 <CodeBlock code="import {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from '@/components/ui/tooltip'" />
 
 <CodeBlock code="<TooltipProvider>\n  <Tooltip>\n    <TooltipTrigger render={<Button variant='noShadow' />}>\n      Hover\n    </TooltipTrigger>\n    <TooltipContent>\n      <p>Add to library</p>\n    </TooltipContent>\n  </Tooltip>\n</TooltipProvider>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="tooltip/example-1.txt">
+  <div className="flex w-full justify-center">
+    <TooltipProvider>
+        <Tooltip>
+            <TooltipTrigger render={<Button variant="noShadow" />}>
+                Hover
+            </TooltipTrigger>
+            <TooltipContent>
+                <p>Add to library</p>
+            </TooltipContent>
+        </Tooltip>
+    </TooltipProvider>
+  </div>
+</ComponentPreview>
 
 
 ## API Reference

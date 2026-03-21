@@ -1,6 +1,6 @@
 ---
 title: Dialog
-description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+description: Display focused content in a modal overlay.
 ---
 
 <ComponentPreview codeFile="dialog/example-1.txt">
@@ -38,6 +38,16 @@ description: A window overlaid on either the primary window or another dialog wi
 \n    </DialogHeader>
 \n  </DialogContent>
 \n</Dialog>" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="dialog/example-1.txt">
+  <div className="flex justify-center w-full">
+    <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
+  </div>
+</ComponentPreview>
 
 ## API Reference
 
