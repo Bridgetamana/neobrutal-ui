@@ -1,9 +1,10 @@
-import { getMdxBySlug, getAllMdxSlugs, type MdxFrontmatter } from '@/lib/mdx'
+import { getMdxBySlug, getAllMdxSlugs, getAllMdxDocuments, type MdxFrontmatter } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { mdxComponents } from '@/lib/mdx-components'
 import { EditPageLink } from '@/components/docs/edit-page-link'
+import { DocPager } from '@/components/docs/doc-pager'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     try {
@@ -40,6 +41,15 @@ export default async function DocsPage({ params }: { params: Promise<{ slug: str
         notFound()
     }
 
+    const allDocs = await getAllMdxDocuments('docs')
+    const currentIndex = allDocs.findIndex((doc) => doc.slug === slug)
+    const prev = currentIndex > 0
+        ? { href: allDocs[currentIndex - 1].href, title: allDocs[currentIndex - 1].frontmatter.title }
+        : undefined
+    const next = currentIndex >= 0 && currentIndex < allDocs.length - 1
+        ? { href: allDocs[currentIndex + 1].href, title: allDocs[currentIndex + 1].frontmatter.title }
+        : undefined
+
     return (
         <div className="space-y-8 text-black">
             <header>
@@ -54,6 +64,7 @@ export default async function DocsPage({ params }: { params: Promise<{ slug: str
             </div>
 
             <EditPageLink editPath={`content/docs/${slug}.mdx`} />
+            <DocPager prev={prev} next={next} />
         </div>
     )
 }

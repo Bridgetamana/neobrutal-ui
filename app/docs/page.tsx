@@ -1,8 +1,9 @@
-import { getMdxBySlug } from '@/lib/mdx'
+import { getMdxBySlug, getAllMdxDocuments } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Metadata } from 'next'
 import { mdxComponents } from '@/lib/mdx-components'
 import { EditPageLink } from '@/components/docs/edit-page-link'
+import { DocPager } from '@/components/docs/doc-pager'
 
 export const metadata: Metadata = {
     title: "Introduction",
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
 
 export default async function DocsPage() {
     const { content, frontmatter } = await getMdxBySlug('introduction', 'docs')
+
+    const allDocs = await getAllMdxDocuments('docs')
+    const introIndex = allDocs.findIndex((doc) => doc.slug === 'introduction')
+    const next = introIndex >= 0 && introIndex < allDocs.length - 1
+        ? { href: allDocs[introIndex + 1].href, title: allDocs[introIndex + 1].frontmatter.title }
+        : undefined
 
     return (
         <div className="space-y-8 text-black">
@@ -23,6 +30,7 @@ export default async function DocsPage() {
             </div>
 
             <EditPageLink editPath="content/docs/introduction.mdx" />
+            <DocPager next={next} />
         </div>
     )
 }

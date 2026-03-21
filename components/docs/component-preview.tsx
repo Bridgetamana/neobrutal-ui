@@ -25,7 +25,7 @@ export function ComponentPreviewClient({
                 <button
                     onClick={() => setView("preview")}
                     className={cn(
-                        "flex-1 py-2 text-sm font-medium uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
+                        "flex-1 py-2 text-sm font-medium uppercase focus-brutal-inset",
                         view === "preview" ? "bg-main" : "bg-white hover:bg-main/30"
                     )}
                 >
@@ -34,7 +34,7 @@ export function ComponentPreviewClient({
                 <button
                     onClick={() => setView("code")}
                     className={cn(
-                        "flex-1 py-2 text-sm font-medium uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset",
+                        "flex-1 py-2 text-sm font-medium uppercase focus-brutal-inset",
                         view === "code" ? "bg-main" : "bg-white hover:bg-main/30"
                     )}
                 >

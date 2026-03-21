@@ -1,4 +1,4 @@
-import { ColorThemePicker } from "@/components/home/color-theme-picker"
+import { ColorThemePicker } from "@/components/site/color-theme-picker"
 import { DesktopSidebar, MobileHeader, DocsHeader } from "@/components/docs/docs-sidebar"
 import { OnThisPage } from "@/components/docs/on-this-page"
 import { Suspense } from "react"

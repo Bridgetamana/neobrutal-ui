@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
@@ -22,64 +22,51 @@ export function OnThisPage() {
   const pathname = usePathname()
   const [headings, setHeadings] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState("")
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
     const content = document.querySelector("[data-docs-content]")
     if (!content) return
 
-    const elements = content.querySelectorAll<HTMLElement>("h2, h3")
-    const items: TocItem[] = []
+    const elements = Array.from(content.querySelectorAll<HTMLElement>("h2, h3"))
     const usedIds = new Set<string>()
+    const items: TocItem[] = []
 
     elements.forEach((el) => {
-      const rawId = (el.id || slugify(el.textContent || "") || "section").trim()
-      let uniqueId = rawId
-      let index = 2
-
-      while (usedIds.has(uniqueId)) {
-        uniqueId = `${rawId}-${index}`
-        index += 1
+      const raw = (el.id || slugify(el.textContent ?? "") || "section").trim()
+      let id = raw
+      let n = 2
+      while (usedIds.has(id)) {
+        id = `${raw}-${n++}`
       }
-
-      el.id = uniqueId
-      usedIds.add(uniqueId)
-
-      if (uniqueId) {
-        items.push({
-          id: uniqueId,
-          text: el.textContent?.trim() || "",
-          level: el.tagName === "H2" ? 2 : 3,
-        })
-      }
+      el.id = id
+      usedIds.add(id)
+      items.push({ id, text: el.textContent?.trim() ?? "", level: el.tagName === "H2" ? 2 : 3 })
     })
 
-    let isInitialCallback = true
+    setHeadings(items)
+    if (items.length > 0) setActiveId(items[0].id)
+
+    observerRef.current?.disconnect()
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (isInitialCallback) {
-          setHeadings(items)
-        }
+        entries.forEach((entry) => {
+          entry.target.toggleAttribute("data-visible", entry.isIntersecting)
+        })
 
-        const visible = entries.filter((e) => e.isIntersecting)
-
+        const visible = elements.filter((el) => el.hasAttribute("data-visible"))
         if (visible.length > 0) {
-          visible.sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
-          )
-          setActiveId(visible[0].target.id)
-        } else if (isInitialCallback && items.length > 0) {
-          setActiveId(items[0].id)
+          setActiveId(visible[0].id)
         }
-
-        isInitialCallback = false
       },
-      { rootMargin: "0px 0px -80% 0px" }
+      {
+        rootMargin: "-10% 0px -65% 0px",
+      }
     )
 
-    elements.forEach((el) => {
-      if (el.id) observer.observe(el)
-    })
+    elements.forEach((el) => observer.observe(el))
+    observerRef.current = observer
 
     return () => observer.disconnect()
   }, [pathname])
@@ -87,30 +74,31 @@ export function OnThisPage() {
   if (headings.length === 0) return null
 
   return (
-    <aside className="hidden xl:block">
-      <nav className="sticky top-6 max-h-[calc(100vh-4rem)] overflow-y-auto">
-        <p className="text-sm font-semibold mb-3">On This Page</p>
-        <ul className="space-y-1 text-[13px]">
+    <aside className="hidden xl:block" aria-label="Table of contents">
+      <nav className="sticky top-6 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <p className="text-xs font-semibold uppercase tracking-wider text-black/50 mb-3 px-3">
+          On This Page
+        </p>
+        <ul className="text-sm">
           {headings.map((heading) => {
             const isActive = activeId === heading.id
-
             return (
-              <li key={heading.id} className={cn(heading.level === 3 && "ml-3")}>
+              <li key={heading.id}>
                 <a
                   href={`#${heading.id}`}
                   onClick={(e) => {
                     e.preventDefault()
-                    document.getElementById(heading.id)?.scrollIntoView({
-                      behavior: "smooth",
-                    })
+                    document.getElementById(heading.id)?.scrollIntoView({ behavior: "smooth" })
                     setActiveId(heading.id)
                   }}
                   className={cn(
-                    "block rounded-base px-2 py-1 transition-colors leading-snug focus-brutal",
-                    heading.level === 3 && "text-[12px]",
+                    "flex py-1 leading-snug transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black",
+                    heading.level === 2
+                      ? "pl-3 border-l-2"
+                      : "pl-6 border-l-2",
                     isActive
-                      ? "bg-main text-black font-medium"
-                      : "text-black/70 hover:bg-white hover:text-black"
+                      ? "border-black font-medium text-black"
+                      : "border-transparent text-black/60 hover:border-black/30 hover:text-black"
                   )}
                 >
                   {heading.text}
