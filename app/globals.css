@@ -8,6 +8,7 @@
   --color-main: var(--main);
   --color-mint: var(--mint);
   --color-lemon: var(--lemon);
+  --color-sky: var(--sky);
   --color-hot-pink: var(--hot-pink);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
   --shadow-brutal-sm: 2px 2px 0px 0px var(--black);
@@ -27,6 +28,7 @@
   --motion-base: 200ms;
   --mint: #97ee88;
   --lemon: #fed170;
+  --sky: #88c5ee;
   --hot-pink: #ee8888;
 }
 

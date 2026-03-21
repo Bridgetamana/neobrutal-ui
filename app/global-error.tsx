@@ -22,7 +22,7 @@ export default function GlobalError({
                     )}
                     <button
                         onClick={() => reset()}
-                        className="inline-flex items-center justify-center rounded-[5px] border-2 border-black bg-[#b6ace4] px-4 py-2 text-sm font-bold shadow-[4px_4px_0px_0px_#000] hover:translate-x-px hover:translate-y-px hover:shadow-none"
+                        className="inline-flex items-center justify-center rounded-base border-2 border-black bg-main px-4 py-2 text-sm font-bold shadow-brutal transition-brutal focus-brutal hover:translate-x-px hover:translate-y-px hover:shadow-none"
                     >
                         Try again
                     </button>

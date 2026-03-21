@@ -66,7 +66,7 @@ export function HeroSection() {
                     <Button size="icon" aria-label="Like" className="rounded-full w-12 h-12 bg-lemon">
                         <Heart className="w-6 h-6 fill-black" />
                     </Button>
-                    <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-[#88c5ee]">
+                    <Button size="icon" aria-label="Share" className="rounded-full w-12 h-12 bg-sky">
                         <Share2 className="w-6 h-6" strokeWidth={3} />
                     </Button>
                 </div>
@@ -83,7 +83,7 @@ export function HeroSection() {
                 <Switch aria-label="Toggle setting" className="data-[state=checked]:bg-black" />
                 <Input placeholder="Enter your email..." />
                 <Badge variant="default" className="bg-hot-pink">New</Badge>
-                <div className="flex items-center gap-2 p-3 bg-[#88c5ee] border-2 border-black shadow-brutal rounded-base">
+                <div className="flex items-center gap-2 p-3 bg-sky border-2 border-black shadow-brutal rounded-base">
                     <Checkbox id="demo" defaultChecked />
                     <Label htmlFor="demo">Subscribe</Label>
                 </div>

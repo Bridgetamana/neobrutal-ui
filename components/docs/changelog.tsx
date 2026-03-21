@@ -103,7 +103,7 @@ export async function Changelog() {
     return (
         <div className="space-y-6">
             {sections.length === 0 ? (
-                <div className="border-2 border-black rounded-lg p-8 bg-white text-center">
+                <div className="border-2 border-black rounded-base p-8 bg-white text-center">
                     <p className="text-black/60">No changelog entries found.</p>
                     <p className="text-sm text-black/60 mt-2">
                         View the full changelog on{" "}

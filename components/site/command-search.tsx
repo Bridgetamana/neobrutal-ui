@@ -171,7 +171,7 @@ export function CommandSearch() {
                                             key={item.href}
                                             value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
+                                            className="flex items-center gap-3 rounded-base cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
                                             <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
@@ -186,7 +186,7 @@ export function CommandSearch() {
                                             key={item.href}
                                             value={`${item.name} ${item.keywords.join(" ")}`}
                                             onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 rounded-md cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
+                                            className="flex items-center gap-3 rounded-base cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
                                         >
                                             <p className="py-1 text-black/80 ml-3">{item.name}</p>
                                         </Command.Item>
