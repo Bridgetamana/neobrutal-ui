@@ -10,6 +10,7 @@
   --color-lemon: var(--lemon);
   --color-hot-pink: var(--hot-pink);
   --shadow-brutal: 4px 4px 0px 0px var(--black);
+  --shadow-brutal-sm: 2px 2px 0px 0px var(--black);
   --radius-base: var(--radius);
 }
 
@@ -19,6 +20,11 @@
   --main: #b6ace4;
   --bg: #f0eefc;
   --radius: 5px;
+  --radius-sm: 3px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --motion-fast: 150ms;
+  --motion-base: 200ms;
   --mint: #97ee88;
   --lemon: #fed170;
   --hot-pink: #ee8888;
@@ -34,16 +40,44 @@ p {
   text-wrap: pretty;
 }
 
-h1, h2 {
+h1,
+h2 {
   letter-spacing: -0.025em;
 }
 
 @layer utilities {
   .focus-brutal {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply focus-visible:outline-none;
+  }
+  .focus-brutal:focus-visible {
+    box-shadow:
+      0 0 0 var(--focus-ring-width) var(--black),
+      0 0 0 calc(var(--focus-ring-width) + var(--focus-ring-offset))
+        var(--white);
+  }
+  .focus-brutal-inset {
+    @apply focus-visible:outline-none;
+  }
+  .focus-brutal-inset:focus-visible {
+    box-shadow: inset 0 0 0 var(--focus-ring-width) var(--black);
   }
   .shadow-brutal {
     box-shadow: var(--shadow-brutal);
+  }
+  .shadow-brutal-sm {
+    box-shadow: var(--shadow-brutal-sm);
+  }
+  .transition-brutal {
+    transition-property:
+      color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: var(--motion-fast);
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .transition-brutal-fast {
+    transition-property:
+      color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: var(--motion-fast);
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
@@ -89,7 +123,7 @@ h1, h2 {
   background: var(--main);
   border-left: 2px solid var(--black);
   border-bottom: 1px solid var(--black);
-  border-top: 1px solid var(--black)
+  border-top: 1px solid var(--black);
 }
 
 ::-webkit-scrollbar-corner {

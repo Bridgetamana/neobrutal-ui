@@ -15,7 +15,7 @@ const Checkbox = React.forwardRef<
         ref={ref}
         disabled={disabled}
         className={cn(
-            "peer h-5 w-5 shrink-0 rounded-base border-2 border-black ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-checked:text-black",
+            "peer h-5 w-5 shrink-0 rounded-base border-2 border-black focus-brutal disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main data-checked:text-black",
             className
         )}
         {...props}

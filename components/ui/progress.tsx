@@ -24,7 +24,7 @@ const Progress = React.forwardRef<
         >
             {showValue && (
                 <div
-                    className="absolute top-0 -translate-x-1/2 transition-all duration-300 motion-reduce:transition-none"
+                    className="absolute top-0 -translate-x-1/2 transition-[left] duration-300 motion-reduce:transition-none"
                     style={{ left: `${percentage}%` }}
                 >
                     <span className="relative inline-flex items-center rounded-base border-2 border-black bg-white px-2 py-0.5 text-xs font-medium text-black">
@@ -49,7 +49,7 @@ const Progress = React.forwardRef<
                 </div>
             )}
             <BaseProgress.Track className="relative h-3 w-full overflow-hidden rounded-base border-2 border-black bg-white">
-                <BaseProgress.Indicator className="h-full bg-main transition-all duration-300 motion-reduce:transition-none" />
+                <BaseProgress.Indicator className="h-full bg-main transition-[width,transform] duration-300 motion-reduce:transition-none" />
             </BaseProgress.Track>
         </BaseProgress.Root>
     )

@@ -126,7 +126,7 @@ const Toast = React.forwardRef<
     <BaseToast.Root
         ref={ref}
         className={cn(
-            "group relative pointer-events-auto flex w-full items-center justify-between space-x-4 overflow-hidden rounded-base border-2 border-black p-6 pr-8 shadow-brutal transition-all",
+            "group relative pointer-events-auto flex w-full items-center justify-between space-x-4 overflow-hidden rounded-base border-2 border-black p-6 pr-8 shadow-brutal transition-[transform,opacity,box-shadow,background-color,color] duration-200",
             className,
         )}
         {...props}
@@ -156,7 +156,7 @@ const ToastAction = React.forwardRef<
     <BaseToast.Action
         ref={ref}
         className={cn(
-            "inline-flex h-8 shrink-0 items-center justify-center rounded-base border-2 border-black bg-white px-3 text-sm font-bold text-black shadow-[2px_2px_0_0_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus:outline-none focus:ring-2 focus:ring-black disabled:pointer-events-none disabled:opacity-50",
+            "inline-flex h-8 shrink-0 items-center justify-center rounded-base border-2 border-black bg-white px-3 text-sm font-bold text-black shadow-brutal-sm transition-brutal hover:translate-x-px hover:translate-y-px hover:shadow-none focus-brutal disabled:pointer-events-none disabled:opacity-50",
             className,
         )}
         {...props}
@@ -171,7 +171,7 @@ const ToastClose = React.forwardRef<
     <BaseToast.Close
         ref={ref}
         className={cn(
-            "absolute right-2 top-2 rounded-base p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100",
+            "absolute right-2 top-2 rounded-base p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal group-hover:opacity-100",
             className,
         )}
         toast-close=""
@@ -233,13 +233,13 @@ const ToastRenderer = ({ position }: { position: ToastPosition }) => {
                             {t.actionProps && (
                                 <div className="mt-1">
                                     <BaseToast.Action
-                                        className="inline-flex h-7 shrink-0 items-center justify-center rounded-base border-2 border-black bg-white px-3 text-xs font-bold text-black shadow-[2px_2px_0_0_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus:outline-none focus:ring-2 focus:ring-black disabled:pointer-events-none disabled:opacity-50"
+                                        className="inline-flex h-7 shrink-0 items-center justify-center rounded-base border-2 border-black bg-white px-3 text-xs font-bold text-black shadow-brutal-sm transition-brutal hover:translate-x-px hover:translate-y-px hover:shadow-none focus-brutal disabled:pointer-events-none disabled:opacity-50"
                                         {...t.actionProps}
                                     />
                                 </div>
                             )}
                             <BaseToast.Close
-                                className="absolute right-2 top-2 rounded-base p-1 text-black/80 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2"
+                                className="absolute right-2 top-2 rounded-base p-1 text-black/80 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal"
                                 aria-label="Close"
                             >
                                 ×
