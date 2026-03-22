@@ -13,9 +13,9 @@ description: Show contextual content anchored to a trigger element.
             <div className="grid gap-4">
                 <div className="space-y-2">
                     <h4 className="font-semibold leading-none">Dimensions</h4>
-                    <p className="text-sm text-black">
+                    <span className="text-sm text-black">
                         Set the dimensions for the layer.
-                    </p>
+                    </span>
                 </div>
             </div>
         </PopoverContent>
@@ -31,7 +31,7 @@ description: Show contextual content anchored to a trigger element.
 
 <CodeBlock code="import { Button } from '@/components/ui/button'\nimport { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'" />
 
-<CodeBlock code="<Popover>\n  <PopoverTrigger render={<Button variant='noShadow' />}>\n    Open Popover\n  </PopoverTrigger>\n  <PopoverContent>\n    <div className='grid gap-4'>\n      <div className='space-y-2'>\n        <h4 className='font-bold leading-none'>Dimensions</h4>\n        <p className='text-sm text-black'>\n          Set the dimensions for the layer.\n        </p>\n      </div>\n    </div>\n  </PopoverContent>\n</Popover>" />
+<CodeBlock code="<Popover>\n  <PopoverTrigger render={<Button variant='noShadow' />}>\n    Open Popover\n  </PopoverTrigger>\n  <PopoverContent>\n    <div className='grid gap-4'>\n      <div className='space-y-2'>\n        <h4 className='font-bold leading-none'>Dimensions</h4>\n        <span className='text-sm text-black'>\n          Set the dimensions for the layer.\n        </span>\n      </div>\n    </div>\n  </PopoverContent>\n</Popover>" />
 
 ## Examples
 
@@ -47,9 +47,9 @@ description: Show contextual content anchored to a trigger element.
             <div className="grid gap-4">
                 <div className="space-y-2">
                     <h4 className="font-semibold leading-none">Dimensions</h4>
-                    <p className="text-sm text-black">
+                    <span className="text-sm text-black">
                         Set the dimensions for the layer.
-                    </p>
+                    </span>
                 </div>
             </div>
         </PopoverContent>

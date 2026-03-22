@@ -5,7 +5,7 @@ description: Associate descriptive text with form controls.
 
 <ComponentPreview codeFile="label/example-1.txt">
   <div className="flex items-center gap-2">
-      <input type="checkbox" id="termsDemo" aria-label="Accept terms and conditions" className="peer h-5 w-5 shrink-0 rounded-base ring-2 border-white focus-brutal accent-main" />
+      <Checkbox id="termsDemo" />
       <Label htmlFor="termsDemo">Accept terms and conditions</Label>
   </div>
 </ComponentPreview>
@@ -27,7 +27,7 @@ description: Associate descriptive text with form controls.
 <ComponentPreview codeFile="label/example-2.txt">
   <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="emailInputDemo">Email</Label>
-      <input type="email" id="emailInputDemo" placeholder="Email" className="flex h-10 w-full rounded-base border-2 border-black bg-white px-3 py-2 text-sm placeholder:text-gray-500 focus-brutal" />
+      <Input type="email" id="emailInputDemo" placeholder="Email" />
   </div>
 </ComponentPreview>
 

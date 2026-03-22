@@ -5,7 +5,20 @@ description: Display focused content in a modal overlay.
 
 <ComponentPreview codeFile="dialog/example-1.txt">
   <div className="flex justify-center w-full">
-    <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
+    <Dialog>
+      <DialogTrigger render={<Button variant="neutral" />}>
+        Open Dialog
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your account
+            and remove your data from our servers.
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   </div>
 </ComponentPreview>
 
@@ -15,29 +28,9 @@ description: Display focused content in a modal overlay.
 
 ## Usage
 
-<CodeBlock code="import {
-\n  Dialog,
-\n  DialogContent,
-\n  DialogDescription,
-\n  DialogHeader,
-\n  DialogTitle,
-\n  DialogTrigger,
-\n} from '@/components/ui/dialog'" />
+<CodeBlock code="import {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from '@/components/ui/dialog'" />
 
-<CodeBlock code="<Dialog>
-\n<DialogTrigger render={<Button variant='neutral' />}>
-\n    Open Dialog
-\n  </DialogTrigger>
-\n  <DialogContent>
-\n    <DialogHeader>
-\n      <DialogTitle>Are you absolutely sure?</DialogTitle>
-\n      <DialogDescription>
-\n        This action cannot be undone. This will permanently delete your account
-\n        and remove your data from our servers.
-\n      </DialogDescription>
-\n    </DialogHeader>
-\n  </DialogContent>
-\n</Dialog>" />
+<CodeBlock code="<Dialog>\n  <DialogTrigger render={<Button variant='neutral' />}>\n    Open Dialog\n  </DialogTrigger>\n  <DialogContent>\n    <DialogHeader>\n      <DialogTitle>Title</DialogTitle>\n      <DialogDescription>\n        Dialog description goes here.\n      </DialogDescription>\n    </DialogHeader>\n  </DialogContent>\n</Dialog>" />
 
 ## Examples
 
@@ -45,7 +38,20 @@ description: Display focused content in a modal overlay.
 
 <ComponentPreview codeFile="dialog/example-1.txt">
   <div className="flex justify-center w-full">
-    <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
+    <Dialog>
+      <DialogTrigger render={<Button variant="neutral" />}>
+        Open Dialog
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your account
+            and remove your data from our servers.
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   </div>
 </ComponentPreview>
 

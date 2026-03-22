@@ -7,9 +7,9 @@
       <div className="grid gap-4">
         <div className="space-y-2">
           <h4 className="font-semibold leading-none">Dimensions</h4>
-          <p className="text-sm text-black">
+          <span className="text-sm text-black">
             Set the dimensions for the layer.
-          </p>
+          </span>
         </div>
       </div>
     </PopoverContent>

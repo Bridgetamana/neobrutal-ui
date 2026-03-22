@@ -1,3 +1,16 @@
 <div className="flex justify-center w-full">
-  <Button variant="neutral" onClick={() => alert("Dialog requires client interaction. View implementation in your app.")}>Open Dialog</Button>
+  <Dialog>
+    <DialogTrigger render={<Button variant="neutral" />}>
+      Open Dialog
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Are you absolutely sure?</DialogTitle>
+        <DialogDescription>
+          This action cannot be undone. This will permanently delete your account
+          and remove your data from our servers.
+        </DialogDescription>
+      </DialogHeader>
+    </DialogContent>
+  </Dialog>
 </div>

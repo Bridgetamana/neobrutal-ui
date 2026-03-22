@@ -25,11 +25,11 @@ function getCliCommand(manager: PackageManager, name: string) {
 export function InstallTabs({ name }: InstallTabsProps) {
 
     return (
-        <div className="space-y-4">
-            <Tabs defaultValue="npm" className="space-y-3">
+        <div className="space-y-2">
+            <Tabs defaultValue="npm" className="space-y-2">
                 <TabsList className="w-full flex-wrap">
                     {PACKAGE_MANAGERS.map((manager) => (
-                        <TabsTrigger key={manager} value={manager} className="capitalize">
+                        <TabsTrigger key={manager} value={manager} className="capitalize px-2.5 py-1">
                             {manager}
                         </TabsTrigger>
                     ))}
