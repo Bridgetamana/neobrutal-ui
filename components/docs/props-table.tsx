@@ -1,21 +1,6 @@
 import { cn } from "@/lib/utils"
 
-interface PropItem {
-    name: string
-    type: string
-    defaultValue?: string
-    description: string
-    required?: boolean
-}
-
-interface PropsTableProps {
-    data?: PropItem[]
-    className?: string
-}
-
-export function PropsTable({ data, className }: PropsTableProps) {
-    const rows = Array.isArray(data) ? data : []
-
+export function PropsTable({ children, className }: { children: React.ReactNode; className?: string }) {
     return (
         <div className={cn("my-6 overflow-x-auto border-2 rounded bg-white", className)}>
             <table className="w-full text-left text-sm">
@@ -28,25 +13,37 @@ export function PropsTable({ data, className }: PropsTableProps) {
                     </tr>
                 </thead>
                 <tbody className="divide-y-2 divide-black">
-                    {rows.map((prop) => (
-                        <tr key={prop.name}>
-                            <td className="p-2">
-                                {prop.name}
-                                {prop.required && <span className="ml-1 text-hot-pink">*</span>}
-                            </td>
-                            <td className="p-2">
-                                {prop.type}
-                            </td>
-                            <td className="p-2">
-                                {prop.defaultValue || "-"}
-                            </td>
-                            <td className="p-2">
-                                {prop.description}
-                            </td>
-                        </tr>
-                    ))}
+                    {children}
                 </tbody>
             </table>
         </div>
+    )
+}
+
+interface PropsRowProps {
+    name: string
+    type: string
+    defaultValue?: string
+    required?: boolean
+    children?: React.ReactNode
+}
+
+export function PropsRow({ name, type, defaultValue, required, children }: PropsRowProps) {
+    return (
+        <tr>
+            <td className="p-2">
+                {name}
+                {required && <span className="ml-1 text-hot-pink">*</span>}
+            </td>
+            <td className="p-2">
+                {type}
+            </td>
+            <td className="p-2">
+                {defaultValue || "-"}
+            </td>
+            <td className="p-2">
+                {children}
+            </td>
+        </tr>
     )
 }

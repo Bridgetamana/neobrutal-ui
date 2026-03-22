@@ -55,8 +55,14 @@ Use the asChild prop to render as a link.
 
 ## API Reference
 
-<PropsTable data={[
-  { name: "variant", type: '"default" | "noShadow" | "neutral"', defaultValue: '"default"', description: "The visual style of the button." },
-  { name: "size", type: '"default" | "sm" | "lg" | "icon"', defaultValue: '"default"', description: "The size of the button." },
-  { name: "asChild", type: "boolean", defaultValue: "false", description: "Render as a child element (e.g., Link) using the Slot pattern." }
-]} />
+<PropsTable>
+  <PropsRow name="variant" type="&quot;default&quot; | &quot;noShadow&quot; | &quot;neutral&quot;" defaultValue="&quot;default&quot;">
+    The visual style of the button.
+  </PropsRow>
+  <PropsRow name="size" type="&quot;default&quot; | &quot;sm&quot; | &quot;lg&quot; | &quot;icon&quot;" defaultValue="&quot;default&quot;">
+    The size of the button.
+  </PropsRow>
+  <PropsRow name="asChild" type="boolean" defaultValue="false">
+    Render as a child element (e.g., Link) using the Slot pattern.
+  </PropsRow>
+</PropsTable>

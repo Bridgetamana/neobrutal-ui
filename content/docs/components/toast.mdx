@@ -64,19 +64,8 @@ Set the toast position by passing a <code className="font-mono text-xs bg-white 
 
 ## API Reference
 
-### Toaster
-
-<PropsTable data={[
-  { name: "position", type: '"top-left" | "top-right" | "top-center" | "bottom-left" | "bottom-right" | "bottom-center"', defaultValue: '"bottom-right"', description: "Controls where toast notifications are rendered." }
-]} />
-
-### toast helpers
-
-<PropsTable data={[
-  { name: "toast.success(message, options)", type: "function", defaultValue: "-", description: "Shows a success toast." },
-  { name: "toast.error(message, options)", type: "function", defaultValue: "-", description: "Shows an error toast." },
-  { name: "toast.info(message, options)", type: "function", defaultValue: "-", description: "Shows an informational toast." },
-  { name: "toast.warning(message, options)", type: "function", defaultValue: "-", description: "Shows a warning toast." },
-  { name: "toast.promise(promise, options)", type: "function", defaultValue: "-", description: "Shows loading/success/error toasts based on promise state." },
-  { name: "toast.dismiss(toastId)", type: "function", defaultValue: "-", description: "Dismisses a toast by id." }
-]} />
+<PropsTable>
+  <PropsRow name="position" type="&quot;top-left&quot; | &quot;top-right&quot; | &quot;top-center&quot; | &quot;bottom-left&quot; | &quot;bottom-right&quot; | &quot;bottom-center&quot;" defaultValue="&quot;bottom-right&quot;">
+    Controls where toast notifications are rendered.
+  </PropsRow>
+</PropsTable>

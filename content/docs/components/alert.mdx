@@ -76,9 +76,8 @@ description: Display important information or status to users.
 
 ### Alert
 
-<PropsTable data={[
-  { name: "variant", type: '"default" | "neutral" | "destructive" | "success" | "warning"', defaultValue: '"default"', description: "Controls the color scheme and default icon of the alert." },
-  { name: "icon", type: "React.ReactNode", defaultValue: "-", description: "Custom icon to display. Pass null to hide the icon entirely." },
-]} />
-
-`AlertTitle` and `AlertDescription` extend the native `<h5>` and `<div>` elements respectively and accept all standard HTML attributes.
+<PropsTable>
+  <PropsRow name="variant" type="&quot;default&quot; | &quot;neutral&quot; | &quot;destructive&quot; | &quot;success&quot; | &quot;warning&quot;" defaultValue="&quot;default&quot;">
+    Controls the color scheme and default icon of the alert.
+  </PropsRow>
+</PropsTable>

@@ -57,10 +57,10 @@ Display multiple avatars with an overflow indicator.
 
 ## API Reference
 
-`Avatar`, `AvatarImage`, and `AvatarFallback` are thin wrappers around their native HTML counterparts and accept all standard HTML attributes.
-
 ### AvatarGroup
 
-<PropsTable data={[
-  { name: "max", type: "number", defaultValue: "3", description: "Maximum number of avatars to display before showing an overflow count." },
-]} />
+<PropsTable>
+  <PropsRow name="max" type="number" defaultValue="3">
+    Maximum number of avatars to display before showing an overflow count.
+  </PropsRow>
+</PropsTable>
