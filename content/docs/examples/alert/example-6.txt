@@ -1,4 +1,4 @@
 <Alert className="max-w-md" icon={null}>
-      <AlertTitle>Note</AlertTitle>
-      <AlertDescription>A simple alert without an icon.</AlertDescription>
-  </Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>A simple alert without an icon.</AlertDescription>
+</Alert>

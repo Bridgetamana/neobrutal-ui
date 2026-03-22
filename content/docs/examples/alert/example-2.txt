@@ -1,4 +1,4 @@
 <Alert className="max-w-md">
-      <AlertTitle>Info</AlertTitle>
-      <AlertDescription>This is an informational message.</AlertDescription>
-  </Alert>
+  <AlertTitle>Info</AlertTitle>
+  <AlertDescription>This is an informational message.</AlertDescription>
+</Alert>

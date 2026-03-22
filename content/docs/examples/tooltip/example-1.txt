@@ -1,12 +1,12 @@
 <div className="flex w-full justify-center">
-    <TooltipProvider>
-        <Tooltip>
-            <TooltipTrigger render={<Button variant="noShadow" />}>
-                Hover
-            </TooltipTrigger>
-            <TooltipContent>
-                <p>Add to library</p>
-            </TooltipContent>
-        </Tooltip>
-    </TooltipProvider>
-  </div>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="noShadow" />}>
+        Hover
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Add to library</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</div>

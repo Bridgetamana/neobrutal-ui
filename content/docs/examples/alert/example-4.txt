@@ -1,4 +1,4 @@
 <Alert variant="success" className="max-w-md">
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>Your changes have been saved.</AlertDescription>
-  </Alert>
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>Your changes have been saved.</AlertDescription>
+</Alert>

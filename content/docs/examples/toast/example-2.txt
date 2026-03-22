@@ -1,3 +1,3 @@
 <div className="flex w-full justify-center">
-    <ToastTypesDemo />
-  </div>
+  <ToastTypesDemo />
+</div>
