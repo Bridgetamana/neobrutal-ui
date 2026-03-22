@@ -21,7 +21,7 @@ const modalVariants = cva("", {
 
 
 const confirmButtonVariants = cva(
-    "inline-flex h-9 items-center justify-center rounded-base border-2 border-black px-4 text-sm font-bold transition-colors focus-brutal",
+    "inline-flex h-9 items-center justify-center rounded-base border-2 border-black px-4 text-sm font-bold transition-all duration-200 active:scale-[0.97] focus-brutal",
     {
         variants: {
             variant: {
@@ -88,8 +88,8 @@ function Modal({
                 {!React.isValidElement(children) && children}
             </BaseDialog.Trigger>}
             <BaseDialog.Portal>
-                <BaseDialog.Backdrop className="fixed inset-0 z-50 bg-black opacity-80 transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0" />
-                <BaseDialog.Popup className="fixed left-[50%] top-[50%] z-50 w-full max-w-sm translate-x-[-50%] translate-y-[-50%] rounded-base border-2 border-black bg-white p-6 shadow-brutal transition-opacity data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
+                <BaseDialog.Backdrop className="fixed inset-0 z-50 bg-black opacity-80 transition-opacity duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0" />
+                <BaseDialog.Popup className="fixed left-[50%] top-[50%] z-50 w-full max-w-sm translate-x-[-50%] translate-y-[-50%] rounded-base border-2 border-black bg-white p-6 shadow-brutal transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
                     <BaseDialog.Close
                         aria-label="Close modal"
                         className="absolute right-3 top-3 rounded-base opacity-70 transition-opacity hover:opacity-100 focus-brutal"
@@ -118,7 +118,7 @@ function Modal({
                             <button
                                 type="button"
                                 onClick={handleCancel}
-                                className="inline-flex h-9 items-center justify-center rounded-base border-2 border-black bg-white px-4 text-sm font-bold text-black transition-colors hover:bg-main/10 focus-brutal"
+                                className="inline-flex h-9 items-center justify-center rounded-base border-2 border-black bg-white px-4 text-sm font-bold text-black transition-all duration-200 active:scale-[0.97] hover:bg-main/10 focus-brutal"
                             >
                                 {cancelText}
                             </button>

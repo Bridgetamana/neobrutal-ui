@@ -33,7 +33,7 @@ const RadioGroupItem = React.forwardRef<
         )}
         {...props}
     >
-        <Radio.Indicator className="flex h-full w-full items-center justify-center data-unchecked:hidden">
+        <Radio.Indicator className="flex h-full w-full items-center justify-center transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-starting-style:scale-0 data-ending-style:scale-0">
             <span className="h-2 w-2 rounded-full bg-black" />
         </Radio.Indicator>
     </Radio.Root>

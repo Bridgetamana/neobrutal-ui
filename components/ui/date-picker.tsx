@@ -168,7 +168,7 @@ function DatePicker({
             </BasePopover.Trigger>
             <BasePopover.Portal>
                 <BasePopover.Positioner sideOffset={4} side="bottom" align="start">
-                    <BasePopover.Popup className="z-50 w-[300px] rounded-base border-2 border-black bg-white shadow-brutal transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0">
+                    <BasePopover.Popup className="z-50 w-[300px] rounded-base border-2 border-black bg-white shadow-brutal transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
                         <div className="flex items-center justify-between border-b-2 border-black px-3 py-2">
                             <button
                                 type="button"
@@ -216,7 +216,7 @@ function DatePicker({
                                         type="button"
                                         onClick={() => handleDayClick(d.day, d.month, d.year)}
                                         className={cn(
-                                            "flex h-8 w-full items-center justify-center text-sm transition-colors rounded-base",
+                                            "flex h-8 w-full items-center justify-center text-sm transition-all duration-200 active:scale-90 rounded-base",
                                             d.isCurrentMonth
                                                 ? "text-black font-medium"
                                                 : "text-black/30",
@@ -237,14 +237,14 @@ function DatePicker({
                             <button
                                 type="button"
                                 onClick={handleCancel}
-                                className="inline-flex h-8 items-center justify-center rounded-base border-2 border-black bg-white px-4 text-sm font-bold text-black transition-colors hover:bg-main/10 focus-brutal"
+                                className="inline-flex h-8 items-center justify-center rounded-base border-2 border-black bg-white px-4 text-sm font-bold text-black transition-all duration-200 active:scale-95 hover:bg-main/10 focus-brutal"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="button"
                                 onClick={handleApply}
-                                className="inline-flex h-8 items-center justify-center rounded-base border-2 border-black bg-black px-4 text-sm font-bold text-white transition-colors hover:bg-black/80 focus-brutal"
+                                className="inline-flex h-8 items-center justify-center rounded-base border-2 border-black bg-black px-4 text-sm font-bold text-white transition-all duration-200 active:scale-95 hover:bg-black/80 focus-brutal"
                             >
                                 Apply
                             </button>

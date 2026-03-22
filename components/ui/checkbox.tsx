@@ -21,9 +21,21 @@ const Checkbox = React.forwardRef<
         {...props}
     >
         <BaseCheckbox.Indicator
-            className={cn("flex items-center justify-center text-current data-unchecked:hidden", disabled && "opacity-50")}
+            className={cn("flex items-center justify-center text-current transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-starting-style:scale-50 data-starting-style:opacity-0 data-ending-style:scale-50 data-ending-style:opacity-0", disabled && "opacity-50")}
         >
-            <Check className="h-3.5 w-3.5" strokeWidth={3} />
+            <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] [stroke-dasharray:50] [stroke-dashoffset:0] data-starting-style:[stroke-dashoffset:50] delay-100"
+            >
+                <polyline points="20 6 9 17 4 12" />
+            </svg>
         </BaseCheckbox.Indicator>
     </BaseCheckbox.Root>
 ))

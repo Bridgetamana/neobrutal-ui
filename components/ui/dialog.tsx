@@ -22,7 +22,7 @@ const DialogOverlay = React.forwardRef<
     <BaseDialog.Backdrop
         ref={ref}
         className={cn(
-            "fixed inset-0 z-50 bg-black opacity-80 transition-opacity data-ending-style:opacity-0 data-starting-style:opacity-0",
+            "fixed inset-0 z-50 bg-black opacity-80 transition-opacity duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0",
             className
         )}
         {...props}
@@ -41,7 +41,7 @@ const DialogContent = React.forwardRef<
         <BaseDialog.Popup
             ref={ref}
             className={cn(
-                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-white p-6 shadow-brutal duration-200 transition-opacity motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 rounded-base",
+                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-white p-6 shadow-brutal transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 rounded-base",
                 className
             )}
             {...props}

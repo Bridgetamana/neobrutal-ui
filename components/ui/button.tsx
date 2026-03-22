@@ -23,7 +23,7 @@ const Slot = React.forwardRef<HTMLElement, SlotProps>(
 Slot.displayName = "Slot"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold transition-brutal focus-brutal disabled:pointer-events-none disabled:opacity-50 border-2 border-black cursor-pointer",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm font-bold transition-all duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.97] focus-brutal disabled:pointer-events-none disabled:opacity-50 border-2 border-black cursor-pointer",
     {
         variants: {
             variant: {

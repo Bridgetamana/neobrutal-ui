@@ -32,7 +32,7 @@ const SelectTrigger = React.forwardRef<
     <BaseSelect.Trigger
         ref={ref}
         className={cn(
-            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm placeholder:text-black focus-brutal disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+            "flex h-10 w-full items-center justify-between rounded-base border-2 border-black bg-white px-3 py-2 text-sm placeholder:text-black focus-brutal disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200 active:scale-[0.97] ease-[cubic-bezier(0.175,0.885,0.32,1.275)] [&>span]:line-clamp-1",
             className
         )}
         {...props}
@@ -99,7 +99,7 @@ const SelectContent = React.forwardRef<
             <BaseSelect.Popup
                 ref={ref}
                 className={cn(
-                    "relative z-50 max-h-96 min-w-(--anchor-width) overflow-hidden rounded-base border-2 border-black bg-white text-black shadow-brutal motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
+                    "relative z-50 max-h-96 min-w-(--anchor-width) overflow-hidden rounded-base border-2 border-black bg-white text-black shadow-brutal transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
                     className
                 )}
                 {...props}

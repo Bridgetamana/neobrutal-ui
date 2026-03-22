@@ -25,7 +25,7 @@ const Switch = React.forwardRef<
         {...props}
         ref={ref}
     >
-        <BaseSwitch.Thumb className="pointer-events-none block h-4 w-4 rounded-full border-2 border-black bg-white ring-0 transition-transform data-checked:translate-x-5 data-checked:bg-black data-unchecked:translate-x-0.5" />
+        <BaseSwitch.Thumb className="pointer-events-none block h-4 w-4 rounded-full border-2 border-black bg-white ring-0 transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-checked:translate-x-5 data-checked:bg-black data-unchecked:translate-x-0.5" />
     </BaseSwitch.Root>
 ))
 Switch.displayName = "Switch"
