@@ -1,7 +1,7 @@
 import { getMdxBySlug, getAllMdxDocuments } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Metadata } from 'next'
-import { mdxComponents } from '@/lib/mdx-components'
+import { mdxComponents } from '@/lib/mdx/components'
 import { EditPageLink } from '@/components/docs/edit-page-link'
 import { DocPager } from '@/components/docs/doc-pager'
 

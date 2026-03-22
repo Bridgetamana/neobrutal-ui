@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { EditPageLink } from "@/components/docs/edit-page-link"
-import { mdxComponents } from '@/lib/mdx-components'
+import { mdxComponents } from '@/lib/mdx/components'
 import { DocPager } from '@/components/docs/doc-pager'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

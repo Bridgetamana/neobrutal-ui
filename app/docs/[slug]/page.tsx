@@ -2,7 +2,7 @@ import { getMdxBySlug, getAllMdxSlugs, getAllMdxDocuments, type MdxFrontmatter }
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
-import { mdxComponents } from '@/lib/mdx-components'
+import { mdxComponents } from '@/lib/mdx/components'
 import { EditPageLink } from '@/components/docs/edit-page-link'
 import { DocPager } from '@/components/docs/doc-pager'
 

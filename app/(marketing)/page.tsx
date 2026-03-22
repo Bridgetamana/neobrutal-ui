@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/site/layout/site-header"
 import { SiteFooter } from "@/components/site/layout/site-footer"
-import { HeroSection } from "@/components/home/hero"
-import { StatsSection } from "@/components/home/stats"
+import { HeroSection } from "@/components/marketing/hero"
+import { StatsSection } from "@/components/marketing/stats"
 import { ColorThemePicker } from "@/components/site/color-theme-picker"
 
 export default function Home() {

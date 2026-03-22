@@ -1,6 +1,6 @@
 import { codeToHtml } from "shiki"
 import { cn } from "@/lib/utils"
-import { normalizeDocsCode } from "@/lib/docs-code"
+import { normalizeDocsCode } from "@/lib/mdx/docs-code"
 import { CopyButton } from "./copy-button"
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {

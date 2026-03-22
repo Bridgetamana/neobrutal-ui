@@ -1,7 +1,7 @@
 import fs from "fs/promises"
 import path from "path"
 import { codeToHtml } from "shiki"
-import { normalizeDocsCode } from "@/lib/docs-code"
+import { normalizeDocsCode } from "@/lib/mdx/docs-code"
 import { ComponentPreviewClient } from "./component-preview"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
