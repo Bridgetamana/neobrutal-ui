@@ -5,16 +5,50 @@ description: Switch between multiple content sections with tab controls.
 
 <ComponentPreview codeFile="tabs/example-1.txt">
   <div className="flex w-full justify-center">
-    <Tabs defaultValue="account" className="w-full max-w-sm">
-        <TabsList>
+    <Tabs defaultValue="account" className="w-full max-w-md">
+        <TabsList className="w-full">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
+            <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
         <TabsContent value="account">
-            Make changes to your account here.
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <Label htmlFor="nameTab1">Name</Label>
+              <Input id="nameTab1" defaultValue="Bridget Amana" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="emailTab1">Email</Label>
+              <Input id="emailTab1" defaultValue="bridget@example.com" />
+            </div>
+            <Button size="sm">Save changes</Button>
+          </div>
         </TabsContent>
         <TabsContent value="password">
-            Change your password here.
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <Label htmlFor="currentPw1">Current password</Label>
+              <Input id="currentPw1" type="password" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="newPw1">New password</Label>
+              <Input id="newPw1" type="password" />
+            </div>
+            <Button size="sm">Update password</Button>
+          </div>
+        </TabsContent>
+        <TabsContent value="notifications">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="emailNotif1" className="text-sm">Email notifications</Label>
+              <Switch id="emailNotif1" />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="pushNotif1" className="text-sm">Push notifications</Label>
+              <Switch id="pushNotif1" />
+            </div>
+            <Button size="sm">Save preferences</Button>
+          </div>
         </TabsContent>
     </Tabs>
   </div>
@@ -36,16 +70,50 @@ description: Switch between multiple content sections with tab controls.
 
 <ComponentPreview codeFile="tabs/example-1.txt">
   <div className="flex w-full justify-center">
-    <Tabs defaultValue="account" className="w-full max-w-sm">
-        <TabsList>
+    <Tabs defaultValue="account" className="w-full max-w-md">
+        <TabsList className="w-full">
             <TabsTrigger value="account">Account</TabsTrigger>
             <TabsTrigger value="password">Password</TabsTrigger>
+            <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
         <TabsContent value="account">
-            Make changes to your account here.
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <Label htmlFor="nameTab2">Name</Label>
+              <Input id="nameTab2" defaultValue="Bridget Amana" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="emailTab2">Email</Label>
+              <Input id="emailTab2" defaultValue="bridget@example.com" />
+            </div>
+            <Button size="sm">Save changes</Button>
+          </div>
         </TabsContent>
         <TabsContent value="password">
-            Change your password here.
+          <div className="space-y-3">
+            <div className="space-y-1">
+              <Label htmlFor="currentPw2">Current password</Label>
+              <Input id="currentPw2" type="password" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="newPw2">New password</Label>
+              <Input id="newPw2" type="password" />
+            </div>
+            <Button size="sm">Update password</Button>
+          </div>
+        </TabsContent>
+        <TabsContent value="notifications">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="emailNotif2" className="text-sm">Email notifications</Label>
+              <Switch id="emailNotif2" />
+            </div>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="pushNotif2" className="text-sm">Push notifications</Label>
+              <Switch id="pushNotif2" />
+            </div>
+            <Button size="sm">Save preferences</Button>
+          </div>
         </TabsContent>
     </Tabs>
   </div>

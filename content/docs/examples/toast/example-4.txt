@@ -1,3 +1,27 @@
-<div className="flex w-full justify-center">
-  <ToastPromiseDemo />
-</div>
+import { toast } from '@/components/ui/toast'
+import { Button } from '@/components/ui/button'
+
+function simulateSave() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve({ name: 'My Document' }), 2000)
+  })
+}
+
+<Button
+  variant="neutral"
+  onClick={() =>
+    toast.promise(simulateSave(), {
+      loading: 'Saving document...',
+      success: (data) => ({
+        title: 'Saved',
+        description: `${data.name} saved successfully`,
+      }),
+      error: () => ({
+        title: 'Error',
+        description: 'Something went wrong',
+      }),
+    })
+  }
+>
+  Save document
+</Button>
