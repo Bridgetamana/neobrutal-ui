@@ -30,10 +30,11 @@ export const searchItems: SearchItem[] = [
     { name: "Tabs", href: "/docs/components/tabs", keywords: ["switch", "between", "multiple", "content", "sections", "with", "tab", "controls"], category: "component" },
     { name: "Textarea", href: "/docs/components/textarea", keywords: ["collect", "multiline", "text", "input", "from", "users"], category: "component" },
     { name: "Tooltip", href: "/docs/components/tooltip", keywords: ["display", "contextual", "information", "on", "hover", "or", "focus"], category: "component" },
+    { name: "Date Picker", href: "/docs/components/date-picker", keywords: ["select", "a", "date", "from", "a", "calendar", "popover"], category: "component" },
+    { name: "Modal", href: "/docs/components/modal", keywords: ["confirm", "actions", "with", "purposebuilt", "modal", "dialogs"], category: "component" },
     { name: "Getting Started", href: "/docs", keywords: ["start", "intro", "introduction", "overview"], category: "docs" },
     { name: "Installation", href: "/docs/installation", keywords: ["setup", "install", "npm", "cli"], category: "docs" },
     { name: "Theming", href: "/docs/theming", keywords: ["theme", "colors", "customize", "tokens"], category: "docs" },
     { name: "CLI", href: "/docs/cli", keywords: ["command", "add", "terminal"], category: "docs" },
     { name: "Accessibility", href: "/docs/accessibility", keywords: ["a11y", "aria", "keyboard", "screen reader"], category: "docs" },
-    { name: "Changelog", href: "/docs/changelog", keywords: ["changelog", "releases", "updates", "versions"], category: "docs" },
 ]

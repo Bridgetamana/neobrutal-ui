@@ -2,10 +2,10 @@
   <TooltipProvider>
     <Tooltip>
       <TooltipTrigger render={<Button variant="noShadow" />}>
-        Hover
+        Hover me
       </TooltipTrigger>
       <TooltipContent>
-        <p>Add to library</p>
+        <span>Add to library</span>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

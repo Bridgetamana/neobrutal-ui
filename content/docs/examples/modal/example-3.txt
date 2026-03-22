@@ -1,0 +1,23 @@
+import { useState } from 'react'
+import { Modal } from '@/components/ui/modal'
+import { Button } from '@/components/ui/button'
+
+function Example() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button variant="neutral" onClick={() => setOpen(true)}>
+        Destructive Modal
+      </Button>
+      <Modal
+        variant="destructive"
+        open={open}
+        onOpenChange={setOpen}
+        title="Deactivate account"
+        description="Are you sure you want to deactivate your account?"
+        confirmText="Delete"
+        onConfirm={() => setOpen(false)}
+      />
+    </>
+  )
+}

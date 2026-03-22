@@ -1,0 +1,84 @@
+---
+title: Modal
+description: Confirm actions with purpose-built modal dialogs.
+---
+
+<ComponentPreview codeFile="modal/example-1.txt">
+  <div className="flex w-full justify-center">
+    <ModalSuccessDemo />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="modal" />
+
+### Required dependency
+
+<CodeBlock code="npm install @base-ui/react lucide-react class-variance-authority" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { Modal } from '@/components/ui/modal'" />
+
+<CodeBlock code="const [open, setOpen] = useState(false)\n\n<Modal\n  variant='success'\n  open={open}\n  onOpenChange={setOpen}\n  title='Payment done'\n  description='Your account has been created successfully.'\n  confirmText='Confirm'\n  onConfirm={() => setOpen(false)}\n/>" />
+
+## Examples
+
+### Success
+
+<ComponentPreview codeFile="modal/example-1.txt">
+  <div className="flex w-full justify-center">
+    <ModalSuccessDemo />
+  </div>
+</ComponentPreview>
+
+### Warning
+
+<ComponentPreview codeFile="modal/example-2.txt">
+  <div className="flex w-full justify-center">
+    <ModalWarningDemo />
+  </div>
+</ComponentPreview>
+
+### Destructive
+
+<ComponentPreview codeFile="modal/example-3.txt">
+  <div className="flex w-full justify-center">
+    <ModalDestructiveDemo />
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### Modal
+
+<PropsTable>
+  <PropsRow name="variant" type="&quot;success&quot; | &quot;warning&quot; | &quot;destructive&quot;" defaultValue="&quot;success&quot;">
+    Controls the icon, color scheme, and confirm button style.
+  </PropsRow>
+  <PropsRow name="open" type="boolean" defaultValue="-">
+    Whether the modal is open.
+  </PropsRow>
+  <PropsRow name="onOpenChange" type="(open: boolean) => void" defaultValue="-">
+    Callback fired when the modal open state changes.
+  </PropsRow>
+  <PropsRow name="title" type="string" defaultValue="-">
+    The modal heading text.
+  </PropsRow>
+  <PropsRow name="description" type="string" defaultValue="-">
+    Optional description text below the title.
+  </PropsRow>
+  <PropsRow name="confirmText" type="string" defaultValue="&quot;Confirm&quot;">
+    Label for the confirm action button.
+  </PropsRow>
+  <PropsRow name="cancelText" type="string" defaultValue="&quot;Cancel&quot;">
+    Label for the cancel button.
+  </PropsRow>
+  <PropsRow name="onConfirm" type="() => void" defaultValue="-">
+    Callback fired when the confirm button is clicked.
+  </PropsRow>
+  <PropsRow name="onCancel" type="() => void" defaultValue="-">
+    Callback fired when the cancel button is clicked.
+  </PropsRow>
+</PropsTable>

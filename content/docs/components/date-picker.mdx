@@ -1,0 +1,53 @@
+---
+title: Date Picker
+description: Select a date from a calendar popover.
+---
+
+<ComponentPreview codeFile="date-picker/example-1.txt">
+  <div className="flex w-full justify-center">
+    <DatePickerDemo />
+  </div>
+</ComponentPreview>
+
+## Installation
+
+<InstallTabs name="date-picker" />
+
+### Required dependency
+
+<CodeBlock code="npm install @base-ui/react lucide-react" language="bash" />
+
+## Usage
+
+<CodeBlock code="import { DatePicker } from '@/components/ui/date-picker'" />
+
+<CodeBlock code="const [date, setDate] = useState<Date | null>(null)\n\n<DatePicker value={date} onChange={setDate} />" />
+
+## Examples
+
+### Default
+
+<ComponentPreview codeFile="date-picker/example-1.txt">
+  <div className="flex w-full justify-center">
+    <DatePickerDemo />
+  </div>
+</ComponentPreview>
+
+## API Reference
+
+### DatePicker
+
+<PropsTable>
+  <PropsRow name="value" type="Date | null" defaultValue="null">
+    The currently selected date.
+  </PropsRow>
+  <PropsRow name="onChange" type="(date: Date | null) => void" defaultValue="-">
+    Callback fired when the user applies a date selection.
+  </PropsRow>
+  <PropsRow name="placeholder" type="string" defaultValue="&quot;Select date&quot;">
+    Placeholder text shown when no date is selected.
+  </PropsRow>
+  <PropsRow name="disabled" type="boolean" defaultValue="false">
+    Whether the date picker trigger is disabled.
+  </PropsRow>
+</PropsTable>

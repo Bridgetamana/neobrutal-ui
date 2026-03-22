@@ -1,0 +1,23 @@
+import { useState } from 'react'
+import { Modal } from '@/components/ui/modal'
+import { Button } from '@/components/ui/button'
+
+function Example() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button variant="neutral" onClick={() => setOpen(true)}>
+        Warning Modal
+      </Button>
+      <Modal
+        variant="warning"
+        open={open}
+        onOpenChange={setOpen}
+        title="Unsaved changes"
+        description="Do you want to save or discard changes?"
+        confirmText="Save changes"
+        onConfirm={() => setOpen(false)}
+      />
+    </>
+  )
+}

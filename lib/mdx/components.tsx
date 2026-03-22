@@ -25,6 +25,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from "@/components/ui/toast"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { DatePicker } from "@/components/ui/date-picker"
+import { Modal } from "@/components/ui/modal"
 
 import { InfoGrid, InfoGridItem } from "@/components/docs/info-grid"
 
@@ -34,6 +36,12 @@ import {
     ToastActionDemo,
     ToastPromiseDemo,
 } from "@/components/docs/demos/toast-demo"
+import { DatePickerDemo } from "@/components/docs/demos/date-picker-demo"
+import {
+    ModalSuccessDemo,
+    ModalWarningDemo,
+    ModalDestructiveDemo,
+} from "@/components/docs/demos/modal-demo"
 
 export const mdxComponents = {
     h1: (props: ComponentPropsWithoutRef<"h1">) => <h1 className="text-3xl font-semibold md:text-4xl mt-8 mb-4 text-black" {...props} />,
@@ -80,5 +88,9 @@ export const mdxComponents = {
     Textarea,
     Toaster,
     Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
+    DatePicker,
+    Modal,
     ToastDemo, ToastTypesDemo, ToastActionDemo, ToastPromiseDemo,
+    DatePickerDemo,
+    ModalSuccessDemo, ModalWarningDemo, ModalDestructiveDemo,
 }

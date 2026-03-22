@@ -1,0 +1,7 @@
+import { useState } from 'react'
+import { DatePicker } from '@/components/ui/date-picker'
+
+function Example() {
+  const [date, setDate] = useState<Date | null>(null)
+  return <DatePicker value={date} onChange={setDate} />
+}

@@ -235,5 +235,30 @@
     "registryDependencies": [
       "utils"
     ]
+  },
+  {
+    "name": "date-picker",
+    "type": "registry:ui",
+    "description": "Select a date from a calendar popover.",
+    "dependencies": [
+      "@base-ui/react",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "utils"
+    ]
+  },
+  {
+    "name": "modal",
+    "type": "registry:ui",
+    "description": "Confirm actions with purpose-built modal dialogs.",
+    "dependencies": [
+      "@base-ui/react",
+      "lucide-react",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "utils"
+    ]
   }
 ]

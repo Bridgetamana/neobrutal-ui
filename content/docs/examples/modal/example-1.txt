@@ -1,0 +1,23 @@
+import { useState } from 'react'
+import { Modal } from '@/components/ui/modal'
+import { Button } from '@/components/ui/button'
+
+function Example() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Button variant="neutral" onClick={() => setOpen(true)}>
+        Open Modal
+      </Button>
+      <Modal
+        variant="success"
+        open={open}
+        onOpenChange={setOpen}
+        title="Payment done"
+        description="Your account has been created successfully."
+        confirmText="Confirm"
+        onConfirm={() => setOpen(false)}
+      />
+    </>
+  )
+}

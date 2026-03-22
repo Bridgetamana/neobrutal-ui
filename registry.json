@@ -371,6 +371,43 @@
                     "type": "registry:ui"
                 }
             ]
+        },
+        {
+            "name": "date-picker",
+            "type": "registry:ui",
+            "description": "Select a date from a calendar popover.",
+            "dependencies": [
+                "@base-ui/react",
+                "lucide-react"
+            ],
+            "registryDependencies": [
+                "utils"
+            ],
+            "files": [
+                {
+                    "path": "components/ui/date-picker.tsx",
+                    "type": "registry:ui"
+                }
+            ]
+        },
+        {
+            "name": "modal",
+            "type": "registry:ui",
+            "description": "Confirm actions with purpose-built modal dialogs.",
+            "dependencies": [
+                "@base-ui/react",
+                "lucide-react",
+                "class-variance-authority"
+            ],
+            "registryDependencies": [
+                "utils"
+            ],
+            "files": [
+                {
+                    "path": "components/ui/modal.tsx",
+                    "type": "registry:ui"
+                }
+            ]
         }
     ]
 }
