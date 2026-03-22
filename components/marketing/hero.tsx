@@ -45,7 +45,7 @@ export function HeroSection() {
                 </p>
                 <Button asChild className="h-12 px-8 text-lg font-bold shadow-brutal">
                     <Link href="/docs/installation">
-                        Get Started <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
+                        Browse Components <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
                     </Link>
                 </Button>
             </div>
