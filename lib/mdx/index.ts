@@ -12,7 +12,7 @@ const DOCS_FALLBACK_ORDER: Record<string, number> = {
     cli: 2,
     theming: 3,
     accessibility: 4,
-    changelog: 5,
+
 }
 
 export type MdxSection = "components" | "docs"
