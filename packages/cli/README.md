@@ -1,99 +1,75 @@
-# neobrutal-ui
+# Neobrutal UI CLI
 
-CLI for adding Neobrutal UI components to your project.
+The official command-line interface for [Neobrutal UI](https://www.neobrutalui.live). Use this tool to initialize your project configuration and add Neobrutalism-styled components to your applications.
 
 ## Usage
 
-### Initialize your project
+You can run the CLI directly using `npx`:
+
+```bash
+npx neobrutal <command> [options]
+```
+
+### Commands
+
+#### `init`
+Initialize your project and install required base dependencies.
 
 ```bash
 npx neobrutal init
 ```
 
-This will:
+**Options:**
+- `-c, --cwd <cwd>`: The working directory (defaults to current directory).
+- `-y, --yes`: Skip the confirmation prompt and use default values.
+- `-f, --force`: Force overwrite of existing `components.json` configuration.
+- `--skip-css`: Skip CSS variable injection for Neobrutalism styles.
 
-- Create a `components.json` configuration file
-- Set up the `cn` utility function
-- Create the required directory structure
-
-### Add components
+#### `add [components...]`
+Add individual components to your project.
 
 ```bash
 npx neobrutal add button
 npx neobrutal add card dialog input
-npx neobrutal add --all
 ```
 
-### List available components
+**Options:**
+- `-c, --cwd <cwd>`: The working directory.
+- `-y, --yes`: Skip confirmation prompt.
+- `-o, --overwrite`: Overwrite existing files if they already exist.
+- `-a, --all`: Add all available components.
+
+#### `update [components...]`
+Update installed components to their latest versions from the registry.
+
+```bash
+npx neobrutal update button
+npx neobrutal update --all
+```
+
+**Options:**
+- `-a, --all`: Update all currently installed components.
+- `-f, --force`: Skip confirmation prompt and overwrite files.
+- `--dry-run`: Show what would be updated without making actual changes.
+
+#### `list`
+List all available UI components, utilities, and hooks in the registry.
 
 ```bash
 npx neobrutal list
 ```
 
-### Check for updates
+#### `diff <component>`
+Show differences between your local component and the latest registry version.
 
 ```bash
 npx neobrutal diff button
 ```
 
-## Registry
-
-The CLI pulls component metadata from the hosted registry by default:
-
-- `https://www.neobrutalui.live/r`
-
-To test against a different registry (for staging or local mirrors), set:
-
-```bash
-NEOBRUTAL_REGISTRY_URL="https://your-registry.example.com/r" npx neobrutal list
-```
-
-## Release Automation
-
-CLI publishing is automated through GitHub Actions:
-
-1. Bump `packages/cli/package.json` version.
-2. Push a matching tag in the format `cli-v<version>` (example: `cli-v0.3.2`).
-3. The release workflow validates tag/version parity, builds the CLI, publishes to npm, and creates a GitHub release.
-
-Required repository secret:
-
-- `NPM_TOKEN`
-
-## Commands
-
-| Command | Description |
-| --------- | ------------- |
-| `init` | Initialize your project and install dependencies |
-| `add [components...]` | Add components to your project |
-| `list` | List all available components |
-| `diff <component>` | Show differences between local and registry version |
-
-## Options
-
-### Global Options
-
-| Option | Description |
-| -------- | ------------- |
-| `-c, --cwd <cwd>` | The working directory (defaults to current directory) |
-| `-h, --help` | Display help for command |
-| `-v, --version` | Display the version number |
-
-### Add Options
-
-| Option | Description |
-| -------- | ------------- |
-| `-y, --yes` | Skip confirmation prompt |
-| `-o, --overwrite` | Overwrite existing files |
-| `-a, --all` | Add all available components |
-
-### Init Options
-
-| Option | Description |
-| --------- | ------------- |
-| `-y, --yes` | Skip confirmation prompt |
-| `-f, --force` | Force overwrite of existing configuration |
+**Options:**
+- `--no-diff`: Only show if files differ, don't output the actual patch diff.
+- `--context <lines>`: Specify the number of context lines to show in the diff (defaults to 3).
 
 ## License
 
-MIT
+This project is licensed under the terms of the MIT License.
