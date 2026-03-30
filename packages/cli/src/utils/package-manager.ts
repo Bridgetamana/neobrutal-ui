@@ -59,17 +59,11 @@ function getInstallProcess(
         return { command: config.installCommand, shell: false }
     }
 
-    // Use explicit executables on Windows to avoid shell argument concatenation warnings.
-    const windowsCommandMap: Record<PackageManager, string> = {
-        npm: "npm.cmd",
-        pnpm: "pnpm.cmd",
-        yarn: "yarn.cmd",
-        bun: "bun.exe",
-    }
-
+    // On Windows, spawn .cmd/.bat files through the shell to avoid
+    // EINVAL errors from Node.js >= 18.20.2 / 20.12.2 security patches.
     return {
-        command: windowsCommandMap[packageManager] ?? config.installCommand,
-        shell: false,
+        command: config.installCommand,
+        shell: true,
     }
 }
 

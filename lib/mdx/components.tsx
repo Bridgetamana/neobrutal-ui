@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ComponentPreview } from "@/components/docs/component-preview-server"
 import { CodeBlock } from "@/components/docs/code-block"
 import { InstallTabs } from "@/components/docs/install-tabs"
+import { CliTabs } from "@/components/docs/cli-tabs"
 import { PropsTable, PropsRow } from "@/components/docs/props-table"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
@@ -63,6 +64,7 @@ export const mdxComponents = {
     ComponentPreview,
     CodeBlock,
     InstallTabs,
+    CliTabs,
     PropsTable,
     PropsRow,
 

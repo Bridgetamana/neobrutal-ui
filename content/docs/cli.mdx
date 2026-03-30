@@ -8,7 +8,7 @@ order: 2
 
 Set up your project for Neobrutal UI. Creates components.json, installs dependencies, and adds utilities.
 
-<CodeBlock code="npx neobrutal init" language="bash" />
+<CliTabs command="init" />
 
 Use **-y** to skip prompts.
 
@@ -16,7 +16,7 @@ Use **-y** to skip prompts.
 
 Add components to your project. Resolves dependencies automatically.
 
-<CodeBlock code="npx neobrutal add button dialog" language="bash" />
+<CliTabs command="add button dialog" />
 
 Use **-a** for all components, **-o** to overwrite existing files.
 
@@ -24,24 +24,22 @@ Use **-a** for all components, **-o** to overwrite existing files.
 
 Display all available components.
 
-<CodeBlock code="npx neobrutal list" language="bash" />
+<CliTabs command="list" />
 
 ## diff
 
 Compare local components with the registry to check for updates.
 
-<CodeBlock code="npx neobrutal diff button" language="bash" />
+<CliTabs command="diff button" />
 
 ## Configuration
 
 The **components.json** file configures component paths and import aliases.
 
-<CodeBlock code='{
-    "tailwind": {
+<CodeBlock code='{"tailwind": {
     "css": "app/globals.css"},
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils"}
 }' language="json" />
-
 
