@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0-alpha.12",
-    "@vercel/analytics": "^1.6.1",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "gray-matter": "^4.0.3",
-    "lucide-react": "^0.577.0",
-    "next": "^16.2.1",
+    "lucide-react": "^1.14.0",
+    "next": "^16.2.4",
     "next-mdx-remote": "^6.0.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "shiki": "^3.21.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "shiki": "^4.0.2",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
@@ -29,10 +29,10 @@
     "@types/node": "^25.0.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "^16.2.0",
+    "eslint": "^10.2.1",
+    "eslint-config-next": "^16.2.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^6.0.3"
   },
   "browserslist": [
     "last 2 Chrome versions",
