@@ -33,6 +33,8 @@
     "scripts": {
         "build": "tsup",
         "dev": "tsup --watch",
+        "pretest": "npm run build",
+        "test": "node --test --test-concurrency=1 tests/cli.integration.test.mjs",
         "typecheck": "tsc --noEmit",
         "clean": "rimraf dist"
     },

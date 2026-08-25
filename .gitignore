@@ -24,7 +24,6 @@ node_modules
 # cli package
 packages/cli/node_modules
 packages/cli/dist
-packages/cli/package-lock.json
 
 # misc
 .DS_Store
