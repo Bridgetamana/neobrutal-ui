@@ -1,4 +1,5 @@
 import type { Config } from "./config.js"
+import { getAliasPrefix } from "./paths.js"
 
 /**
  * Transforms import paths in component source code to match the user's configured aliases.
@@ -8,74 +9,34 @@ import type { Config } from "./config.js"
  * to `import { cn } from "~/lib/utils"`.
  */
 export function transformImports(content: string, config: Config): string {
+    const rootPrefix = getAliasPrefix(config.aliases.components) ?? "@/"
+    const aliases = [
+        ["@/lib/utils", config.aliases.utils],
+        ["@/components/ui", config.aliases.ui || `${config.aliases.components}/ui`],
+        ["@/components", config.aliases.components],
+        ["@/hooks", config.aliases.hooks || `${rootPrefix}hooks`],
+        ["@/lib", config.aliases.lib || `${rootPrefix}lib`],
+    ] as const
+
     let transformed = content
 
-    // Extract the alias prefix from the user's config (e.g., "@/", "~/", "#/")
-    const utilsPrefix = extractAliasPrefix(config.aliases.utils)
-    const componentsPrefix = extractAliasPrefix(config.aliases.components)
-
-    // If the user is using the default "@/" prefix, no transformation needed
-    if (utilsPrefix === "@/" && componentsPrefix === "@/") {
-        return transformed
-    }
-
-    // Transform @/lib/utils imports to use the configured utils alias
-    if (utilsPrefix !== "@/") {
-        // Handle the utils import specifically since it has its own alias
-        const utilsPath = config.aliases.utils
+    for (const [registryAlias, configuredAlias] of aliases) {
+        const escapedAlias = registryAlias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+        const aliasPattern = new RegExp(
+            `(["'])${escapedAlias}(?=\\/|["'])`,
+            "g"
+        )
         transformed = transformed.replace(
-            /from\s+["']@\/lib\/utils["']/g,
-            `from "${utilsPath}"`
+            aliasPattern,
+            (_match, quote: string) => `${quote}${configuredAlias}`
         )
     }
 
-    // Transform @/components imports to use the configured components alias
-    if (componentsPrefix !== "@/") {
-        const componentsBase = config.aliases.components
-        transformed = transformed.replace(
-            /from\s+["']@\/components\/(.*?)["']/g,
-            `from "${componentsBase}/$1"`
-        )
-    }
-
-    // Transform any remaining @/ imports to use the detected prefix
-    // This handles edge cases like @/hooks, @/lib/other, etc.
-    if (utilsPrefix !== "@/") {
-        transformed = transformed.replace(
-            /from\s+["']@\/(.*?)["']/g,
-            `from "${utilsPrefix}$1"`
-        )
+    if (rootPrefix !== "@/") {
+        transformed = transformed.replace(/(["'])@\//g, `$1${rootPrefix}`)
     }
 
     return transformed
-}
-
-/**
- * Extracts the alias prefix from a configured alias path.
- * 
- * Examples:
- * - "@/components" -> "@/"
- * - "~/lib/utils" -> "~/"
- * - "#/components" -> "#/"
- * - "src/components" -> "src/"
- */
-function extractAliasPrefix(alias: string): string {
-    // Common alias patterns
-    const prefixPatterns = ["@/", "~/", "#/", "$/"]
-    
-    for (const prefix of prefixPatterns) {
-        if (alias.startsWith(prefix)) {
-            return prefix
-        }
-    }
-
-    // If no recognized prefix, try to extract up to the first slash
-    const slashIndex = alias.indexOf("/")
-    if (slashIndex > 0) {
-        return alias.substring(0, slashIndex + 1)
-    }
-
-    return alias
 }
 
 /**

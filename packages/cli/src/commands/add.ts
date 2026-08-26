@@ -6,7 +6,7 @@ import { z } from "zod"
 import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
-import { getConfig, type Config } from "../utils/config.js"
+import { getConfig } from "../utils/config.js"
 import {
     getRegistryIndex,
     getRegistryItems,
@@ -19,6 +19,7 @@ import {
     getInstalledDependencies,
 } from "../utils/package-manager.js"
 import { transformImports } from "../utils/transform.js"
+import { resolveRegistryFilePath } from "../utils/paths.js"
 import { runInit } from "./init.js"
 
 const addOptionsSchema = z.object({
@@ -162,7 +163,7 @@ async function runAdd(options: z.infer<typeof addOptionsSchema>): Promise<void> 
             }
 
             for (const file of item.files) {
-                const targetPath = resolveFilePath(cwd, config, file.path)
+                const targetPath = resolveRegistryFilePath(cwd, config, file.path)
 
                 if (await fs.pathExists(targetPath)) {
                     // For utils file, check if content is identical - skip silently if so
@@ -291,69 +292,4 @@ function normalizeComponentNames(components: string[]): string[] {
                 .filter(Boolean)
         )
     )
-}
-
-/**
- * Strips the alias prefix from a path (e.g., "@/", "~/", "#/").
- */
-function stripAliasPrefix(aliasPath: string): string {
-    const prefixes = ["@/", "~/", "#/", "$/"]
-    for (const prefix of prefixes) {
-        if (aliasPath.startsWith(prefix)) {
-            return aliasPath.slice(prefix.length)
-        }
-    }
-    return aliasPath
-}
-
-function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
-    const relative = path.relative(cwd, targetPath)
-    if (relative.startsWith("..") || path.isAbsolute(relative)) {
-        throw new Error(`Refusing to write outside project root for ${sourcePath}`)
-    }
-
-    return targetPath
-}
-
-function resolveFilePath(cwd: string, config: Config, filePath: string): string {
-    const normalizedPath = filePath.replace(/\\/g, "/")
-    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
-        throw new Error(`Invalid registry file path: ${filePath}`)
-    }
-
-    if (filePath.startsWith("components/ui/")) {
-        const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
-        const resolvedPath = stripAliasPrefix(uiAlias)
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("components/ui/", resolvedPath + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    if (filePath.startsWith("lib/")) {
-        const libAlias = config.aliases.lib || "@/lib"
-        const resolvedPath = stripAliasPrefix(libAlias)
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("lib/", resolvedPath + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    if (filePath.startsWith("hooks/")) {
-        const hooksAlias = config.aliases.hooks || "@/hooks"
-        const resolvedPath = stripAliasPrefix(hooksAlias)
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("hooks/", resolvedPath + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    const targetPath = path.resolve(cwd, filePath)
-    return ensurePathInProjectRoot(cwd, targetPath, filePath)
 }

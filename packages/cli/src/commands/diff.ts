@@ -6,9 +6,10 @@ import * as Diff from "diff"
 import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
-import { getConfig, type Config } from "../utils/config.js"
+import { getConfig } from "../utils/config.js"
 import { getRegistryItem } from "../utils/registry.js"
 import { transformImports } from "../utils/transform.js"
+import { resolveRegistryFilePath } from "../utils/paths.js"
 
 const diffOptionsSchema = z.object({
     component: z.string(),
@@ -74,12 +75,12 @@ async function runDiff(options: z.infer<typeof diffOptionsSchema>): Promise<void
         let hasChanges = false
 
         for (const file of registryItem.files) {
-            const localPath = resolveFilePath(cwd, config, file.path)
+            const localPath = resolveRegistryFilePath(cwd, config, file.path)
 
             if (!await fs.pathExists(localPath)) {
                 logger.break()
                 logger.warn(`${highlighter.warn(file.path)} does not exist locally.`)
-                logger.info("  Run `npx neobrutal add " + component + "` to add it.")
+                logger.info("  Run `npx neobrutal update " + component + "` to restore it.")
                 hasChanges = true
                 continue
             }
@@ -87,7 +88,7 @@ async function runDiff(options: z.infer<typeof diffOptionsSchema>): Promise<void
             const localContent = await fs.readFile(localPath, "utf-8")
             const registryContent = transformImports(file.content, config)
 
-            if (localContent === registryContent) {
+            if (normalizeLineEndings(localContent) === normalizeLineEndings(registryContent)) {
                 logger.break()
                 logger.success(`${highlighter.success(file.path)} is up to date.`)
             } else {
@@ -105,13 +106,16 @@ async function runDiff(options: z.infer<typeof diffOptionsSchema>): Promise<void
             logger.break()
             logger.info("To update to the latest version, run:")
             logger.break()
-            logger.log(`  ${highlighter.code(`npx neobrutal add ${component} --overwrite`)}`)
+            logger.log(`  ${highlighter.code(`npx neobrutal update ${component}`)}`)
             logger.break()
         }
     } catch (error) {
         diffSpinner.fail(`Failed to check ${component}.`)
         throw error
     }
+}
+function normalizeLineEndings(content: string): string {
+    return content.replace(/\r\n?/g, "\n")
 }
 
 function printUnifiedDiff(
@@ -154,62 +158,4 @@ function printUnifiedDiff(
             console.log(line)
         }
     }
-}
-
-function resolveFilePath(cwd: string, config: Config, filePath: string): string {
-    const normalizedPath = filePath.replace(/\\/g, "/")
-    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
-        throw new Error(`Invalid registry file path: ${filePath}`)
-    }
-
-    const aliasPrefix = extractAliasPrefix(config)
-
-    if (filePath.startsWith("components/ui/")) {
-        const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("components/ui/", stripAliasPrefix(uiAlias, aliasPrefix) + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    if (filePath.startsWith("lib/")) {
-        const libAlias = config.aliases.lib || `${aliasPrefix}lib`
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("lib/", stripAliasPrefix(libAlias, aliasPrefix) + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    const targetPath = path.resolve(cwd, filePath)
-    return ensurePathInProjectRoot(cwd, targetPath, filePath)
-}
-
-function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
-    const relative = path.relative(cwd, targetPath)
-    if (relative.startsWith("..") || path.isAbsolute(relative)) {
-        throw new Error(`Refusing to read outside project root for ${sourcePath}`)
-    }
-
-    return targetPath
-}
-
-function extractAliasPrefix(config: Config): string {
-    const prefixes = ["@/", "~/", "#/", "$/"]
-    for (const prefix of prefixes) {
-        if (config.aliases.components.startsWith(prefix)) {
-            return prefix
-        }
-    }
-    return "@/"
-}
-
-function stripAliasPrefix(alias: string, prefix: string): string {
-    if (alias.startsWith(prefix)) {
-        return alias.slice(prefix.length)
-    }
-    return alias
 }

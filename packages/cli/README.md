@@ -40,7 +40,7 @@ npx neobrutal add card dialog input
 - `-a, --all`: Add all available components.
 
 #### `update [components...]`
-Update installed components to their latest versions from the registry.
+Update installed components and their registry dependencies to the latest versions. The command restores newly added component files and installs newly required packages.
 
 ```bash
 npx neobrutal update button
@@ -48,9 +48,10 @@ npx neobrutal update --all
 ```
 
 **Options:**
+- `-c, --cwd <cwd>`: The working directory.
 - `-a, --all`: Update all currently installed components.
 - `-f, --force`: Skip confirmation prompt and overwrite files.
-- `--dry-run`: Show what would be updated without making actual changes.
+- `--dry-run`: Show file and dependency changes without modifying the project.
 
 #### `list`
 List all available UI components, utilities, and hooks in the registry.

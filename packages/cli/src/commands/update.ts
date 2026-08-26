@@ -8,7 +8,19 @@ import { logger, highlighter } from "../utils/logger.js"
 import { spinner } from "../utils/spinner.js"
 import { handleError } from "../utils/errors.js"
 import { getConfig, type Config } from "../utils/config.js"
-import { getRegistryItem, getRegistryIndex, type RegistryItem } from "../utils/registry.js"
+import {
+    getRegistryIndex,
+    getRegistryItems,
+    resolveRegistryDependencies,
+    type RegistryItem,
+} from "../utils/registry.js"
+import {
+    detectPackageManager,
+    getInstallCommand,
+    getInstalledDependencies,
+    installDependencies,
+} from "../utils/package-manager.js"
+import { resolveRegistryFilePath } from "../utils/paths.js"
 import { transformImports } from "../utils/transform.js"
 
 const updateOptionsSchema = z.object({
@@ -18,6 +30,23 @@ const updateOptionsSchema = z.object({
     force: z.boolean(),
     dryRun: z.boolean(),
 })
+
+interface FileUpdate {
+    path: string
+    localPath: string
+    localContent: string | null
+    registryContent: string
+}
+
+interface ComponentUpdate {
+    name: string
+    files: FileUpdate[]
+}
+
+interface MissingDependencies {
+    dependencies: string[]
+    devDependencies: string[]
+}
 
 export const update = new Command()
     .name("update")
@@ -48,8 +77,7 @@ export const update = new Command()
     })
 
 async function runUpdate(options: z.infer<typeof updateOptionsSchema>): Promise<void> {
-    const { components, cwd, all, force, dryRun } = options
-
+    const { cwd, all, force, dryRun } = options
     const config = await getConfig(cwd)
 
     if (!config) {
@@ -60,70 +88,57 @@ async function runUpdate(options: z.infer<typeof updateOptionsSchema>): Promise<
         return
     }
 
-    let componentsToUpdate: string[] = components
+    const registryIndex = await getRegistryIndex()
+    const requestedItems = all
+        ? await findInstalledRegistryItems(cwd, config, registryIndex)
+        : await getRequestedRegistryItems(options.components, registryIndex)
 
-    if (all) {
-        const checkSpinner = spinner("Scanning for installed components...").start()
-        componentsToUpdate = await getInstalledComponents(cwd, config)
-        checkSpinner.succeed(`Found ${componentsToUpdate.length} installed components.`)
+    if (requestedItems.length === 0) {
+        logger.warn(
+            all
+                ? "No installed components found."
+                : "No valid components specified. Use --all to update all installed components."
+        )
+        return
     }
 
-    if (componentsToUpdate.length === 0) {
-        logger.warn("No components specified. Use --all to update all installed components.")
+    const installedItems: RegistryItem[] = []
+    for (const item of requestedItems) {
+        if (await isRegistryItemInstalled(cwd, config, item)) {
+            installedItems.push(item)
+        } else {
+            logger.warn(
+                `${highlighter.warn(item.name)} is not installed. Run \`npx neobrutal add ${item.name}\` first.`
+            )
+        }
+    }
+
+    if (installedItems.length === 0) {
         return
     }
 
     logger.break()
-    logger.info(`Checking ${componentsToUpdate.length} component(s) for updates...`)
+    logger.info(`Checking ${installedItems.length} component(s) for updates...`)
     logger.break()
 
-    const updates: Array<{
-        name: string
-        files: Array<{
-            path: string
-            localPath: string
-            localContent: string
-            registryContent: string
-        }>
-    }> = []
+    const resolvedItems = await resolveRegistryDependencies(installedItems)
+    const updates = await collectComponentUpdates(cwd, config, resolvedItems)
+    const missingDependencies = await findMissingDependencies(cwd, resolvedItems)
 
-    for (const componentName of componentsToUpdate) {
-        try {
-            const registryItem = await getRegistryItem(componentName)
-            const componentUpdates = await checkComponentForUpdates(cwd, config, registryItem)
-
-            if (componentUpdates.length > 0) {
-                updates.push({
-                    name: componentName,
-                    files: componentUpdates,
-                })
-            }
-        } catch {
-            logger.warn(`Component ${highlighter.warn(componentName)} not found in registry.`)
-        }
-    }
-
-    if (updates.length === 0) {
+    if (
+        updates.length === 0 &&
+        missingDependencies.dependencies.length === 0 &&
+        missingDependencies.devDependencies.length === 0
+    ) {
         logger.success("All components are up to date!")
         return
     }
 
-    // Show summary of updates
-    logger.info(`Found updates for ${updates.length} component(s):`)
-    logger.break()
-
-    for (const update of updates) {
-        logger.log(`  ${highlighter.info(update.name)}`)
-        for (const file of update.files) {
-            const additions = countAdditions(file.localContent, file.registryContent)
-            const deletions = countDeletions(file.localContent, file.registryContent)
-            logger.log(`    ${file.path} (+${additions}/-${deletions})`)
-        }
-    }
+    printUpdateSummary(updates, missingDependencies)
 
     if (dryRun) {
         logger.break()
-        logger.info("Dry run complete. No files were modified.")
+        logger.info("Dry run complete. No files or dependencies were modified.")
         return
     }
 
@@ -143,176 +158,234 @@ async function runUpdate(options: z.infer<typeof updateOptionsSchema>): Promise<
         }
     }
 
-    // Apply updates
     const updateSpinner = spinner("Applying updates...").start()
-
     let updatedCount = 0
 
-    for (const update of updates) {
-        for (const file of update.files) {
-            const transformedContent = transformImports(file.registryContent, config)
-            await fs.writeFile(file.localPath, transformedContent, "utf-8")
-            updatedCount++
+    try {
+        for (const update of updates) {
+            for (const file of update.files) {
+                await fs.ensureDir(path.dirname(file.localPath))
+                await fs.writeFile(file.localPath, file.registryContent, "utf-8")
+                updatedCount++
+            }
         }
+
+        updateSpinner.succeed(`Updated ${updatedCount} file(s).`)
+    } catch (error) {
+        updateSpinner.fail("Failed to update component files.")
+        throw error
     }
 
-    updateSpinner.succeed(`Updated ${updatedCount} file(s).`)
+    await installMissingDependencies(cwd, missingDependencies)
 
     logger.break()
     logger.success("Update complete!")
 }
 
-async function getInstalledComponents(cwd: string, config: Config): Promise<string[]> {
-    const uiDir = resolveAliasPath(cwd, config.aliases.ui || `${config.aliases.components}/ui`)
+async function getRequestedRegistryItems(
+    componentNames: string[],
+    registryIndex: Awaited<ReturnType<typeof getRegistryIndex>>
+): Promise<RegistryItem[]> {
+    const normalizedNames = Array.from(
+        new Set(componentNames.map((name) => name.trim().toLowerCase()).filter(Boolean))
+    )
+    const availableNames = new Set(registryIndex.map((item) => item.name))
+    const unavailableNames = normalizedNames.filter((name) => !availableNames.has(name))
 
-    if (!await fs.pathExists(uiDir)) {
-        return []
+    if (unavailableNames.length > 0) {
+        logger.warn(`Not available in the registry: ${unavailableNames.join(", ")}`)
     }
 
-    const index = await getRegistryIndex()
-    const installedComponents: string[] = []
-
-    for (const item of index) {
-        if (item.name === "utils") continue
-
-        const componentPath = path.resolve(uiDir, `${item.name}.tsx`)
-        if (await fs.pathExists(componentPath)) {
-            installedComponents.push(item.name)
-        }
-    }
-
-    return installedComponents
+    const validNames = normalizedNames.filter((name) => availableNames.has(name))
+    return validNames.length > 0 ? getRegistryItems(validNames) : []
 }
 
-async function checkComponentForUpdates(
+async function findInstalledRegistryItems(
     cwd: string,
     config: Config,
-    registryItem: RegistryItem
-): Promise<Array<{
-    path: string
-    localPath: string
-    localContent: string
-    registryContent: string
-}>> {
-    const updates: Array<{
-        path: string
-        localPath: string
-        localContent: string
-        registryContent: string
-    }> = []
+    registryIndex: Awaited<ReturnType<typeof getRegistryIndex>>
+): Promise<RegistryItem[]> {
+    const candidateNames = registryIndex
+        .filter((item) => item.type !== "registry:style" && item.name !== "utils")
+        .map((item) => item.name)
+    const candidateItems = await getRegistryItems(candidateNames)
+    const installationChecks = await Promise.all(
+        candidateItems.map((item) => isRegistryItemInstalled(cwd, config, item))
+    )
 
-    for (const file of registryItem.files) {
-        const localPath = resolveFilePath(cwd, config, file.path)
+    return candidateItems.filter((_item, index) => installationChecks[index])
+}
 
-        if (!await fs.pathExists(localPath)) {
-            continue
+async function isRegistryItemInstalled(
+    cwd: string,
+    config: Config,
+    item: RegistryItem
+): Promise<boolean> {
+    const checks = await Promise.all(
+        item.files.map((file) =>
+            fs.pathExists(resolveRegistryFilePath(cwd, config, file.path))
+        )
+    )
+    return checks.some(Boolean)
+}
+
+async function collectComponentUpdates(
+    cwd: string,
+    config: Config,
+    items: RegistryItem[]
+): Promise<ComponentUpdate[]> {
+    const updates: ComponentUpdate[] = []
+
+    for (const item of items) {
+        const files: FileUpdate[] = []
+
+        for (const file of item.files) {
+            const localPath = resolveRegistryFilePath(cwd, config, file.path)
+            const registryContent = transformImports(file.content, config)
+            const exists = await fs.pathExists(localPath)
+            const localContent = exists ? await fs.readFile(localPath, "utf-8") : null
+
+            if (
+                localContent === null ||
+                normalizeLineEndings(localContent) !== normalizeLineEndings(registryContent)
+            ) {
+                files.push({
+                    path: file.path,
+                    localPath,
+                    localContent,
+                    registryContent,
+                })
+            }
         }
 
-        const localContent = await fs.readFile(localPath, "utf-8")
-        const transformedRegistryContent = transformImports(file.content, config)
-
-        if (localContent !== transformedRegistryContent) {
-            updates.push({
-                path: file.path,
-                localPath,
-                localContent,
-                registryContent: file.content,
-            })
+        if (files.length > 0) {
+            updates.push({ name: item.name, files })
         }
     }
 
     return updates
 }
 
-function countAdditions(localContent: string, registryContent: string): number {
-    const changes = Diff.diffLines(localContent, registryContent)
-    let count = 0
-    for (const change of changes) {
-        if (change.added) {
-            count += change.count || 1
+async function findMissingDependencies(
+    cwd: string,
+    items: RegistryItem[]
+): Promise<MissingDependencies> {
+    const installedDependencies = await getInstalledDependencies(cwd)
+    const dependencies = new Set<string>()
+    const devDependencies = new Set<string>()
+
+    for (const item of items) {
+        item.dependencies?.forEach((dependency) => dependencies.add(dependency))
+        item.devDependencies?.forEach((dependency) => devDependencies.add(dependency))
+    }
+
+    const missingDependencies = Array.from(dependencies).filter(
+        (dependency) => !installedDependencies.has(dependency)
+    )
+    const missingDevDependencies = Array.from(devDependencies).filter(
+        (dependency) =>
+            !installedDependencies.has(dependency) &&
+            !missingDependencies.includes(dependency)
+    )
+
+    return {
+        dependencies: missingDependencies,
+        devDependencies: missingDevDependencies,
+    }
+}
+
+function printUpdateSummary(
+    updates: ComponentUpdate[],
+    missingDependencies: MissingDependencies
+): void {
+    if (updates.length > 0) {
+        logger.info(`Found updates for ${updates.length} registry item(s):`)
+        logger.break()
+
+        for (const update of updates) {
+            logger.log(`  ${highlighter.info(update.name)}`)
+            for (const file of update.files) {
+                if (file.localContent === null) {
+                    logger.log(`    ${file.path} (new file)`)
+                    continue
+                }
+
+                const additions = countAdditions(file.localContent, file.registryContent)
+                const deletions = countDeletions(file.localContent, file.registryContent)
+                logger.log(`    ${file.path} (+${additions}/-${deletions})`)
+            }
         }
     }
-    return count
+
+    const packages = [
+        ...missingDependencies.dependencies,
+        ...missingDependencies.devDependencies,
+    ]
+    if (packages.length > 0) {
+        logger.break()
+        logger.info(`Missing dependencies: ${packages.join(", ")}`)
+    }
+}
+
+async function installMissingDependencies(
+    cwd: string,
+    missingDependencies: MissingDependencies
+): Promise<void> {
+    const { dependencies, devDependencies } = missingDependencies
+    if (dependencies.length === 0 && devDependencies.length === 0) {
+        return
+    }
+
+    const packageManager = await detectPackageManager(cwd)
+
+    if (dependencies.length > 0) {
+        const installSpinner = spinner(
+            `Running ${getInstallCommand(packageManager, dependencies)}`
+        ).start()
+        const success = await installDependencies(cwd, dependencies, { silent: true })
+
+        if (success) {
+            installSpinner.succeed("Dependencies installed.")
+        } else {
+            installSpinner.fail("Failed to install dependencies.")
+            logger.warn(`Install manually: ${getInstallCommand(packageManager, dependencies)}`)
+        }
+    }
+
+    if (devDependencies.length > 0) {
+        const installSpinner = spinner(
+            `Running ${getInstallCommand(packageManager, devDependencies, true)}`
+        ).start()
+        const success = await installDependencies(cwd, devDependencies, {
+            isDev: true,
+            silent: true,
+        })
+
+        if (success) {
+            installSpinner.succeed("Dev dependencies installed.")
+        } else {
+            installSpinner.fail("Failed to install dev dependencies.")
+            logger.warn(
+                `Install manually: ${getInstallCommand(packageManager, devDependencies, true)}`
+            )
+        }
+    }
+}
+
+function normalizeLineEndings(content: string): string {
+    return content.replace(/\r\n?/g, "\n")
+}
+
+function countAdditions(localContent: string, registryContent: string): number {
+    return Diff.diffLines(localContent, registryContent).reduce(
+        (count, change) => count + (change.added ? change.count || 1 : 0),
+        0
+    )
 }
 
 function countDeletions(localContent: string, registryContent: string): number {
-    const changes = Diff.diffLines(localContent, registryContent)
-    let count = 0
-    for (const change of changes) {
-        if (change.removed) {
-            count += change.count || 1
-        }
-    }
-    return count
-}
-
-function resolveFilePath(cwd: string, config: Config, filePath: string): string {
-    const normalizedPath = filePath.replace(/\\/g, "/")
-    if (normalizedPath.startsWith("/") || normalizedPath.includes("../")) {
-        throw new Error(`Invalid registry file path: ${filePath}`)
-    }
-
-    const aliasPrefix = extractAliasPrefix(config)
-
-    if (filePath.startsWith("components/ui/")) {
-        const uiAlias = config.aliases.ui || `${config.aliases.components}/ui`
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("components/ui/", stripAliasPrefix(uiAlias, aliasPrefix) + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    if (filePath.startsWith("lib/")) {
-        const libAlias = config.aliases.lib || `${aliasPrefix}lib`
-        const targetPath = path.resolve(
-            cwd,
-            filePath.replace("lib/", stripAliasPrefix(libAlias, aliasPrefix) + "/")
-        )
-
-        return ensurePathInProjectRoot(cwd, targetPath, filePath)
-    }
-
-    const targetPath = path.resolve(cwd, filePath)
-    return ensurePathInProjectRoot(cwd, targetPath, filePath)
-}
-
-function resolveAliasPath(cwd: string, alias: string): string {
-    const prefixes = ["@/", "~/", "#/", "$/"]
-    for (const prefix of prefixes) {
-        if (alias.startsWith(prefix)) {
-            const targetPath = path.resolve(cwd, alias.slice(prefix.length))
-            return ensurePathInProjectRoot(cwd, targetPath, alias)
-        }
-    }
-
-    const targetPath = path.resolve(cwd, alias)
-    return ensurePathInProjectRoot(cwd, targetPath, alias)
-}
-
-function ensurePathInProjectRoot(cwd: string, targetPath: string, sourcePath: string): string {
-    const relative = path.relative(cwd, targetPath)
-    if (relative.startsWith("..") || path.isAbsolute(relative)) {
-        throw new Error(`Refusing to access path outside project root for ${sourcePath}`)
-    }
-
-    return targetPath
-}
-
-function extractAliasPrefix(config: Config): string {
-    const prefixes = ["@/", "~/", "#/", "$/"]
-    for (const prefix of prefixes) {
-        if (config.aliases.components.startsWith(prefix)) {
-            return prefix
-        }
-    }
-    return "@/"
-}
-
-function stripAliasPrefix(alias: string, prefix: string): string {
-    if (alias.startsWith(prefix)) {
-        return alias.slice(prefix.length)
-    }
-    return alias
+    return Diff.diffLines(localContent, registryContent).reduce(
+        (count, change) => count + (change.removed ? change.count || 1 : 0),
+        0
+    )
 }
