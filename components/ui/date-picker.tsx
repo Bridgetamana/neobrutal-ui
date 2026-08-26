@@ -65,6 +65,7 @@ function DatePicker({
     disabled = false,
     className,
 }: DatePickerProps) {
+    const calendarRef = React.useRef<HTMLDivElement>(null)
     const [open, setOpen] = React.useState(false)
     const [internalSelectedDate, setInternalSelectedDate] = React.useState<Date | null>(
         value ?? null
@@ -179,6 +180,10 @@ function DatePicker({
         })
     }
 
+    const calendarWeeks = Array.from({ length: 6 }, (_, index) =>
+        calendarDays.slice(index * 7, index * 7 + 7)
+    )
+
     function handleApply() {
         if (value === undefined) setInternalSelectedDate(pendingDate)
         onChange?.(pendingDate)
@@ -205,7 +210,7 @@ function DatePicker({
                 )}
             >
                 <Calendar aria-hidden="true" className="h-4 w-4 shrink-0 opacity-60" />
-                <span className={cn("flex-1 text-left", !selectedDate && "text-black/50")}>
+                <span className={cn("flex-1 text-left", !selectedDate && "text-black/60")}>
                     {selectedDate ? formatDate(selectedDate) : placeholder}
                 </span>
             </BasePopover.Trigger>
@@ -213,6 +218,11 @@ function DatePicker({
                 <BasePopover.Positioner sideOffset={4} side="bottom" align="start">
                     <BasePopover.Popup
                         aria-label="Choose a date"
+                        initialFocus={() =>
+                            calendarRef.current?.querySelector<HTMLButtonElement>(
+                                'button[tabindex="0"]'
+                            ) ?? null
+                        }
                         className="z-50 w-[min(340px,calc(100vw-2rem))] rounded-base border-2 border-black bg-white shadow-brutal transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0"
                     >
                         <div className="flex items-center justify-between border-b-2 border-black px-3 py-2">
@@ -237,58 +247,65 @@ function DatePicker({
                             </button>
                         </div>
 
-                        {/* Day headers */}
-                        <div className="grid grid-cols-7 px-2 pt-2">
-                            {DAYS.map((day) => (
-                                <div
-                                    key={day}
-                                    aria-hidden="true"
-                                    className="flex h-8 items-center justify-center text-xs font-bold text-black/50"
-                                >
-                                    {day}
+                        <div ref={calendarRef} role="grid" aria-label={`${getMonthName(displayMonth)} ${displayYear}`} className="grid grid-cols-7 px-2 pb-2 pt-2">
+                            <div role="row" className="contents">
+                                {DAYS.map((day) => (
+                                    <div
+                                        key={day}
+                                        role="columnheader"
+                                        className="flex h-8 items-center justify-center text-xs font-bold text-black/60"
+                                    >
+                                        {day}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {calendarWeeks.map((week, weekIndex) => (
+                                <div key={weekIndex} role="row" className="contents">
+                                    {week.map((d) => {
+                                        const cellDate = new Date(d.year, d.month, d.day)
+                                        const isSelected = isSameDay(pendingDate, cellDate)
+                                        const isTodayDate = isToday(cellDate)
+
+                                        return (
+                                            <div
+                                                key={getDateKey(cellDate)}
+                                                role="gridcell"
+                                                aria-selected={isSelected}
+                                                className="contents"
+                                            >
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDayClick(d.day, d.month, d.year)}
+                                                    onKeyDown={(event) => handleDayKeyDown(event, cellDate)}
+                                                    data-date={getDateKey(cellDate)}
+                                                    aria-label={FULL_DATE_FORMATTER.format(cellDate)}
+                                                    aria-current={isTodayDate ? "date" : undefined}
+                                                    tabIndex={
+                                                        isSelected ||
+                                                        (!pendingDate && isTodayDate) ||
+                                                        (!pendingDate && d.isCurrentMonth && d.day === 1)
+                                                            ? 0
+                                                            : -1
+                                                    }
+                                                    className={cn(
+                                                        "flex h-11 w-full items-center justify-center rounded-base text-sm transition-brutal active:scale-90",
+                                                        d.isCurrentMonth
+                                                            ? "text-black font-medium"
+                                                            : "text-black/60",
+                                                        isSelected &&
+                                                            "bg-main border-2 border-black font-bold text-black shadow-brutal",
+                                                        !isSelected && d.isCurrentMonth && "hover:bg-main/20",
+                                                        isTodayDate && !isSelected && "border-2 border-black/30"
+                                                    )}
+                                                >
+                                                    {d.day}
+                                                </button>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                             ))}
-                        </div>
-
-                        {/* Calendar grid */}
-                        <div role="grid" aria-label={`${getMonthName(displayMonth)} ${displayYear}`} className="grid grid-cols-7 px-2 pb-2">
-                            {calendarDays.map((d) => {
-                                const cellDate = new Date(d.year, d.month, d.day)
-                                const isSelected = isSameDay(pendingDate, cellDate)
-                                const isTodayDate = isToday(cellDate)
-
-                                return (
-                                    <button
-                                        key={getDateKey(cellDate)}
-                                        type="button"
-                                        onClick={() => handleDayClick(d.day, d.month, d.year)}
-                                        onKeyDown={(event) => handleDayKeyDown(event, cellDate)}
-                                        data-date={getDateKey(cellDate)}
-                                        aria-label={FULL_DATE_FORMATTER.format(cellDate)}
-                                        aria-current={isTodayDate ? "date" : undefined}
-                                        aria-pressed={isSelected}
-                                        tabIndex={
-                                            isSelected ||
-                                            (!pendingDate && isTodayDate) ||
-                                            (!pendingDate && d.isCurrentMonth && d.day === 1)
-                                                ? 0
-                                                : -1
-                                        }
-                                        className={cn(
-                                            "flex h-11 w-full items-center justify-center rounded-base text-sm transition-brutal active:scale-90",
-                                            d.isCurrentMonth
-                                                ? "text-black font-medium"
-                                                : "text-black/30",
-                                            isSelected &&
-                                                "bg-main border-2 border-black font-bold text-black shadow-brutal",
-                                            !isSelected && d.isCurrentMonth && "hover:bg-main/20",
-                                            isTodayDate && !isSelected && "border-2 border-black/30"
-                                        )}
-                                    >
-                                        {d.day}
-                                    </button>
-                                )
-                            })}
                         </div>
 
                         {/* Footer */}

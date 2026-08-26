@@ -73,7 +73,7 @@ async function buildRegistry() {
         }
 
         const outputPath = path.resolve(OUTPUT_DIR, `${item.name}.json`)
-        await fs.writeFile(outputPath, JSON.stringify(outputItem, null, 2), "utf-8")
+        await fs.writeFile(outputPath, `${JSON.stringify(outputItem, null, 2)}\n`, "utf-8")
 
         index.push({
             name: item.name,
@@ -85,7 +85,7 @@ async function buildRegistry() {
     }
 
     const indexPath = path.resolve(OUTPUT_DIR, "index.json")
-    await fs.writeFile(indexPath, JSON.stringify(index, null, 2), "utf-8")
+    await fs.writeFile(indexPath, `${JSON.stringify(index, null, 2)}\n`, "utf-8")
 
     console.log(`\nBuilt ${registry.items.length} registry items to ${OUTPUT_DIR}`)
 

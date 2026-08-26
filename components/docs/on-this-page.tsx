@@ -77,7 +77,7 @@ export function OnThisPage() {
   return (
     <aside className="hidden xl:block" aria-label="Table of contents">
       <nav className="sticky top-6 max-h-[calc(100vh-5rem)] overflow-y-auto">
-        <p className="text-xs font-semibold uppercase tracking-wider text-black/50 mb-3 px-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-black/60 mb-3 px-3">
           On This Page
         </p>
         <ul className="text-sm">

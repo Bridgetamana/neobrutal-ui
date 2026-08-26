@@ -13,6 +13,8 @@ node_modules
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
 
 # next.js
 /.next/
@@ -44,3 +46,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated Next.js agent guidance
+/AGENTS.md
+/CLAUDE.md
