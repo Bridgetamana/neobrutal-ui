@@ -6,7 +6,7 @@ description: Collect multi-line text input from users.
 <ComponentPreview codeFile="textarea/example-1.txt">
   <div className="grid w-full max-w-sm gap-1.5">
       <Label htmlFor="message">Your message</Label>
-      <Textarea placeholder="Type your message here." id="message" />
+      <Textarea name="message" placeholder="Type your message…" id="message" />
   </div>
 </ComponentPreview>
 
@@ -18,7 +18,7 @@ description: Collect multi-line text input from users.
 
 <CodeBlock code="import { Textarea } from '@/components/ui/textarea'\nimport { Label } from '@/components/ui/label'" />
 
-<CodeBlock code="<div className='grid w-full gap-1.5'>\n  <Label htmlFor='message'>Your message</Label>\n  <Textarea placeholder='Type your message here.' id='message' />\n</div>" />
+<CodeBlock code="<div className='grid w-full gap-1.5'>\n  <Label htmlFor='message'>Your message</Label>\n  <Textarea name='message' placeholder='Type your message…' id='message' />\n</div>" />
 
 ## Examples
 
@@ -26,6 +26,6 @@ description: Collect multi-line text input from users.
 
 <ComponentPreview codeFile="textarea/example-2.txt">
   <div className="w-full max-w-sm">
-    <Textarea placeholder="Disabled textarea" disabled />
+    <Textarea aria-label="Disabled message" placeholder="Disabled message" disabled />
   </div>
 </ComponentPreview>

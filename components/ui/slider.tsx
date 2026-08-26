@@ -25,7 +25,7 @@ const Slider = React.forwardRef<
         )}
         {...props}
     >
-        <BaseSlider.Control className="flex w-full touch-none items-center select-none">
+        <BaseSlider.Control className="flex h-11 w-full touch-none items-center select-none">
             <BaseSlider.Track className="relative h-3 w-full grow overflow-hidden rounded-base border-2 border-black bg-white">
                 <BaseSlider.Indicator className="h-full rounded-s-base bg-main" />
             </BaseSlider.Track>

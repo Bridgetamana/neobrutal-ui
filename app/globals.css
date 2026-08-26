@@ -38,6 +38,17 @@ body {
   font-family: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--main) 35%, transparent);
+}
+
+[data-docs-content] :is(h2, h3) {
+  scroll-margin-top: 5rem;
+}
+
 p {
   text-wrap: pretty;
 }
@@ -91,6 +102,10 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .animate-marquee {
     animation: none;
   }

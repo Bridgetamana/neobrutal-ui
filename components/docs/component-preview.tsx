@@ -18,11 +18,33 @@ export function ComponentPreviewClient({
     ...props
 }: ComponentPreviewClientProps) {
     const [view, setView] = React.useState<"preview" | "code">("preview")
+    const id = React.useId()
+    const previewTabId = `${id}-preview-tab`
+    const codeTabId = `${id}-code-tab`
+    const previewPanelId = `${id}-preview-panel`
+    const codePanelId = `${id}-code-panel`
+
+    function handleTabKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return
+
+        const nextView = view === "preview" ? "code" : "preview"
+        setView(nextView)
+        requestAnimationFrame(() => {
+            document.getElementById(nextView === "preview" ? previewTabId : codeTabId)?.focus()
+        })
+        event.preventDefault()
+    }
 
     return (
         <div className={cn("border-2 shadow-brutal bg-white rounded-base", className)} {...props}>
-            <div className="flex border-b-2 divide-x-2 divide-black">
+            <div role="tablist" aria-label="Component example" onKeyDown={handleTabKeyDown} className="flex border-b-2 divide-x-2 divide-black">
                 <button
+                    type="button"
+                    role="tab"
+                    id={previewTabId}
+                    aria-selected={view === "preview"}
+                    aria-controls={previewPanelId}
+                    tabIndex={view === "preview" ? 0 : -1}
                     onClick={() => setView("preview")}
                     className={cn(
                         "flex-1 py-2 text-sm font-medium uppercase focus-brutal-inset",
@@ -32,6 +54,12 @@ export function ComponentPreviewClient({
                     Preview
                 </button>
                 <button
+                    type="button"
+                    role="tab"
+                    id={codeTabId}
+                    aria-selected={view === "code"}
+                    aria-controls={codePanelId}
+                    tabIndex={view === "code" ? 0 : -1}
                     onClick={() => setView("code")}
                     className={cn(
                         "flex-1 py-2 text-sm font-medium uppercase focus-brutal-inset",
@@ -44,11 +72,11 @@ export function ComponentPreviewClient({
 
             <div className="bg-white">
                 {view === "preview" ? (
-                    <div className="p-4 min-h-50 flex items-center justify-center">
+                    <div id={previewPanelId} role="tabpanel" aria-labelledby={previewTabId} className="p-4 min-h-50 flex items-center justify-center">
                         {children}
                     </div>
                 ) : (
-                    <div className="relative group bg-black text-white font-mono text-sm border-0 rounded-none shadow-none m-0">
+                    <div id={codePanelId} role="tabpanel" aria-labelledby={codeTabId} className="relative group bg-black text-white font-mono text-sm border-0 rounded-none shadow-none m-0">
                         <div className="absolute right-4 top-4 z-10">
                             <CopyButton code={code} />
                         </div>

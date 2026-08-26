@@ -28,12 +28,12 @@ const RadioGroupItem = React.forwardRef<
     <Radio.Root
         ref={ref}
         className={cn(
-            "peer h-5 w-5 shrink-0 rounded-full border-2 border-black bg-white focus-brutal disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main",
+            "peer relative h-5 w-5 shrink-0 rounded-full border-2 border-black bg-white focus-brutal after:absolute after:-inset-3 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-main",
             className
         )}
         {...props}
     >
-        <Radio.Indicator className="flex h-full w-full items-center justify-center transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] data-starting-style:scale-0 data-ending-style:scale-0">
+        <Radio.Indicator className="flex h-full w-full items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-starting-style:scale-0 data-ending-style:scale-0">
             <span className="h-2 w-2 rounded-full bg-black" />
         </Radio.Indicator>
     </Radio.Root>

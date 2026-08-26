@@ -10,7 +10,7 @@ export default function GlobalError({
     return (
         <html lang="en">
             <body>
-                <div className="min-h-dvh flex flex-col items-center justify-center text-center px-4">
+                <main id="main-content" className="min-h-dvh flex flex-col items-center justify-center text-center px-4">
                     <h2 className="text-3xl font-bold mb-2">Something went wrong</h2>
                     <p className="text-black/70 mb-6 max-w-md">
                         An unexpected error occurred. Please try again.
@@ -26,7 +26,7 @@ export default function GlobalError({
                     >
                         Try again
                     </button>
-                </div>
+                </main>
             </body>
         </html>
     )

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
@@ -22,53 +22,54 @@ export function OnThisPage() {
   const pathname = usePathname()
   const [headings, setHeadings] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState("")
-  const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const content = document.querySelector("[data-docs-content]")
-    if (!content) return
+    let observer: IntersectionObserver | undefined
+    const frame = requestAnimationFrame(() => {
+      const content = document.querySelector("[data-docs-content]")
+      if (!content) return
 
-    const elements = Array.from(content.querySelectorAll<HTMLElement>("h2, h3"))
-    const usedIds = new Set<string>()
-    const items: TocItem[] = []
+      const elements = Array.from(content.querySelectorAll<HTMLElement>("h2, h3"))
+      const usedIds = new Set<string>()
+      const items = elements.map((element) => {
+        const raw = (element.id || slugify(element.textContent ?? "") || "section").trim()
+        let id = raw
+        let suffix = 2
+        while (usedIds.has(id)) id = `${raw}-${suffix++}`
 
-    elements.forEach((el) => {
-      const raw = (el.id || slugify(el.textContent ?? "") || "section").trim()
-      let id = raw
-      let n = 2
-      while (usedIds.has(id)) {
-        id = `${raw}-${n++}`
-      }
-      el.id = id
-      usedIds.add(id)
-      items.push({ id, text: el.textContent?.trim() ?? "", level: el.tagName === "H2" ? 2 : 3 })
+        element.id = id
+        usedIds.add(id)
+        return {
+          id,
+          text: element.textContent?.trim() ?? "",
+          level: element.tagName === "H2" ? 2 : 3,
+        }
+      })
+
+      setHeadings(items)
+      setActiveId(items[0]?.id ?? "")
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.toggleAttribute("data-visible", entry.isIntersecting)
+          })
+
+          const visibleHeading = elements.find((element) =>
+            element.hasAttribute("data-visible")
+          )
+          if (visibleHeading) setActiveId(visibleHeading.id)
+        },
+        { rootMargin: "-10% 0px -65% 0px" }
+      )
+
+      elements.forEach((element) => observer?.observe(element))
     })
 
-    setHeadings(items)
-    if (items.length > 0) setActiveId(items[0].id)
-
-    observerRef.current?.disconnect()
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          entry.target.toggleAttribute("data-visible", entry.isIntersecting)
-        })
-
-        const visible = elements.filter((el) => el.hasAttribute("data-visible"))
-        if (visible.length > 0) {
-          setActiveId(visible[0].id)
-        }
-      },
-      {
-        rootMargin: "-10% 0px -65% 0px",
-      }
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    observerRef.current = observer
-
-    return () => observer.disconnect()
+    return () => {
+      cancelAnimationFrame(frame)
+      observer?.disconnect()
+    }
   }, [pathname])
 
   if (headings.length === 0) return null
@@ -86,11 +87,7 @@ export function OnThisPage() {
               <li key={heading.id}>
                 <a
                   href={`#${heading.id}`}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    document.getElementById(heading.id)?.scrollIntoView({ behavior: "smooth" })
-                    setActiveId(heading.id)
-                  }}
+                  onClick={() => setActiveId(heading.id)}
                   className={cn(
                     "flex py-1 leading-snug transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black",
                     heading.level === 2

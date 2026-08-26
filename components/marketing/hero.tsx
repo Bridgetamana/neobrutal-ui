@@ -45,7 +45,7 @@ export function HeroSection() {
                 </p>
                 <Button asChild className="h-12 px-8 text-lg font-bold shadow-brutal">
                     <Link href="/docs/installation">
-                        Browse Components <ArrowRight className="ml-2 h-5 w-5" strokeWidth={3} />
+                        Browse Components <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" strokeWidth={3} />
                     </Link>
                 </Button>
             </div>
@@ -72,7 +72,7 @@ export function HeroSection() {
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-white border-2 border-black shadow-brutal rounded-base min-w-62.5">
                     <Avatar className="w-12 h-12 border-2 border-black">
-                        <AvatarImage src="https://github.com/bridgetamana.png?size=96" />
+                        <AvatarImage src="https://github.com/bridgetamana.png?size=96" alt="Bridget Amana" />
                         <AvatarFallback>BA</AvatarFallback>
                     </Avatar>
                     <div>
@@ -81,7 +81,7 @@ export function HeroSection() {
                     </div>
                 </div>
                 <Switch aria-label="Toggle setting" className="data-[state=checked]:bg-black" />
-                <Input placeholder="Enter your email..." />
+                <Input type="email" name="demo-email" autoComplete="email" spellCheck={false} aria-label="Email address" placeholder="you@example.com…" />
                 <Badge variant="default" className="bg-hot-pink">New</Badge>
                 <div className="flex items-center gap-2 p-3 bg-sky border-2 border-black shadow-brutal rounded-base">
                     <Checkbox id="demo" defaultChecked />

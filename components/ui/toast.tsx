@@ -171,10 +171,11 @@ const ToastClose = React.forwardRef<
     <BaseToast.Close
         ref={ref}
         className={cn(
-            "absolute right-2 top-2 rounded-base p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal group-hover:opacity-100",
+            "absolute right-1 top-1 inline-flex h-11 w-11 items-center justify-center rounded-base text-black/50 opacity-0 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal group-hover:opacity-100",
             className,
         )}
         toast-close=""
+        aria-label="Close notification"
         {...props}
     >
         ×
@@ -239,8 +240,8 @@ const ToastRenderer = ({ position }: { position: ToastPosition }) => {
                                 </div>
                             )}
                             <BaseToast.Close
-                                className="absolute right-2 top-2 rounded-base p-1 text-black/80 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal"
-                                aria-label="Close"
+                                className="absolute right-1 top-1 inline-flex h-11 w-11 items-center justify-center rounded-base text-black/80 transition-opacity hover:text-black focus-visible:opacity-100 focus-brutal"
+                                aria-label="Close notification"
                             >
                                 ×
                             </BaseToast.Close>

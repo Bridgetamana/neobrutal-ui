@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-bg font-sans text-black selection:bg-main selection:text-black">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <StatsSection />
         <SiteFooter />

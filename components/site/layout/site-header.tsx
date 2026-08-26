@@ -26,6 +26,8 @@ export function SiteHeader() {
         const previouslyFocused = document.activeElement as HTMLElement | null
         const menuButton = menuButtonRef.current
         const selector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        const originalOverflow = document.body.style.overflow
+        document.body.style.overflow = "hidden"
 
         const getFocusable = () =>
             Array.from(menu.querySelectorAll<HTMLElement>(selector)).filter(
@@ -70,6 +72,7 @@ export function SiteHeader() {
 
         return () => {
             document.removeEventListener("keydown", onKeyDown)
+            document.body.style.overflow = originalOverflow
 
             if (previouslyFocused && document.contains(previouslyFocused)) {
                 previouslyFocused.focus()
@@ -100,8 +103,8 @@ export function SiteHeader() {
                     <button
                         ref={menuButtonRef}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden p-2 focus-brutal cursor-pointer"
-                        aria-label="Toggle menu"
+                        className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-base focus-brutal cursor-pointer"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         aria-controls="site-mobile-menu"
                         aria-expanded={isMenuOpen}
                     >

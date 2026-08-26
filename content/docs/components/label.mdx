@@ -27,7 +27,7 @@ description: Associate descriptive text with form controls.
 <ComponentPreview codeFile="label/example-2.txt">
   <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="emailInputDemo">Email</Label>
-      <Input type="email" id="emailInputDemo" placeholder="Email" />
+      <Input type="email" id="emailInputDemo" name="email" autoComplete="email" spellCheck={false} placeholder="you@example.com…" />
   </div>
 </ComponentPreview>
 

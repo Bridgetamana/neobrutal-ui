@@ -26,7 +26,7 @@ function ColorThemePicker() {
     }
 
     return (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-[max(1.5rem,env(safe-area-inset-right))] z-50">
             <Popover open={isOpen} onOpenChange={setIsOpen}>
                 <PopoverTrigger
                     id="color-theme-picker-trigger"
@@ -36,7 +36,7 @@ function ColorThemePicker() {
                             aria-label="Change color theme"
                             className="h-12 w-12 rounded-full shadow-none! hover:translate-0"
                         >
-                            <Palette className="h-7 w-7" strokeWidth={3} />
+                            <Palette aria-hidden="true" className="h-7 w-7" strokeWidth={3} />
                         </Button>
                     }
                 />

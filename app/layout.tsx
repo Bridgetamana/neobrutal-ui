@@ -94,6 +94,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${publicSans.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="focus-brutal fixed left-4 top-4 z-[100] -translate-y-24 rounded-base border-2 border-black bg-main px-4 py-2 font-bold transition-transform focus:translate-y-0"
+        >
+          Skip to Main Content
+        </a>
         <ThemeProvider>
           {children}
           <Toaster />

@@ -41,14 +41,14 @@ const DialogContent = React.forwardRef<
         <BaseDialog.Popup
             ref={ref}
             className={cn(
-                "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-white p-6 shadow-brutal transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 rounded-base",
+                "fixed left-[50%] top-[50%] z-50 grid w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 overscroll-contain rounded-base border-2 border-black bg-white p-6 shadow-brutal transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
                 className
             )}
             {...props}
         >
             {children}
-            <BaseDialog.Close aria-label="Close dialog" className="absolute right-4 top-4 rounded-base opacity-70 transition-opacity hover:opacity-100 focus-brutal disabled:pointer-events-none">
-                <X className="h-4 w-4" />
+            <BaseDialog.Close aria-label="Close dialog" className="absolute right-2 top-2 inline-flex h-11 w-11 items-center justify-center rounded-base opacity-70 transition-opacity hover:opacity-100 focus-brutal disabled:pointer-events-none">
+                <X aria-hidden="true" className="h-4 w-4" />
                 <span className="sr-only">Close</span>
             </BaseDialog.Close>
         </BaseDialog.Popup>

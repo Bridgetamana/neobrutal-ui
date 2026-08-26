@@ -52,7 +52,7 @@ async function buildRegistry() {
         const filesWithContent = await Promise.all(
             item.files.map(async (file) => {
                 const filePath = path.resolve(ROOT_DIR, file.path)
-                const content = await fs.readFile(filePath, "utf-8")
+                const content = (await fs.readFile(filePath, "utf-8")).replace(/\r\n?/g, "\n")
                 return {
                     path: file.path,
                     content,

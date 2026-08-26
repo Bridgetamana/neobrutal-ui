@@ -3,8 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Command } from "cmdk"
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Search, X } from "lucide-react"
 import { Dialog } from "@base-ui/react"
 import type { SearchItem } from "@/lib/search-data"
 
@@ -22,25 +21,28 @@ export function CommandSearch() {
     const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
+    const resetSearch = useCallback(() => {
+        setQuery("")
+        setItems([])
+        setIsLoading(false)
+    }, [])
+
+    const handleOpenChange = useCallback((nextOpen: boolean) => {
+        setOpen(nextOpen)
+        if (!nextOpen) resetSearch()
+    }, [resetSearch])
+
     useEffect(() => {
         function onKeyDown(e: KeyboardEvent) {
             if ((e.metaKey || e.ctrlKey) && e.key === "k") {
                 e.preventDefault()
-                setOpen((prev) => !prev)
+                handleOpenChange(!open)
             }
         }
 
         document.addEventListener("keydown", onKeyDown)
         return () => document.removeEventListener("keydown", onKeyDown)
-    }, [])
-
-    useEffect(() => {
-        if (!open) {
-            setQuery("")
-            setItems([])
-            setIsLoading(false)
-        }
-    }, [open])
+    }, [handleOpenChange, open])
 
     useEffect(() => {
         if (!open) {
@@ -89,9 +91,9 @@ export function CommandSearch() {
     }, [open, query])
 
     const runCommand = useCallback((command: () => void) => {
-        setOpen(false)
+        handleOpenChange(false)
         command()
-    }, [])
+    }, [handleOpenChange])
 
     const componentItems = useMemo(
         () => items.filter((item) => item.category === "component"),
@@ -106,43 +108,36 @@ export function CommandSearch() {
     const hasResults = componentItems.length > 0 || docsItems.length > 0
 
     return (
-        <Dialog.Root open={open} onOpenChange={setOpen}>
-            <Dialog.Trigger id="command-search-trigger" aria-label="Search documentation">
-                <div className="relative block cursor-default">
-                    <Search
-                        size={20}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 md:hidden"
-                    />
-                    <Search
-                        size={14}
-                        className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 text-black/60"
-                    />
-                    <Input
-                        readOnly
-                        placeholder="Search..."
-                        className="w-44 h-9 pl-8 hidden md:block cursor-default"
-                    />
-                </div>
+        <Dialog.Root open={open} onOpenChange={handleOpenChange}>
+            <Dialog.Trigger
+                id="command-search-trigger"
+                aria-label="Search documentation"
+                className="focus-brutal inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-base border-2 border-transparent px-2 text-sm md:w-48 md:justify-start md:border-black md:bg-white"
+            >
+                <Search aria-hidden="true" size={18} className="shrink-0 text-black/70" />
+                <span className="hidden flex-1 text-left text-black/60 md:inline">Search…</span>
+                <kbd className="hidden rounded border border-black/30 px-1.5 py-0.5 text-xs text-black/60 md:inline">
+                    Ctrl K
+                </kbd>
             </Dialog.Trigger>
 
             <Dialog.Portal>
                 <Dialog.Backdrop className="fixed inset-0 bg-black/70 backdrop-blur-xs z-50" />
 
                 <Dialog.Popup
-                    className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-black rounded-base overflow-hidden"
+                    className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-hidden overscroll-contain rounded-base border-2 border-black bg-white"
                 >
                     <Dialog.Title className="sr-only">
                         Search components and documentation
                     </Dialog.Title>
-
                     <Command className="w-full" loop={false} shouldFilter={false}>
-                        <div className="flex items-center gap-2 px-4 border-b">
-                            <Search size={14} className="text-black/60" />
+                        <div className="flex items-center gap-2 border-b px-4 pr-12">
+                            <Search aria-hidden="true" size={14} className="text-black/60" />
                             <Command.Input
-                                autoFocus
                                 value={query}
                                 onValueChange={setQuery}
-                                placeholder="Search components, docs..."
+                                aria-label="Search components and documentation"
+                                placeholder="Search components and docs…"
                                 className="flex-1 py-3 focus-brutal"
                                 onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
                             />
@@ -153,13 +148,13 @@ export function CommandSearch() {
                             style={{ overflowAnchor: "none" }}
                         >
                             {isLoading && (
-                                <div className="py-6 text-center text-sm text-black/60">
-                                    Searching...
+                                <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
+                                    Searching…
                                 </div>
                             )}
 
                             {!isLoading && !hasResults && (
-                                <div className="py-6 text-center text-sm text-black/60">
+                                <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
                                     No results found.
                                 </div>
                             )}
@@ -202,6 +197,12 @@ export function CommandSearch() {
                             close
                         </div>
                     </Command>
+                    <Dialog.Close
+                        aria-label="Close search"
+                        className="focus-brutal absolute right-1 top-1 z-10 inline-flex h-11 w-11 items-center justify-center rounded-base hover:bg-main/20"
+                    >
+                        <X aria-hidden="true" className="h-5 w-5" />
+                    </Dialog.Close>
                 </Dialog.Popup>
             </Dialog.Portal>
         </Dialog.Root>

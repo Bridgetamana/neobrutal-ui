@@ -46,7 +46,7 @@ export function ToastDemo() {
                 variant="neutral"
                 onClick={() =>
                     toast.promise(simulateSave(), {
-                        loading: "Saving document...",
+                        loading: "Saving document…",
                         success: (data) => ({
                             title: "Saved",
                             description: `${data.name} saved successfully`,
@@ -123,7 +123,7 @@ export function ToastPromiseDemo() {
             variant="neutral"
             onClick={() =>
                 toast.promise(simulateSave(), {
-                    loading: "Saving document...",
+                    loading: "Saving document…",
                     success: (data) => ({
                         title: "Saved",
                         description: `${data.name} saved successfully`,
