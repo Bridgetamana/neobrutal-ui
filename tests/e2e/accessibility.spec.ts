@@ -50,7 +50,13 @@ test("command search remains accessible while loading results", async ({ page })
     await expectNoAccessibilityViolations(page)
 
     await page.keyboard.press("Escape")
-    await expect(page.getByRole("button", { name: "Search documentation" })).toBeFocused()
+    const trigger = page.getByRole("button", { name: "Search documentation" })
+    await expect(trigger).toBeFocused()
+
+    await page.keyboard.press("Control+k")
+    await expect(search).toBeFocused()
+    await page.keyboard.press("Escape")
+    await expect(trigger).toBeFocused()
 })
 
 test("mobile navigation traps and restores keyboard focus", async ({ page }) => {

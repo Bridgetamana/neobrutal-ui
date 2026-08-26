@@ -2,15 +2,10 @@
 
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/site/layout/logo"
+import { CommandSearch } from "@/components/site/command-search"
 import { Menu, X } from "lucide-react"
-
-const CommandSearch = dynamic(
-    () => import("@/components/site/command-search").then((mod) => mod.CommandSearch),
-    { ssr: false }
-)
 
 export function SiteHeader() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)

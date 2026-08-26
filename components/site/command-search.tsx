@@ -1,210 +1,75 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
-import { useRouter } from "next/navigation"
-import { Command } from "cmdk"
-import { Search, X } from "lucide-react"
-import { Dialog } from "@base-ui/react"
-import type { SearchItem } from "@/lib/search-data"
+import { useCallback, useEffect, useRef, useState } from "react"
+import dynamic from "next/dynamic"
+import { Search } from "lucide-react"
 
-const RESULT_LIMIT = 24
-const SEARCH_DEBOUNCE_MS = 120
+const loadCommandSearchDialog = () => import("./command-search-dialog")
 
-interface SearchResponse {
-    items: SearchItem[]
-}
+const CommandSearchDialog = dynamic(
+    () => loadCommandSearchDialog().then((mod) => mod.CommandSearchDialog),
+    { ssr: false }
+)
 
 export function CommandSearch() {
+    const [isLoaded, setIsLoaded] = useState(false)
     const [open, setOpen] = useState(false)
-    const [query, setQuery] = useState("")
-    const [items, setItems] = useState<SearchItem[]>([])
-    const [isLoading, setIsLoading] = useState(false)
-    const router = useRouter()
+    const triggerRef = useRef<HTMLButtonElement>(null)
 
-    const resetSearch = useCallback(() => {
-        setQuery("")
-        setItems([])
-        setIsLoading(false)
+    const preload = useCallback(() => {
+        void loadCommandSearchDialog()
     }, [])
+
+    const openSearch = useCallback(() => {
+        preload()
+        setIsLoaded(true)
+        setOpen(true)
+    }, [preload])
 
     const handleOpenChange = useCallback((nextOpen: boolean) => {
         setOpen(nextOpen)
-        if (!nextOpen) resetSearch()
-    }, [resetSearch])
+        if (!nextOpen) {
+            requestAnimationFrame(() => triggerRef.current?.focus())
+        }
+    }, [])
 
     useEffect(() => {
-        function onKeyDown(e: KeyboardEvent) {
-            if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-                e.preventDefault()
-                handleOpenChange(!open)
+        function onKeyDown(event: KeyboardEvent) {
+            if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+                event.preventDefault()
+                if (open) handleOpenChange(false)
+                else openSearch()
             }
         }
 
         document.addEventListener("keydown", onKeyDown)
         return () => document.removeEventListener("keydown", onKeyDown)
-    }, [handleOpenChange, open])
-
-    useEffect(() => {
-        if (!open) {
-            return
-        }
-
-        const controller = new AbortController()
-        const trimmedQuery = query.trim()
-        const timeout = window.setTimeout(async () => {
-            const params = new URLSearchParams({
-                limit: RESULT_LIMIT.toString(),
-            })
-
-            if (trimmedQuery.length > 0) {
-                params.set("q", trimmedQuery)
-            }
-
-            setIsLoading(true)
-            try {
-                const response = await fetch(`/api/search?${params.toString()}`, {
-                    signal: controller.signal,
-                    cache: "no-store",
-                })
-
-                if (!response.ok) {
-                    throw new Error("Search request failed")
-                }
-
-                const data = (await response.json()) as SearchResponse
-                setItems(Array.isArray(data.items) ? data.items : [])
-            } catch {
-                if (!controller.signal.aborted) {
-                    setItems([])
-                }
-            } finally {
-                if (!controller.signal.aborted) {
-                    setIsLoading(false)
-                }
-            }
-        }, trimmedQuery.length === 0 ? 0 : SEARCH_DEBOUNCE_MS)
-
-        return () => {
-            controller.abort()
-            window.clearTimeout(timeout)
-        }
-    }, [open, query])
-
-    const runCommand = useCallback((command: () => void) => {
-        handleOpenChange(false)
-        command()
-    }, [handleOpenChange])
-
-    const componentItems = useMemo(
-        () => items.filter((item) => item.category === "component"),
-        [items]
-    )
-
-    const docsItems = useMemo(
-        () => items.filter((item) => item.category === "docs"),
-        [items]
-    )
-
-    const hasResults = componentItems.length > 0 || docsItems.length > 0
+    }, [handleOpenChange, open, openSearch])
 
     return (
-        <Dialog.Root open={open} onOpenChange={handleOpenChange}>
-            <Dialog.Trigger
+        <>
+            <button
+                ref={triggerRef}
                 id="command-search-trigger"
+                type="button"
                 aria-label="Search documentation"
+                aria-expanded={open}
+                aria-controls={isLoaded ? "command-search-dialog" : undefined}
+                onClick={openSearch}
+                onFocus={preload}
+                onPointerEnter={preload}
                 className="focus-brutal inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-base border-2 border-transparent px-2 text-sm md:w-48 md:justify-start md:border-black md:bg-white"
             >
                 <Search aria-hidden="true" size={18} className="shrink-0 text-black/70" />
                 <span className="hidden flex-1 text-left text-black/60 md:inline">Search…</span>
                 <kbd className="hidden rounded border border-black/30 px-1.5 py-0.5 text-xs text-black/60 md:inline">
-                    Ctrl K
+                    Ctrl&nbsp;K
                 </kbd>
-            </Dialog.Trigger>
+            </button>
 
-            <Dialog.Portal>
-                <Dialog.Backdrop className="fixed inset-0 bg-black/70 backdrop-blur-xs z-50" />
-
-                <Dialog.Popup
-                    className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-hidden overscroll-contain rounded-base border-2 border-black bg-white"
-                >
-                    <Dialog.Title className="sr-only">
-                        Search components and documentation
-                    </Dialog.Title>
-                    <Command className="w-full" loop={false} shouldFilter={false}>
-                        <div className="flex items-center gap-2 border-b px-4 pr-12">
-                            <Search aria-hidden="true" size={14} className="text-black/60" />
-                            <Command.Input
-                                value={query}
-                                onValueChange={setQuery}
-                                aria-label="Search components and documentation"
-                                placeholder="Search components and docs…"
-                                className="flex-1 py-3 focus-brutal"
-                                onFocus={(e) => e.target.scrollIntoView({ block: "nearest" })}
-                            />
-                        </div>
-
-                        <Command.List
-                            className="max-h-90 overflow-y-auto p-2"
-                            style={{ overflowAnchor: "none" }}
-                        >
-                            {isLoading && (
-                                <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
-                                    Searching…
-                                </div>
-                            )}
-
-                            {!isLoading && !hasResults && (
-                                <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
-                                    No results found.
-                                </div>
-                            )}
-
-                            {!isLoading && componentItems.length > 0 && (
-                                <Command.Group heading="Components" className="p-2">
-                                    {componentItems.map((item) => (
-                                        <Command.Item
-                                            key={item.href}
-                                            value={`${item.name} ${item.keywords.join(" ")}`}
-                                            onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 rounded-base cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
-                                        >
-                                            <p className="py-1 text-black/80 ml-3">{item.name}</p>
-                                        </Command.Item>
-                                    ))}
-                                </Command.Group>
-                            )}
-
-                            {!isLoading && docsItems.length > 0 && (
-                                <Command.Group heading="Documentation" className="p-2">
-                                    {docsItems.map((item) => (
-                                        <Command.Item
-                                            key={item.href}
-                                            value={`${item.name} ${item.keywords.join(" ")}`}
-                                            onSelect={() => runCommand(() => router.push(item.href))}
-                                            className="flex items-center gap-3 rounded-base cursor-pointer data-[selected=true]:bg-main data-[selected=true]:text-black"
-                                        >
-                                            <p className="py-1 text-black/80 ml-3">{item.name}</p>
-                                        </Command.Item>
-                                    ))}
-                                </Command.Group>
-                            )}
-                        </Command.List>
-
-                        <div className="flex items-center gap-1 px-4 py-2 border-t text-xs">
-                            <kbd className="px-1 rounded border bg-white">
-                                esc
-                            </kbd>
-                            close
-                        </div>
-                    </Command>
-                    <Dialog.Close
-                        aria-label="Close search"
-                        className="focus-brutal absolute right-1 top-1 z-10 inline-flex h-11 w-11 items-center justify-center rounded-base hover:bg-main/20"
-                    >
-                        <X aria-hidden="true" className="h-5 w-5" />
-                    </Dialog.Close>
-                </Dialog.Popup>
-            </Dialog.Portal>
-        </Dialog.Root>
+            {isLoaded ? (
+                <CommandSearchDialog open={open} onOpenChange={handleOpenChange} />
+            ) : null}
+        </>
     )
 }
