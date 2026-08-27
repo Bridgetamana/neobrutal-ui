@@ -1,0 +1,130 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      publish_tag:
+        description: Existing vX.Y.Z release tag to publish after a failed release run
+        required: false
+        type: string
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: Prepare release
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.publish_tag == '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs['packages/cli--release_created'] }}
+      release_sha: ${{ steps.release.outputs['packages/cli--sha'] }}
+      release_tag: ${{ steps.release.outputs['packages/cli--tag_name'] }}
+
+    steps:
+      - name: Create or update the release pull request
+        id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  publish:
+    name: Publish neobrutal to npm
+    needs: release-please
+    if: >-
+      ${{
+        always() &&
+        !cancelled() &&
+        (
+          needs.release-please.outputs.release_created == 'true' ||
+          (github.event_name == 'workflow_dispatch' && inputs.publish_tag != '')
+        )
+      }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      RELEASE_TAG: ${{ inputs.publish_tag || needs.release-please.outputs.release_tag }}
+    defaults:
+      run:
+        working-directory: packages/cli
+
+    steps:
+      - name: Check out the released commit
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.publish_tag || needs.release-please.outputs.release_sha }}
+
+      - name: Set up Node.js for trusted publishing
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
+
+      - name: Verify release identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          package_version="$(node -p "require('./package.json').version")"
+          expected_tag="v${package_version}"
+
+          if [ "$RELEASE_TAG" != "$expected_tag" ]; then
+            echo "Expected tag $expected_tag for package version $package_version, received $RELEASE_TAG." >&2
+            exit 1
+          fi
+
+          tag_commit="$(git rev-list -n 1 "$RELEASE_TAG")"
+          head_commit="$(git rev-parse HEAD)"
+          if [ "$tag_commit" != "$head_commit" ]; then
+            echo "Tag $RELEASE_TAG does not point at the checked-out commit." >&2
+            exit 1
+          fi
+
+          release_state="$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json isDraft,isPrerelease --jq '[.isDraft, .isPrerelease] | @tsv')"
+          if [ "$release_state" != $'false\tfalse' ]; then
+            echo "GitHub release $RELEASE_TAG must be published and non-prerelease." >&2
+            exit 1
+          fi
+
+      - name: Verify trusted-publishing npm version
+        run: |
+          npm_version="$(npm --version)"
+          node -e "const [major, minor] = process.argv[1].split('.').map(Number); if (major < 11 || (major === 11 && minor < 5)) { console.error('npm 11.5.1 or newer is required for trusted publishing.'); process.exit(1); }" "$npm_version"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+
+      - name: Type-check package
+        run: npm run typecheck
+
+      - name: Test and build package
+        run: npm test
+
+      - name: Verify package contents
+        run: npm pack --dry-run
+
+      - name: Ensure version is not already published
+        run: |
+          package_version="$(node -p "require('./package.json').version")"
+          if npm view "neobrutal@${package_version}" version >/dev/null 2>&1; then
+            echo "neobrutal@${package_version} is already published." >&2
+            exit 1
+          fi
+
+      - name: Publish package
+        run: npm publish
