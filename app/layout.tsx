@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Public_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const publicSans = Public_Sans({
-  subsets: ["latin"],
+const publicSans = localFont({
+  src: "../node_modules/@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2",
+  weight: "100 900",
+  style: "normal",
   variable: "--font-public-sans",
   display: "swap",
-  adjustFontFallback: false,
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
