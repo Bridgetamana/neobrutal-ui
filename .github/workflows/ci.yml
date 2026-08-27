@@ -41,6 +41,12 @@ jobs:
       - name: Type-check website
         run: npm run typecheck
 
+      - name: Test registry integrity
+        run: npm run test:registry
+
+      - name: Verify generated registry
+        run: npm run registry:check
+
       - name: Build website
         run: npm run build
 
