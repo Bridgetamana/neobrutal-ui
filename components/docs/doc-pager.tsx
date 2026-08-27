@@ -15,11 +15,11 @@ export function DocPager({ prev, next }: DocPagerProps) {
     if (!prev && !next) return null
 
     return (
-        <nav aria-label="Pagination" className="grid grid-cols-2 gap-3 mt-10">
+        <nav aria-label="Pagination" className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {prev ? (
                 <Link
                     href={prev.href}
-                    className="col-start-1 flex flex-col gap-1 rounded-base border-2 border-black bg-white p-4 shadow-brutal transition-brutal active:scale-[0.97] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-brutal"
+                    className="flex min-w-0 flex-col gap-1 rounded-base border-2 border-black bg-white p-4 shadow-brutal transition-brutal active:scale-[0.97] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-brutal sm:col-start-1"
                 >
                     <span className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-black/60">
                         <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
@@ -28,13 +28,13 @@ export function DocPager({ prev, next }: DocPagerProps) {
                     <span className="font-bold text-black">{prev.title}</span>
                 </Link>
             ) : (
-                <div />
+                <div className="hidden sm:block" />
             )}
 
             {next && (
                 <Link
                     href={next.href}
-                    className="col-start-2 flex flex-col gap-1 rounded-base border-2 border-black bg-white p-4 shadow-brutal text-right transition-brutal active:scale-[0.97] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-brutal"
+                    className="flex min-w-0 flex-col gap-1 rounded-base border-2 border-black bg-white p-4 text-right shadow-brutal transition-brutal active:scale-[0.97] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-brutal sm:col-start-2"
                 >
                     <span className="flex items-center justify-end gap-1 text-xs font-semibold uppercase tracking-wide text-black/60">
                         Next

@@ -26,7 +26,7 @@ function ColorThemePicker() {
     }
 
     return (
-        <div className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-[max(1.5rem,env(safe-area-inset-right))] z-50">
+        <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-[max(1rem,env(safe-area-inset-right))] z-30 sm:bottom-[max(1.5rem,env(safe-area-inset-bottom))] sm:right-[max(1.5rem,env(safe-area-inset-right))]">
             <Popover open={isOpen} onOpenChange={setIsOpen}>
                 <PopoverTrigger
                     id="color-theme-picker-trigger"
@@ -34,7 +34,7 @@ function ColorThemePicker() {
                         <Button
                             size="icon"
                             aria-label="Change color theme"
-                            className="h-12 w-12 rounded-full shadow-none! hover:translate-0"
+                            className="h-11 w-11 rounded-full shadow-none! hover:translate-0 sm:h-12 sm:w-12"
                         >
                             <Palette aria-hidden="true" className="h-7 w-7" strokeWidth={3} />
                         </Button>

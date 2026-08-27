@@ -17,12 +17,12 @@ export async function CodeBlock({ code, language = "tsx", className, ...props }:
     })
 
     return (
-        <div className={cn("relative group rounded-base bg-black text-white font-mono text-sm", className)} {...props}>
+        <div className={cn("group relative max-w-full rounded-base bg-black font-mono text-sm text-white", className)} {...props}>
             <div className="absolute right-4 top-4 z-10">
                 <CopyButton code={normalizedCode} />
             </div>
             <div
-                className="overflow-x-auto p-4 [&_pre]:bg-transparent! [&_code]:bg-transparent!"
+                className="overflow-x-auto overscroll-x-contain p-4 [&_pre]:bg-transparent! [&_code]:bg-transparent!"
                 dangerouslySetInnerHTML={{ __html: highlightedHtml }}
             />
         </div>

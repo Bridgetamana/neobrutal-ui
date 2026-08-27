@@ -90,7 +90,7 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogP
                 <Dialog.Backdrop className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs" />
                 <Dialog.Popup
                     id="command-search-dialog"
-                    className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-hidden overscroll-contain rounded-base border-2 border-black bg-white"
+                    className="fixed inset-x-4 top-[max(1rem,env(safe-area-inset-top))] z-50 max-h-[calc(100dvh-2rem)] overflow-hidden overscroll-contain rounded-base border-2 border-black bg-white sm:left-1/2 sm:right-auto sm:top-1/2 sm:w-[calc(100%-2rem)] sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2"
                 >
                     <Dialog.Title className="sr-only">
                         Search components and documentation
@@ -109,7 +109,7 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogP
                         </div>
 
                         <Command.List
-                            className="max-h-90 overflow-y-auto p-2"
+                            className="max-h-[min(22.5rem,calc(100dvh-9rem))] overflow-y-auto overscroll-contain p-2"
                             style={{ overflowAnchor: "none" }}
                         >
                             {isLoading ? (

@@ -85,16 +85,16 @@ function ShowcaseMarquee() {
 
 export function HeroSection() {
     return (
-        <section className="relative flex min-h-dvh min-h-vh flex-col justify-center overflow-hidden pb-0 pt-20 md:pt-32">
+        <section className="relative flex min-h-screen min-h-dvh flex-col justify-center overflow-hidden pb-0 pt-20 md:pt-32">
             <div className="container relative mx-auto mb-10 px-4 text-center md:px-8">
-                <h1 className="mb-6 text-5xl font-bold leading-[0.9] md:text-7xl">
+                <h1 className="mb-6 text-[clamp(2.5rem,13vw,4.5rem)] font-bold leading-[0.92] text-balance">
                     Neobrutalism <br />
                     Components
                 </h1>
                 <p className="mx-auto mb-6 max-w-2xl text-lg font-medium text-black md:text-xl">
                     A collection of Neobrutalism components built with Base UI and Tailwind CSS.
                 </p>
-                <Button asChild className="h-12 px-8 text-lg font-bold shadow-brutal">
+                <Button asChild className="h-12 w-full px-6 text-lg font-bold shadow-brutal sm:w-auto sm:px-8">
                     <Link href="/docs/installation">
                         Browse Components
                         <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" strokeWidth={3} />

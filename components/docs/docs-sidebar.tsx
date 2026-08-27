@@ -3,16 +3,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-import dynamic from "next/dynamic"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/site/layout/logo"
+import { CommandSearch } from "@/components/site/command-search"
 import type { DocsNavigationGroup } from "@/lib/mdx"
-
-const CommandSearch = dynamic(
-    () => import("@/components/site/command-search").then((m) => m.CommandSearch),
-    { ssr: false }
-)
 
 interface DocsSidebarProps {
     navigation: DocsNavigationGroup[]
@@ -30,11 +25,12 @@ interface SidebarContentProps {
     pathname: string
     navigation: DocsNavigationGroup[]
     onLinkClick?: () => void
+    className?: string
 }
 
-function SidebarContent({ pathname, navigation, onLinkClick }: SidebarContentProps) {
+function SidebarContent({ pathname, navigation, onLinkClick, className }: SidebarContentProps) {
     return (
-        <div className="h-full overflow-y-auto p-4 bg-white">
+        <div className={cn("min-h-0 overflow-y-auto bg-white p-4", className)}>
             {navigation.map((group, i) => (
                 <div key={i} className="mb-4">
                     <p className="mb-2 px-2 font-semibold">
@@ -72,7 +68,7 @@ export function DesktopSidebar({ navigation }: DocsSidebarProps) {
                 <Logo />
             </Link>
             <div className="h-[calc(100vh-4rem)]">
-                <SidebarContent pathname={pathname} navigation={navigation} />
+                <SidebarContent className="h-full" pathname={pathname} navigation={navigation} />
             </div>
         </aside>
     )
@@ -153,14 +149,12 @@ export function MobileHeader({ navigation }: DocsSidebarProps) {
 
     return (
         <>
-            <div className="sticky top-0 z-40 flex h-12 items-center justify-between border-b-2 border-black bg-main px-6 md:hidden">
-                <Link href="/">
+            <div className="sticky top-0 z-40 flex h-14 items-center justify-between border-b-2 border-black bg-main px-4 md:hidden">
+                <Link href="/" className="focus-brutal flex min-h-11 items-center rounded-base">
                     <Logo />
                 </Link>
-                <div className="flex items-center gap-10">
-                    <div className="md:hidden pb-2">
-                        <CommandSearch />
-                    </div>
+                <div className="flex items-center gap-1">
+                    <CommandSearch />
                     <button
                         ref={toggleButtonRef}
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -175,10 +169,11 @@ export function MobileHeader({ navigation }: DocsSidebarProps) {
             </div>
 
             {isSidebarOpen && (
-                <div
-                    className="fixed inset-0 z-30 bg-black/70 md:hidden backdrop-blur-xs"
+                <button
+                    type="button"
+                    aria-label="Close documentation navigation"
+                    className="focus-brutal fixed inset-0 top-14 z-30 bg-black/70 backdrop-blur-xs md:hidden"
                     onClick={() => setIsSidebarOpen(false)}
-                    aria-hidden="true"
                 />
             )}
 
@@ -191,15 +186,27 @@ export function MobileHeader({ navigation }: DocsSidebarProps) {
                 aria-hidden={!isSidebarOpen}
                 inert={!isSidebarOpen}
                 className={cn(
-                    "fixed top-12 left-0 z-40 h-[calc(100vh-4rem)] w-64 overscroll-contain border-r-2 border-black bg-white transition-transform duration-300 motion-reduce:transition-none md:hidden",
+                    "fixed left-0 top-14 z-40 flex h-[calc(100dvh-3.5rem)] w-[min(20rem,calc(100vw-3rem))] flex-col overscroll-contain border-r-2 border-black bg-white transition-transform duration-300 motion-reduce:transition-none md:hidden",
                     isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 )}
             >
                 <SidebarContent
+                    className="flex-1"
                     pathname={pathname}
                     navigation={navigation}
                     onLinkClick={() => setIsSidebarOpen(false)}
                 />
+                <div className="border-t-2 border-black bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+                    <Link
+                        href="https://github.com/bridgetamana/neobrutal-ui"
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setIsSidebarOpen(false)}
+                        className="focus-brutal flex min-h-11 items-center justify-center rounded-base border-2 border-black px-4 font-semibold transition-brutal hover:bg-main/30 active:scale-[0.97]"
+                    >
+                        View on GitHub
+                    </Link>
+                </div>
             </aside>
         </>
     )
@@ -238,8 +245,8 @@ export function DocsHeader() {
     }, [])
 
     return (
-        <header className="container max-w-7xl pt-4 px-6 lg:px-0 flex gap-2 items-center justify-end">
-            <div className="hidden md:block">
+        <header className="container hidden max-w-7xl items-center justify-end gap-2 px-6 pt-4 md:flex lg:px-0">
+            <div>
                 <CommandSearch />
             </div>
             <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" rel="noreferrer" aria-label={`${stars} GitHub stars`} className="flex min-h-11 gap-1 items-center focus-brutal border-2 border-black px-3 py-1.5 rounded-base transition-brutal active:scale-[0.97] hover:shadow-brutal-sm">

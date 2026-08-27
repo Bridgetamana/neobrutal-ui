@@ -22,7 +22,7 @@ export default async function DocsLayout({
 
             <main id="main-content" tabIndex={-1} className="flex-1 md:pl-64">
                 <DocsHeader />
-                <div className="max-w-4xl mx-auto py-4 px-6 md:py-6 xl:max-w-none xl:grid xl:grid-cols-[minmax(0,60rem)_8rem] xl:gap-14">
+                <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 xl:grid xl:max-w-none xl:grid-cols-[minmax(0,60rem)_8rem] xl:gap-14">
                     <div className="min-w-0" data-docs-content>
                         {children}
                     </div>

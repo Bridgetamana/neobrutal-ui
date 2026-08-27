@@ -79,34 +79,44 @@ export function SiteHeader() {
     }, [isMenuOpen])
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-black bg-white">
-            <div className="container mx-auto flex h-14 lg:h-16 items-center justify-between px-4 md:px-8">
-                <Link href="/">
-                    <Logo />
-                </Link>
-                <nav className="hidden lg:flex items-center gap-6 font-medium">
-                    <Link href="/docs" className="hover:text-black/80  focus-brutal">Docs</Link>
-                    <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80  focus-brutal">Github</Link>
-                </nav>
-                <div className="flex items-center gap-8 md:gap-2 lg:gap-4">
-                    <CommandSearch />
-                    <Button asChild className="hidden lg:flex font-bold shadow-brutal hover:bg-main">
-                        <Link href="/docs/components/accordion" aria-label="Explore Components">
-                            Explore Components
-                        </Link>
-                    </Button>
-                    <button
-                        ref={menuButtonRef}
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-base focus-brutal cursor-pointer"
-                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                        aria-controls="site-mobile-menu"
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? <X aria-hidden="true" size={24} strokeWidth={3} /> : <Menu aria-hidden="true" size={24} strokeWidth={3} />}
-                    </button>
+        <>
+            <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-black bg-white">
+                <div className="container mx-auto flex h-14 items-center justify-between px-4 md:px-8 lg:h-16">
+                    <Link href="/" className="focus-brutal flex min-h-11 items-center rounded-base">
+                        <Logo />
+                    </Link>
+                    <nav className="hidden items-center gap-6 font-medium lg:flex">
+                        <Link href="/docs" className="focus-brutal hover:text-black/80">Docs</Link>
+                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" rel="noreferrer" className="focus-brutal hover:text-black/80">GitHub</Link>
+                    </nav>
+                    <div className="flex items-center gap-1 md:gap-2 lg:gap-4">
+                        <CommandSearch />
+                        <Button asChild className="hidden font-bold shadow-brutal hover:bg-main lg:flex">
+                            <Link href="/docs/components/accordion" aria-label="Explore Components">
+                                Explore Components
+                            </Link>
+                        </Button>
+                        <button
+                            ref={menuButtonRef}
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="focus-brutal inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-base lg:hidden"
+                            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                            aria-controls="site-mobile-menu"
+                            aria-expanded={isMenuOpen}
+                        >
+                            {isMenuOpen ? <X aria-hidden="true" size={24} strokeWidth={3} /> : <Menu aria-hidden="true" size={24} strokeWidth={3} />}
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </header>
+            {isMenuOpen ? (
+                <button
+                    type="button"
+                    aria-label="Close site navigation"
+                    className="focus-brutal fixed inset-0 top-14 z-40 bg-black/70 backdrop-blur-xs lg:hidden"
+                    onClick={() => setIsMenuOpen(false)}
+                />
+            ) : null}
             <div
                 id="site-mobile-menu"
                 ref={mobileMenuRef}
@@ -114,18 +124,18 @@ export function SiteHeader() {
                 aria-modal="true"
                 aria-label="Site navigation"
                 hidden={!isMenuOpen}
-                className="lg:hidden bg-white border-t-2"
+                className="fixed inset-x-0 top-14 z-50 max-h-[calc(100dvh-3.5rem)] overflow-y-auto overscroll-contain border-b-2 border-black bg-white lg:hidden"
             >
-                    <nav className="flex flex-col items-center gap-4 py-6 font-medium text-lg">
-                        <Link href="/docs" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>Docs</Link>
-                        <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" className="hover:text-black/80 focus-brutal" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
-                        <Button asChild className="font-bold shadow-brutal hover:bg-main">
-                            <Link href="/docs/components/accordion" onClick={() => setIsMenuOpen(false)}>
-                                Explore Components
-                            </Link>
-                        </Button>
-                    </nav>
+                <nav className="flex flex-col items-center gap-3 px-4 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-lg font-medium">
+                    <Link href="/docs" className="focus-brutal flex min-h-11 w-full items-center justify-center rounded-base hover:bg-main/30" onClick={() => setIsMenuOpen(false)}>Docs</Link>
+                    <Link href="https://github.com/bridgetamana/neobrutal-ui" target="_blank" rel="noreferrer" className="focus-brutal flex min-h-11 w-full items-center justify-center rounded-base hover:bg-main/30" onClick={() => setIsMenuOpen(false)}>GitHub</Link>
+                    <Button asChild className="min-h-11 w-full font-bold shadow-brutal hover:bg-main sm:w-auto">
+                        <Link href="/docs/components/accordion" onClick={() => setIsMenuOpen(false)}>
+                            Explore Components
+                        </Link>
+                    </Button>
+                </nav>
             </div>
-        </header>
+        </>
     )
 }

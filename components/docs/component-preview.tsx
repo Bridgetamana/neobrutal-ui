@@ -72,7 +72,7 @@ export function ComponentPreviewClient({
 
             <div className="bg-white">
                 {view === "preview" ? (
-                    <div id={previewPanelId} role="tabpanel" aria-labelledby={previewTabId} className="p-4 min-h-50 flex items-center justify-center">
+                    <div id={previewPanelId} role="tabpanel" aria-labelledby={previewTabId} className="flex min-h-50 max-w-full items-center justify-center overflow-x-auto overscroll-x-contain p-4 sm:p-6">
                         {children}
                     </div>
                 ) : (
