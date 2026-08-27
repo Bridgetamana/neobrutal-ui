@@ -35,12 +35,12 @@ interface ToasterProps {
 }
 
 const VIEWPORT_POSITIONS: Record<ToastPosition, string> = {
-    "top-left": "fixed top-4 left-4 z-50 w-full max-w-sm flex",
-    "top-right": "fixed top-4 right-4 z-50 w-full max-w-sm flex",
-    "top-center": "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-sm flex",
-    "bottom-left": "fixed bottom-4 left-4 z-50 w-full max-w-sm flex",
-    "bottom-right": "fixed bottom-4 right-4 z-50 w-full max-w-sm flex",
-    "bottom-center": "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-sm flex",
+    "top-left": "fixed inset-x-4 top-[max(1rem,env(safe-area-inset-top))] z-50 flex w-auto sm:right-auto sm:w-full sm:max-w-sm",
+    "top-right": "fixed inset-x-4 top-[max(1rem,env(safe-area-inset-top))] z-50 flex w-auto sm:left-auto sm:w-full sm:max-w-sm",
+    "top-center": "fixed inset-x-4 top-[max(1rem,env(safe-area-inset-top))] z-50 flex w-auto sm:left-1/2 sm:right-auto sm:w-full sm:max-w-sm sm:-translate-x-1/2",
+    "bottom-left": "fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex w-auto sm:right-auto sm:w-full sm:max-w-sm",
+    "bottom-right": "fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex w-auto sm:left-auto sm:w-full sm:max-w-sm",
+    "bottom-center": "fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex w-auto sm:left-1/2 sm:right-auto sm:w-full sm:max-w-sm sm:-translate-x-1/2",
 }
 
 function getSwipeDirection(
@@ -141,7 +141,7 @@ const ToastViewport = React.forwardRef<
     <BaseToast.Viewport
         ref={ref}
         className={cn(
-            "fixed bottom-4 right-4 z-50 w-full max-w-sm flex",
+            "fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex w-auto sm:left-auto sm:w-full sm:max-w-sm",
             className,
         )}
         {...props}

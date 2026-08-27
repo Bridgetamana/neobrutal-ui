@@ -85,7 +85,7 @@ function ShowcaseMarquee() {
 
 export function HeroSection() {
     return (
-        <section className="relative flex min-h-screen min-h-dvh flex-col justify-center overflow-hidden pb-0 pt-20 md:pt-32">
+        <section className="relative flex flex-col overflow-hidden pb-12 pt-24 sm:pt-28 md:pb-16 md:pt-32">
             <div className="container relative mx-auto mb-10 px-4 text-center md:px-8">
                 <h1 className="mb-6 text-[clamp(2.5rem,13vw,4.5rem)] font-bold leading-[0.92] text-balance">
                     Neobrutalism <br />
@@ -96,7 +96,7 @@ export function HeroSection() {
                 </p>
                 <Button asChild className="h-12 w-full px-6 text-lg font-bold shadow-brutal sm:w-auto sm:px-8">
                     <Link href="/docs/installation">
-                        Browse Components
+                        Get Started
                         <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" strokeWidth={3} />
                     </Link>
                 </Button>

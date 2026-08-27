@@ -1,18 +1,13 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Dialog } from "@base-ui/react"
 import { Command } from "cmdk"
 import { Search, X } from "lucide-react"
-import type { SearchItem } from "@/lib/search-data"
+import { searchCatalog } from "@/lib/search"
 
 const RESULT_LIMIT = 24
-const SEARCH_DEBOUNCE_MS = 120
-
-interface SearchResponse {
-    items: SearchItem[]
-}
 
 interface CommandSearchDialogProps {
     open: boolean
@@ -21,14 +16,10 @@ interface CommandSearchDialogProps {
 
 export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogProps) {
     const [query, setQuery] = useState("")
-    const [items, setItems] = useState<SearchItem[]>([])
-    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     const resetSearch = useCallback(() => {
         setQuery("")
-        setItems([])
-        setIsLoading(false)
     }, [])
 
     const handleOpenChange = useCallback((nextOpen: boolean) => {
@@ -36,38 +27,10 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogP
         if (!nextOpen) resetSearch()
     }, [onOpenChange, resetSearch])
 
-    useEffect(() => {
-        if (!open) return
-
-        const controller = new AbortController()
-        const trimmedQuery = query.trim()
-        const timeout = window.setTimeout(async () => {
-            const params = new URLSearchParams({ limit: RESULT_LIMIT.toString() })
-            if (trimmedQuery.length > 0) params.set("q", trimmedQuery)
-
-            setIsLoading(true)
-            try {
-                const response = await fetch(`/api/search?${params.toString()}`, {
-                    signal: controller.signal,
-                    cache: "no-store",
-                })
-
-                if (!response.ok) throw new Error("Search request failed")
-
-                const data = (await response.json()) as SearchResponse
-                setItems(Array.isArray(data.items) ? data.items : [])
-            } catch {
-                if (!controller.signal.aborted) setItems([])
-            } finally {
-                if (!controller.signal.aborted) setIsLoading(false)
-            }
-        }, trimmedQuery.length === 0 ? 0 : SEARCH_DEBOUNCE_MS)
-
-        return () => {
-            controller.abort()
-            window.clearTimeout(timeout)
-        }
-    }, [open, query])
+    const items = useMemo(
+        () => searchCatalog(query, RESULT_LIMIT),
+        [query]
+    )
 
     const runCommand = useCallback((command: () => void) => {
         handleOpenChange(false)
@@ -112,19 +75,13 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogP
                             className="max-h-[min(22.5rem,calc(100dvh-9rem))] overflow-y-auto overscroll-contain p-2"
                             style={{ overflowAnchor: "none" }}
                         >
-                            {isLoading ? (
-                                <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
-                                    Searching…
-                                </div>
-                            ) : null}
-
-                            {!isLoading && !hasResults ? (
+                            {!hasResults ? (
                                 <div role="status" aria-live="polite" className="py-6 text-center text-sm text-black/60">
                                     No results found.
                                 </div>
                             ) : null}
 
-                            {!isLoading && componentItems.length > 0 ? (
+                            {componentItems.length > 0 ? (
                                 <Command.Group heading="Components" className="p-2">
                                     {componentItems.map((item) => (
                                         <Command.Item
@@ -139,7 +96,7 @@ export function CommandSearchDialog({ open, onOpenChange }: CommandSearchDialogP
                                 </Command.Group>
                             ) : null}
 
-                            {!isLoading && docsItems.length > 0 ? (
+                            {docsItems.length > 0 ? (
                                 <Command.Group heading="Documentation" className="p-2">
                                     {docsItems.map((item) => (
                                         <Command.Item

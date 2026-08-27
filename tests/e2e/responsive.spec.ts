@@ -80,6 +80,49 @@ test.describe("mobile layout", () => {
         expect((box?.y ?? 0) + (box?.height ?? 0)).toBeLessThanOrEqual(MOBILE_VIEWPORT.height - 16)
     })
 
+    test("toast notifications stay within mobile safe insets", async ({ page }) => {
+        await page.goto("/docs/components/toast")
+        await page.getByRole("button", { name: "Basic toast" }).click()
+
+        const notification = page
+            .getByRole("region", { name: "Notifications" })
+            .getByRole("dialog")
+        await expect(notification).toBeVisible()
+
+        const box = await notification.boundingBox()
+        expect(box?.x).toBeGreaterThanOrEqual(16)
+        expect((box?.x ?? 0) + (box?.width ?? 0)).toBeLessThanOrEqual(
+            MOBILE_VIEWPORT.width - 16
+        )
+        await expectNoPageOverflow(page)
+    })
+
+    test("switches and inputs provide 44px touch targets", async ({ page }) => {
+        await page.goto("/docs/components/switch")
+        const switchBox = await page.getByRole("switch").first().boundingBox()
+        expect(switchBox?.height).toBeGreaterThanOrEqual(44)
+
+        await page.goto("/docs/components/input")
+        const inputBox = await page.getByRole("textbox").first().boundingBox()
+        expect(inputBox?.height).toBeGreaterThanOrEqual(44)
+    })
+
+    test("home reveals its current React offering within the first viewport", async ({ page }) => {
+        await page.goto("/")
+
+        const hero = page.locator("main > section").first()
+        const stats = page.locator("main > section").nth(1)
+        const statsBox = await stats.boundingBox()
+
+        await expect(hero.getByRole("link", { name: "Get Started" })).toHaveAttribute(
+            "href",
+            "/docs/installation"
+        )
+        await expect(stats).toContainText("React")
+        await expect(stats).not.toContainText("HTML")
+        expect(statsBox?.y).toBeLessThan(MOBILE_VIEWPORT.height)
+    })
+
     test("documentation pagination stacks at narrow widths", async ({ page }) => {
         await page.goto("/docs/components/select")
         const previous = page.getByRole("link", { name: /Previous Radio Group/ })
@@ -88,5 +131,32 @@ test.describe("mobile layout", () => {
         const previousBox = await previous.boundingBox()
         const nextBox = await next.boundingBox()
         expect(nextBox?.y).toBeGreaterThan((previousBox?.y ?? 0) + (previousBox?.height ?? 0))
+    })
+})
+
+test.describe("desktop documentation", () => {
+    test.use({ viewport: { width: 1440, height: 900 } })
+
+    test("table of contents has enough width for readable headings", async ({ page }) => {
+        await page.goto("/docs/components/date-picker")
+
+        const toc = page.getByRole("complementary", { name: "Table of contents" })
+        const box = await toc.boundingBox()
+        expect(box?.width).toBeGreaterThanOrEqual(208)
+    })
+
+    test("package manager tabs preserve their brand casing", async ({ page }) => {
+        await page.goto("/docs/installation")
+
+        const tablists = page.getByRole("tablist", {
+            name: "CLI package manager",
+        })
+        await expect(tablists).toHaveCount(2)
+
+        const tabs = tablists.first()
+        await expect(tabs.getByRole("tab", { name: "npm", exact: true })).toBeVisible()
+        await expect(tabs.getByRole("tab", { name: "pnpm", exact: true })).toBeVisible()
+        await expect(tabs.getByRole("tab", { name: "Yarn", exact: true })).toBeVisible()
+        await expect(tabs.getByRole("tab", { name: "Bun", exact: true })).toBeVisible()
     })
 })

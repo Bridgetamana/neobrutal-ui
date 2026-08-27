@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const publicSans = localFont({
@@ -104,7 +103,6 @@ export default function RootLayout({
         </a>
         <ThemeProvider>
           {children}
-          <Toaster />
         </ThemeProvider>
         <ProductionAnalytics />
       </body>

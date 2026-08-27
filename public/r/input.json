@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "components/ui/input.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport type InputProps = React.InputHTMLAttributes<HTMLInputElement>\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\n    ({ className, type = \"text\", ...props }, ref) => {\n        return (\n            <input\n                type={type}\n                className={cn(\n                    \"flex h-10 w-full rounded-base border-2 border-black bg-white px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-black/60 focus-brutal disabled:cursor-not-allowed disabled:opacity-50\",\n                    className\n                )}\n                ref={ref}\n                {...props}\n            />\n        )\n    }\n)\nInput.displayName = \"Input\"\n\nexport { Input }\n",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport type InputProps = React.InputHTMLAttributes<HTMLInputElement>\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\n    ({ className, type = \"text\", ...props }, ref) => {\n        return (\n            <input\n                type={type}\n                className={cn(\n                    \"flex h-11 w-full rounded-base border-2 border-black bg-white px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-black/60 focus-brutal disabled:cursor-not-allowed disabled:opacity-50\",\n                    className\n                )}\n                ref={ref}\n                {...props}\n            />\n        )\n    }\n)\nInput.displayName = \"Input\"\n\nexport { Input }\n",
       "type": "registry:ui"
     }
   ]

@@ -3,10 +3,11 @@ import { expect, test, type Page } from "@playwright/test"
 
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]
 
-async function expectNoAccessibilityViolations(page: Page) {
-    const results = await new AxeBuilder({ page })
-        .withTags(WCAG_TAGS)
-        .analyze()
+async function expectNoAccessibilityViolations(page: Page, include?: string) {
+    const builder = new AxeBuilder({ page }).withTags(WCAG_TAGS)
+    if (include) builder.include(include)
+
+    const results = await builder.analyze()
 
     expect(
         results.violations,
@@ -36,7 +37,7 @@ test.describe("page accessibility", () => {
     }
 })
 
-test("command search remains accessible while loading results", async ({ page }) => {
+test("command search returns accessible local results", async ({ page }) => {
     await page.goto("/")
     await page.getByRole("button", { name: "Search documentation" }).click()
 
@@ -57,6 +58,18 @@ test("command search remains accessible while loading results", async ({ page })
     await expect(search).toBeFocused()
     await page.keyboard.press("Escape")
     await expect(trigger).toBeFocused()
+})
+
+test("toast demos render notifications with the route-scoped toaster", async ({ page }) => {
+    await page.goto("/docs/components/toast")
+    await page.getByRole("button", { name: "Basic toast" }).click()
+
+    await expect(
+        page
+            .getByRole("region", { name: "Notifications" })
+            .getByText("Event has been created", { exact: true })
+    ).toBeVisible()
+    await expectNoAccessibilityViolations(page, '[aria-label="Notifications"]')
 })
 
 test("mobile navigation traps and restores keyboard focus", async ({ page }) => {

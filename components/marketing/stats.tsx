@@ -8,8 +8,8 @@ export function StatsSection() {
                         <span className="text-lg">Components</span>
                     </div>
                     <div className="flex flex-col items-center justify-center py-8 px-2">
-                        <span className="text-4xl md:text-5xl font-bold mb-2">2</span>
-                        <span className="text-lg">Formats (React + HTML)</span>
+                        <span className="text-4xl md:text-5xl font-bold mb-2">React</span>
+                        <span className="text-lg">Component Format</span>
                     </div>
                     <div className="flex flex-col items-center justify-center py-8 px-2">
                         <span className="text-4xl md:text-5xl font-bold mb-2">MIT</span>

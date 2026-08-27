@@ -127,7 +127,6 @@ h2 {
 ::-webkit-scrollbar-track {
   background: var(--white);
   border-left: 2px solid var(--black);
-  /* border-top: 2px solid var(--black); */
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,5 +1,6 @@
 import { ColorThemePicker } from "@/components/site/color-theme-picker"
-import { DesktopSidebar, MobileHeader, DocsHeader } from "@/components/docs/docs-sidebar"
+import { DesktopSidebar, MobileHeader } from "@/components/docs/docs-sidebar"
+import { DocsHeader } from "@/components/docs/docs-header"
 import { OnThisPage } from "@/components/docs/on-this-page"
 import { Suspense } from "react"
 import { getDocsNavigation } from "@/lib/mdx"
@@ -21,8 +22,10 @@ export default async function DocsLayout({
             </Suspense>
 
             <main id="main-content" tabIndex={-1} className="flex-1 md:pl-64">
-                <DocsHeader />
-                <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 xl:grid xl:max-w-none xl:grid-cols-[minmax(0,60rem)_8rem] xl:gap-14">
+                <Suspense fallback={<div aria-hidden className="hidden h-[3.75rem] md:block" />}>
+                    <DocsHeader />
+                </Suspense>
+                <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 xl:grid xl:max-w-none xl:grid-cols-[minmax(0,60rem)_13rem] xl:gap-10">
                     <div className="min-w-0" data-docs-content>
                         {children}
                     </div>
