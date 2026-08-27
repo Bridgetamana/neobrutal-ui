@@ -17,7 +17,7 @@ jobs:
   website:
     name: Website
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Check out repository
@@ -52,6 +52,18 @@ jobs:
 
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
+
+      - name: Enforce Lighthouse performance budgets
+        run: CHROME_PATH="$(node -e "process.stdout.write(require('playwright').chromium.executablePath())")" npm run lighthouse:ci
+
+      - name: Upload Lighthouse reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-reports
+          path: lighthouse-reports/
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Run browser accessibility tests
         run: npm run test:e2e

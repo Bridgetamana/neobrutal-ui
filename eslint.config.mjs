@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "dist/**",
     "coverage/**",
+    "lighthouse-reports/**",
     "playwright-report/**",
     "test-results/**",
     "packages/cli/dist/**",

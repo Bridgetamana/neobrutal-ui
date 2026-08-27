@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "lighthouse:ci": "node scripts/run-lighthouse.mjs",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium",
     "test:registry": "tsx --test tests/registry/registry.test.ts",
@@ -37,8 +38,10 @@
     "@types/node": "^25.0.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "chrome-launcher": "1.2.1",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.3",
+    "lighthouse": "13.4.1",
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
     "typescript": "^6.0.3"
